@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({ // The private keys which are only available server-side
+export default defineNuxtConfig({ 
   runtimeConfig: {
-    /* Firebase Config */
     public: {
+      /* Firebase Config */
       firebase: {
         config: {
           apiKey: process.env.FIREBASE_API_KEY,
@@ -16,6 +16,7 @@ export default defineNuxtConfig({ // The private keys which are only available s
       }
     }
   },
+  modules: ['@pinia/nuxt'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   ssr: true
