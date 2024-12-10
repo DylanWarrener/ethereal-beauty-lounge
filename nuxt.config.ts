@@ -16,6 +16,12 @@ export default defineNuxtConfig({
       }
     }
   },
+  imports: {
+    dirs: [
+      'utils',
+      'abstractions'
+    ]
+  },
   modules: ['@pinia/nuxt'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
