@@ -6,6 +6,14 @@ export default defineNuxtConfig({
     'vuetify/styles',
     '~/assets/styles/main.scss'
   ],
+  components: {
+    dirs: [
+      {
+         path: '~/components/common',
+         prefix: ''
+      }
+    ]
+  },
   imports: {
     autoImport: true
   },
