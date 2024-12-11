@@ -7,11 +7,7 @@ export default defineNuxtConfig({
     '~/assets/styles/main.scss'
   ],
   imports: {
-    autoImport: true,
-    dirs: [
-      'utils',
-      'abstractions'
-    ]
+    autoImport: true
   },
   build: {
     transpile: ['vuetify'],
