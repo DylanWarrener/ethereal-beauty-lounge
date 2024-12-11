@@ -1,9 +1,13 @@
 <template>
-    <h1>Default layout view</h1>
+  <Header />
+  <NuxtPage />
+  <Footer />
 </template>
 
 <script lang="ts">
+export default {
 
+}
 </script>
 
 <style scoped>
