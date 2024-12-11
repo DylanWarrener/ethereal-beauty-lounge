@@ -1,8 +1,20 @@
+import vuetify from 'vite-plugin-vuetify';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({ 
+  css: ['vuetify/styles'],
+  build: {
+    transpile: ['vuetify'],
+  },
+  vite: {
+    plugins: [
+      vuetify({
+        autoImport: true,
+      }),
+    ],
+  },
   runtimeConfig: {
     public: {
-      /* Firebase Config */
       firebase: {
         config: {
           apiKey: process.env.FIREBASE_API_KEY,
@@ -17,6 +29,7 @@ export default defineNuxtConfig({
     }
   },
   imports: {
+    autoImport: true,
     dirs: [
       'utils',
       'abstractions'
