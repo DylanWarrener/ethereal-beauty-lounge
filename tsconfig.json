@@ -1,12 +1,12 @@
-
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/abstractions/*": ["abstractions/*"],
+      "@/assets/*": ["assets/*"],
+      "@/stores/*": ["stores/*"],
+    },
     "module": "ESNext"
   },
-  "paths": {
-    "@/abstractions/*": ["abstractions/*"]
-  }
-  // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
 }

@@ -1,15 +1,17 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore('counter', {
-  state: () => ({
-    count: 0,
+/* Abstractions */
+import type ICartState from "@/abstractions/interfaces/cart/store";
+import { EStoreNames } from "@/abstractions/enums/store";
+
+export const useCartStore = defineStore(EStoreNames.CART, {
+  state: (): ICartState => ({
+
   }),
+  getters: {
+
+  },
   actions: {
-    increment() {
-      this.count++;
-    },
-    decrement() {
-      this.count--;
-    },
+
   },
 });

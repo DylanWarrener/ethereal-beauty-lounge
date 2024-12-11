@@ -2,7 +2,17 @@ import vuetify from 'vite-plugin-vuetify';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({ 
-  css: ['vuetify/styles'],
+  css: [
+    'vuetify/styles',
+    '~/assets/styles/main.scss'
+  ],
+  imports: {
+    autoImport: true,
+    dirs: [
+      'utils',
+      'abstractions'
+    ]
+  },
   build: {
     transpile: ['vuetify'],
   },
@@ -27,13 +37,6 @@ export default defineNuxtConfig({
         }
       }
     }
-  },
-  imports: {
-    autoImport: true,
-    dirs: [
-      'utils',
-      'abstractions'
-    ]
   },
   modules: ['@pinia/nuxt'],
   compatibilityDate: '2024-11-01',

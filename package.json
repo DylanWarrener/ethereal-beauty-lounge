@@ -1,13 +1,18 @@
 {
-  "name": "nuxt-app",
+  "name": "ethereal-beauty-lounge",
+  "description": "A beauty therapist e-commerce website",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "prod": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.vue --fix",
+    "lint:watch": "chokidar 'src/**/*.{js,jsx,ts,tsx,vue}' -c 'eslint {path} --fix'"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -23,10 +28,12 @@
     "@nuxt/typescript-build": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
+    "chokidar-cli": "^3.0.0",
     "dotenv": "^16.4.7",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.32.0",
     "prettier": "^3.4.2",
     "sass": "^1.82.0",
     "sass-loader": "^16.0.4",

@@ -1,12 +1,13 @@
-export interface IAuthStore {
-    id: string;
-    state: IAuthState;
-    getters: IAuthGetters;
-    actions: IAuthActions;
+export default interface IAuthState {
+    user: IAuthUser;
 }
-
-export interface IAuthState {}
-
-export interface IAuthGetters {}
-
-export interface IAuthActions {}
+interface IAuthUser {
+    isSignedIn: false;
+    uid: null;
+    displayName: null;
+    email: null;
+    emailVerified: false;
+    photoURL: null;
+    isAnonymous: false;
+    joinedOn: null;
+}

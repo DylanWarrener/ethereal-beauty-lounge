@@ -42,7 +42,6 @@ const lightTheme = {
     'accent-darken-3': '#6A3131',
   },
 };
-
 const darkTheme = {
   dark: true, 
   colors: {
@@ -81,8 +80,6 @@ const darkTheme = {
     'accent-darken-3': '#351818',
   },
 };
-
-// Vuetify Configuration
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components,
