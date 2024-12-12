@@ -1,21 +1,18 @@
 import vuetify from 'vite-plugin-vuetify';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({ 
-  css: [
-    'vuetify/styles',
-    '~/assets/styles/main.scss'
-  ],
+export default defineNuxtConfig({
+  css: ['vuetify/styles', '~/assets/styles/main.scss'],
   components: {
     dirs: [
       {
-         path: '~/components/common',
-         prefix: ''
-      }
-    ]
+        path: '~/components/common',
+        prefix: '',
+      },
+    ],
   },
   imports: {
-    autoImport: true
+    autoImport: true,
   },
   build: {
     transpile: ['vuetify'],
@@ -37,13 +34,13 @@ export default defineNuxtConfig({
           storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
           messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
           appId: process.env.FIREBASE_APP_ID,
-          measurementId: process.env.FIREBASE_MEASUREMENT_ID
-        }
-      }
-    }
+          measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+        },
+      },
+    },
   },
   modules: ['@pinia/nuxt'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  ssr: true
-})
+  ssr: true,
+});

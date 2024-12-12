@@ -12,7 +12,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:watch": "chokidar src/**/*.{js,jsx,ts,tsx,vue} -c 'eslint {path} --fix'"
+    "lint:watch": "chokidar '**/*.{ts,tsx,vue,js,jsx,json}' -c 'npx eslint {path} --fix'"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",

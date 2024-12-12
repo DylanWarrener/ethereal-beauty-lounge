@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 import type IAuthState from '@/abstractions/interfaces/authentication/store';
 import { EStoreNames } from '@/abstractions/enums/store';
 
-const test = 2;
+const aNewVariable = 2;
 
 export const useAuthStore = defineStore(EStoreNames.AUTH, {
   state: (): IAuthState => ({

@@ -1,4 +1,3 @@
 export default defineAppConfig({
-    title: 'Ethereal Beauty Lounge'
-  })
-  
+  title: 'Ethereal Beauty Lounge',
+});
