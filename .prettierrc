@@ -6,5 +6,7 @@
   "trailingComma": "es5",
   "arrowParens": "always",
   "endOfLine": "auto",
-  "eslintIntegration": true
+  "eslintIntegration": true,
+  "vueIndentScriptAndStyle": true,
+  "htmlWhitespaceSensitivity": "ignore"
 }
