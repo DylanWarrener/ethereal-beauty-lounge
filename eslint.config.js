@@ -28,6 +28,12 @@ export default [
       eqeqeq: "error", // Enforce strict equality checks
       "prettier/prettier": "error", // Report Prettier formatting issues as ESLint errors
     },
+    extends: [
+      "eslint:recommended",
+      "plugin:vue/vue3-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier", // Disable ESLint rules conflicting with Prettier
+    ]
   },
   {
     // TypeScript-specific linting rules
