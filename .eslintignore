@@ -1,0 +1,11 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore build output
+.output/
+
+# Ignore dist directory
+dist/
+
+# Ignore any other folders or files
+some-folder/

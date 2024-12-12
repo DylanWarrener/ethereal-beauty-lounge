@@ -1,11 +1,16 @@
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import vuePlugin from 'eslint-plugin-vue';
+import prettierPlugin from 'eslint-plugin-prettier';
+
 export default [
   {
     // General linting configuration for JavaScript, TypeScript, and Vue files
-    files: ["*.js", "*.jsx", "*.ts", "*.tsx", "*.vue"], // Match specific file types
+    files: ['*.js', '*.jsx', '*.ts', '*.tsx', '*.vue'], // Match specific file types
     languageOptions: {
       ecmaVersion: 2021, // Use ECMAScript 2021 features
-      sourceType: "module", // Support ES Modules
-      parser: require("@typescript-eslint/parser"), // Parse TypeScript files
+      sourceType: 'module', // Support ES Modules
+      parser: tsParser, // Parse TypeScript files
       parserOptions: {
         ecmaFeatures: {
           jsx: true, // Enable JSX syntax for React or Vue
@@ -17,40 +22,36 @@ export default [
       },
     },
     plugins: {
-      "@typescript-eslint": require("@typescript-eslint/eslint-plugin"), // Add TypeScript-specific linting
-      vue: require("eslint-plugin-vue"), // Add Vue-specific linting
-      prettier: require("eslint-plugin-prettier"), // Integrate Prettier with ESLint
+      '@typescript-eslint': tsPlugin,
+      vue: vuePlugin,
+      prettier: prettierPlugin,
     },
     rules: {
-      // Common ESLint rules
-      "no-console": "warn", // Warn when using console.log
-      "no-unused-vars": "warn", // Warn for unused variables
-      eqeqeq: "error", // Enforce strict equality checks
-      "prettier/prettier": "error", // Report Prettier formatting issues as ESLint errors
-    },
-    extends: [
-      "eslint:recommended",
-      "plugin:vue/vue3-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier", // Disable ESLint rules conflicting with Prettier
-    ]
-  },
-  {
-    // TypeScript-specific linting rules
-    files: ["*.ts", "*.tsx"],
-    rules: {
-      "@typescript-eslint/no-unused-vars": "warn", // Warn for unused variables in TypeScript files
+      '@typescript-eslint/adjacent-overload-signatures': 'error', // Explicitly add this rule
+      'no-console': 'warn', // Warn when using console.log
+      'prettier/prettier': 'error', // Report Prettier formatting issues as ESLint errors
     },
   },
   {
     // Vue-specific linting rules
-    files: ["*.vue"],
-    plugins: {
-      vue: require("eslint-plugin-vue"), // Activate Vue plugin for ESLint
-    },
+    files: ['*.vue'],
     rules: {
-      "vue/no-unused-vars": "warn", // Warn for unused variables in Vue templates
-      "vue/html-indent": ["error", 2], // Enforce 2-space indentation in Vue templates
+      ...vuePlugin.configs['vue3-recommended'].rules, // Use Vue 3 recommended rules
+      'vue/no-unused-vars': 'warn', // Warn for unused variables in Vue templates
+      'vue/html-indent': ['error', 2], // Enforce 2-space indentation in Vue templates
+    },
+  },
+  {
+    // TypeScript-specific linting rules
+    files: ['*.ts', '*.tsx'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error', // Mark unused variables as an error
+        {
+          argsIgnorePattern: '^_', // Ignore arguments prefixed with _
+          varsIgnorePattern: '^_', // Ignore variables prefixed with _
+        },
+      ],
     },
   },
 ];
