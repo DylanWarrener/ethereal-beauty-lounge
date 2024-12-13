@@ -50,7 +50,7 @@ export default [
     },
     rules: {
       ...COMMON_RULES,
-      'no-unused-vars': 'always',
+      'no-unused-vars': 'error',
       'prettier/prettier': 'error',
     },
   },
@@ -67,7 +67,7 @@ export default [
     },
     rules: {
       ...COMMON_RULES,
-      'no-unused-vars': 'off', // Play around with this by turning it off and on.
+      'no-unused-vars': 'off', // Disable for typescript, to let typescript deal with it, using the rule below.
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -97,7 +97,7 @@ export default [
     },
     rules: {
       ...vuePlugin.configs['vue3-recommended'].rules,
-      'vue/no-unused-vars': 'warn',
+      'vue/no-unused-vars': 'error',
       'vue/html-indent': ['error', 2], // Enforce 2-space indentation for templates
       'prettier/prettier': 'error', // Enforce Prettier formatting as ESLint errors
       '@typescript-eslint/no-unused-vars': [

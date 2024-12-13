@@ -1,3 +1,3 @@
 <template>
-    <h1>Packages page</h1>
+  <h1>Packages page</h1>
 </template>

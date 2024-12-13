@@ -1,3 +1,14 @@
 {
-  "extends": "../.nuxt/tsconfig.server.json"
+  "extends": "../.nuxt/tsconfig.server.json",
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/server/*": ["./*"],
+      "@/utils/*": ["../utils/*"]
+    },
+    "types": ["@types/node"]
+  },
+  "include": [".", "../types/**/*.d.ts"],
+  "exclude": ["../node_modules", "../.nuxt", "../dist"]
 }
