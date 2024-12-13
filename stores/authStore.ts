@@ -1,3 +1,4 @@
+import { useNuxtApp } from '#app';
 import { defineStore } from 'pinia';
 import {
   onAuthStateChanged,
@@ -21,8 +22,6 @@ import type IFirebaseAuthState from '@/abstractions/interfaces/store/auth';
 import type IFirebaseAuthUser from '@/abstractions/interfaces/user/firebaseAuth';
 import { type IFirebaseAuthUserData } from '@/abstractions/interfaces/user/firebaseAuth';
 import { EStoreNames } from '@/abstractions/enums/store';
-
-const { $auth } = useNuxtApp();
 
 export const useAuthStore = defineStore(EStoreNames.AUTH, {
   state: (): IFirebaseAuthState => ({
@@ -76,8 +75,22 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
     set_userState(user: IFirebaseAuthUser): void {
       this.user = user;
     },
+    reset_userAuthState(): void {
+      this.user.isSignedIn = false;
+    },
     set_userAuthState(user: { auth: IFirebaseAuthUserData }): void {
       this.user.auth = user.auth;
+    },
+    reset_userAuthDataState(): void {
+      this.user.auth = {
+        uid: null,
+        displayName: null,
+        email: null,
+        emailVerified: false,
+        photoURL: null,
+        isAnonymous: false,
+        joinedOn: null,
+      };
     },
     set_userIsSignedInState(user: { isSignedIn: boolean }): void {
       this.user.isSignedIn = user.isSignedIn;
@@ -128,18 +141,8 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       password: string;
     }): Promise<void> {
       return new Promise((resolve, reject) => {
-        signInWithEmailAndPassword(auth, user.email, user.password)
-          .then(() => this.get_userFirestore_user())
-          .then((userData: DocumentData | string) => {
-            if (typeof userData === 'string') reject(userData);
-            else {
-              this.set_userFirestore_title_state(userData.title);
-              this.set_userFirestore_firstname_state(userData.firstname);
-              this.set_userFirestore_lastname_state(userData.lastname);
-              this.set_userFirestore_phoneNumber_state(userData.phoneNumber);
-              resolve();
-            }
-          })
+        signInWithEmailAndPassword($auth, user.email, user.password)
+          .then(() => resolve())
           .catch((error) => {
             if (typeof error === 'string') reject(error);
             else {
@@ -200,11 +203,17 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       });
     },
     logout_userAuth(): Promise<void> {
-      this.reset_userAuth_state();
-      this.reset_userFirestore_state();
+      const { $auth } = useNuxtApp();
+      //const firestore = useFirestore();
+
       return new Promise((resolve, reject) => {
-        signOut(auth)
-          .then(() => resolve())
+        signOut($auth)
+          .then(() => {
+            this.reset_userAuthState();
+            this.reset_userAuthDataState();
+            //this.reset_userFirestore_state();
+            resolve();
+          })
           .catch(() => reject());
       });
     },
@@ -212,6 +221,8 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       email: string;
       password: string;
     }): Promise<void> {
+      const { $auth } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
         createUserWithEmailAndPassword($auth, user.email, user.password)
           .then(() => this.send_userAuth_emailVerification())
@@ -228,18 +239,22 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       });
     },
     send_userAuth_emailVerification(): Promise<void> {
+      const { $auth } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
-        if (auth.currentUser !== null) {
-          sendEmailVerification(auth.currentUser)
+        if ($auth.currentUser !== null) {
+          sendEmailVerification($auth.currentUser)
             .then(() => resolve())
             .catch(() => reject());
         }
       });
     },
     send_userAuth_passwordResetLink(email: string): Promise<void> {
-      return new Promise((resolve, reject) => {
-        if (auth !== null) {
-          sendPasswordResetEmail(auth, email)
+      const { $auth } = useNuxtApp();
+
+      return new Promise((resolve, _) => {
+        if ($auth !== null) {
+          sendPasswordResetEmail($auth, email)
             .then(() => {
               resolve();
             })
@@ -251,8 +266,10 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       });
     },
     send_userAuth_signInLinkToEmail(email: string): Promise<void> {
-      return new Promise((resolve, reject) => {
-        if (auth !== null) {
+      const { $auth } = useNuxtApp();
+
+      return new Promise((resolve, _) => {
+        if ($auth !== null) {
           const actionCodeSettings: ActionCodeSettings = {
             url: 'https://localhost:5173/login#section-login',
             iOS: {
@@ -265,7 +282,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
             },
             handleCodeInApp: false,
           };
-          sendSignInLinkToEmail(auth, email, actionCodeSettings)
+          sendSignInLinkToEmail($auth, email, actionCodeSettings)
             .then(() => {
               resolve();
             })
@@ -284,8 +301,10 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       displayName?: string;
       photoURL?: string;
     }): Promise<void> {
+      const { $auth } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
-        if (auth.currentUser !== null) {
+        if ($auth.currentUser !== null) {
           let valuesNotUndefined: any = {};
           for (const [key, value] of Object.entries(user)) {
             if (value !== undefined) {
@@ -294,11 +313,10 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
           }
 
           if (Object.keys(valuesNotUndefined).length > 0) {
-            updateProfile(auth.currentUser, valuesNotUndefined)
+            updateProfile($auth.currentUser, valuesNotUndefined)
               .then(() => resolve())
               .catch((error) => {
-                const errorMessage: string =
-                  'You are offline, so you cannot store user data!';
+                const errorMessage: string = `You are offline, so you cannot store user data! ${error}`;
                 reject(errorMessage);
               });
           } else {
@@ -310,9 +328,11 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       });
     },
     update_userAuthEmail(email: string): Promise<void> {
+      const { $auth } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
-        if (auth.currentUser !== null) {
-          updateEmail(auth.currentUser, email)
+        if ($auth.currentUser !== null) {
+          updateEmail($auth.currentUser, email)
             .then(() => resolve())
             .catch((error) => {
               let errorMessage: string = '';
@@ -330,9 +350,11 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       });
     },
     update_userAuthPassword(newPassword: string): Promise<void> {
-      return new Promise((resolve, reject) => {
-        if (auth.currentUser !== null) {
-          updatePassword(auth.currentUser, newPassword)
+      const { $auth } = useNuxtApp();
+
+      return new Promise((resolve, _) => {
+        if ($auth.currentUser !== null) {
+          updatePassword($auth.currentUser, newPassword)
             .then(() => {
               resolve();
             })
@@ -344,9 +366,11 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       });
     },
     delete_userAuth(): Promise<void> {
+      const { $auth } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
-        if (auth.currentUser !== null) {
-          deleteUser(auth.currentUser)
+        if ($auth.currentUser !== null) {
+          deleteUser($auth.currentUser)
             .then(() => resolve())
             .catch((error) => {
               switch (error.code) {

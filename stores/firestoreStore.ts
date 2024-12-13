@@ -1,3 +1,4 @@
+import { useNuxtApp } from '#app';
 import { defineStore } from 'pinia';
 import {
   collection,
@@ -12,26 +13,59 @@ import {
 
 /* Abstractions */
 import type IFirestoreState from '@/abstractions/interfaces/store/firestore';
+import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebaseFirestore';
 import { EStoreNames } from '@/abstractions/enums/store';
+
+/* Stores */
+import { useAuthStore } from '@/stores/authStore';
 
 export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({
     user: {
       title: null,
-      firstName: null,
-      lastName: null,
+      firstname: null,
+      lastname: null,
       phoneNumber: null,
     },
   }),
   getters: {},
   actions: {
-    // User FIRESTORE actions
-    get_userFirestore_user(): Promise<DocumentData | string> {
+    /* STATE ACTIONS */
+    set_userFirestore_state(user: IFirebaseFirestoreUser): void {
+      this.user = user;
+    },
+    reset_userFirestore_state(): void {
+      this.user = {
+        title: null,
+        firstname: null,
+        lastname: null,
+        phoneNumber: null,
+      };
+    },
+    set_userFirestore_title_state(user: { title: string | null }): void {
+      this.user.title = user.title;
+    },
+    set_userFirestore_firstname_state(firstname: string | null): void {
+      this.user.firstname = firstname;
+    },
+    set_userFirestore_lastname_state(lastname: string | null): void {
+      this.user.lastname = lastname;
+    },
+    set_userFirestore_phoneNumber_state(phoneNumber: number | null): void {
+      this.user.phoneNumber = phoneNumber;
+    },
+
+    /* FIRESTORE ACTIONS */
+    get_userFirestoreData(): Promise<DocumentData | string> {
+      const { $db } = useNuxtApp();
+      const authStore = useAuthStore();
+
       return new Promise((resolve, reject) => {
-        const uid: string | null = this.user.authData.uid;
+        const uid: string | null = authStore.get_userId;
 
         if (uid !== null) {
-          const userDocumentRef = doc(db, 'users', uid);
+          const userDocumentRef: DocumentReference<DocumentData, DocumentData> =
+            doc($db, 'users', uid);
 
           getDoc(userDocumentRef)
             .then((userDocument) => {
@@ -144,33 +178,28 @@ export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
       lastname: string;
       phoneNumber: string | null;
     }): Promise<void> {
+      const { $db } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
-        const uid: string | null = this.get_userAuth_id_state;
+        const userCollectionRef: CollectionReference<
+          DocumentData,
+          DocumentData
+        > = collection($db, 'users');
+        const userDocumentRef: DocumentReference<DocumentData, DocumentData> =
+          doc(userCollectionRef, user.uid);
+        const userFirestoreData = {
+          title: user.title ?? null,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          phoneNumber: user.phoneNumber ?? null,
+        };
 
-        if (uid !== null) {
-          const userCollectionRef: CollectionReference<
-            DocumentData,
-            DocumentData
-          > = collection(db, 'users');
-          const userDocumentRef: DocumentReference<DocumentData, DocumentData> =
-            doc(userCollectionRef, user.uid);
-          const userFirestoreData = {
-            title: user.title ?? null,
-            firstname: user.firstname,
-            lastname: user.lastname,
-            phoneNumber: user.phoneNumber ?? null,
-          };
-
-          setDoc(userDocumentRef, userFirestoreData)
-            .then(() => resolve())
-            .catch((error) => {
-              const errorMessage: string =
-                'You are offline. Your data cannot be stored. Please reconnect your internet if you can';
-              reject(errorMessage);
-            });
-        } else {
-          reject('You must be logged in, to store your account credentials');
-        }
+        setDoc(userDocumentRef, userFirestoreData)
+          .then(() => resolve())
+          .catch((error) => {
+            const errorMessage: string = `You are offline. Your data cannot be stored. Please reconnect your internet if you can. ${error}`;
+            reject(errorMessage);
+          });
       });
     },
     update_userFirestore_user(user: {
@@ -179,8 +208,11 @@ export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
       lastname?: string;
       phoneNumber?: number;
     }): Promise<void> {
+      const { $db } = useNuxtApp();
+      const authStore = useAuthStore();
+
       return new Promise((resolve, reject) => {
-        const uid: string | null = this.get_userAuth_id_state;
+        const uid: string | null = authStore.get_userId;
 
         if (uid !== null) {
           let valuesNotUndefined: any = {};
@@ -191,12 +223,11 @@ export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
           }
 
           if (Object.keys(valuesNotUndefined).length > 0) {
-            const userDocumentRef = doc(db, 'users', uid);
+            const userDocumentRef = doc($db, 'users', uid);
             updateDoc(userDocumentRef, valuesNotUndefined)
               .then(() => resolve())
               .catch((error) => {
-                const errorMessage: string =
-                  'You are offline, so you cannot update your data';
+                const errorMessage: string = `You are offline, so you cannot update your data. ${error}`;
                 reject(errorMessage);
               });
           } else {
@@ -208,50 +239,6 @@ export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
           reject('You must be logged in, to update your account credentials');
         }
       });
-    },
-    // User FIRESTORE setters
-    reset_userFirestore_state(): void {
-      this.set_userFirestore_state({
-        title: null,
-        firstname: null,
-        lastname: null,
-        phoneNumber: null,
-      });
-    },
-    set_userFirestore_state(user: {
-      title: string | null;
-      firstname: string | null;
-      lastname: string | null;
-      phoneNumber: number | null;
-    }): void {
-      for (const [key, value] of Object.entries(user)) {
-        switch (key) {
-          case 'title':
-            this.set_userFirestore_title_state(value as string);
-            break;
-          case 'firstname':
-            this.set_userFirestore_firstname_state(value as string);
-            break;
-          case 'lastname':
-            this.set_userFirestore_lastname_state(value as string);
-            break;
-          case 'phoneNumber':
-            this.set_userFirestore_phoneNumber_state(value as number);
-            break;
-        }
-      }
-    },
-    set_userFirestore_title_state(title: string | null): void {
-      this.user.firestoreData.title = title;
-    },
-    set_userFirestore_firstname_state(firstname: string | null): void {
-      this.user.firestoreData.firstname = firstname;
-    },
-    set_userFirestore_lastname_state(lastname: string | null): void {
-      this.user.firestoreData.lastname = lastname;
-    },
-    set_userFirestore_phoneNumber_state(phoneNumber: number | null): void {
-      this.user.firestoreData.phoneNumber = phoneNumber;
     },
   },
 });

@@ -2,13 +2,24 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "#app": [".nuxt/types/app"],
+      "#app/*": [".nuxt/types/app/*"],
+      "#imports": [".nuxt/types/imports"],
+      "#imports/*": [".nuxt/types/imports/*"],
+      "@/": ["./"],
       "@/abstractions/*": ["abstractions/*"],
       "@/assets/*": ["assets/*"],
       "@/stores/*": ["stores/*"],
       "@/utils/*": ["utils/*"],
       "@/plugins/*": ["plugins/*"]
     },
-    "module": "ESNext"
+    "types": ["@nuxt/types", "@types/node"],
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ESNext"
   },
+  "include": [".nuxt/**/*", "**/*.ts", "**/*.vue", ".nuxt"],
+  "exclude": ["node_modules"],
   "extends": "./.nuxt/tsconfig.json"
 }

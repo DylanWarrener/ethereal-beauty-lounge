@@ -1,7 +1,11 @@
 import vuetify from 'vite-plugin-vuetify';
+import Checker from 'vite-plugin-checker';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  typescript: {
+    typeCheck: true,
+  },
   css: ['vuetify/styles', '~/assets/styles/main.scss'],
   components: {
     dirs: [
@@ -21,6 +25,9 @@ export default defineNuxtConfig({
     plugins: [
       vuetify({
         autoImport: true,
+      }),
+      Checker({
+        vueTsc: true, // Enables Vue TypeScript checking
       }),
     ],
   },

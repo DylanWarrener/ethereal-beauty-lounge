@@ -4,14 +4,14 @@
 
 <script lang="ts">
   import { useRootStore } from '@/stores/rootStore';
-  import { useFirebaseStore } from '@/stores/firestoreStore';
+  import { useFireStore } from '@/stores/firestoreStore';
 
   const { $auth } = useNuxtApp();
 
   export default {
     setup() {
       const rootStore = useRootStore();
-      const firebaseStore = useFirebaseStore();
+      const firebaseStore = useFireStore();
       return { rootStore, firebaseStore };
     },
     data() {
@@ -20,9 +20,7 @@
       };
     },
     created(): void {
-      this.firebaseStore
-        .monitor_userAuth_state({ $auth })
-        .then(() => this.firebaseStore.get_userFirestore_user());
+      this.firebaseStore.monitor_userAuth_state({ $auth });
     },
   };
 </script>
