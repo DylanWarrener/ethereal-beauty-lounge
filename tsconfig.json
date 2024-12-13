@@ -5,7 +5,8 @@
       "@/abstractions/*": ["abstractions/*"],
       "@/assets/*": ["assets/*"],
       "@/stores/*": ["stores/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/plugins/*": ["plugins/*"]
     },
     "module": "ESNext"
   },
