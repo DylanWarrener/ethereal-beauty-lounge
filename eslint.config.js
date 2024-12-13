@@ -2,14 +2,40 @@ import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import vuePlugin from 'eslint-plugin-vue';
 import vueEslintParser from 'vue-eslint-parser';
+import prettierPlugin from 'eslint-plugin-prettier';
 
-/* Utils */
-import { COMMON_IGNORES } from '@/utils/arrays/eslint';
-import {
-  COMMON_LANGUAGE_OPTIONS,
-  COMMON_PLUGINS,
-  COMMON_RULES,
-} from '@/utils/objects/eslint';
+export const COMMON_LANGUAGE_OPTIONS = {
+  ecmaVersion: 2021,
+  sourceType: 'module',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  globals: {
+    browser: true,
+    node: true,
+  },
+};
+
+export const COMMON_RULES = {
+  'no-console': 'warn', // Warn on console usage across all files
+  eqeqeq: 'error', // Enforce strict equality checks across all files
+};
+
+export const COMMON_PLUGINS = {
+  prettier: prettierPlugin,
+};
+
+export const COMMON_IGNORES = [
+  'node_modules',
+  '.output',
+  'dist',
+  'public',
+  'assets/animations',
+  'assets/images',
+  '.git',
+];
 
 export default [
   {
@@ -50,13 +76,6 @@ export default [
         },
       ],
       '@typescript-eslint/adjacent-overload-signatures': 'error',
-    },
-    settings: {
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.json', // Specify the path to your tsconfig
-        },
-      },
     },
   },
   {
