@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./abstractions/types", "./node_modules/@types"], // Include abstractions/types for global types
     "baseUrl": ".",
     "paths": {
-      "#app": [".nuxt/types/app"], // Add Nuxt runtime type declarations
-      "#imports": [".nuxt/types/imports"], // Add Nuxt composables type declarations
       "@/abstractions/*": ["abstractions/*"],
       "@/assets/*": ["assets/*"],
       "@/components/*": ["components/*"],
@@ -16,8 +13,6 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "target": "ESNext",
-    "jsx": "preserve",
-    "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
@@ -29,6 +24,9 @@
     "noEmit": false
   },
   "include": [
+    "nuxt.config.ts",
+    "app.config.ts",
+    "eslint.config.js",
     "./abstractions/**/*.{ts,d.ts}",
     "./components/**/*.{vue,ts}",
     "./layouts/**/*.{vue,ts}",
