@@ -1,9 +1,14 @@
 <template>
-  <h1>This is the header</h1>
+  <header>
+    <div>This is the notification bar</div>
+    <v-app-bar title="Application bar"></v-app-bar>
+  </header>
 </template>
 
 <script lang="ts">
-  export default {};
+  export default {
+    name: 'common-header',
+  };
 </script>
 
 <style lang="scss" scoped></style>

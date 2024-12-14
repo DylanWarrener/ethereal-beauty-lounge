@@ -12,7 +12,9 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:watch": "chokidar '**/*.{ts,tsx,vue,js,jsx}' -c 'npx eslint {path} --fix'"
+    "lint:watch": "chokidar '**/*.{ts,tsx,vue,js,jsx}' -c 'npx eslint {path} --fix'",
+    "type-check": "vue-tsc --noEmit",
+    "build-types": "vue-tsc --declaration --emitDeclarationOnly --outDir types"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -27,8 +29,11 @@
     "@nuxt/eslint-config": "^0.7.2",
     "@nuxt/types": "^2.18.1",
     "@nuxt/typescript-build": "^3.0.2",
+    "@types/node": "^22.10.2",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
+    "@vue/compiler-sfc": "^3.5.13",
+    "@vue/tsconfig": "^0.7.0",
     "chokidar-cli": "^3.0.0",
     "dotenv": "^16.4.7",
     "eslint": "^9.16.0",
@@ -41,6 +46,7 @@
     "sass": "^1.82.0",
     "sass-loader": "^16.0.4",
     "typescript": "^5.7.2",
+    "vite": "^5.4.11",
     "vue-eslint-parser": "^9.4.3",
     "vue-tsc": "^2.1.10"
   }

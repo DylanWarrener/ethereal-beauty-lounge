@@ -140,6 +140,8 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       email: string;
       password: string;
     }): Promise<void> {
+      const { $auth } = useNuxtApp();
+
       return new Promise((resolve, reject) => {
         signInWithEmailAndPassword($auth, user.email, user.password)
           .then(() => resolve())

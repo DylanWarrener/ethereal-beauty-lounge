@@ -9,17 +9,35 @@
       "@/": ["./"],
       "@/abstractions/*": ["abstractions/*"],
       "@/assets/*": ["assets/*"],
+      "@/components/*": ["components/*"],
       "@/stores/*": ["stores/*"],
       "@/utils/*": ["utils/*"],
       "@/plugins/*": ["plugins/*"]
     },
-    "types": ["@nuxt/types", "@types/node"],
+    "types": ["@nuxt/types", "@types/node", "@vue/runtime-dom"],
     "strict": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "target": "ESNext"
+    "target": "ESNext",
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "./abstractions/types", // Directory for type declarations
+    "emitDeclarationOnly": true, // Generate only declaration files
+    "noEmit": false // Ensure files are emitted (overrides the extended config)
   },
-  "include": [".nuxt/**/*", "**/*.ts", "**/*.vue", ".nuxt"],
+  "include": [
+    ".nuxt/**/*",
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.vue",
+    "components/**/*.vue"
+  ],
   "exclude": ["node_modules"],
   "extends": "./.nuxt/tsconfig.json"
 }
