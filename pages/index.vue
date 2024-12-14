@@ -6,7 +6,7 @@
   import { useRootStore } from '@/stores/rootStore';
   import { useAuthStore } from '@/stores/authStore';
 
-  const { $auth } = useNuxtApp();
+  //const { $auth } = useNuxtApp();
 
   export default {
     setup() {
@@ -20,7 +20,7 @@
       };
     },
     created(): void {
-      this.authStore.monitor_userAuth_state({ $auth });
+      //this.authStore.monitor_userAuth_state({ $auth });
     },
   };
 </script>

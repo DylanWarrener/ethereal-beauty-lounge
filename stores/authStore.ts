@@ -1,4 +1,4 @@
-import { useNuxtApp } from '#app';
+import useNuxtApp from '#app';
 import { defineStore } from 'pinia';
 import {
   onAuthStateChanged,

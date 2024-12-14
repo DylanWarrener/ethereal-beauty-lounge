@@ -2,11 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "#app": [".nuxt/types/app"],
-      "#app/*": [".nuxt/types/app/*"],
-      "#imports": [".nuxt/types/imports"],
-      "#imports/*": [".nuxt/types/imports/*"],
-      "@/": ["./"],
       "@/abstractions/*": ["abstractions/*"],
       "@/assets/*": ["assets/*"],
       "@/components/*": ["components/*"],
@@ -14,7 +9,7 @@
       "@/utils/*": ["utils/*"],
       "@/plugins/*": ["plugins/*"]
     },
-    "types": ["@nuxt/types", "@types/node", "@vue/runtime-dom"],
+    "types": ["@nuxt/types", "@types/node", "@vue/runtime-dom", "vue/macros"],
     "strict": true,
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -31,13 +26,7 @@
     "emitDeclarationOnly": true, // Generate only declaration files
     "noEmit": false // Ensure files are emitted (overrides the extended config)
   },
-  "include": [
-    ".nuxt/**/*",
-    "**/*.ts",
-    "**/*.d.ts",
-    "**/*.vue",
-    "components/**/*.vue"
-  ],
+  "include": [".nuxt/**/*", "**/*.ts", "**/*.d.ts", "**/*.vue", "**/*.d.vue"],
   "exclude": ["node_modules"],
   "extends": "./.nuxt/tsconfig.json"
 }
