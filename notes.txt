@@ -1,0 +1,2 @@
+<!-- Refreshes the .nuxt directory and regenerates the config file. -->
+npx nuxi prepare 

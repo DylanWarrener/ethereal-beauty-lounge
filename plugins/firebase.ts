@@ -9,6 +9,7 @@ import { getAuth, type Auth } from 'firebase/auth';
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
+
   const firebaseConfig: FirebaseOptions = {
     apiKey: config.public.firebase.config.apiKey,
     authDomain: config.public.firebase.config.authDomain,

@@ -1,4 +1,4 @@
-import useNuxtApp from '#app';
+import { useNuxtApp } from '#app';
 import { defineStore } from 'pinia';
 import {
   onAuthStateChanged,
@@ -206,7 +206,6 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
     },
     logout_userAuth(): Promise<void> {
       const { $auth } = useNuxtApp();
-      //const firestore = useFirestore();
 
       return new Promise((resolve, reject) => {
         signOut($auth)
