@@ -1,5 +1,9 @@
 import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebaseFirestore';
 
-export default interface IFirestoreState {
+export interface IFirestoreState {
   user: IFirebaseFirestoreUser;
 }
+
+export interface IFirestoreGetters {}
+
+export interface IFirestoreActions {}

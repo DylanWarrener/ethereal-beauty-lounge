@@ -16,9 +16,6 @@ import type IFirestoreState from '@/abstractions/interfaces/store/firestore';
 import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebaseFirestore';
 import { EStoreNames } from '@/abstractions/enums/store';
 
-/* STORES */
-import { useAuthStore } from '@/stores/auth';
-
 export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({
     user: {
@@ -57,117 +54,117 @@ export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
 
     /* FIRESTORE ACTIONS */
     get_userFirestoreData(): Promise<DocumentData | string> {
-      const { $firestore } = useNuxtApp();
-
       return new Promise((resolve, reject) => {
-        const uid: string | null = authStore.get_userId;
+        import('@/stores/auth').then((module) => {
+          const uid: string | null = authStore;
 
-        if (uid !== null) {
-          const userDocumentRef: DocumentReference<DocumentData, DocumentData> =
-            doc($firestore, 'users', uid);
+          if (uid !== null) {
+            const { $firestore } = useNuxtApp();
+            const userDocumentRef = doc($firestore, 'users', uid);
 
-          getDoc(userDocumentRef)
-            .then((userDocument) => {
-              const userDocumentExists: boolean = userDocument.exists();
-              const userDocumentData: DocumentData | undefined =
-                userDocument.data();
+            getDoc(userDocumentRef)
+              .then((userDocument) => {
+                const userDocumentExists: boolean = userDocument.exists();
+                const userDocumentData: DocumentData | undefined =
+                  userDocument.data();
 
-              if (!userDocumentExists)
-                reject(
-                  'The requested user document does not exist! Please register!'
-                );
-
-              if (userDocumentData === undefined)
-                reject(
-                  'The requested user data is empty. Please try again later.'
-                );
-
-              this.set_userFirestore_state({
-                title: userDocumentData!.title,
-                firstname: userDocumentData!.firstname,
-                lastname: userDocumentData!.lastname,
-                phoneNumber: userDocumentData!.phoneNumber,
-              });
-              resolve(userDocumentData as DocumentData);
-            })
-            .catch((error) => {
-              switch (error.code) {
-                case 'auth/user-not-found':
-                  // This error occurs when the user document you're trying to retrieve
-                  // doesn't exist in the Firestore database. This could be due to the following reasons
-                  // - The user has been deleted
-                  // - The document ID is incorrect
+                if (!userDocumentExists)
                   reject(
                     'The requested user document does not exist! Please register!'
                   );
-                  break;
-                case 'auth/invalid-credential':
-                  // This error indicates that the credentials used to access Firestore are invalid.
-                  // This could be due to the following reasons:
-                  // - Incorrect API key
-                  // - A missing authentication token
-                  // - Or an expired token.
+
+                if (userDocumentData === undefined)
                   reject(
-                    'Either the email or password is incorrect! Try again.'
+                    'The requested user data is empty. Please try again later.'
                   );
-                  break;
-                case 'permission-denied':
-                  // This error means that the user doesn't have the necessary permissions
-                  // to access the document. This could be due to the following reasons:
-                  // - Icorrect security rules
-                  // - Or a lack of authorization.
-                  reject('You are not authorized to access this data.');
-                  break;
-                case 'unavailable':
-                  // This error indicates that the Firestore service is temporarily unavailable.
-                  // This could be due to the following reasons:
-                  // - Network issue
-                  // - Or a server outage.
-                  reject('The Firestore service is temporarily unavailable.');
-                  break;
-                case 'cancelled':
-                  // This error occurs when the getDoc operation is cancelled before it completes.
-                  // This could be due to the following reasons:
-                  // - User action
-                  // - Or a network interruption.
-                  reject(
-                    'The operation was cancelled because of user action or network interruption.'
-                  );
-                  break;
-                case 'failed-precondition':
-                  // This error indicates that the getDoc operation failed due to a precondition
-                  // failure. This could be due to the following reasons:
-                  // - A concurrent modification of the document
-                  // - Or data inconsistency.
-                  reject(
-                    'The operation failed because of concurrent modifications or data inconsitency.'
-                  );
-                  break;
-                case 'aborted':
-                  // This error occurs when the getDoc operation is aborted due to an unexpected error.
-                  // This could be due to the following reasons:
-                  // - Network issue
-                  // - Or a server error.
-                  reject(
-                    'The operation was aborted because of a network or server issue.'
-                  );
-                  break;
-                case 'out-of-range':
-                  // This error indicates that the document ID is invalid.
-                  // This could be due to the following reasons:
-                  // - A typo
-                  // - Or an incorrect format.
-                  reject('Could not find the requested document.');
-                  break;
-                case 'already-exists':
-                  //  This error occurs when you try to create a document with an ID that already exists.
-                  reject('The document ID already exists.');
-                  break;
-              }
-            });
-        } else {
-          reject('You must be logged in, to get your account credentials');
-        }
+
+                this.set_userFirestore_state({
+                  title: userDocumentData!.title,
+                  firstname: userDocumentData!.firstname,
+                  lastname: userDocumentData!.lastname,
+                  phoneNumber: userDocumentData!.phoneNumber,
+                });
+                resolve(userDocumentData as DocumentData);
+              })
+              .catch((error) => {
+                switch (error.code) {
+                  case 'auth/user-not-found':
+                    // This error occurs when the user document you're trying to retrieve
+                    // doesn't exist in the Firestore database. This could be due to the following reasons
+                    // - The user has been deleted
+                    // - The document ID is incorrect
+                    reject(
+                      'The requested user document does not exist! Please register!'
+                    );
+                    break;
+                  case 'auth/invalid-credential':
+                    // This error indicates that the credentials used to access Firestore are invalid.
+                    // This could be due to the following reasons:
+                    // - Incorrect API key
+                    // - A missing authentication token
+                    // - Or an expired token.
+                    reject(
+                      'Either the email or password is incorrect! Try again.'
+                    );
+                    break;
+                  case 'permission-denied':
+                    // This error means that the user doesn't have the necessary permissions
+                    // to access the document. This could be due to the following reasons:
+                    // - Icorrect security rules
+                    // - Or a lack of authorization.
+                    reject('You are not authorized to access this data.');
+                    break;
+                  case 'unavailable':
+                    // This error indicates that the Firestore service is temporarily unavailable.
+                    // This could be due to the following reasons:
+                    // - Network issue
+                    // - Or a server outage.
+                    reject('The Firestore service is temporarily unavailable.');
+                    break;
+                  case 'cancelled':
+                    // This error occurs when the getDoc operation is cancelled before it completes.
+                    // This could be due to the following reasons:
+                    // - User action
+                    // - Or a network interruption.
+                    reject(
+                      'The operation was cancelled because of user action or network interruption.'
+                    );
+                    break;
+                  case 'failed-precondition':
+                    // This error indicates that the getDoc operation failed due to a precondition
+                    // failure. This could be due to the following reasons:
+                    // - A concurrent modification of the document
+                    // - Or data inconsistency.
+                    reject(
+                      'The operation failed because of concurrent modifications or data inconsitency.'
+                    );
+                    break;
+                  case 'aborted':
+                    // This error occurs when the getDoc operation is aborted due to an unexpected error.
+                    // This could be due to the following reasons:
+                    // - Network issue
+                    // - Or a server error.
+                    reject(
+                      'The operation was aborted because of a network or server issue.'
+                    );
+                    break;
+                  case 'out-of-range':
+                    // This error indicates that the document ID is invalid.
+                    // This could be due to the following reasons:
+                    // - A typo
+                    // - Or an incorrect format.
+                    reject('Could not find the requested document.');
+                    break;
+                  case 'already-exists':
+                    //  This error occurs when you try to create a document with an ID that already exists.
+                    reject('The document ID already exists.');
+                    break;
+                }
+              });
+          } else {
+            reject('You must be logged in, to get your account credentials');
+          }
+        });
       });
     },
     store_userFirestore_user(user: {
