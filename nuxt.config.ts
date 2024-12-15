@@ -16,10 +16,12 @@ export default defineNuxtConfig({
     '@/stores': './src/stores',
     '@/utils': './src/utils',
   },
-  components: {
-    global: true,
-    dirs: ['~/components'],
-  },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    }
+  ],
   modules: ['@pinia/nuxt'],
   css: ['vuetify/styles', '@/assets/styles/main.scss'],
   build: {
