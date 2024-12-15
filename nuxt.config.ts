@@ -16,17 +16,19 @@ export default defineNuxtConfig({
     '@/stores': './src/stores',
     '@/utils': './src/utils',
   },
-  typescript: {
-    typeCheck: true,
+  components: {
+    global: true,
+    dirs: ['~/components'],
   },
-  css: ['vuetify/styles', '~/assets/styles/main.scss'],
-  imports: {
-    autoImport: true,
-  },
+  modules: ['@pinia/nuxt'],
+  css: ['vuetify/styles', '@/assets/styles/main.scss'],
   build: {
     transpile: ['vuetify'],
   },
   vite: {
+    define: {
+      'process.env.DEBUG': false, // Required for Vuetify
+    },
     plugins: [
       vuetify({
         autoImport: true,
@@ -35,6 +37,13 @@ export default defineNuxtConfig({
         vueTsc: true, // Enables Vue TypeScript checking
       }),
     ],
+  },
+  typescript: {
+    strict: true,
+    typeCheck: true,
+  },
+  imports: {
+    autoImport: true,
   },
   runtimeConfig: {
     public: {
@@ -51,7 +60,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@pinia/nuxt'],
   compatibilityDate: '2024-11-01',
   devtools: {
     enabled: true,

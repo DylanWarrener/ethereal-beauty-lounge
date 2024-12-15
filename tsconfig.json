@@ -4,22 +4,20 @@
       "./abstractions/types",
       "./node_modules/@types",
       "./.nuxt/types"
-    ],
-    "baseUrl": ".",
-    "strict": true
+    ]
   },
   "include": [
     "nuxt.config.ts",
-    "app.config.ts",
+    "src/app.config.ts",
     "eslint.config.js",
-    "./abstractions/**/*.{ts,d.ts}",
-    "./components/**/*.{vue,ts}",
-    "./layouts/**/*.{vue,ts}",
-    "./pages/**/*.{vue,ts}",
-    "./plugins/**/*.{ts,d.ts}",
-    "./server/**/*",
-    "src/stores/**/*.{ts,d.ts}",
-    "./utils/**/*.{ts,d.ts}",
+    "./src/abstractions/**/*.{ts,d.ts}",
+    "./src/components/**/*.{vue,ts}",
+    "./src/layouts/**/*.{vue,ts}",
+    "./src/pages/**/*.{vue,ts}",
+    "./src/plugins/**/*.{ts,d.ts}",
+    "./src/server/**/*",
+    "./src/stores/**/*.{ts,d.ts}",
+    "./src/utils/**/*.{ts,d.ts}",
     ".nuxt/**/*"
   ],
   "exclude": ["node_modules"],

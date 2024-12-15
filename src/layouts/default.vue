@@ -1,25 +1,25 @@
 <template>
   <VLayout>
-    <MobileSideBarNav />
-    <Header />
+    <!-- <MobileSideBarNav /> -->
+    <!-- <Header /> -->
     <VMain>
       <NuxtPage />
     </VMain>
-    <Footer />
+    <!-- <Footer /> -->
   </VLayout>
 </template>
 
 <script lang="ts">
-  import MobileSideBarNav from '@/components/common/navigation/mobileSideBar.vue';
-  import Header from '@/components/common/header/Header.vue';
-  import Footer from '@/components/common/footer/Footer.vue';
+  //import MobileSideBarNav from '@/components/common/navigation/mobileSideBar.vue';
+  //import Header from '@/components/common/header/Header.vue';
+  //import Footer from '@/components/common/footer/Footer.vue';
 
   export default {
     name: 'layout-default',
     components: {
-      MobileSideBarNav,
-      Header,
-      Footer,
+      //MobileSideBarNav,
+      //Header,
+      //Footer,
     },
   };
 </script>
