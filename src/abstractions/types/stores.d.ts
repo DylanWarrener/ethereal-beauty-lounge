@@ -5,7 +5,7 @@ import type {
   IFirestoreActions,
 } from '@/abstractions/interfaces/store/firestore';
 
-export type UseFirestoreStore = StoreDefinition<
+export type UseFirestore = StoreDefinition<
   EStoreNames.FIRESTORE,
   IFirestoreState,
   IFirestoreGetters,

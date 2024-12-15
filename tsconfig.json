@@ -1,25 +1,15 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "typeRoots": [
       "./abstractions/types",
       "./node_modules/@types",
       "./.nuxt/types"
     ]
   },
-  "include": [
-    "nuxt.config.ts",
-    "src/app.config.ts",
-    "eslint.config.js",
-    "./src/abstractions/**/*.{ts,d.ts}",
-    "./src/components/**/*.{vue,ts}",
-    "./src/layouts/**/*.{vue,ts}",
-    "./src/pages/**/*.{vue,ts}",
-    "./src/plugins/**/*.{ts,d.ts}",
-    "./src/server/**/*",
-    "./src/stores/**/*.{ts,d.ts}",
-    "./src/utils/**/*.{ts,d.ts}",
-    ".nuxt/**/*"
-  ],
+  "include": ["src/**/*.{ts,d.ts,vue,d.vue}", ".nuxt/**/*"],
   "exclude": ["node_modules"],
   "extends": "./.nuxt/tsconfig.json"
 }

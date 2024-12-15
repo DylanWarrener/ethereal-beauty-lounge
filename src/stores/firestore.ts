@@ -12,11 +12,12 @@ import {
 } from 'firebase/firestore';
 
 /* ABSTRACTIONS */
+import type IUseFirestore from '@/abstractions/interfaces/store/firestore';
 import type IFirestoreState from '@/abstractions/interfaces/store/firestore';
 import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebaseFirestore';
 import { EStoreNames } from '@/abstractions/enums/store';
 
-export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
+export const useFireStore: IUseFirestore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({
     user: {
       title: null,
