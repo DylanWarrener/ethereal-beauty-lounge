@@ -1,37 +1,12 @@
 {
   "compilerOptions": {
-<<<<<<< HEAD
     "typeRoots": [
       "./abstractions/types",
       "./node_modules/@types",
       "./.nuxt/types"
-    ], // Include abstractions/types for global types
+    ],
     "baseUrl": ".",
     "strict": true
-=======
-    "baseUrl": ".",
-    "paths": {
-      "@/abstractions/*": ["abstractions/*"],
-      "@/assets/*": ["assets/*"],
-      "@/components/*": ["components/*"],
-      "@/stores/*": ["stores/*"],
-      "@/utils/*": ["utils/*"],
-      "@/plugins/*": ["plugins/*"]
-    },
-    "strict": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "target": "ESNext",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "noImplicitAny": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "declarationDir": "./abstractions/types",
-    "emitDeclarationOnly": true,
-    "noEmit": false
->>>>>>> 890cf1a6e62a776b7f2a989686267801ee5af1e1
   },
   "include": [
     "nuxt.config.ts",
@@ -45,7 +20,7 @@
     "./server/**/*",
     "src/stores/**/*.{ts,d.ts}",
     "./utils/**/*.{ts,d.ts}",
-    ".nuxt/**/*" // Include Nuxt-generated files
+    ".nuxt/**/*"
   ],
   "exclude": ["node_modules"],
   "extends": "./.nuxt/tsconfig.json"

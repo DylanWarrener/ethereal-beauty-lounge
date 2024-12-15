@@ -16,15 +16,6 @@ import type IFirestoreState from '@/abstractions/interfaces/store/firestore';
 import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebaseFirestore';
 import { EStoreNames } from '@/abstractions/enums/store';
 
-/* Stores */
-<<<<<<< HEAD:src/stores/firestoreStore.ts
-import { useAuthStore } from 'src/stores/authStore';
-=======
-//import { useAuthStore } from '@/stores/authStore';
-
-const nuxtApp = useNuxtApp();
->>>>>>> 890cf1a6e62a776b7f2a989686267801ee5af1e1:stores/firestoreStore.ts
-
 export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({
     user: {
