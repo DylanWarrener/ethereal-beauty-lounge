@@ -17,7 +17,7 @@ import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebase
 import { EStoreNames } from '@/abstractions/enums/store';
 
 /* Stores */
-import { useAuthStore } from '@/stores/authStore';
+import { useAuthStore } from 'src/stores/authStore';
 
 export const useFireStore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({

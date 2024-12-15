@@ -1,32 +1,12 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./abstractions/types", "./node_modules/@types"], // Include abstractions/types for global types
+    "typeRoots": [
+      "./abstractions/types",
+      "./node_modules/@types",
+      "./.nuxt/types"
+    ], // Include abstractions/types for global types
     "baseUrl": ".",
-    "paths": {
-      "#app": [".nuxt/types/app"], // Add Nuxt runtime type declarations
-      "#imports": [".nuxt/types/imports"], // Add Nuxt composables type declarations
-      "@/abstractions/*": ["abstractions/*"],
-      "@/assets/*": ["assets/*"],
-      "@/components/*": ["components/*"],
-      "@/stores/*": ["stores/*"],
-      "@/utils/*": ["utils/*"],
-      "@/plugins/*": ["plugins/*"]
-    },
-    "strict": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "target": "ESNext",
-    "jsx": "preserve",
-    "esModuleInterop": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "noImplicitAny": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "declarationDir": "./abstractions/types",
-    "emitDeclarationOnly": true,
-    "noEmit": false
+    "strict": true
   },
   "include": [
     "./abstractions/**/*.{ts,d.ts}",
@@ -35,7 +15,7 @@
     "./pages/**/*.{vue,ts}",
     "./plugins/**/*.{ts,d.ts}",
     "./server/**/*",
-    "./stores/**/*.{ts,d.ts}",
+    "src/stores/**/*.{ts,d.ts}",
     "./utils/**/*.{ts,d.ts}",
     ".nuxt/**/*" // Include Nuxt-generated files
   ],

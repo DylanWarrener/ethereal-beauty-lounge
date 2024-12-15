@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-  import { useRootStore } from '@/stores/rootStore';
-  import { useAuthStore } from '@/stores/authStore';
+  import { useRootStore } from '~/src/stores/rootStore';
+  import { useAuthStore } from '~/src/stores/authStore';
 
   //const { $auth } = useNuxtApp();
 

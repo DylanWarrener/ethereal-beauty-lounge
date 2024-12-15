@@ -3,6 +3,19 @@ import Checker from 'vite-plugin-checker';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  srcDir: 'src/',
+  alias: {
+    '@/abstractions': './src/abstractions',
+    '@/assets': './src/assets',
+    '@/components': './src/components',
+    '@/layouts': './src/layouts',
+    '@/middleware': './src/middleware',
+    '@/pages': './src/pages',
+    '@/plugins': './src/plugins',
+    '@/server': './src/server',
+    '@/stores': './src/stores',
+    '@/utils': './src/utils',
+  },
   typescript: {
     typeCheck: true,
   },
