@@ -1,8 +1,10 @@
 <template>
-  <header>
-    <div>This is the notification bar</div>
-    <v-app-bar title="Application bar"></v-app-bar>
-  </header>
+  <v-app-bar
+    class="border-b"
+    scroll-behavior="hide"
+    elevation="0"
+    title="Application bar"
+  ></v-app-bar>
 </template>
 
 <script lang="ts">

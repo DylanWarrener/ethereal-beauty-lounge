@@ -1,5 +1,5 @@
 <template>
-  <VLayout>
+  <VLayout class="d-flex flex-column">
     <CommonMobileNav />
     <CommonHeader />
     <VMain>
