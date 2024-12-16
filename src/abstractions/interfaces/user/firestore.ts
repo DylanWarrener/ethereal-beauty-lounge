@@ -1,4 +1,4 @@
-export default interface IFirebaseFirestoreUser {
+export default interface IFirestoreUser {
   title: string | null;
   firstname: string | null;
   lastname: string | null;

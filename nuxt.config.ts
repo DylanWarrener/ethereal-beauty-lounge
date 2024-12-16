@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     {
       path: '~/components',
       pathPrefix: false,
-    }
+    },
   ],
   modules: ['@pinia/nuxt'],
   css: ['vuetify/styles', '@/assets/styles/main.scss'],
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   },
   typescript: {
     strict: true,
-    typeCheck: true,
+    typeCheck: true, // Enables type-checking at build/development time.
   },
   imports: {
     autoImport: true,

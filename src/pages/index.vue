@@ -1,12 +1,5 @@
 <template>
-  <VLayout>
-    <MobileSideBarNav />
-    <Header />
-    <VMain>
-      <NuxtPage />
-    </VMain>
-    <Footer />
-  </VLayout>
+  <Canvas />
 </template>
 
 <script lang="ts">

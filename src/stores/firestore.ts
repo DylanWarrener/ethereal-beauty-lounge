@@ -12,12 +12,12 @@ import {
 } from 'firebase/firestore';
 
 /* ABSTRACTIONS */
-import type IUseFirestore from '@/abstractions/interfaces/store/firestore';
-import type IFirestoreState from '@/abstractions/interfaces/store/firestore';
-import type IFirebaseFirestoreUser from '@/abstractions/interfaces/user/firebaseFirestore';
+//import type IFirestore from '@/abstractions/interfaces/store/firestore';
+import { type IFirestoreState } from '@/abstractions/interfaces/store/firestore';
+import type IFirestoreUser from '@/abstractions/interfaces/user/firestore';
 import { EStoreNames } from '@/abstractions/enums/store';
 
-export const useFireStore: IUseFirestore = defineStore(EStoreNames.FIRESTORE, {
+export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({
     user: {
       title: null,
@@ -26,10 +26,25 @@ export const useFireStore: IUseFirestore = defineStore(EStoreNames.FIRESTORE, {
       phoneNumber: null,
     },
   }),
-  getters: {},
+  getters: {
+    get_user: (state: IFirestoreState): IFirestoreUser => {
+      return state.user;
+    },
+    get_userTitle: (state: IFirestoreState): string | null => {
+      return state.user.title;
+    },
+    get_userFirstname: (state: IFirestoreState): string | null => {
+      return state.user.firstname;
+    },
+    get_userLastname: (state: IFirestoreState): string | null => {
+      return state.user.lastname;
+    },
+    get_userPhoneNumber: (state: IFirestoreState): number | null => {
+      return state.user.phoneNumber;
+    },
+  },
   actions: {
-    /* STATE ACTIONS */
-    set_userFirestore_state(user: IFirebaseFirestoreUser): void {
+    set_userFirestore_state(user: IFirestoreUser): void {
       this.user = user;
     },
     reset_userFirestore_state(): void {
@@ -53,11 +68,12 @@ export const useFireStore: IUseFirestore = defineStore(EStoreNames.FIRESTORE, {
       this.user.phoneNumber = phoneNumber;
     },
 
-    /* FIRESTORE ACTIONS */
+    /* FIRESTORE */
     get_userFirestoreData(): Promise<DocumentData | string> {
       return new Promise((resolve, reject) => {
-        import('@/stores/auth').then((module) => {
-          const uid: string | null = authStore;
+        import('@/stores/auth').then(({ useAuthStore }) => {
+          const store = useAuthStore();
+          const uid: string | null = store.get_userId;
 
           if (uid !== null) {
             const { $firestore } = useNuxtApp();

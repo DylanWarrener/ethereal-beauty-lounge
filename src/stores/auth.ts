@@ -19,8 +19,8 @@ import {
 
 /* Abstractions */
 import type IFirebaseAuthState from '@/abstractions/interfaces/store/auth';
-import type IFirebaseAuthUser from '@/abstractions/interfaces/user/firebaseAuth';
-import { type IFirebaseAuthUserData } from '@/abstractions/interfaces/user/firebaseAuth';
+import type IFirebaseAuthUser from '~/abstractions/interfaces/user/auth';
+import { type IFirebaseAuthUserData } from '~/abstractions/interfaces/user/auth';
 import { EStoreNames } from '@/abstractions/enums/store';
 
 export const useAuthStore = defineStore(EStoreNames.AUTH, {

@@ -2,12 +2,10 @@
   "compilerOptions": {
     "declaration": true,
     "typeRoots": [
-      "./abstractions/types",
+      "./abstractions/declarations",
       "./node_modules/@types",
       "./.nuxt/types"
     ]
   },
-  "include": ["src/**/*.{ts,d.ts,vue,d.vue}", ".nuxt/**/*"],
-  "exclude": ["node_modules"],
   "extends": "./.nuxt/tsconfig.json"
 }

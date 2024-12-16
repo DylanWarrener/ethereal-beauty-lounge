@@ -1,4 +1,4 @@
-import type IFirebaseAuthUser from '@/abstractions/interfaces/user/firebaseAuth';
+import type IFirebaseAuthUser from '~/abstractions/interfaces/user/auth';
 
 export default interface IFirebaseAuthState {
   user: IFirebaseAuthUser;
