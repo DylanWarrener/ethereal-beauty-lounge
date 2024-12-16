@@ -1,3 +1,10 @@
 <template>
-  <h1>Account page</h1>
+  <CommonHeroSection />
+  <AccountSection />
 </template>
+
+<script lang="ts">
+  export default {
+    name: 'page-account',
+  };
+</script>

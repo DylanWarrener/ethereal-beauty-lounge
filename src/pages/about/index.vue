@@ -1,3 +1,10 @@
 <template>
-  <h1>About page</h1>
+  <CommonHeroSection />
+  <AboutSection />
 </template>
+
+<script lang="ts">
+  export default {
+    name: 'page-about',
+  };
+</script>

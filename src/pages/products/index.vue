@@ -1,3 +1,10 @@
 <template>
-  <h1>Products page</h1>
+  <CommonHeroSection />
+  <ProductsSection />
 </template>
+
+<script lang="ts">
+  export default {
+    name: 'page-products',
+  };
+</script>

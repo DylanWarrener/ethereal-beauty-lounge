@@ -1,3 +1,10 @@
 <template>
-  <h1>Contact page</h1>
+  <CommonHeroSection />
+  <ContactSection />
 </template>
+
+<script lang="ts">
+  export default {
+    name: 'page-contact',
+  };
+</script>

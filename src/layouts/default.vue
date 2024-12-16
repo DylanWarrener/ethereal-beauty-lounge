@@ -1,11 +1,11 @@
 <template>
   <VLayout>
-    <MobileSideBar />
-    <Header />
+    <CommonMobileNav />
+    <CommonHeader />
     <VMain>
       <NuxtPage />
     </VMain>
-    <Footer />
+    <CommonFooter />
   </VLayout>
 </template>
 

@@ -1,3 +1,10 @@
 <template>
-  <h1>Packages page</h1>
+  <CommonHeroSection />
+  <PackagesSection />
 </template>
+
+<script lang="ts">
+  export default {
+    name: 'page-packages',
+  };
+</script>

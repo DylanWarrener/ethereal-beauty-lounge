@@ -1,3 +1,10 @@
 <template>
-  <h1>Services page</h1>
+  <CommonHeroSection />
+  <ServicesSection />
 </template>
+
+<script lang="ts">
+  export default {
+    name: 'page-services',
+  };
+</script>
