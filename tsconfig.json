@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "typeRoots": [
       "./abstractions/types",
       "./node_modules/@types",
