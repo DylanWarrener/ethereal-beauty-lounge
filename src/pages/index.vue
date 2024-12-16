@@ -1,11 +1,11 @@
 <template>
   <HeroSection />
-  <AboutSection />
+  <BriefAboutSection />
   <PopularServicesSection />
   <PopularProductsSection />
   <RecentPortfolioSection />
   <RecentReviewsSection />
-  <ContactSection />
+  <BriefContactSection />
 </template>
 
 <script lang="ts">
