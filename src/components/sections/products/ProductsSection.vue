@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-  export default {
+  export default defineComponent({
     name: 'section-products',
-  };
+  });
 </script>

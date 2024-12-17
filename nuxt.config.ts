@@ -16,6 +16,13 @@ export default defineNuxtConfig({
     '@/stores': './src/stores',
     '@/utils': './src/utils',
   },
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    },
+  },
+  plugins: ['~/plugins/vuetify'],
   components: [
     {
       path: '~/components',
@@ -23,7 +30,11 @@ export default defineNuxtConfig({
     },
   ],
   modules: ['@pinia/nuxt'],
-  css: ['vuetify/styles', '@/assets/styles/main.scss'],
+  css: [
+    'vuetify/styles',
+    '@mdi/font/css/materialdesignicons.css',
+    '@/assets/styles/main.scss',
+  ],
   build: {
     transpile: ['vuetify'],
   },

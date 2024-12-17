@@ -5,11 +5,11 @@ import * as directives from 'vuetify/directives';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 
 const lightTheme = {
-  dark: false, 
+  dark: false,
   colors: {
-    primary: '#FFFFFF', 
-    secondary: '#9C9C9C', 
-    accent: '#CC9090', 
+    primary: '#FFFFFF',
+    secondary: '#9C9C9C',
+    accent: '#CC9090',
 
     // Primary Lighten
     'primary-lighten-1': '#F1F1F1',
@@ -43,11 +43,11 @@ const lightTheme = {
   },
 };
 const darkTheme = {
-  dark: true, 
+  dark: true,
   colors: {
-    primary: '#9C9C9C', 
-    secondary: '#1C1C1C', 
-    accent: '#6A3131', 
+    primary: '#9C9C9C',
+    secondary: '#1C1C1C',
+    accent: '#6A3131',
 
     // Primary Lighten
     'primary-lighten-1': '#D5D5D5',
@@ -92,7 +92,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
     },
     theme: {
-      defaultTheme: 'light', 
+      defaultTheme: 'light',
       themes: {
         light: lightTheme,
         dark: darkTheme,

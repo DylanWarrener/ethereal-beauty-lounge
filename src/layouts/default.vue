@@ -1,18 +1,18 @@
 <template>
-  <VLayout class="d-flex flex-column">
+  <v-layout>
     <CommonMobileNav />
     <CommonHeader />
     <VMain>
       <NuxtPage />
     </VMain>
     <CommonFooter />
-  </VLayout>
+  </v-layout>
 </template>
 
 <script lang="ts">
-  export default {
+  export default defineComponent({
     name: 'layout-default',
-  };
+  });
 </script>
 
 <style scoped></style>
