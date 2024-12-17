@@ -30,11 +30,7 @@ export default defineNuxtConfig({
     },
   ],
   modules: ['@pinia/nuxt'],
-  css: [
-    'vuetify/styles',
-    '@mdi/font/css/materialdesignicons.css',
-    '@/assets/styles/main.scss',
-  ],
+  css: ['vuetify/styles', '@/assets/styles/main.scss'],
   build: {
     transpile: ['vuetify'],
   },

@@ -8,9 +8,13 @@
 
 <script lang="ts">
   import { useRootStore } from '@/stores/root';
+  import {
+    EPageComponentNames,
+    EPageMetaTitles,
+  } from '@/abstractions/enums/pages';
 
   export default defineComponent({
-    name: 'page-account',
+    name: EPageComponentNames.ACCOUNT,
     setup() {
       const rootStore = useRootStore();
       return { rootStore };
@@ -21,7 +25,7 @@
       },
     },
     created(): void {
-      this.rootStore.set_meta_title('Account');
+      this.rootStore.set_meta_title(EPageMetaTitles.ACCOUNT);
     },
   });
 </script>

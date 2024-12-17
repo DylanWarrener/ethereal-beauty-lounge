@@ -1,92 +1,103 @@
 // Vuetify Core and Components
-import { createVuetify } from 'vuetify';
+import { createVuetify, type ThemeDefinition } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
+import {
+  mdiBackburger,
+  mdiArrowRightBold,
+  mdiMagnify,
+  mdiBasket,
+  mdiAccount,
+  mdiLogout,
+  mdiHome,
+  mdiInformation,
+  mdiPackage,
+  mdiEmailFast,
+  mdiHandsPray,
+  mdiLotionPlus,
+} from '@mdi/js';
 
-const lightTheme = {
+const commonColours = {
+  white: '#FFFFFF',
+  black: '#000000',
+  accent: '#CC9090',
+  'primary-tone-1': '#F1F1F1',
+  'primary-tone-2': '#D5D5D5',
+  'primary-tone-3': '#B8B8B8',
+  'primary-shade-1': '#E3E3E3',
+  'primary-shade-2': '#AAAAAA',
+  'primary-shade-3': '#717171',
+
+  'secondary-tint-1': '#1C1C1C',
+  'secondary-tint-2': '#555555',
+  'secondary-tint-3': '#8E8E8E',
+  'secondary-tone-1': '#0E0E0E',
+  'secondary-tone-2': '#2B2B2B',
+  'secondary-tone-3': '#474747',
+
+  'accent-tint-1': '#D19C9C',
+  'accent-tint-2': '#DDB4B4',
+  'accent-tint-3': '#E8CDCD',
+  'accent-tone-1': '#C48E8E',
+  'accent-tone-2': '#B38B8B',
+  'accent-tone-3': '#A28787',
+  'accent-shade-1': '#BF7575',
+  'accent-shade-2': '#9E4949',
+  'accent-shade-3': '#6A3131',
+};
+
+const lightTheme: ThemeDefinition = {
   dark: false,
   colors: {
-    primary: '#FFFFFF',
-    secondary: '#9C9C9C',
-    accent: '#CC9090',
+    primary: commonColours.white,
+    'primary-1': commonColours['primary-tone-1'],
+    'primary-2': commonColours['primary-tone-2'],
+    'primary-3': commonColours['primary-tone-3'],
 
-    // Primary Lighten
-    'primary-lighten-1': '#F1F1F1',
-    'primary-lighten-2': '#D5D5D5',
-    'primary-lighten-3': '#B8B8B8',
+    secondary: commonColours.black,
+    'secondary-1': commonColours['secondary-tint-1'],
+    'secondary-2': commonColours['secondary-tint-2'],
+    'secondary-3': commonColours['secondary-tint-3'],
 
-    // Primary Darken
-    'primary-darken-1': '#E3E3E3',
-    'primary-darken-2': '#AAAAAA',
-    'primary-darken-3': '#717171',
-
-    // Secondary Lighten
-    'secondary-lighten-1': '#C6C6C6',
-    'secondary-lighten-2': '#8E8E8E',
-    'secondary-lighten-3': '#555555',
-
-    // Secondary Darken
-    'secondary-darken-1': '#2B2B2B',
-    'secondary-darken-2': '#0E0E0E',
-    'secondary-darken-3': '#000000',
-
-    // Accent Lighten
-    'accent-lighten-1': '#DDB4B4',
-    'accent-lighten-2': '#E8CDCD',
-    'accent-lighten-3': '#F4E6E6',
-
-    // Accent Darken
-    'accent-darken-1': '#BF7575',
-    'accent-darken-2': '#9E4949',
-    'accent-darken-3': '#6A3131',
+    accent: commonColours.accent,
+    'accent-1': commonColours['accent-shade-1'],
+    'accent-2': commonColours['accent-shade-2'],
+    'accent-3': commonColours['accent-shade-3'],
   },
 };
-const darkTheme = {
+const darkTheme: ThemeDefinition = {
   dark: true,
   colors: {
-    primary: '#9C9C9C',
-    secondary: '#1C1C1C',
-    accent: '#6A3131',
-
-    // Primary Lighten
-    'primary-lighten-1': '#D5D5D5',
-    'primary-lighten-2': '#B8B8B8',
-    'primary-lighten-3': '#717171',
-
-    // Primary Darken
-    'primary-darken-1': '#393939',
-    'primary-darken-2': '#2B2B2B',
-    'primary-darken-3': '#0E0E0E',
-
-    // Secondary Lighten
-    'secondary-lighten-1': '#555555',
-    'secondary-lighten-2': '#8E8E8E',
-    'secondary-lighten-3': '#C6C6C6',
-
-    // Secondary Darken
-    'secondary-darken-1': '#0E0E0E',
-    'secondary-darken-2': '#000000',
-    'secondary-darken-3': '#1C1C1C',
-
-    // Accent Lighten
-    'accent-lighten-1': '#B38B8B',
-    'accent-lighten-2': '#A28787',
-    'accent-lighten-3': '#918484',
-
-    // Accent Darken
-    'accent-darken-1': '#9E4949',
-    'accent-darken-2': '#6A3131',
-    'accent-darken-3': '#351818',
+    primary: commonColours.black,
+    secondary: commonColours.white,
+    accent: commonColours.accent,
   },
 };
+
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components,
     directives,
     icons: {
       defaultSet: 'mdi',
-      aliases,
+      aliases: {
+        ...aliases,
+        menuBack: mdiBackburger,
+        arrowRight: mdiArrowRightBold,
+        search: mdiMagnify,
+        logout: mdiLogout,
+
+        /* Navigation page icons */
+        home: mdiHome,
+        packages: mdiPackage,
+        services: mdiHandsPray,
+        products: mdiLotionPlus,
+        contact: mdiEmailFast,
+        about: mdiInformation,
+        basket: mdiBasket,
+        account: mdiAccount,
+      },
       sets: {
         mdi,
       },
@@ -96,11 +107,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       themes: {
         light: lightTheme,
         dark: darkTheme,
-      },
-      variations: {
-        colors: ['primary', 'secondary', 'accent'],
-        lighten: 3,
-        darken: 3,
       },
     },
   });

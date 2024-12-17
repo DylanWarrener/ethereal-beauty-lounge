@@ -7,8 +7,13 @@
 </template>
 
 <script lang="ts">
+  import {
+    EPageComponentNames,
+    EPageMetaTitles,
+  } from '@/abstractions/enums/pages';
+
   export default defineComponent({
-    name: 'page-about',
+    name: EPageComponentNames.ABOUT,
     setup() {
       const rootStore = useRootStore();
       return { rootStore };
@@ -19,7 +24,7 @@
       },
     },
     created(): void {
-      this.rootStore.set_meta_title('About');
+      this.rootStore.set_meta_title(EPageMetaTitles.ABOUT);
     },
   });
 </script>
