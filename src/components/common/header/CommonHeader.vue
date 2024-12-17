@@ -6,6 +6,18 @@
     elevation="0"
   >
     <!-- Logo -->
+    <v-card
+      v-ripple="{ class: 'text-accent-3' }"
+      flat
+      to="/"
+      height="100%"
+      min-width="150"
+      class="d-none d-md-flex"
+    >
+      <template #default>
+        <v-img width="100%" height="100%" src=""></v-img>
+      </template>
+    </v-card>
 
     <v-divider
       inset
@@ -41,78 +53,86 @@
     <v-spacer></v-spacer>
 
     <!-- Navigation -->
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn
-          v-if="!isMobile"
-          to="/"
-          :class="[isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-        >
-          <span class="text-capitalize">Home</span>
-        </v-btn>
-      </template>
-    </v-hover>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn
-          v-if="!isMobile"
-          to="/packages"
-          :class="[isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-        >
-          <span class="text-capitalize">Packages</span>
-        </v-btn>
-      </template>
-    </v-hover>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn
-          v-if="!isMobile"
-          to="/services"
-          :class="[isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-        >
-          <span class="text-capitalize">Services</span>
-        </v-btn>
-      </template>
-    </v-hover>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn
-          v-if="!isMobile"
-          to="/products"
-          :class="[isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-        >
-          <span class="text-capitalize">Products</span>
-        </v-btn>
-      </template>
-    </v-hover>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn
-          v-if="!isMobile"
-          to="/contact"
-          :class="[isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-        >
-          <span class="text-capitalize">Contact</span>
-        </v-btn>
-      </template>
-    </v-hover>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn
-          v-if="!isMobile"
-          to="/about"
-          :class="[isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-        >
-          <span class="text-capitalize">About</span>
-        </v-btn>
-      </template>
-    </v-hover>
+    <div class="ga-2 d-flex">
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-btn
+            v-if="!isMobile"
+            active-color="accent-2"
+            to="/"
+            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            v-bind="props"
+          >
+            <span class="text-capitalize">Home</span>
+          </v-btn>
+        </template>
+      </v-hover>
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-btn
+            v-if="!isMobile"
+            active-color="accent-2"
+            to="/packages"
+            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            v-bind="props"
+          >
+            <span class="text-capitalize">Packages</span>
+          </v-btn>
+        </template>
+      </v-hover>
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-btn
+            v-if="!isMobile"
+            active-color="accent-2"
+            to="/services"
+            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            v-bind="props"
+          >
+            <span class="text-capitalize">Services</span>
+          </v-btn>
+        </template>
+      </v-hover>
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-btn
+            v-if="!isMobile"
+            active-color="accent-2"
+            to="/products"
+            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            v-bind="props"
+          >
+            <span class="text-capitalize">Products</span>
+          </v-btn>
+        </template>
+      </v-hover>
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-btn
+            v-if="!isMobile"
+            active-color="accent-2"
+            to="/contact"
+            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            v-bind="props"
+          >
+            <span class="text-capitalize">Contact</span>
+          </v-btn>
+        </template>
+      </v-hover>
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-btn
+            v-if="!isMobile"
+            active-color="accent-2"
+            to="/about"
+            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            v-bind="props"
+          >
+            <span class="text-capitalize">About</span>
+          </v-btn>
+        </template>
+      </v-hover>
+    </div>
 
     <v-spacer></v-spacer>
 
