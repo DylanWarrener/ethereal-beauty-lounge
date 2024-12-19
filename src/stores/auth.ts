@@ -72,17 +72,11 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
   },
   actions: {
     /* STATE ACTIONS */
-    set_user(user: IFirebaseAuthUser): void {
-      this.user = user;
-    },
     set_user_isSignedIn(user: { isSignedIn: boolean }): void {
       this.user.isSignedIn = user.isSignedIn;
     },
     set_user_auth(user: { auth: IFirebaseAuthUserData }): void {
       this.user.auth = user.auth;
-    },
-    reset_user_auth(): void {
-      this.user.isSignedIn = false;
     },
     reset_user_authData(): void {
       this.user.auth = {
@@ -210,7 +204,6 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       return new Promise((resolve, reject) => {
         signOut($auth)
           .then(() => {
-            this.reset_user_auth();
             this.reset_user_authData();
             //this.reset_userFirestore_state();
             resolve();
