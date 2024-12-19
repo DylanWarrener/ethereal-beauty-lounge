@@ -28,7 +28,7 @@
       style="height: 30px"
     ></v-divider>
 
-    <!-- Mobile menu -->
+    <!-- Navigation for mobile -->
     <v-hover>
       <template #default="{ isHovering, props }">
         <v-app-bar-nav-icon
@@ -40,7 +40,7 @@
       </template>
     </v-hover>
 
-    <!-- Search -->
+    <!-- Navigation tools -->
     <v-hover>
       <template #default="{ isHovering, props }">
         <v-btn icon v-bind="props">
@@ -53,7 +53,7 @@
     </v-hover>
     <v-spacer></v-spacer>
 
-    <!-- Navigation -->
+    <!-- Navigation for desktop -->
     <CommonNav />
     <v-spacer></v-spacer>
 
@@ -64,7 +64,7 @@
       style="height: 30px"
     ></v-divider>
 
-    <!-- Options -->
+    <!-- Navigation options -->
     <CommonNavOptions />
   </v-app-bar>
 </template>

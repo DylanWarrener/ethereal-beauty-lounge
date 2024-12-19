@@ -1,9 +1,7 @@
 <template>
-  <v-parallax
-    class="w-100"
-    style="border: 4px solid green"
-    :src="heroImg"
-  ></v-parallax>
+  <v-parallax height="500" :src="heroImg">
+    <span>This is the content inside of the paralax</span>
+  </v-parallax>
 </template>
 
 <script lang="ts">
