@@ -2,6 +2,7 @@
   <Head>
     <Title>{{ title }}</Title>
   </Head>
+
   <HeroSection />
   <BriefAboutSection />
   <PopularServicesSection />
@@ -25,6 +26,7 @@
       return { rootStore };
     },
     computed: {
+      /* Text */
       title(): string {
         return this.rootStore.get_meta_title;
       },

@@ -18,6 +18,9 @@ export enum EPageComponentNames {
   CONTACT = 'page-contact',
   ABOUT = 'page-about',
 }
+export enum EPageSectionComponentNames {
+  HERO = 'section-home-hero',
+}
 export enum EPageRoutes {
   HOME = '/',
   PACKAGES = '/packages',

@@ -12,11 +12,13 @@
       to="/"
       height="100%"
       min-width="150"
-      class="d-none d-md-flex"
     >
-      <template #default>
-        <v-img width="100%" height="100%" src=""></v-img>
-      </template>
+      <v-img
+        width="100%"
+        height="100%"
+        :src="logo"
+        alt="Ethereal Beauty Lounge logo"
+      ></v-img>
     </v-card>
 
     <v-divider
@@ -49,91 +51,10 @@
         </v-btn>
       </template>
     </v-hover>
-
     <v-spacer></v-spacer>
 
     <!-- Navigation -->
-    <div class="ga-2 d-flex">
-      <v-hover>
-        <template #default="{ isHovering, props }">
-          <v-btn
-            v-if="!isMobile"
-            active-color="accent-2"
-            to="/"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
-            v-bind="props"
-          >
-            <span class="text-capitalize">Home</span>
-          </v-btn>
-        </template>
-      </v-hover>
-      <v-hover>
-        <template #default="{ isHovering, props }">
-          <v-btn
-            v-if="!isMobile"
-            active-color="accent-2"
-            to="/packages"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
-            v-bind="props"
-          >
-            <span class="text-capitalize">Packages</span>
-          </v-btn>
-        </template>
-      </v-hover>
-      <v-hover>
-        <template #default="{ isHovering, props }">
-          <v-btn
-            v-if="!isMobile"
-            active-color="accent-2"
-            to="/services"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
-            v-bind="props"
-          >
-            <span class="text-capitalize">Services</span>
-          </v-btn>
-        </template>
-      </v-hover>
-      <v-hover>
-        <template #default="{ isHovering, props }">
-          <v-btn
-            v-if="!isMobile"
-            active-color="accent-2"
-            to="/products"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
-            v-bind="props"
-          >
-            <span class="text-capitalize">Products</span>
-          </v-btn>
-        </template>
-      </v-hover>
-      <v-hover>
-        <template #default="{ isHovering, props }">
-          <v-btn
-            v-if="!isMobile"
-            active-color="accent-2"
-            to="/contact"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
-            v-bind="props"
-          >
-            <span class="text-capitalize">Contact</span>
-          </v-btn>
-        </template>
-      </v-hover>
-      <v-hover>
-        <template #default="{ isHovering, props }">
-          <v-btn
-            v-if="!isMobile"
-            active-color="accent-2"
-            to="/about"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
-            v-bind="props"
-          >
-            <span class="text-capitalize">About</span>
-          </v-btn>
-        </template>
-      </v-hover>
-    </div>
-
+    <CommonNav />
     <v-spacer></v-spacer>
 
     <v-divider
@@ -144,31 +65,13 @@
     ></v-divider>
 
     <!-- Options -->
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn icon to="/basket" v-bind="props">
-          <v-icon
-            icon="$basket"
-            :class="[isHovering ? 'text-secondary' : '']"
-          ></v-icon>
-        </v-btn>
-      </template>
-    </v-hover>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn icon to="/account" v-bind="props">
-          <v-icon
-            icon="$account"
-            :class="[isHovering ? 'text-secondary' : '']"
-          ></v-icon>
-        </v-btn>
-      </template>
-    </v-hover>
+    <CommonNavOptions />
   </v-app-bar>
 </template>
 
 <script lang="ts">
   import { useRootStore } from '@/stores/root';
+  import Logo from '@/assets/img/logo.png';
 
   export default defineComponent({
     name: 'common-header',
@@ -177,6 +80,12 @@
       return { rootStore };
     },
     computed: {
+      /* Images */
+      logo(): string {
+        return Logo;
+      },
+
+      /* Data */
       isMobile(): boolean {
         return this.$vuetify.display.mobile;
       },
