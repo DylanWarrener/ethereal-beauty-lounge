@@ -1,6 +1,6 @@
 <template>
   <template v-for="(item, index) in navItems" :key="index">
-    <v-btn v-if="!isSignedIn"></v-btn>
+    <v-btn v-if="!isSignedIn" text="Sign in"></v-btn>
     <v-hover>
       <template #default="{ isHovering, props }">
         <v-btn
@@ -51,7 +51,7 @@
         return this.$vuetify.display.mobile;
       },
       isSignedIn(): boolean {
-        return authStore;
+        return false;
       },
     },
   });

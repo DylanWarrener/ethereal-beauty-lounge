@@ -73,7 +73,7 @@ export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
       return new Promise((resolve, reject) => {
         import('@/stores/auth').then(({ useAuthStore }) => {
           const store = useAuthStore();
-          const uid: string | null = store.get_userId;
+          const uid: string | null = store.get_user_id;
 
           if (uid !== null) {
             const { $firestore } = useNuxtApp();
@@ -225,7 +225,7 @@ export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
       const authStore = useAuthStore();
 
       return new Promise((resolve, reject) => {
-        const uid: string | null = authStore.get_userId;
+        const uid: string | null = authStore.get_user_id;
 
         if (uid !== null) {
           let valuesNotUndefined: any = {};
