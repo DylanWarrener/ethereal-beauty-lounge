@@ -4,12 +4,14 @@
       <v-hover>
         <template #default="{ isHovering, props }">
           <v-btn
-            v-if="!isMobile"
             :key="index"
             active-color="accent-2"
             :to="item.route"
             rounded="xl"
-            :class="[isHovering ? 'text-secondary' : 'text-secondary-3']"
+            :class="[
+              'd-none d-md-flex',
+              isHovering ? 'text-secondary' : 'text-secondary-3',
+            ]"
             v-bind="props"
           >
             <span class="text-capitalize">{{ item.text }}</span>
@@ -58,11 +60,6 @@
           },
         ],
       };
-    },
-    computed: {
-      isMobile(): boolean {
-        return this.$vuetify.display.mobile;
-      },
     },
   });
 </script>

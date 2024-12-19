@@ -3,7 +3,6 @@
     color="primary"
     class="border-b text-secondary-3"
     scroll-behavior="hide"
-    elevation="0"
   >
     <!-- Logo -->
     <v-card
@@ -32,8 +31,7 @@
     <v-hover>
       <template #default="{ isHovering, props }">
         <v-app-bar-nav-icon
-          v-if="isMobile"
-          :class="[isHovering ? 'text-secondary' : '']"
+          :class="['d-flex d-md-none', isHovering ? 'text-secondary' : '']"
           v-bind="props"
           @click="drawer = !drawer"
         ></v-app-bar-nav-icon>
@@ -43,7 +41,7 @@
     <!-- Navigation tools -->
     <v-hover>
       <template #default="{ isHovering, props }">
-        <v-btn icon v-bind="props">
+        <v-btn icon v-bind="props" class="d-none d-md-flex">
           <v-icon
             icon="$search"
             :class="[isHovering ? 'text-secondary' : '']"
@@ -60,7 +58,7 @@
     <v-divider
       inset
       vertical
-      class="mx-2 my-auto"
+      class="mx-2 my-auto d-none d-md-flex"
       style="height: 30px"
     ></v-divider>
 

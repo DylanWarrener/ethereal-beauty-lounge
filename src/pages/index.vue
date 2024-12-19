@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <Title>{{ title }}</Title>
+    <Title>{{ txtPageMetaTitle }}</Title>
   </Head>
 
   <HeroSection />
@@ -40,7 +40,7 @@
     },
     computed: {
       /* Text */
-      title(): string {
+      txtPageMetaTitle(): string {
         return this.rootStore.get_meta_title;
       },
 

@@ -6,7 +6,7 @@
       <v-main>
         <v-container class="pa-0" fluid>
           <v-row>
-            <v-col cols="12">
+            <v-col>
               <NuxtPage />
             </v-col>
           </v-row>
