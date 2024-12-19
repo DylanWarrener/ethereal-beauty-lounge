@@ -42,46 +42,49 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
     get_user: (state: IFirebaseAuthState): IFirebaseAuthUser => {
       return state.user;
     },
-    get_userAuth: (state: IFirebaseAuthState): IFirebaseAuthUserData => {
-      return state.user.auth;
-    },
-    get_userIsSignedIn: (state: IFirebaseAuthState): boolean => {
+    get_user_isSignedIn: (state: IFirebaseAuthState): boolean => {
       return state.user.isSignedIn;
     },
-    get_userId: (state: IFirebaseAuthState): string | null => {
+    get_user_auth: (state: IFirebaseAuthState): IFirebaseAuthUserData => {
+      return state.user.auth;
+    },
+    get_user_id: (state: IFirebaseAuthState): string | null => {
       return state.user.auth.uid;
     },
-    get_userDisplayName: (state: IFirebaseAuthState): string | null => {
+    get_user_displayName: (state: IFirebaseAuthState): string | null => {
       return state.user.auth.displayName;
     },
-    get_userEmail: (state: IFirebaseAuthState): string | null => {
+    get_user_email: (state: IFirebaseAuthState): string | null => {
       return state.user.auth.email;
     },
-    get_userEmailVerified: (state: IFirebaseAuthState): boolean => {
+    get_user_emailVerified: (state: IFirebaseAuthState): boolean => {
       return state.user.auth.emailVerified;
     },
-    get_userPhotoUrl: (state: IFirebaseAuthState): string | null => {
+    get_user_photoUrl: (state: IFirebaseAuthState): string | null => {
       return state.user.auth.photoURL;
     },
-    get_userAnonymous: (state: IFirebaseAuthState): boolean => {
+    get_user_anonymous: (state: IFirebaseAuthState): boolean => {
       return state.user.auth.isAnonymous;
     },
-    get_userJoinedOn: (state: IFirebaseAuthState): string | null => {
+    get_user_joinedOn: (state: IFirebaseAuthState): string | null => {
       return state.user.auth.joinedOn;
     },
   },
   actions: {
     /* STATE ACTIONS */
-    set_userState(user: IFirebaseAuthUser): void {
+    set_user(user: IFirebaseAuthUser): void {
       this.user = user;
     },
-    reset_userAuthState(): void {
-      this.user.isSignedIn = false;
+    set_user_isSignedIn(user: { isSignedIn: boolean }): void {
+      this.user.isSignedIn = user.isSignedIn;
     },
-    set_userAuthState(user: { auth: IFirebaseAuthUserData }): void {
+    set_user_auth(user: { auth: IFirebaseAuthUserData }): void {
       this.user.auth = user.auth;
     },
-    reset_userAuthDataState(): void {
+    reset_user_auth(): void {
+      this.user.isSignedIn = false;
+    },
+    reset_user_authData(): void {
       this.user.auth = {
         uid: null,
         displayName: null,
@@ -92,33 +95,30 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         joinedOn: null,
       };
     },
-    set_userIsSignedInState(user: { isSignedIn: boolean }): void {
-      this.user.isSignedIn = user.isSignedIn;
-    },
-    set_userIdState(user: { uid: string | null }): void {
+    set_user_id(user: { uid: string | null }): void {
       this.user.auth.uid = user.uid;
     },
-    set_userDisplayNameState(user: { displayName: string | null }): void {
+    set_user_displayName(user: { displayName: string | null }): void {
       this.user.auth.displayName = user.displayName;
     },
-    set_userEmailState(user: { email: string | null }): void {
+    set_user_email(user: { email: string | null }): void {
       this.user.auth.email = user.email;
     },
-    set_userEmailVerifiedState(user: { emailVerified: boolean }): void {
+    set_userEmailVerified(user: { emailVerified: boolean }): void {
       this.user.auth.emailVerified = user.emailVerified;
     },
-    set_userPhotoUrlState(user: { photoUrl: string | null }): void {
+    set_userPhotoUrl(user: { photoUrl: string | null }): void {
       this.user.auth.photoURL = user.photoUrl;
     },
-    set_userAnonymousState(user: { isAnonymous: boolean }): void {
+    set_userAnonymous(user: { isAnonymous: boolean }): void {
       this.user.auth.isAnonymous = user.isAnonymous;
     },
-    set_userJoinedOnState(user: { joinedOn: string | null }): void {
+    set_userJoinedOn(user: { joinedOn: string | null }): void {
       this.user.auth.joinedOn = user.joinedOn;
     },
 
     /* AUTH ACTIONS */
-    monitor_userAuthState(user: { auth: Auth }): Promise<void> {
+    monitor_user_auth(user: { auth: Auth }): Promise<void> {
       return new Promise((resolve, reject) => {
         onAuthStateChanged(user.auth, (user: User | null) => {
           if (user !== null) {
@@ -128,7 +128,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
                 valuesNotNull[key] = value;
               }
             }
-            this.set_userAuthState(valuesNotNull);
+            this.set_user_auth(valuesNotNull);
             resolve();
           } else {
             reject('User is not valid.');
@@ -136,7 +136,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         });
       });
     },
-    login_userAuth_withEmailAndPassword(user: {
+    signIn_user_auth_withEmailAndPassword(user: {
       email: string;
       password: string;
     }): Promise<void> {
@@ -204,21 +204,21 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
           });
       });
     },
-    logout_userAuth(): Promise<void> {
+    signOut_user_auth(): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, reject) => {
         signOut($auth)
           .then(() => {
-            this.reset_userAuthState();
-            this.reset_userAuthDataState();
+            this.reset_user_auth();
+            this.reset_user_authData();
             //this.reset_userFirestore_state();
             resolve();
           })
           .catch(() => reject());
       });
     },
-    create_userAuthAccount_withEmailAndPassword(user: {
+    create_user_auth_account_withEmailAndPassword(user: {
       email: string;
       password: string;
     }): Promise<void> {
@@ -226,7 +226,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
 
       return new Promise((resolve, reject) => {
         createUserWithEmailAndPassword($auth, user.email, user.password)
-          .then(() => this.send_userAuth_emailVerification())
+          .then(() => this.send_user_auth_emailVerification())
           .then(() => resolve())
           .catch((error) => {
             switch (error.code) {
@@ -239,7 +239,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
           });
       });
     },
-    send_userAuth_emailVerification(): Promise<void> {
+    send_user_auth_emailVerification(): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, reject) => {
@@ -250,7 +250,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         }
       });
     },
-    send_userAuth_passwordResetLink(email: string): Promise<void> {
+    send_user_auth_passwordResetLink(email: string): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, _) => {
@@ -266,7 +266,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         }
       });
     },
-    send_userAuth_signInLinkToEmail(email: string): Promise<void> {
+    send_user_auth_signInLinkToEmail(email: string): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, _) => {
@@ -298,7 +298,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         }
       });
     },
-    update_userAuthProfile_displayNameAndPhotoUrl(user: {
+    update_user_auth_profile_displayNameAndPhotoUrl(user: {
       displayName?: string;
       photoURL?: string;
     }): Promise<void> {
@@ -328,7 +328,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         }
       });
     },
-    update_userAuthEmail(email: string): Promise<void> {
+    update_user_auth_email(email: string): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, reject) => {
@@ -350,7 +350,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         }
       });
     },
-    update_userAuthPassword(newPassword: string): Promise<void> {
+    update_user_auth_password(newPassword: string): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, _) => {
@@ -366,7 +366,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
         }
       });
     },
-    delete_userAuth(): Promise<void> {
+    delete_user_auth(): Promise<void> {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, reject) => {
