@@ -42,16 +42,7 @@
     <v-spacer class="d-none d-sm-flex d-md-none"></v-spacer>
 
     <!-- Navigation tools -->
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-btn icon v-bind="props" class="d-none d-md-flex">
-          <v-icon
-            icon="$search"
-            :class="[isHovering ? 'text-secondary' : '']"
-          ></v-icon>
-        </v-btn>
-      </template>
-    </v-hover>
+    <CommonNavTools />
     <v-spacer class="d-none d-md-flex"></v-spacer>
 
     <!-- Navigation for desktop -->

@@ -17,6 +17,7 @@ import {
   mdiLotionPlus,
   mdiLogin,
   mdiLogout,
+  mdiCog,
 } from '@mdi/js';
 
 const commonColours = {
@@ -99,6 +100,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         account: mdiAccount,
         login: mdiLogin,
         logout: mdiLogout,
+        settings: mdiCog,
       },
       sets: {
         mdi,

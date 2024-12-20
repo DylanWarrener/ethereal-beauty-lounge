@@ -123,6 +123,7 @@
                 <template #default="{ isHovering, props }">
                   <v-btn
                     variant="outlined"
+                    rounded="xl"
                     :class="[
                       'd-flex d-md-none',
                       isHovering ? 'text-accent-2' : '',
@@ -139,6 +140,7 @@
                 <template #default="{ isHovering, props }">
                   <v-btn
                     variant="outlined"
+                    rounded="xl"
                     :class="[
                       'd-flex d-md-none',
                       isHovering ? 'text-accent-2' : '',
