@@ -52,20 +52,7 @@
               </div>
               <v-divider></v-divider>
               <div class="pt-2">
-                <v-hover>
-                  <template #default="{ isHovering, props }">
-                    <v-btn
-                      variant="outlined"
-                      rounded="xl"
-                      :class="['w-100 ', isHovering ? 'text-accent-2' : '']"
-                      v-bind="props"
-                      @click="isLoggedIn = false"
-                    >
-                      <span class="mr-2">Log out</span>
-                      <v-icon icon="$logout"></v-icon>
-                    </v-btn>
-                  </template>
-                </v-hover>
+                <CommonBtnLogOut btn-class="w-100" />
               </div>
             </v-list>
           </v-menu>
