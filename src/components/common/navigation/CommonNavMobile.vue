@@ -112,43 +112,8 @@
           <v-row>
             <v-col cols="12" class="d-flex">
               <v-spacer></v-spacer>
-              <CommonBtnLogIn v-if="isLoggedIn" />
-              <CommonBtnLogOut v-else />
-
-              <!-- <v-hover v-if="isLoggedIn">
-                <template #default="{ isHovering, props }">
-                  <v-btn
-                    variant="outlined"
-                    rounded="xl"
-                    :class="[
-                      'd-flex d-md-none',
-                      isHovering ? 'text-accent-2' : '',
-                    ]"
-                    v-bind="props"
-                    @click="isLoggedIn = false"
-                  >
-                    <span class="mr-2">Log out</span>
-                    <v-icon icon="$logout"></v-icon>
-                  </v-btn>
-                </template>
-              </v-hover> -->
-              <!-- <v-hover v-else>
-                <template #default="{ isHovering, props }">
-                  <v-btn
-                    variant="outlined"
-                    rounded="xl"
-                    :class="[
-                      'd-flex d-md-none',
-                      isHovering ? 'text-accent-2' : '',
-                    ]"
-                    v-bind="props"
-                    @click="isLoggedIn = true"
-                  >
-                    <span class="mr-2">Log in</span>
-                    <v-icon icon="$login"></v-icon>
-                  </v-btn>
-                </template>
-              </v-hover> -->
+              <CommonBtnLogOut v-if="isLoggedIn" class="d-flex d-md-none" />
+              <CommonBtnLogIn v-else class="d-flex d-md-none" />
             </v-col>
           </v-row>
         </v-container>

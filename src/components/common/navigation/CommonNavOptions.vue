@@ -20,19 +20,7 @@
       </template>
     </v-hover>
 
-    <v-hover v-if="!isLoggedIn">
-      <template #default="{ isHovering, props }">
-        <v-btn
-          variant="outlined"
-          :class="['d-none d-sm-flex', isHovering ? 'text-accent-2' : '']"
-          v-bind="props"
-          @click="isLoggedIn = !isLoggedIn"
-        >
-          <span class="mr-2">Log in</span>
-          <v-icon icon="$login"></v-icon>
-        </v-btn>
-      </template>
-    </v-hover>
+    <CommonBtnLogIn class="d-none d-md-flex" />
 
     <v-hover v-if="isLoggedIn">
       <template #default="{ isHovering, props: profileHoverProps }">
