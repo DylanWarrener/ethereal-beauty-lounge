@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     color="primary"
-    class="border-b text-secondary-3"
+    :class="['border-b', 'text-secondary-3', 'px-2']"
     scroll-behavior="hide"
   >
     <!-- Logo -->
@@ -23,9 +23,10 @@
     <v-divider
       inset
       vertical
-      class="mx-2 my-auto"
+      class="mx-2 my-auto d-none d-sm-flex"
       style="height: 30px"
     ></v-divider>
+    <v-spacer class="d-flex d-sm-none"></v-spacer>
 
     <!-- Navigation for mobile -->
     <v-hover>
@@ -38,6 +39,8 @@
       </template>
     </v-hover>
 
+    <v-spacer class="d-none d-sm-flex d-md-none"></v-spacer>
+
     <!-- Navigation tools -->
     <v-hover>
       <template #default="{ isHovering, props }">
@@ -49,16 +52,16 @@
         </v-btn>
       </template>
     </v-hover>
-    <v-spacer></v-spacer>
+    <v-spacer class="d-none d-md-flex"></v-spacer>
 
     <!-- Navigation for desktop -->
     <CommonNav />
-    <v-spacer></v-spacer>
+    <v-spacer class="d-none d-md-flex"></v-spacer>
 
     <v-divider
       inset
       vertical
-      class="mx-2 my-auto d-none d-md-flex"
+      class="mx-2 my-auto d-none d-sm-flex"
       style="height: 30px"
     ></v-divider>
 

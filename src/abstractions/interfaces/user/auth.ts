@@ -1,5 +1,5 @@
 export default interface IFirebaseAuthUser {
-  isSignedIn: boolean;
+  isLoggedIn: boolean;
   auth: IFirebaseAuthUserData;
 }
 export interface IFirebaseAuthUserData {

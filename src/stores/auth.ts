@@ -26,7 +26,7 @@ import { EStoreNames } from '@/abstractions/enums/store';
 export const useAuthStore = defineStore(EStoreNames.AUTH, {
   state: (): IFirebaseAuthState => ({
     user: {
-      isSignedIn: false,
+      isLoggedIn: true,
       auth: {
         uid: null,
         displayName: null,
@@ -42,8 +42,8 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
     get_user: (state: IFirebaseAuthState): IFirebaseAuthUser => {
       return state.user;
     },
-    get_user_isSignedIn: (state: IFirebaseAuthState): boolean => {
-      return state.user.isSignedIn;
+    get_user_isLoggedIn: (state: IFirebaseAuthState): boolean => {
+      return state.user.isLoggedIn;
     },
     get_user_auth: (state: IFirebaseAuthState): IFirebaseAuthUserData => {
       return state.user.auth;
@@ -72,8 +72,8 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
   },
   actions: {
     /* STATE ACTIONS */
-    set_user_isSignedIn(user: { isSignedIn: boolean }): void {
-      this.user.isSignedIn = user.isSignedIn;
+    set_user_isLoggedIn(user: { isLoggedIn: boolean }): void {
+      this.user.isLoggedIn = user.isLoggedIn;
     },
     set_user_auth(user: { auth: IFirebaseAuthUserData }): void {
       this.user.auth = user.auth;

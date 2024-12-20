@@ -5,7 +5,7 @@
     class="pa-0 ma-0 bg-primary text-secondary-3"
     style="height: 100vh"
   >
-    <v-card class="pa-0 ma-0 h-100 d-flex flex-column">
+    <v-card class="pa-0 ma-0 h-100 d-flex flex-column d-none d-">
       <v-toolbar
         class="px-1 ma-0 d-flex flex-shrink-1 flex-grow-0 bg-primary text-secondary-3"
       >
@@ -98,10 +98,12 @@
             </template>
           </v-list-item>
           <v-list-item
+            v-if="isLoggedIn"
             rounded="xl"
             title="Account"
             color="accent-2"
             to="/account"
+            @click=""
           >
             <template #prepend>
               <v-icon icon="$account"></v-icon>
@@ -115,17 +117,37 @@
       <v-card-actions class="pa-0 d-flex flex-column flex-shrink-1 flex-grow-0">
         <v-container fluid class="pa-2">
           <v-row>
-            <v-spacer></v-spacer>
-            <v-col>
-              <v-hover>
+            <v-col cols="12" class="d-flex">
+              <v-spacer></v-spacer>
+              <v-hover v-if="isLoggedIn">
                 <template #default="{ isHovering, props }">
                   <v-btn
                     variant="outlined"
-                    :class="[isHovering ? 'bg-accent-2' : '']"
+                    :class="[
+                      'd-flex d-md-none',
+                      isHovering ? 'text-accent-2' : '',
+                    ]"
                     v-bind="props"
+                    @click="isLoggedIn = false"
                   >
                     <span class="mr-2">Log out</span>
                     <v-icon icon="$logout"></v-icon>
+                  </v-btn>
+                </template>
+              </v-hover>
+              <v-hover v-else>
+                <template #default="{ isHovering, props }">
+                  <v-btn
+                    variant="outlined"
+                    :class="[
+                      'd-flex d-md-none',
+                      isHovering ? 'text-accent-2' : '',
+                    ]"
+                    v-bind="props"
+                    @click="isLoggedIn = true"
+                  >
+                    <span class="mr-2">Log in</span>
+                    <v-icon icon="$login"></v-icon>
                   </v-btn>
                 </template>
               </v-hover>
@@ -139,13 +161,15 @@
 
 <script lang="ts">
   import { useRootStore } from '@/stores/root';
+  import { useAuthStore } from '@/stores/auth';
   import Logo from '@/assets/img/logo.png';
 
   export default defineComponent({
     name: 'common-navigation-mobile',
     setup() {
       const rootStore = useRootStore();
-      return { rootStore };
+      const authStore = useAuthStore();
+      return { rootStore, authStore };
     },
     computed: {
       /* Images */
@@ -156,6 +180,14 @@
       /* Data */
       isMobile(): boolean {
         return this.$vuetify.display.mobile;
+      },
+      isLoggedIn: {
+        get(): boolean {
+          return this.authStore.get_user_isLoggedIn;
+        },
+        set(newValue: boolean): void {
+          this.authStore.set_user_isLoggedIn({ isLoggedIn: newValue });
+        },
       },
       drawer: {
         get(): boolean {
@@ -173,5 +205,3 @@
     },
   });
 </script>
-
-<style lang="scss" scoped></style>

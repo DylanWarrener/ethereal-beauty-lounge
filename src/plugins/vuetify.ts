@@ -9,13 +9,14 @@ import {
   mdiMagnify,
   mdiBasket,
   mdiAccount,
-  mdiLogout,
   mdiHome,
   mdiInformation,
   mdiPackage,
   mdiEmailFast,
   mdiHandsPray,
   mdiLotionPlus,
+  mdiLogin,
+  mdiLogout,
 } from '@mdi/js';
 
 const commonColours = {
@@ -83,12 +84,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       defaultSet: 'mdi',
       aliases: {
         ...aliases,
-        menuBack: mdiBackburger,
         arrowRight: mdiArrowRightBold,
-        search: mdiMagnify,
-        logout: mdiLogout,
 
-        /* Navigation page icons */
+        /* Navigation icons */
+        menuBack: mdiBackburger,
+        search: mdiMagnify,
         home: mdiHome,
         packages: mdiPackage,
         services: mdiHandsPray,
@@ -97,6 +97,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         about: mdiInformation,
         basket: mdiBasket,
         account: mdiAccount,
+        login: mdiLogin,
+        logout: mdiLogout,
       },
       sets: {
         mdi,
