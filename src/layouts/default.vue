@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-layout class="d-flex flex-column">
-      <CommonMobileNav />
+      <CommonNavMobile />
       <CommonHeader />
       <v-main>
         <v-container class="pa-0" fluid>

@@ -5,20 +5,7 @@
     scroll-behavior="hide"
   >
     <!-- Logo -->
-    <v-card
-      v-ripple="{ class: 'text-accent-3' }"
-      flat
-      to="/"
-      height="100%"
-      min-width="150"
-    >
-      <v-img
-        width="100%"
-        height="100%"
-        :src="logo"
-        alt="Ethereal Beauty Lounge logo"
-      ></v-img>
-    </v-card>
+    <CommonCardLogo />
 
     <v-divider
       inset
@@ -45,7 +32,7 @@
     <CommonNavTools />
     <v-spacer class="d-none d-md-flex"></v-spacer>
 
-    <!-- Navigation for desktop -->
+    <!-- Navigation for non-mobile -->
     <CommonNav />
     <v-spacer class="d-none d-md-flex"></v-spacer>
 

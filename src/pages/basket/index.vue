@@ -3,7 +3,7 @@
     <Title>{{ title }}</Title>
   </Head>
   <CommonHeroSection />
-  <BasketSection />
+  <SectionBasket />
 </template>
 
 <script lang="ts">

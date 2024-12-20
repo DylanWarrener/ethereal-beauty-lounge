@@ -10,14 +10,7 @@
         class="px-1 ma-0 d-flex flex-shrink-1 flex-grow-0 bg-primary text-secondary-3"
       >
         <template #prepend>
-          <v-card flat min-width="150" height="100%">
-            <v-img
-              width="100%"
-              height="100%"
-              :src="logo"
-              alt="Ethereal Beauty Lounge logo"
-            ></v-img>
-          </v-card>
+          <CommonCardLogo />
         </template>
         <template #append>
           <v-hover>
@@ -119,7 +112,10 @@
           <v-row>
             <v-col cols="12" class="d-flex">
               <v-spacer></v-spacer>
-              <v-hover v-if="isLoggedIn">
+              <CommonBtnLogIn v-if="isLoggedIn" />
+              <CommonBtnLogOut v-else />
+
+              <!-- <v-hover v-if="isLoggedIn">
                 <template #default="{ isHovering, props }">
                   <v-btn
                     variant="outlined"
@@ -135,8 +131,8 @@
                     <v-icon icon="$logout"></v-icon>
                   </v-btn>
                 </template>
-              </v-hover>
-              <v-hover v-else>
+              </v-hover> -->
+              <!-- <v-hover v-else>
                 <template #default="{ isHovering, props }">
                   <v-btn
                     variant="outlined"
@@ -152,7 +148,7 @@
                     <v-icon icon="$login"></v-icon>
                   </v-btn>
                 </template>
-              </v-hover>
+              </v-hover> -->
             </v-col>
           </v-row>
         </v-container>

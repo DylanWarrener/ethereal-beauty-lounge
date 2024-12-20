@@ -4,17 +4,19 @@
     <template #default="{ isHovering, props }">
       <v-btn
         variant="outlined"
-        :class="[isHovering ? 'bg-accent-2' : '']"
+        :class="[isHovering ? 'text-accent-2' : '']"
         v-bind="props"
-      >
-        Non-CTA Button internal link
-      </v-btn>
+        :text="text"
+      ></v-btn>
     </template>
   </v-hover>
 </template>
 
 <script lang="ts">
-  export default defineComponent({});
+  export default defineComponent({
+    name: 'common-btn-outlined-cta-internal',
+    props: {
+      text: { type: String, required: true },
+    },
+  });
 </script>
-
-<style lang="scss" scoped></style>

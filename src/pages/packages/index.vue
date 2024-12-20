@@ -2,8 +2,8 @@
   <Head>
     <Title>{{ title }}</Title>
   </Head>
-  <CommonHeroSection />
-  <PackagesSection />
+  <CommonSectionHero />
+  <SectionPackages />
 </template>
 
 <script lang="ts">

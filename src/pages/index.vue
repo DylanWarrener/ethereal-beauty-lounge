@@ -3,23 +3,30 @@
     <Title>{{ txtPageMetaTitle }}</Title>
   </Head>
 
-  <HeroSection />
+  <SectionHero />
   <v-container :fluid="isMobile" style="border: 2px solid black">
     <v-row>
       <v-col cols="12">
-        <BriefAboutSection />
+        <CommonBtnLogIn />
       </v-col>
       <v-col cols="12">
-        <PopularServicesSection />
+        <CommonBtnLogOut />
+      </v-col>
+
+      <v-col cols="12">
+        <SectionBriefAbout />
       </v-col>
       <v-col cols="12">
-        <PopularProductsSection />
+        <SectionPopularServices />
       </v-col>
       <v-col cols="12">
-        <RecentPortfolioSection />
+        <SectionPopularProducts />
       </v-col>
       <v-col cols="12">
-        <BriefContactSection />
+        <SectionRecentPortfolio />
+      </v-col>
+      <v-col cols="12">
+        <SectionBriefContact />
       </v-col>
     </v-row>
   </v-container>
