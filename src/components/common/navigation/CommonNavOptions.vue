@@ -1,26 +1,28 @@
 <template>
   <div class="d-flex justify-center align-center ga-2">
-    <v-hover>
-      <template #default="{ isHovering, props: hoverProps }">
-        <v-tooltip location="bottom" text="Basket" class="d-none d-md-flex">
-          <template #activator="{ props: tooltipProps }">
-            <v-btn
-              class="d-none d-sm-flex"
-              icon
-              to="/basket"
-              v-bind="mergeProps(hoverProps, tooltipProps)"
-            >
-              <v-icon
-                icon="$basket"
-                :class="[isHovering ? 'text-secondary' : '']"
-              ></v-icon>
-            </v-btn>
-          </template>
-        </v-tooltip>
-      </template>
-    </v-hover>
+    <ClientOnly>
+      <v-hover>
+        <template #default="{ isHovering, props: hoverProps }">
+          <v-tooltip location="bottom" text="Basket" class="d-none d-md-flex">
+            <template #activator="{ props: tooltipProps }">
+              <v-btn
+                class="d-none d-sm-flex"
+                icon
+                to="/basket"
+                v-bind="mergeProps(hoverProps, tooltipProps)"
+              >
+                <v-icon
+                  icon="$basket"
+                  :class="[isHovering ? 'text-secondary' : '']"
+                ></v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+        </template>
+      </v-hover>
+    </ClientOnly>
 
-    <CommonBtnLogIn class="d-none d-md-flex" />
+    <CommonBtnLogIn btn-class="d-none d-md-flex" />
 
     <v-hover v-if="isLoggedIn">
       <template #default="{ isHovering, props: profileHoverProps }">

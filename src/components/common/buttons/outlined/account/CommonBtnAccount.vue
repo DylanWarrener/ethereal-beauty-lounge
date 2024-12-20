@@ -19,16 +19,17 @@
   export default defineComponent({
     name: 'common-btn-account',
     props: {
-      class: { type: String, required: false },
+      btnLoginClass: { type: String, required: false },
       text: { type: String, required: true },
       icon: { type: String, required: true },
     },
     emits: ['clicked'],
     methods: {
       btnClass(isHovering: boolean | null): string[] {
+        console.log('The class in btn account component: ', this.btnLoginClass);
         let retVal: string[] = [];
-        if (this.class) {
-          retVal.push(this.class);
+        if (this.btnLoginClass) {
+          retVal.push(...this.btnLoginClass);
         }
         if (isHovering) {
           retVal.push('text-accent-2');

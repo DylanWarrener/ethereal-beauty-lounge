@@ -26,7 +26,7 @@ import { EStoreNames } from '@/abstractions/enums/store';
 export const useAuthStore = defineStore(EStoreNames.AUTH, {
   state: (): IFirebaseAuthState => ({
     user: {
-      isLoggedIn: true,
+      isLoggedIn: false,
       auth: {
         uid: null,
         displayName: null,
