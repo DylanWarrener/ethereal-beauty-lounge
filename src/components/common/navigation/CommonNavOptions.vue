@@ -1,14 +1,14 @@
 <template>
   <div class="d-flex justify-center align-center ga-2">
     <v-hover>
-      <template #default="{ isHovering, props: basketHoverProps }">
+      <template #default="{ isHovering, props: hoverProps }">
         <v-tooltip location="bottom" text="Basket" class="d-none d-md-flex">
-          <template #activator="{ props: basketTooltipProps }">
+          <template #activator="{ props: tooltipProps }">
             <v-btn
               class="d-none d-sm-flex"
               icon
               to="/basket"
-              v-bind="{ ...basketHoverProps, ...basketTooltipProps }"
+              v-bind="mergeProps(hoverProps, tooltipProps)"
             >
               <v-icon
                 icon="$basket"
