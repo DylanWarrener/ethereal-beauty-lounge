@@ -1,10 +1,20 @@
 <template>
-  <CommonBtnAccount
-    v-if="isLoggedIn"
-    text="log out"
-    icon="$logout"
-    @clicked="logout_handleClick"
-  />
+  <ClientOnly>
+    <v-hover v-if="isLoggedIn">
+      <template #default="{ isHovering, props }">
+        <v-btn
+          rounded="xl"
+          variant="outlined"
+          :class="[btnClass, isHovering ? 'text-accent-2' : '']"
+          v-bind="props"
+          @click="logout_handleClick"
+        >
+          <span class="mr-2">Log out</span>
+          <v-icon icon="$logout"></v-icon>
+        </v-btn>
+      </template>
+    </v-hover>
+  </ClientOnly>
 </template>
 
 <script lang="ts">
@@ -13,7 +23,7 @@
   export default defineComponent({
     name: 'common-btn-log-out',
     props: {
-      class: { type: String, required: false, default: '' },
+      btnClass: { type: String, required: false },
     },
     setup() {
       const authStore = useAuthStore();

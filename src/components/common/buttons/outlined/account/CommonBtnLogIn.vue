@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <v-hover>
+    <v-hover v-if="!isLoggedIn">
       <template #default="{ isHovering, props }">
         <v-btn
           rounded="xl"
