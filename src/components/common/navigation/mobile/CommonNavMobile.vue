@@ -80,14 +80,9 @@
               <v-icon icon="$about"></v-icon>
             </template>
           </v-list-item>
-          <v-list-item
-            rounded="xl"
-            title="Basket"
-            color="accent-2"
-            to="/basket"
-          >
+          <v-list-item rounded="xl" title="Basket" color="accent-2" to="/bag">
             <template #prepend>
-              <v-icon icon="$basket"></v-icon>
+              <v-icon icon="$bag"></v-icon>
             </template>
           </v-list-item>
           <v-list-item

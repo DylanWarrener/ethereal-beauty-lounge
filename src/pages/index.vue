@@ -7,13 +7,6 @@
   <v-container :fluid="isMobile" style="border: 2px solid black">
     <v-row>
       <v-col cols="12">
-        <CommonBtnLogIn />
-      </v-col>
-      <v-col cols="12">
-        <CommonBtnLogOut />
-      </v-col>
-
-      <v-col cols="12">
         <SectionBriefAbout />
       </v-col>
       <v-col cols="12">

@@ -5,6 +5,7 @@
         <v-btn
           rounded="xl"
           variant="outlined"
+          size="large"
           :class="[btnClass, isHovering ? 'text-accent-2' : '']"
           v-bind="props"
           @click="login_handleClick"

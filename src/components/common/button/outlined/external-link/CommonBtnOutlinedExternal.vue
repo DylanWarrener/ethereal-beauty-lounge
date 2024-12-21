@@ -5,6 +5,7 @@
       <v-btn
         variant="outlined"
         rounded="xl"
+        size="large"
         :to="to"
         :class="[isHovering ? 'text-accent-2' : '']"
         v-bind="props"

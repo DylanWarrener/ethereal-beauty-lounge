@@ -2,8 +2,14 @@
 <template>
   <v-hover>
     <template #default="{ isHovering, props }">
-      <v-btn variant="flat" class="bg-accent-2" v-bind="props">
-        <span class="pr-2">{{ text }}</span>
+      <v-btn
+        variant="flat"
+        class="bg-accent-2"
+        v-bind="props"
+        rounded="xl"
+        size="large"
+      >
+        <span class="pr-1">{{ text }}</span>
         <v-icon
           icon="$arrowRight"
           :class="['icon-transition', { 'icon-transform': isHovering }]"

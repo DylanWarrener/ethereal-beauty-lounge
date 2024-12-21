@@ -1,8 +1,13 @@
 import { defineStore } from 'pinia';
 
 /* ABSTRACTIONS */
-import { type IRootState } from '@/abstractions/interfaces/store/root';
+import type {
+  IRootState,
+  IRootBagItemsState,
+} from '@/abstractions/interfaces/store/root';
 import { EStoreNames } from '@/abstractions/enums/store';
+
+import TempBagItemImg from '@/assets/img/hero-section/mobile/background-image-1.webp';
 
 export const useRootStore = defineStore(EStoreNames.ROOT, {
   state: (): IRootState => ({
@@ -15,12 +20,109 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
         drawer: false,
       },
     },
+    bag: {
+      items: [
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: true,
+        },
+      ],
+    },
   }),
   getters: {
+    /* Meta */
     get_meta_title: (state: IRootState) => state.meta.title,
 
+    /* Navigation */
     get_navigation_mobile_drawer: (state: IRootState) =>
       state.navigation.mobile.drawer,
+
+    /* Bag */
+    get_bag_items: (state: IRootState) => state.bag.items,
   },
   actions: {
     /* Meta */
@@ -31,6 +133,11 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
     /* Navigation */
     set_navigation_mobile_drawer(state: boolean): void {
       this.navigation.mobile.drawer = state;
+    },
+
+    /* Bag */
+    set_bag_item(state: IRootBagItemsState): void {
+      this.bag.items.push(state);
     },
   },
 });

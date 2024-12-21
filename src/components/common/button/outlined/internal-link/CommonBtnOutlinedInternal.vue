@@ -3,6 +3,7 @@
   <v-hover>
     <template #default="{ isHovering, props }">
       <v-btn
+        size="large"
         variant="outlined"
         :class="[isHovering ? 'text-accent-2' : '']"
         v-bind="props"

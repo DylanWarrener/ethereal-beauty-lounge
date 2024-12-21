@@ -1,14 +1,29 @@
 export interface IRootState {
-  meta: IMetaState;
-  navigation: INavigationState;
+  meta: IRootMetaState;
+  navigation: IRootNavigationState;
+  bag: IRootBagState;
 }
-interface IMetaState {
+interface IRootMetaState {
   prefix: string;
   title: string;
 }
-interface INavigationState {
-  mobile: INavigationMobileState;
+interface IRootNavigationState {
+  mobile: IRootNavigationMobileState;
 }
-interface INavigationMobileState {
+interface IRootNavigationMobileState {
   drawer: boolean;
+}
+interface IRootBagState {
+  items: IRootBagItemsState[];
+}
+export interface IRootBagItemsState {
+  img: {
+    src: string;
+    alt: string;
+  };
+  name: string;
+  size: string;
+  quantity: number;
+  price: number;
+  inStock: boolean;
 }
