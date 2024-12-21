@@ -1,11 +1,14 @@
 export interface IRootState {
   meta: IMetaState;
-  appBar: IAppBarState;
+  navigation: INavigationState;
 }
 interface IMetaState {
   prefix: string;
   title: string;
 }
-interface IAppBarState {
+interface INavigationState {
+  mobile: INavigationMobileState;
+}
+interface INavigationMobileState {
   drawer: boolean;
 }

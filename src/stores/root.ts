@@ -10,24 +10,27 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
       prefix: 'EBL',
       title: '',
     },
-    appBar: {
-      drawer: false,
+    navigation: {
+      mobile: {
+        drawer: false,
+      },
     },
   }),
   getters: {
     get_meta_title: (state: IRootState) => state.meta.title,
 
-    /* App bar */
-    get_appBar_drawer: (state: IRootState) => state.appBar.drawer,
+    get_navigation_mobile_drawer: (state: IRootState) =>
+      state.navigation.mobile.drawer,
   },
   actions: {
-    set_meta_title(title: string): void {
-      this.meta.title = `${this.meta.prefix} - ${title}`;
+    /* Meta */
+    set_meta_title(state: string): void {
+      this.meta.title = `${this.meta.prefix} - ${state}`;
     },
 
-    /* App bar */
-    set_appBar_drawer(drawer: boolean): void {
-      this.appBar.drawer = drawer;
+    /* Navigation */
+    set_navigation_mobile_drawer(state: boolean): void {
+      this.navigation.mobile.drawer = state;
     },
   },
 });

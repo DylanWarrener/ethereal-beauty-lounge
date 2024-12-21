@@ -5,7 +5,7 @@ export enum EPageMetaTitles {
   PRODUCTS = 'Products',
   CONTACT = 'Contact',
   ABOUT = 'About',
-  BASKET = 'Basket',
+  BAG = 'Bag',
   ACCOUNT = 'Account',
 }
 export enum EPageComponentNames {
@@ -14,7 +14,7 @@ export enum EPageComponentNames {
   SERVICES = 'page-services',
   PRODUCTS = 'page-products',
   ACCOUNT = 'page-account',
-  BASKET = 'page-basket',
+  BAG = 'page-bag',
   CONTACT = 'page-contact',
   ABOUT = 'page-about',
 }
@@ -27,7 +27,7 @@ export enum EPageRoutes {
   SERVICES = '/services',
   PRODUCTS = '/products',
   ACCOUNT = '/account',
-  BASKET = '/basket',
+  BAG = '/bag',
   CONTACT = '/contact',
   ABOUT = '/about',
 }

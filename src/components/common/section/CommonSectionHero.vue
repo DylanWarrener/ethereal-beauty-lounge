@@ -17,10 +17,10 @@
       },
       drawer: {
         get(): boolean {
-          return this.rootStore.get_appBar_drawer;
+          return this.rootStore.get_navigation_mobile_drawer;
         },
-        set(newValue: boolean): void {
-          this.rootStore.set_appBar_drawer(newValue);
+        set(state: boolean): void {
+          this.rootStore.set_navigation_mobile_drawer(state);
         },
       },
     },

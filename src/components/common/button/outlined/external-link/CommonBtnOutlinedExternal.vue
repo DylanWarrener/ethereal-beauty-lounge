@@ -4,6 +4,8 @@
     <template #default="{ isHovering, props }">
       <v-btn
         variant="outlined"
+        rounded="xl"
+        :to="to"
         :class="[isHovering ? 'text-accent-2' : '']"
         v-bind="props"
       >
@@ -22,6 +24,7 @@
     name: 'common-btn-outlined-cta-external',
     props: {
       text: { type: String, required: true },
+      to: { type: String, required: false },
     },
   });
 </script>

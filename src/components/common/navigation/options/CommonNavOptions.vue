@@ -8,13 +8,32 @@
               <v-btn
                 class="d-none d-sm-flex"
                 icon
-                to="/basket"
                 v-bind="mergeProps(hoverProps, tooltipProps)"
               >
                 <v-icon
                   icon="$basket"
                   :class="[isHovering ? 'text-secondary' : '']"
                 ></v-icon>
+                <v-menu activator="parent">
+                  <v-list class="pa-2">
+                    <div class="pb-2">
+                      <v-list-item
+                        rounded="xl"
+                        title="Settings"
+                        to="/account/settings"
+                        color="accent-2"
+                      >
+                        <template #prepend>
+                          <v-icon icon="$settings"></v-icon>
+                        </template>
+                      </v-list-item>
+                    </div>
+                    <v-divider></v-divider>
+                    <div class="pt-2">
+                      <CommonBtnLogOut btn-class="w-100" />
+                    </div>
+                  </v-list>
+                </v-menu>
               </v-btn>
             </template>
           </v-tooltip>

@@ -2,7 +2,8 @@
   <Head>
     <Title>{{ title }}</Title>
   </Head>
-  <CommonHeroSection />
+
+  <CommonSectionHero />
   <SectionBasket />
 </template>
 
@@ -14,7 +15,7 @@
   } from '@/abstractions/enums/pages';
 
   export default defineComponent({
-    name: EPageComponentNames.BASKET,
+    name: EPageComponentNames.BAG,
     setup() {
       const rootStore = useRootStore();
       return { rootStore };
@@ -25,7 +26,7 @@
       },
     },
     created(): void {
-      this.rootStore.set_meta_title(EPageMetaTitles.BASKET);
+      this.rootStore.set_meta_title(EPageMetaTitles.BAG);
     },
   });
 </script>

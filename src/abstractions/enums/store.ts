@@ -1,8 +1,7 @@
 export enum EStoreNames {
+  ROOT = 'root-store',
   AUTH = 'auth-store',
-  CART = 'cart-store',
+  FIRESTORE = 'fire-store',
   PRODUCT = 'product-store',
   UI = 'ui-store',
-  ROOT = 'root-store',
-  FIRESTORE = 'fire-store',
 }

@@ -1,9 +1,9 @@
 <template>
-  <h1>This is the basket section</h1>
+  <h1>This is the bag section</h1>
 </template>
 
 <script lang="ts">
   export default defineComponent({
-    name: 'section-basket',
+    name: 'section-bag',
   });
 </script>
