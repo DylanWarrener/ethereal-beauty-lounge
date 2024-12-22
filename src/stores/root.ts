@@ -27,11 +27,22 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
             src: TempBagItemImg,
             alt: 'Item 1',
           },
-          name: 'Product item',
+          name: 'Product item 1',
           size: '200ml',
           quantity: 1,
           price: 25.5,
           inStock: true,
+        },
+        {
+          img: {
+            src: TempBagItemImg,
+            alt: 'Item 1',
+          },
+          name: 'Product item',
+          size: '200ml',
+          quantity: 1,
+          price: 25.5,
+          inStock: false,
         },
         {
           img: {
@@ -64,7 +75,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           size: '200ml',
           quantity: 1,
           price: 25.5,
-          inStock: true,
+          inStock: false,
         },
         {
           img: {
@@ -86,7 +97,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           size: '200ml',
           quantity: 1,
           price: 25.5,
-          inStock: true,
+          inStock: false,
         },
         {
           img: {
@@ -97,18 +108,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           size: '200ml',
           quantity: 1,
           price: 25.5,
-          inStock: true,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: true,
+          inStock: false,
         },
       ],
     },
@@ -136,6 +136,9 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
     },
 
     /* Bag */
+    set_bag_items(state: IRootBagItemsState[]): void {
+      this.bag.items = [...state];
+    },
     set_bag_item(state: IRootBagItemsState): void {
       this.bag.items.push(state);
     },

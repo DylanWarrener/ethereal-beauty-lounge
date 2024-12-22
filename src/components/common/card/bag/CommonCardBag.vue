@@ -9,7 +9,7 @@
     <v-divider></v-divider>
 
     <div
-      class="pr-4 ga-4 d-flex flex-column flex-shrink-1 flex-grow-1 overflow-y-auto"
+      class="ga-2 d-flex flex-column flex-shrink-1 flex-grow-1 overflow-y-auto"
     >
       <CommonCardBagItems />
     </div>
