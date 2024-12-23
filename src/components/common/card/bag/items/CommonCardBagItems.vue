@@ -9,6 +9,7 @@
     >
       <template #default>
         <v-card-text class="h-100 pa-0 d-flex">
+          <div>test</div>
           <!-- Non-mobile delete bag item -->
           <v-hover #default="{ isHovering, props }">
             <v-img
