@@ -1,8 +1,12 @@
 <template>
   <v-app>
     <v-layout class="d-flex flex-column">
-      <CommonNavMobile />
+      <ClientOnly>
+        <CommonNavMobile />
+      </ClientOnly>
+
       <CommonHeader />
+
       <v-main>
         <v-container class="pa-0" fluid>
           <v-row>
@@ -12,6 +16,7 @@
           </v-row>
         </v-container>
       </v-main>
+
       <CommonFooter />
     </v-layout>
   </v-app>

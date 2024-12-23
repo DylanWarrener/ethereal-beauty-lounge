@@ -4,25 +4,27 @@
   </Head>
 
   <SectionHero />
-  <v-container :fluid="isMobile" style="border: 2px solid black">
-    <v-row>
-      <v-col cols="12">
-        <SectionBriefAbout />
-      </v-col>
-      <v-col cols="12">
-        <SectionPopularServices />
-      </v-col>
-      <v-col cols="12">
-        <SectionPopularProducts />
-      </v-col>
-      <v-col cols="12">
-        <SectionRecentPortfolio />
-      </v-col>
-      <v-col cols="12">
-        <SectionBriefContact />
-      </v-col>
-    </v-row>
-  </v-container>
+  <ClientOnly>
+    <v-container :fluid="isMobile" style="border: 2px solid black">
+      <v-row>
+        <v-col cols="12">
+          <SectionBriefAbout />
+        </v-col>
+        <v-col cols="12">
+          <SectionPopularServices />
+        </v-col>
+        <v-col cols="12">
+          <SectionPopularProducts />
+        </v-col>
+        <v-col cols="12">
+          <SectionRecentPortfolio />
+        </v-col>
+        <v-col cols="12">
+          <SectionBriefContact />
+        </v-col>
+      </v-row>
+    </v-container>
+  </ClientOnly>
 </template>
 
 <script lang="ts">

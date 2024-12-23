@@ -14,7 +14,7 @@
                   icon="$bag"
                   :class="[isHovering ? 'text-secondary' : '']"
                 ></v-icon>
-                <v-menu activator="parent">
+                <v-menu activator="parent" class="d-none d-sm-flex">
                   <CommonCardBag />
                 </v-menu>
               </v-btn>
@@ -66,19 +66,18 @@
 
 <script lang="ts">
   import { mergeProps } from 'vue';
+  import { useRootStore } from '@/stores/root';
   import { useAuthStore } from '@/stores/auth';
 
   export default defineComponent({
     name: 'common-navigation-options',
     setup() {
+      const rootStore = useRootStore();
       const authStore = useAuthStore();
-      return { authStore };
+      return { rootStore, authStore };
     },
     computed: {
       /* Data */
-      isMobile(): boolean {
-        return this.$vuetify.display.mobile;
-      },
       isLoggedIn: {
         get(): boolean {
           return this.authStore.get_user_isLoggedIn;

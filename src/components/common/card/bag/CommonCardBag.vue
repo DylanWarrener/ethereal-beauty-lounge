@@ -11,7 +11,10 @@
     <div
       class="ga-2 d-flex flex-column flex-shrink-1 flex-grow-1 overflow-y-auto"
     >
-      <CommonCardBagItems />
+      <span v-if="bagItems.length === 0" class="text-center">
+        Your bag is empty.
+      </span>
+      <CommonCardBagItems v-else />
     </div>
 
     <v-divider></v-divider>
