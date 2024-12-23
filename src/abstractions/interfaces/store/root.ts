@@ -1,6 +1,7 @@
 export interface IRootState {
   meta: IRootMetaState;
   navigation: IRootNavigationState;
+  menu: IRootMenuState;
   bag: IRootBagState;
 }
 interface IRootMetaState {
@@ -11,6 +12,12 @@ interface IRootNavigationState {
   mobile: IRootNavigationMobileState;
 }
 interface IRootNavigationMobileState {
+  drawer: boolean;
+}
+interface IRootMenuState {
+  basket: IRootMenuBasketState;
+}
+interface IRootMenuBasketState {
   drawer: boolean;
 }
 interface IRootBagState {
@@ -26,4 +33,5 @@ export interface IRootBagItemsState {
   quantity: number;
   price: number;
   inStock: boolean;
+  deleting: boolean;
 }

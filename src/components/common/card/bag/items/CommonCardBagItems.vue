@@ -3,99 +3,111 @@
     <v-card
       v-for="(item, index) in bagItems"
       :key="index"
+      v-touch="{
+        left: () => (item.deleting = false),
+        right: () => (item.deleting = true),
+      }"
       flat
       class="border-thin bg-primary-1 d-flex"
       :min-height="100"
     >
-      <template #default>
-        <v-card-text class="h-100 pa-0 d-flex">
-          <div>test</div>
-          <!-- Non-mobile delete bag item -->
-          <v-hover #default="{ isHovering, props }">
-            <v-img
-              :src="item.img.src"
-              :alt="item.img.alt"
-              width="100"
-              cover
-              v-bind="props"
+      <v-card-text class="h-100 pa-0 d-flex">
+        <v-fade-transition hide-on-leave>
+          <div
+            v-if="item.deleting"
+            class="bg-error d-flex justify-center align-center"
+          >
+            <v-btn
+              variant="text"
+              class="text-primary justify-center"
+              icon="$delete"
+            ></v-btn>
+          </div>
+        </v-fade-transition>
+
+        <!-- Non-mobile delete bag item -->
+        <v-hover #default="{ isHovering, props }">
+          <v-img
+            :src="item.img.src"
+            :alt="item.img.alt"
+            width="100"
+            cover
+            v-bind="props"
+          >
+            <div
+              v-if="isHovering"
+              class="h-100 d-none d-md-flex justify-center align-center"
+              style="background-color: rgba(var(--v-theme-secondary-rgba), 0.8)"
             >
-              <div
-                v-if="isHovering"
-                class="h-100 d-none d-md-flex justify-center align-center"
-                style="
-                  background-color: rgba(var(--v-theme-secondary-rgba), 0.8);
-                "
-              >
-                <v-tooltip location="bottom">
-                  <template #activator="{ props }">
-                    <v-btn
-                      variant="text"
-                      icon="$delete"
-                      size="small"
-                      class="text-primary"
-                      v-bind="props"
-                      @click.stop="click_deleteItem(index)"
-                    ></v-btn>
-                  </template>
-                  <span>Delete item</span>
-                </v-tooltip>
-              </div>
-            </v-img>
-          </v-hover>
+              <v-tooltip location="bottom">
+                <template #activator="{ props }">
+                  <v-btn
+                    variant="text"
+                    icon="$delete"
+                    size="small"
+                    class="text-primary"
+                    v-bind="props"
+                    @click.stop="click_deleteItem(index)"
+                  ></v-btn>
+                </template>
+                <span>Delete item</span>
+              </v-tooltip>
+            </div>
+          </v-img>
+        </v-hover>
 
-          <v-container fluid class="d-flex flex-column">
-            <v-row class="d-flex flex-nowrap flex-shrink-1 flex-grow-0">
-              <v-col cols="8" class="pa-0">
-                <v-card-title class="pa-0 text-subtitle-1 text-secondary">
-                  {{ item.name }}
-                </v-card-title>
-              </v-col>
-              <v-col cols="4" class="pa-0 d-flex justify-center align-center">
-                <span class="text-subtitle-2 font-weight-bold">
-                  £{{ Math.ceil(item.quantity * item.price) }}
-                </span>
-              </v-col>
-            </v-row>
+        <v-container fluid class="d-flex flex-column">
+          <v-row class="d-flex flex-nowrap flex-shrink-1 flex-grow-0">
+            <v-col cols="8" class="pa-0">
+              <v-card-title class="pa-0 text-subtitle-1 text-secondary">
+                {{ item.name }}
+              </v-card-title>
+            </v-col>
+            <v-col cols="4" class="pa-0 d-flex justify-center align-center">
+              <span class="text-subtitle-2 font-weight-bold">
+                £{{ Math.ceil(item.quantity * item.price) }}
+              </span>
+            </v-col>
+          </v-row>
 
-            <v-row class="d-flex flex-nowrap flex-shrink-1 flex-grow-1">
-              <v-col cols="8" class="pa-0 d-flex flex-column justify-center">
-                <span class="text-secondary-3">Size: {{ item.size }}</span>
-                <span class="text-secondary-3">
-                  Quantity: {{ item.quantity }}
-                </span>
-                <span :class="[item.inStock ? 'text-success' : 'text-error']">
-                  {{ item.inStock ? 'In Stock' : 'Not in Stock' }}
-                </span>
-              </v-col>
-              <v-col
-                cols="4"
-                class="pa-0 ga-1 d-flex justify-center align-center"
-              >
-                <v-btn
-                  flat
-                  icon="$remove"
-                  size="x-small"
-                  class="bg-primary-1"
-                  @click.stop="click_decreaseItemQuantity(index)"
-                ></v-btn>
-                <v-divider
-                  inset
-                  vertical
-                  class="my-auto"
-                  style="height: 30px"
-                ></v-divider>
-                <v-btn
-                  flat
-                  icon="$add"
-                  size="x-small"
-                  class="bg-primary-1"
-                  @click.stop="click_increaseItemQuantity(index)"
-                ></v-btn>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-      </template>
+          <v-row class="d-flex flex-nowrap flex-shrink-1 flex-grow-1">
+            <v-col cols="8" class="pa-0 d-flex flex-column justify-center">
+              <span class="text-secondary-3">Size: {{ item.size }}</span>
+              <span class="text-secondary-3">
+                Quantity: {{ item.quantity }}
+              </span>
+              <span :class="[item.inStock ? 'text-success' : 'text-error']">
+                {{ item.inStock ? 'In Stock' : 'Not in Stock' }}
+              </span>
+            </v-col>
+            <v-col
+              cols="4"
+              class="pa-0 ga-1 d-flex justify-center align-center"
+            >
+              <v-btn
+                flat
+                icon="$remove"
+                size="x-small"
+                class="bg-primary-1"
+                @click.stop="click_decreaseItemQuantity(index)"
+              ></v-btn>
+              <v-divider
+                inset
+                vertical
+                class="my-auto"
+                style="height: 30px"
+              ></v-divider>
+              <v-btn
+                flat
+                icon="$add"
+                size="x-small"
+                class="bg-primary-1"
+                @click.stop="click_increaseItemQuantity(index)"
+              ></v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card-text>
     </v-card>
   </div>
 </template>
@@ -112,12 +124,14 @@
     },
     data(): any {
       return {
-        showDeleteConfirmDialog: false,
-        quantityToggle: null,
+        dialog_show_deleteConfirm: false,
       };
     },
     computed: {
       /* Data */
+      isMobile(): boolean {
+        return this.$vuetify.display.mobile;
+      },
       bagItems: {
         get(): IRootBagItemsState[] {
           return this.rootStore.get_bag_items;
@@ -127,6 +141,9 @@
         },
       },
     },
+    watch: {
+      //isMobile(newValue: boolean): void {},
+    },
     methods: {
       /* Events */
       click_deleteItem(index: number): void {
@@ -134,7 +151,7 @@
       },
       click_decreaseItemQuantity(index: number): void {
         if (this.bagItems[index].quantity === 1) {
-          this.showDeleteConfirmDialog = true;
+          this.dialog_show_deleteConfirm = true;
         } else {
           this.bagItems[index].quantity -= 1;
         }

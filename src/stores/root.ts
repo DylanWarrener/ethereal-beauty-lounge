@@ -20,6 +20,11 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
         drawer: false,
       },
     },
+    menu: {
+      basket: {
+        drawer: false,
+      },
+    },
     bag: {
       items: [
         {
@@ -32,6 +37,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: true,
+          deleting: false,
         },
         {
           img: {
@@ -43,6 +49,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: false,
+          deleting: false,
         },
         {
           img: {
@@ -54,6 +61,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: true,
+          deleting: false,
         },
         {
           img: {
@@ -65,6 +73,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: true,
+          deleting: false,
         },
         {
           img: {
@@ -76,6 +85,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: false,
+          deleting: false,
         },
         {
           img: {
@@ -87,6 +97,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: true,
+          deleting: false,
         },
         {
           img: {
@@ -98,6 +109,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: false,
+          deleting: false,
         },
         {
           img: {
@@ -109,6 +121,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
           quantity: 1,
           price: 25.5,
           inStock: false,
+          deleting: false,
         },
       ],
     },
