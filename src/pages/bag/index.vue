@@ -4,7 +4,7 @@
   </Head>
 
   <CommonSectionHero />
-  <SectionBasket />
+  <SectionBag />
 </template>
 
 <script lang="ts">

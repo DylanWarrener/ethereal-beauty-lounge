@@ -20,8 +20,8 @@
     <v-divider></v-divider>
 
     <div class="ga-4 d-flex flex-shrink-1 flex-grow-0">
-      <CommonBtnOutlinedExternal text="View Bag" />
-      <CommonBtnSolidCtaExternal text="Checkout" />
+      <CommonBtnOutlinedExternal text="View Bag" to="/bag" />
+      <CommonBtnSolidCtaExternal text="Checkout" to="/bag/checkout" />
     </div>
   </v-card>
 </template>

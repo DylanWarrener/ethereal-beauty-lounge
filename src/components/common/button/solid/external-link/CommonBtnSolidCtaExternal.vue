@@ -3,11 +3,12 @@
   <v-hover>
     <template #default="{ isHovering, props }">
       <v-btn
-        variant="flat"
         class="bg-accent-2"
-        v-bind="props"
+        variant="flat"
         rounded="xl"
         size="large"
+        :to="to"
+        v-bind="props"
       >
         <span class="pr-1">{{ text }}</span>
         <v-icon
@@ -25,6 +26,7 @@
     name: 'common-btn-solid-cta-external',
     props: {
       text: { type: String, required: true },
+      to: { type: String, required: false },
     },
   });
 </script>
