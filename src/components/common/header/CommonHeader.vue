@@ -47,24 +47,6 @@
       <!-- Navigation options -->
       <CommonNavOptions />
     </template>
-
-    <template v-if="!isMobile" #extension>
-      <ClientOnly>
-        <v-hover>
-          <template #default="{ isHovering, props: hoverProps }">
-            <v-tooltip location="bottom" text="Search">
-              <template #activator="{ props: tooltipProps }">
-                <v-btn
-                  icon="$search"
-                  v-bind="mergeProps(hoverProps, tooltipProps)"
-                  :class="[isHovering ? 'text-secondary' : '']"
-                ></v-btn>
-              </template>
-            </v-tooltip>
-          </template>
-        </v-hover>
-      </ClientOnly>
-    </template>
   </v-app-bar>
 </template>
 
@@ -87,7 +69,7 @@
 
       /* Data */
       isMobile(): boolean {
-        return this.$vuetify.display.mobile;
+        return !this.$vuetify.display.smAndUp;
       },
       drawer: {
         get(): boolean {
