@@ -27,6 +27,9 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
   state: (): IFirebaseAuthState => ({
     user: {
       isLoggedIn: false,
+      preferences: {
+        confirmDeleteItem: true,
+      },
       auth: {
         uid: null,
         displayName: null,
@@ -39,12 +42,20 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
     },
   }),
   getters: {
+    /* User */
     get_user: (state: IFirebaseAuthState): IFirebaseAuthUser => {
       return state.user;
     },
     get_user_isLoggedIn: (state: IFirebaseAuthState): boolean => {
       return state.user.isLoggedIn;
     },
+    get_user_preferences_confirmDeleteItem: (
+      state: IFirebaseAuthState
+    ): boolean => {
+      return state.user.preferences.confirmDeleteItem;
+    },
+
+    /* Auth */
     get_user_auth: (state: IFirebaseAuthState): IFirebaseAuthUserData => {
       return state.user.auth;
     },
@@ -71,10 +82,15 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
     },
   },
   actions: {
-    /* STATE ACTIONS */
+    /* User */
     set_user_isLoggedIn(user: { isLoggedIn: boolean }): void {
       this.user.isLoggedIn = user.isLoggedIn;
     },
+    set_user_preferences_confirmDeleteItem(state: boolean): void {
+      this.user.preferences.confirmDeleteItem = state;
+    },
+
+    /* Auth */
     set_user_auth(user: { auth: IFirebaseAuthUserData }): void {
       this.user.auth = user.auth;
     },

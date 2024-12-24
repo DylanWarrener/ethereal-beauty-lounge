@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 /* ABSTRACTIONS */
 import type { IRootState } from '@/abstractions/interfaces/store/root/root';
-import type { IRootMenuBagItemsState } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
+import type { IRootMenuBagItemState } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
 import { EStoreNames } from '@/abstractions/enums/store';
 
 import TempBagItemImg from '@/assets/img/hero-section/mobile/background-image-1.webp';
@@ -25,6 +25,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
             drawer: false,
             items: [
               {
+                id: 1,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -37,6 +38,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 2,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -49,6 +51,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 3,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -61,6 +64,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 4,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -73,6 +77,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 5,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -85,6 +90,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 6,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -97,6 +103,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 7,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -109,6 +116,7 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
               {
+                id: 8,
                 img: {
                   src: TempBagItemImg,
                   alt: 'Item 1',
@@ -121,6 +129,11 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
                 deleting: false,
               },
             ],
+          },
+        },
+        dialog: {
+          deleteConfirm: {
+            drawer: false,
           },
         },
       },
@@ -147,6 +160,11 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
     get_menu_bag_drawer: (state: IRootState) =>
       state.page.common.menu.bag.drawer,
     get_menu_bag_items: (state: IRootState) => state.page.common.menu.bag.items,
+
+    /* Page common - dialog */
+    // Delete confirm
+    get_dialog_deleteConfirm_drawer: (state: IRootState) =>
+      state.page.common.dialog.deleteConfirm.drawer,
   },
   actions: {
     /* Page common - meta */
@@ -165,13 +183,17 @@ export const useRootStore = defineStore(EStoreNames.ROOT, {
     set_menu_bag_drawer(state: boolean): void {
       this.page.common.menu.bag.drawer = state;
     },
-
-    /* Bag */
-    set_menu_bag_items(state: IRootMenuBagItemsState[]): void {
+    set_menu_bag_items(state: IRootMenuBagItemState[]): void {
       this.page.common.menu.bag.items = [...state];
     },
-    set_menu_bag_item(state: IRootMenuBagItemsState): void {
+    set_menu_bag_item(state: IRootMenuBagItemState): void {
       this.page.common.menu.bag.items.push(state);
+    },
+
+    /* Page common - dialog */
+    // Delete confirm
+    set_dialog_deleteConfirm_drawer(state: boolean): void {
+      this.page.common.dialog.deleteConfirm.drawer = state;
     },
   },
 });

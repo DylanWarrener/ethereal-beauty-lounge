@@ -18,6 +18,7 @@
                   v-model="menuDrawer"
                   activator="parent"
                   class="d-none d-sm-flex"
+                  :close-on-content-click="false"
                 >
                   <CommonCardBag />
                 </v-menu>

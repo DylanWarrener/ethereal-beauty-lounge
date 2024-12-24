@@ -21,6 +21,8 @@ import {
   mdiDelete,
   mdiPlus,
   mdiMinus,
+  mdiSecurity,
+  mdiBell,
 } from '@mdi/js';
 
 const commonColours = {
@@ -101,6 +103,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         about: mdiInformation,
         bag: mdiShopping,
         account: mdiAccount,
+        security: mdiSecurity,
+        notifications: mdiBell,
         login: mdiLogin,
         logout: mdiLogout,
         settings: mdiCog,

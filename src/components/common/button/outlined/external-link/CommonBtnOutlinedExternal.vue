@@ -6,8 +6,9 @@
         variant="outlined"
         rounded="xl"
         size="large"
-        :to="to"
         :class="[isHovering ? 'text-accent-2' : '']"
+        :to="to"
+        :disabled="disabled"
         v-bind="props"
       >
         <span class="pr-2">{{ text }}</span>
@@ -26,6 +27,7 @@
     props: {
       text: { type: String, required: true },
       to: { type: String, required: false },
+      disabled: { type: Boolean, required: false, default: false },
     },
   });
 </script>

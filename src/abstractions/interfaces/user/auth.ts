@@ -1,6 +1,10 @@
 export default interface IFirebaseAuthUser {
   isLoggedIn: boolean;
+  preferences: IFirebaseUserPreferenceState;
   auth: IFirebaseAuthUserData;
+}
+export interface IFirebaseUserPreferenceState {
+  confirmDeleteItem: boolean;
 }
 export interface IFirebaseAuthUserData {
   uid: string | null;

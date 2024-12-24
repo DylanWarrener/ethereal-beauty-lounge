@@ -8,6 +8,7 @@
         rounded="xl"
         size="large"
         :to="to"
+        :disabled="disabled"
         v-bind="props"
       >
         <span class="pr-1">{{ text }}</span>
@@ -27,6 +28,7 @@
     props: {
       text: { type: String, required: true },
       to: { type: String, required: false },
+      disabled: { type: Boolean, required: false, default: false },
     },
   });
 </script>

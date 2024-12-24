@@ -2,6 +2,7 @@
   <Head>
     <Title>{{ title }}</Title>
   </Head>
+
   <CommonSectionHero />
   <SectionAccount />
 </template>
