@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly>
+  <!-- <ClientOnly>
     <v-hover>
       <template #default="{ isHovering, props: hoverProps }">
         <v-tooltip location="bottom" text="Search">
@@ -18,7 +18,7 @@
         </v-tooltip>
       </template>
     </v-hover>
-  </ClientOnly>
+  </ClientOnly> -->
 </template>
 
 <script lang="ts">

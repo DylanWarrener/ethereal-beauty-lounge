@@ -15,7 +15,7 @@
         <v-fade-transition hide-on-leave>
           <div
             v-if="item.deleting"
-            class="bg-error d-flex justify-center align-center"
+            class="bg-error d-flex d-md-none justify-center align-center"
           >
             <v-btn
               variant="text"
@@ -114,7 +114,7 @@
 
 <script lang="ts">
   import { useRootStore } from '@/stores/root';
-  import type { IRootBagItemsState } from '@/abstractions/interfaces/store/root';
+  import type { IRootMenuBagItemsState } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
 
   export default defineComponent({
     name: 'common-card-bag',
@@ -133,16 +133,13 @@
         return this.$vuetify.display.mobile;
       },
       bagItems: {
-        get(): IRootBagItemsState[] {
-          return this.rootStore.get_bag_items;
+        get(): IRootMenuBagItemsState[] {
+          return this.rootStore.get_menu_bag_items;
         },
-        set(state: IRootBagItemsState[]): void {
-          this.rootStore.set_bag_items(state);
+        set(state: IRootMenuBagItemsState[]): void {
+          this.rootStore.set_menu_bag_items(state);
         },
       },
-    },
-    watch: {
-      //isMobile(newValue: boolean): void {},
     },
     methods: {
       /* Events */

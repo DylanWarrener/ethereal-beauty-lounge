@@ -1,29 +1,27 @@
-export interface IRootState {
+export interface IRootPageCommonState {
   meta: IRootMetaState;
   navigation: IRootNavigationState;
   menu: IRootMenuState;
-  bag: IRootBagState;
 }
+/* Meta */
 interface IRootMetaState {
   prefix: string;
   title: string;
 }
+/* Navigation */
 interface IRootNavigationState {
-  mobile: IRootNavigationMobileState;
+  mobile: {
+    drawer: boolean;
+  };
 }
-interface IRootNavigationMobileState {
-  drawer: boolean;
-}
+/* Menu */
 interface IRootMenuState {
-  basket: IRootMenuBasketState;
+  bag: {
+    drawer: boolean;
+    items: IRootMenuBagItemsState[];
+  };
 }
-interface IRootMenuBasketState {
-  drawer: boolean;
-}
-interface IRootBagState {
-  items: IRootBagItemsState[];
-}
-export interface IRootBagItemsState {
+export interface IRootMenuBagItemsState {
   img: {
     src: string;
     alt: string;

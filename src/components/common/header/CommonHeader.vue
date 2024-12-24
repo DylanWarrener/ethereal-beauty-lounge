@@ -4,51 +4,72 @@
     :class="['border-b', 'text-secondary-3', 'px-2']"
     scroll-behavior="hide"
   >
-    <!-- Logo -->
-    <CommonCardLogo />
+    <template #default>
+      <!-- Logo -->
+      <CommonCardLogo />
 
-    <v-divider
-      inset
-      vertical
-      class="mx-2 my-auto d-none d-sm-flex"
-      style="height: 30px"
-    ></v-divider>
-    <v-spacer class="d-flex d-sm-none"></v-spacer>
+      <v-divider
+        inset
+        vertical
+        class="mx-2 my-auto d-none d-sm-flex"
+        style="height: 30px"
+      ></v-divider>
+      <v-spacer class="d-flex d-sm-none"></v-spacer>
 
-    <!-- Navigation for mobile -->
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-app-bar-nav-icon
-          :class="['d-flex d-md-none', isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-          @click="drawer = !drawer"
-        ></v-app-bar-nav-icon>
-      </template>
-    </v-hover>
+      <!-- Navigation for mobile -->
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-app-bar-nav-icon
+            :class="['d-flex d-md-none', isHovering ? 'text-secondary' : '']"
+            v-bind="props"
+            @click="drawer = !drawer"
+          ></v-app-bar-nav-icon>
+        </template>
+      </v-hover>
 
-    <v-spacer class="d-none d-sm-flex d-md-none"></v-spacer>
+      <v-spacer class="d-none d-sm-flex d-md-none"></v-spacer>
 
-    <!-- Navigation tools -->
-    <CommonNavTools />
-    <v-spacer class="d-none d-md-flex"></v-spacer>
+      <!-- Navigation tools -->
+      <CommonNavTools />
+      <v-spacer class="d-none d-md-flex"></v-spacer>
 
-    <!-- Navigation for non-mobile -->
-    <CommonNav />
-    <v-spacer class="d-none d-md-flex"></v-spacer>
+      <!-- Navigation for non-mobile -->
+      <CommonNav />
+      <v-spacer class="d-none d-md-flex"></v-spacer>
 
-    <v-divider
-      inset
-      vertical
-      class="mx-2 my-auto d-none d-sm-flex"
-      style="height: 30px"
-    ></v-divider>
+      <v-divider
+        inset
+        vertical
+        class="mx-2 my-auto d-none d-sm-flex"
+        style="height: 30px"
+      ></v-divider>
 
-    <!-- Navigation options -->
-    <CommonNavOptions />
+      <!-- Navigation options -->
+      <CommonNavOptions />
+    </template>
+
+    <template v-if="!isMobile" #extension>
+      <ClientOnly>
+        <v-hover>
+          <template #default="{ isHovering, props: hoverProps }">
+            <v-tooltip location="bottom" text="Search">
+              <template #activator="{ props: tooltipProps }">
+                <v-btn
+                  icon="$search"
+                  v-bind="mergeProps(hoverProps, tooltipProps)"
+                  :class="[isHovering ? 'text-secondary' : '']"
+                ></v-btn>
+              </template>
+            </v-tooltip>
+          </template>
+        </v-hover>
+      </ClientOnly>
+    </template>
   </v-app-bar>
 </template>
 
 <script lang="ts">
+  import { mergeProps } from 'vue';
   import { useRootStore } from '@/stores/root';
   import Logo from '@/assets/img/logo.png';
 
@@ -77,7 +98,8 @@
         },
       },
     },
+    methods: {
+      mergeProps,
+    },
   });
 </script>
-
-<style lang="scss" scoped></style>

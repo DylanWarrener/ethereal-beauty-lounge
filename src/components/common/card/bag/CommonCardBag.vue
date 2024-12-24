@@ -28,7 +28,7 @@
 
 <script lang="ts">
   import { useRootStore } from '@/stores/root';
-  import type { IRootBagItemsState } from '@/abstractions/interfaces/store/root';
+  import type { IRootMenuBagItemsState } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
 
   export default defineComponent({
     name: 'common-card-bag',
@@ -38,8 +38,8 @@
     },
     computed: {
       /* Data */
-      bagItems(): IRootBagItemsState[] {
-        return this.rootStore.get_bag_items;
+      bagItems(): IRootMenuBagItemsState[] {
+        return this.rootStore.get_menu_bag_items;
       },
     },
   });

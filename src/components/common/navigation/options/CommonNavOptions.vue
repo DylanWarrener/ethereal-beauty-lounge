@@ -14,7 +14,11 @@
                   icon="$bag"
                   :class="[isHovering ? 'text-secondary' : '']"
                 ></v-icon>
-                <v-menu activator="parent" class="d-none d-sm-flex">
+                <v-menu
+                  v-model="menuDrawer"
+                  activator="parent"
+                  class="d-none d-sm-flex"
+                >
                   <CommonCardBag />
                 </v-menu>
               </v-btn>
@@ -78,6 +82,9 @@
     },
     computed: {
       /* Data */
+      isMobile(): boolean {
+        return !this.$vuetify.display.smAndUp;
+      },
       isLoggedIn: {
         get(): boolean {
           return this.authStore.get_user_isLoggedIn;
@@ -85,6 +92,19 @@
         set(newValue: boolean): void {
           this.authStore.set_user_isLoggedIn({ isLoggedIn: newValue });
         },
+      },
+      menuDrawer: {
+        get(): boolean {
+          return this.rootStore.get_menu_bag_drawer;
+        },
+        set(state: boolean): void {
+          this.rootStore.set_menu_bag_drawer(state);
+        },
+      },
+    },
+    watch: {
+      isMobile(newValue: boolean): void {
+        if (newValue) this.menuDrawer = false;
       },
     },
     methods: {

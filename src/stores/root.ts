@@ -1,159 +1,177 @@
 import { defineStore } from 'pinia';
 
 /* ABSTRACTIONS */
-import type {
-  IRootState,
-  IRootBagItemsState,
-} from '@/abstractions/interfaces/store/root';
+import type { IRootState } from '@/abstractions/interfaces/store/root/root';
+import type { IRootMenuBagItemsState } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
 import { EStoreNames } from '@/abstractions/enums/store';
 
 import TempBagItemImg from '@/assets/img/hero-section/mobile/background-image-1.webp';
 
 export const useRootStore = defineStore(EStoreNames.ROOT, {
   state: (): IRootState => ({
-    meta: {
-      prefix: 'EBL',
-      title: '',
-    },
-    navigation: {
-      mobile: {
-        drawer: false,
+    page: {
+      common: {
+        meta: {
+          prefix: 'EBL',
+          title: '',
+        },
+        navigation: {
+          mobile: {
+            drawer: false,
+          },
+        },
+        menu: {
+          bag: {
+            drawer: false,
+            items: [
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item 1',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: true,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: false,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: true,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: true,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: false,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: true,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: false,
+                deleting: false,
+              },
+              {
+                img: {
+                  src: TempBagItemImg,
+                  alt: 'Item 1',
+                },
+                name: 'Product item',
+                size: '200ml',
+                quantity: 1,
+                price: 25.5,
+                inStock: false,
+                deleting: false,
+              },
+            ],
+          },
+        },
       },
-    },
-    menu: {
-      basket: {
-        drawer: false,
-      },
-    },
-    bag: {
-      items: [
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item 1',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: true,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: false,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: true,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: true,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: false,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: true,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: false,
-          deleting: false,
-        },
-        {
-          img: {
-            src: TempBagItemImg,
-            alt: 'Item 1',
-          },
-          name: 'Product item',
-          size: '200ml',
-          quantity: 1,
-          price: 25.5,
-          inStock: false,
-          deleting: false,
-        },
-      ],
+      home: {},
+      packages: {},
+      services: {},
+      products: {},
+      contact: {},
+      about: {},
+      bag: {},
+      account: {},
     },
   }),
   getters: {
-    /* Meta */
-    get_meta_title: (state: IRootState) => state.meta.title,
+    /* Page common - meta */
+    get_meta_title: (state: IRootState) => state.page.common.meta.title,
 
-    /* Navigation */
+    /* Page common - navigation */
     get_navigation_mobile_drawer: (state: IRootState) =>
-      state.navigation.mobile.drawer,
+      state.page.common.navigation.mobile.drawer,
 
-    /* Bag */
-    get_bag_items: (state: IRootState) => state.bag.items,
+    /* Page common - menu */
+    // Bag
+    get_menu_bag_drawer: (state: IRootState) =>
+      state.page.common.menu.bag.drawer,
+    get_menu_bag_items: (state: IRootState) => state.page.common.menu.bag.items,
   },
   actions: {
-    /* Meta */
+    /* Page common - meta */
     set_meta_title(state: string): void {
-      this.meta.title = `${this.meta.prefix} - ${state}`;
+      this.page.common.meta.title = `${this.page.common.meta.prefix} - ${state}`;
     },
 
-    /* Navigation */
+    /* Page common - navigation */
+    // Mobile
     set_navigation_mobile_drawer(state: boolean): void {
-      this.navigation.mobile.drawer = state;
+      this.page.common.navigation.mobile.drawer = state;
+    },
+
+    /* Page common - menu */
+    // Bag
+    set_menu_bag_drawer(state: boolean): void {
+      this.page.common.menu.bag.drawer = state;
     },
 
     /* Bag */
-    set_bag_items(state: IRootBagItemsState[]): void {
-      this.bag.items = [...state];
+    set_menu_bag_items(state: IRootMenuBagItemsState[]): void {
+      this.page.common.menu.bag.items = [...state];
     },
-    set_bag_item(state: IRootBagItemsState): void {
-      this.bag.items.push(state);
+    set_menu_bag_item(state: IRootMenuBagItemsState): void {
+      this.page.common.menu.bag.items.push(state);
     },
   },
 });
