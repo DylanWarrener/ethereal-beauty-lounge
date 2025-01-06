@@ -3,18 +3,20 @@
     <template #preferences-content>
       <!-- Avatar -->
       <v-col cols="12" class="d-flex flex-column justify-center align-center">
-        <v-card
-          width="128"
-          height="128"
-          rounded="circle"
-          class="d-flex justify-center align-center"
-        >
-          <template #default>
-            <span v-if="avatarInitials" class="text-h6">
-              {{ avatarInitials }}
-            </span>
-          </template>
-        </v-card>
+        <ClientOnly>
+          <v-card
+            width="128"
+            height="128"
+            rounded="circle"
+            class="d-flex justify-center align-center"
+          >
+            <template #default>
+              <span v-if="avatarInitials" class="text-h6">
+                {{ avatarInitials }}
+              </span>
+            </template>
+          </v-card>
+        </ClientOnly>
       </v-col>
 
       <!-- Display name -->
@@ -81,37 +83,47 @@
 </template>
 
 <script lang="ts">
+  import { useAuthStore } from '@/stores/auth';
+  import { useFirestore } from '@/stores/firestore';
+
   export default defineComponent({
     name: 'section-account-settings-preferences',
-    data() {
+    setup() {
+      const authStore = useAuthStore();
+      const fireStore = useFirestore();
+      return { authStore, fireStore };
+    },
+    data(): any {
       return {
         settings: {
           title: 'Settings',
           subtitle: '',
           content: {
-            avatar: {
-              background: '',
-              text: 'DW',
-            },
-            displayName: {
-              label: 'Display name',
-              value: '',
-            },
-            firstName: {
-              label: 'First name',
-              value: '',
-            },
-            lastName: {
-              label: 'Second name',
-              value: '',
-            },
-            email: {
-              label: 'Email',
-              value: '',
-            },
-            phoneNumber: {
-              label: 'Phone number',
-              value: '',
+            input: {
+              avatar: {
+                background: '',
+                text: 'DW',
+              },
+              displayName: {
+                label: 'Display name',
+                value: '',
+              },
+              firstName: {
+                label: 'First name',
+                value: '',
+              },
+              lastName: {
+                label: 'Second name',
+                value: '',
+              },
+              email: {
+                label: 'Email',
+                value: '',
+              },
+              phoneNumber: {
+                label: 'Phone number',
+                value: null,
+              },
             },
           },
         },
@@ -126,12 +138,10 @@
         return this.settings.subtitle;
       },
       avatarInitials(): string {
-        let retval: string = '';
-        if (this.displayName_value.trim().length > 0) {
-          const [firstname, lastname] = this.displayName.split(' ');
-          retval = `${firstname[0]}${lastname[0]}`.toUpperCase();
-        }
-        return retval;
+        // First and last name are required, so directly access the first characters
+        const firstnameFirstLetter: string = this.firstname_value[0];
+        const lastnameFirstLetter: string = this.lastname_value[0];
+        return `${firstnameFirstLetter}${lastnameFirstLetter}`.toUpperCase();
       },
 
       /* Validation */
@@ -152,18 +162,46 @@
       },
 
       /* Data */
-      displayName_value: {
+      displayname_value: {
         get(): string {
-          return '';
+          return this.authStore.get_user_displayName;
         },
         set(state: string): void {
-          this.
+          this.authStore.set_user_displayName(state);
         },
       },
-      firstName_value: {},
-      lastName_value: {},
-      email_value: {},
-      phoneNumber_value: {},
+      firstname_value: {
+        get(): string {
+          return this.fireStore.get_user_firstname;
+        },
+        set(state: string): void {
+          this.fireStore.set_user_firstname(state);
+        },
+      },
+      lastname_value: {
+        get(): string {
+          return this.fireStore.get_user_lastname;
+        },
+        set(state: string): void {
+          this.fireStore.set_user_lastname(state);
+        },
+      },
+      email_value: {
+        get(): string {
+          return this.authStore.get_user_displayName;
+        },
+        set(state: string): void {
+          this.authStore.set_user_email(state);
+        },
+      },
+      phoneNumber_value: {
+        get(): number | null {
+          return this.fireStore.get_user_phoneNumber;
+        },
+        set(state: number | null): void {
+          this.fireStore.set_user_phoneNumber(state);
+        },
+      },
     },
     methods: {},
   });

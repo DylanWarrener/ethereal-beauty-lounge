@@ -1,17 +1,24 @@
-export default interface IFirebaseAuthUser {
+export default interface IAuthUserState {
   isLoggedIn: boolean;
-  preferences: IFirebaseUserPreferenceState;
-  auth: IFirebaseAuthUserData;
+  preferences: IAuthUserPreferenceState;
+  auth: IAuthUserDataState;
 }
-export interface IFirebaseUserPreferenceState {
+export interface IAuthUserPreferenceState {
+  settings: IAuthUserPreferenceSettingsState;
+  security: IAuthUserPreferenceSecurityState;
+  notifications: IAuthUserPreferenceNotificationsState;
+}
+export interface IAuthUserPreferenceSettingsState {
   confirmDeleteItem: boolean;
 }
-export interface IFirebaseAuthUserData {
-  uid: string | null;
-  displayName: string | null;
-  email: string | null;
+export interface IAuthUserPreferenceSecurityState {}
+export interface IAuthUserPreferenceNotificationsState {}
+export interface IAuthUserDataState {
+  uid: string;
+  displayName: string;
+  email: string;
   emailVerified: boolean;
-  photoURL: string | null;
+  photoURL: string;
   isAnonymous: boolean;
-  joinedOn: string | null;
+  joinedOn: string;
 }

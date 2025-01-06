@@ -1,6 +1,6 @@
-export default interface IFirestoreUser {
-  title: string | null;
-  firstname: string | null;
-  lastname: string | null;
+export default interface IFirestoreUserState {
+  title: string;
+  firstname: string;
+  lastname: string;
   phoneNumber: number | null;
 }

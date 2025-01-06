@@ -1,8 +1,8 @@
 <template>
   <v-card class="bg-secondary-3">
     <template #title>
-      <v-card-item v-if="title || subtitle">
-        <v-card-title v-if="title">{{ title }}</v-card-title>
+      <v-card-item>
+        <v-card-title>{{ title }}</v-card-title>
         <v-card-subtitle v-if="subtitle">{{ subtitle }}</v-card-subtitle>
       </v-card-item>
     </template>
@@ -37,6 +37,11 @@
       /* Events */
       updateAvatar_clickHandler(): void {},
       saveSettings_clickHandler(): void {},
+
+      /* Utils */
+      slotIsPopulated(slotName: string): boolean {
+        return this.$slots[slotName] !== undefined;
+      },
     },
   });
 </script>

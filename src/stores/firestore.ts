@@ -12,68 +12,68 @@ import {
 } from 'firebase/firestore';
 
 /* ABSTRACTIONS */
-//import type IFirestore from '@/abstractions/interfaces/store/firestore';
-import { type IFirestoreState } from '@/abstractions/interfaces/store/firestore';
-import type IFirestoreUser from '@/abstractions/interfaces/user/firestore';
+import type IFirestoreState from '@/abstractions/interfaces/store/firestore';
+import type IFirestoreUserState from '@/abstractions/interfaces/user/firestore';
 import { EStoreNames } from '@/abstractions/enums/store';
 
 export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
   state: (): IFirestoreState => ({
     user: {
-      title: null,
-      firstname: null,
-      lastname: null,
+      title: '',
+      firstname: '',
+      lastname: '',
       phoneNumber: null,
     },
   }),
   getters: {
-    get_user: (state: IFirestoreState): IFirestoreUser => {
+    get_user: (state: IFirestoreState): IFirestoreUserState => {
       return state.user;
     },
-    get_userTitle: (state: IFirestoreState): string | null => {
+    get_user_title: (state: IFirestoreState): string => {
       return state.user.title;
     },
-    get_userFirstname: (state: IFirestoreState): string | null => {
+    get_user_firstname: (state: IFirestoreState): string => {
       return state.user.firstname;
     },
-    get_userLastname: (state: IFirestoreState): string | null => {
+    get_user_lastname: (state: IFirestoreState): string => {
       return state.user.lastname;
     },
-    get_userPhoneNumber: (state: IFirestoreState): number | null => {
+    get_user_phoneNumber: (state: IFirestoreState): number | null => {
       return state.user.phoneNumber;
     },
   },
   actions: {
-    set_userFirestore_state(user: IFirestoreUser): void {
-      this.user = user;
+    /* STATE */
+    set_user_firestore_state(value: IFirestoreUserState): void {
+      this.user = value;
     },
-    reset_userFirestore_state(): void {
+    reset_user_firestore_state(): void {
       this.user = {
-        title: null,
-        firstname: null,
-        lastname: null,
+        title: '',
+        firstname: '',
+        lastname: '',
         phoneNumber: null,
       };
     },
-    set_userFirestore_title_state(user: { title: string | null }): void {
-      this.user.title = user.title;
+    set_user_firestore_title_state(value: string): void {
+      this.user.title = value;
     },
-    set_userFirestore_firstname_state(firstname: string | null): void {
-      this.user.firstname = firstname;
+    set_user_firestore_firstname_state(value: string): void {
+      this.user.firstname = value;
     },
-    set_userFirestore_lastname_state(lastname: string | null): void {
-      this.user.lastname = lastname;
+    set_user_firestore_lastname(value: string): void {
+      this.user.lastname = value;
     },
-    set_userFirestore_phoneNumber_state(phoneNumber: number | null): void {
-      this.user.phoneNumber = phoneNumber;
+    set_user_firestore_phoneNumber(value: number): void {
+      this.user.phoneNumber = value;
     },
 
     /* FIRESTORE */
-    get_userFirestoreData(): Promise<DocumentData | string> {
+    get_user(): Promise<DocumentData | string> {
       return new Promise((resolve, reject) => {
         import('@/stores/auth').then(({ useAuthStore }) => {
           const store = useAuthStore();
-          const uid: string | null = store.get_user_id;
+          const uid: string = store.get_user_id;
 
           if (uid !== null) {
             const { $firestore } = useNuxtApp();
@@ -95,7 +95,7 @@ export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
                     'The requested user data is empty. Please try again later.'
                   );
 
-                this.set_userFirestore_state({
+                this.set_user_firestore_state({
                   title: userDocumentData!.title,
                   firstname: userDocumentData!.firstname,
                   lastname: userDocumentData!.lastname,
@@ -184,7 +184,7 @@ export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
         });
       });
     },
-    store_userFirestore_user(user: {
+    store_user(user: {
       uid: string;
       title: string | null;
       firstname: string;
@@ -215,7 +215,7 @@ export const useFirestore = defineStore(EStoreNames.FIRESTORE, {
           });
       });
     },
-    update_userFirestore_user(user: {
+    update_user(user: {
       title?: string;
       firstname?: string;
       lastname?: string;

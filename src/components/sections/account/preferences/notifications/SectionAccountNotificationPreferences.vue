@@ -1,8 +1,7 @@
 <template>
-  <SectionAccountPreferences
-    :title="title"
-    :subtitle="subtitle"
-  ></SectionAccountPreferences>
+  <SectionAccountPreferences :title="title" :subtitle="subtitle">
+    <template #preferences-content>Content</template>
+  </SectionAccountPreferences>
 </template>
 
 <script lang="ts">

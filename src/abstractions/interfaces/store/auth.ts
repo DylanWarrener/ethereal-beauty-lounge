@@ -1,5 +1,5 @@
-import type IFirebaseAuthUser from '~/abstractions/interfaces/user/auth';
+import type IAuthUserState from '~/abstractions/interfaces/user/auth';
 
-export default interface IFirebaseAuthState {
-  user: IFirebaseAuthUser;
+export default interface IAuthState {
+  user: IAuthUserState;
 }

@@ -18,113 +18,138 @@ import {
 } from 'firebase/auth';
 
 /* Abstractions */
-import type IFirebaseAuthState from '@/abstractions/interfaces/store/auth';
-import type IFirebaseAuthUser from '~/abstractions/interfaces/user/auth';
-import { type IFirebaseAuthUserData } from '~/abstractions/interfaces/user/auth';
+import type IAuthState from '@/abstractions/interfaces/store/auth';
+import type IAuthUserState from '@/abstractions/interfaces/user/auth';
+import {
+  type IAuthUserPreferenceState,
+  type IAuthUserPreferenceSettingsState,
+  type IAuthUserPreferenceSecurityState,
+  type IAuthUserPreferenceNotificationsState,
+  type IAuthUserDataState,
+} from '@/abstractions/interfaces/user/auth';
 import { EStoreNames } from '@/abstractions/enums/store';
 
 export const useAuthStore = defineStore(EStoreNames.AUTH, {
-  state: (): IFirebaseAuthState => ({
+  state: (): IAuthState => ({
     user: {
       isLoggedIn: false,
       preferences: {
-        confirmDeleteItem: true,
+        settings: {
+          confirmDeleteItem: true,
+        },
+        security: {},
+        notifications: {},
       },
       auth: {
-        uid: null,
-        displayName: null,
-        email: null,
+        uid: '',
+        displayName: '',
+        email: '',
         emailVerified: false,
-        photoURL: null,
+        photoURL: '',
         isAnonymous: false,
-        joinedOn: null,
+        joinedOn: '',
       },
     },
   }),
   getters: {
-    /* User */
-    get_user: (state: IFirebaseAuthState): IFirebaseAuthUser => {
+    get_user: (state: IAuthState): IAuthUserState => {
       return state.user;
     },
-    get_user_isLoggedIn: (state: IFirebaseAuthState): boolean => {
+    get_user_isLoggedIn: (state: IAuthState): boolean => {
       return state.user.isLoggedIn;
     },
-    get_user_preferences_confirmDeleteItem: (
-      state: IFirebaseAuthState
-    ): boolean => {
-      return state.user.preferences.confirmDeleteItem;
+
+    /* PREFERENCES */
+    get_user_preferences: (state: IAuthState): IAuthUserPreferenceState => {
+      return state.user.preferences;
+    },
+    get_user_preference_forSettings: (
+      state: IAuthState
+    ): IAuthUserPreferenceSettingsState => {
+      return state.user.preferences.settings;
+    },
+    get_user_preference_forSecurity: (
+      state: IAuthState
+    ): IAuthUserPreferenceSecurityState => {
+      return state.user.preferences.security;
+    },
+    get_user_preference_forNotifications: (
+      state: IAuthState
+    ): IAuthUserPreferenceNotificationsState => {
+      return state.user.preferences.notifications;
     },
 
-    /* Auth */
-    get_user_auth: (state: IFirebaseAuthState): IFirebaseAuthUserData => {
+    /* AUTH */
+    get_user_auth: (state: IAuthState): IAuthUserDataState => {
       return state.user.auth;
     },
-    get_user_id: (state: IFirebaseAuthState): string | null => {
+    get_user_id: (state: IAuthState): string => {
       return state.user.auth.uid;
     },
-    get_user_displayName: (state: IFirebaseAuthState): string | null => {
+    get_user_displayName: (state: IAuthState): string => {
       return state.user.auth.displayName;
     },
-    get_user_email: (state: IFirebaseAuthState): string | null => {
+    get_user_email: (state: IAuthState): string => {
       return state.user.auth.email;
     },
-    get_user_emailVerified: (state: IFirebaseAuthState): boolean => {
+    get_user_emailVerified: (state: IAuthState): boolean => {
       return state.user.auth.emailVerified;
     },
-    get_user_photoUrl: (state: IFirebaseAuthState): string | null => {
+    get_user_photoUrl: (state: IAuthState): string => {
       return state.user.auth.photoURL;
     },
-    get_user_anonymous: (state: IFirebaseAuthState): boolean => {
+    get_user_isAnonymous: (state: IAuthState): boolean => {
       return state.user.auth.isAnonymous;
     },
-    get_user_joinedOn: (state: IFirebaseAuthState): string | null => {
+    get_user_joinedOn: (state: IAuthState): string => {
       return state.user.auth.joinedOn;
     },
   },
   actions: {
-    /* User */
-    set_user_isLoggedIn(user: { isLoggedIn: boolean }): void {
-      this.user.isLoggedIn = user.isLoggedIn;
-    },
-    set_user_preferences_confirmDeleteItem(state: boolean): void {
-      this.user.preferences.confirmDeleteItem = state;
+    set_user_isLoggedIn(value: boolean): void {
+      this.user.isLoggedIn = value;
     },
 
-    /* Auth */
-    set_user_auth(user: { auth: IFirebaseAuthUserData }): void {
-      this.user.auth = user.auth;
+    /* PREFERENCES */
+    set_user_preference_settings_confirmDeleteItem(value: boolean): void {
+      this.user.preferences.settings.confirmDeleteItem = value;
     },
-    reset_user_authData(): void {
+
+    /* AUTH */
+    set_user_auth_state(value: IAuthUserDataState): void {
+      this.user.auth = value;
+    },
+    reset_user_auth_state(): void {
       this.user.auth = {
-        uid: null,
-        displayName: null,
-        email: null,
+        uid: '',
+        displayName: '',
+        email: '',
         emailVerified: false,
-        photoURL: null,
+        photoURL: '',
         isAnonymous: false,
-        joinedOn: null,
+        joinedOn: '',
       };
     },
-    set_user_id(user: { uid: string | null }): void {
-      this.user.auth.uid = user.uid;
+    set_user_id_state(value: string): void {
+      this.user.auth.uid = value;
     },
-    set_user_displayName(user: { displayName: string | null }): void {
-      this.user.auth.displayName = user.displayName;
+    set_user_displayName_state(value: string): void {
+      this.user.auth.displayName = value;
     },
-    set_user_email(user: { email: string | null }): void {
-      this.user.auth.email = user.email;
+    set_user_email_state(value: string): void {
+      this.user.auth.email = value;
     },
-    set_userEmailVerified(user: { emailVerified: boolean }): void {
-      this.user.auth.emailVerified = user.emailVerified;
+    set_user_emailVerified_state(value: boolean): void {
+      this.user.auth.emailVerified = value;
     },
-    set_userPhotoUrl(user: { photoUrl: string | null }): void {
-      this.user.auth.photoURL = user.photoUrl;
+    set_user_photoUrl_state(value: string): void {
+      this.user.auth.photoURL = value;
     },
-    set_userAnonymous(user: { isAnonymous: boolean }): void {
-      this.user.auth.isAnonymous = user.isAnonymous;
+    set_user_isAnonymous_state(value: boolean): void {
+      this.user.auth.isAnonymous = value;
     },
-    set_userJoinedOn(user: { joinedOn: string | null }): void {
-      this.user.auth.joinedOn = user.joinedOn;
+    set_user_joinedOn_state(value: string): void {
+      this.user.auth.joinedOn = value;
     },
 
     /* AUTH ACTIONS */
@@ -138,7 +163,7 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
                 valuesNotNull[key] = value;
               }
             }
-            this.set_user_auth(valuesNotNull);
+            this.set_user_auth_state(valuesNotNull);
             resolve();
           } else {
             reject('User is not valid.');
@@ -218,13 +243,17 @@ export const useAuthStore = defineStore(EStoreNames.AUTH, {
       const { $auth } = useNuxtApp();
 
       return new Promise((resolve, reject) => {
-        signOut($auth)
-          .then(() => {
-            this.reset_user_authData();
-            //this.reset_userFirestore_state();
-            resolve();
-          })
-          .catch(() => reject());
+        import('@/stores/firestore').then(({ useFirestore }) => {
+          const store = useFirestore();
+
+          signOut($auth)
+            .then(() => {
+              this.reset_user_auth_state();
+              store.reset_user_firestore_state();
+              resolve();
+            })
+            .catch(() => reject());
+        });
       });
     },
     create_user_auth_account_withEmailAndPassword(user: {
