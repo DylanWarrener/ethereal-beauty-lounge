@@ -12,7 +12,7 @@
       return {
         notifications: {
           title: 'Notifications',
-          subtitle: 'Subtitle',
+          subtitle: '',
         },
       };
     },

@@ -1,23 +1,27 @@
 <template>
   <v-card class="bg-secondary-3">
-    <template v-if="title && subtitle" #title>
-      <v-card-item>
+    <template #title>
+      <v-card-item v-if="title || subtitle">
         <v-card-title v-if="title">{{ title }}</v-card-title>
         <v-card-subtitle v-if="subtitle">{{ subtitle }}</v-card-subtitle>
       </v-card-item>
     </template>
     <template #default>
       <v-divider></v-divider>
-      <v-container>
-        <v-row>
-          <v-col>Content</v-col>
+      <v-container style="border: 2px solid black">
+        <v-row style="border: 2px solid red">
+          <slot name="preferences-content"></slot>
         </v-row>
       </v-container>
       <v-divider></v-divider>
     </template>
     <template #actions>
       <v-spacer></v-spacer>
-      <CommonBtn text="Save" @clicked="" />
+      <CommonBtn
+        text="Update avatar"
+        @clicked.stop="updateAvatar_clickHandler"
+      />
+      <CommonBtn text="Save" @clicked.stop="saveSettings_clickHandler" />
     </template>
   </v-card>
 </template>
@@ -28,6 +32,11 @@
     props: {
       title: { type: String, required: true },
       subtitle: { type: String, required: false },
+    },
+    methods: {
+      /* Events */
+      updateAvatar_clickHandler(): void {},
+      saveSettings_clickHandler(): void {},
     },
   });
 </script>

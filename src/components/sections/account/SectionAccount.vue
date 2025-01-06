@@ -6,7 +6,7 @@
           <!-- Mobile side navigation -->
           <ClientOnly v-if="isMobile">
             <v-col cols="12">
-              <v-sheet class="mx-auto bg-secondary-3">
+              <v-sheet class="mx-auto bg-secondary-3" rounded="lg">
                 <v-slide-group mandatory>
                   <v-slide-group-item v-slot="{ isSelected }">
                     <v-btn
@@ -16,7 +16,7 @@
                       :color="isSelected ? 'accent' : undefined"
                       @click.stop="
                         account.content.selectedComponent =
-                          'SectionAccountProfilePreferences'
+                          'SectionAccountSettingsPreferences'
                       "
                     >
                       <template v-slot:prepend>
@@ -78,7 +78,7 @@
                     :value="account.navigation.profile.value"
                     @click.stop="
                       account.content.selectedComponent =
-                        'SectionAccountProfilePreferences'
+                        'SectionAccountSettingsPreferences'
                     "
                   >
                     <template #prepend>
@@ -116,7 +116,7 @@
             </v-col>
           </ClientOnly>
 
-          <v-col cols="9">
+          <v-col cols="12" md="9">
             <component :is="account.content.selectedComponent"></component>
           </v-col>
         </v-row>
@@ -126,14 +126,14 @@
 </template>
 
 <script lang="ts">
-  import SectionAccountProfilePreferences from '@/components/sections/account/preferences/profile/SectionAccountProfilePreferences.vue';
+  import SectionAccountSettingsPreferences from '@/components/sections/account/preferences/settings/SectionAccountSettingsPreferences.vue';
   import SectionAccountSecurityPreferences from '@/components/sections/account/preferences/security/SectionAccountSecurityPreferences.vue';
   import SectionAccountNotificationsPreferences from '@/components/sections/account/preferences/notifications/SectionAccountNotificationPreferences.vue';
 
   export default defineComponent({
     name: 'section-account',
     components: {
-      SectionAccountProfilePreferences,
+      SectionAccountSettingsPreferences,
       SectionAccountSecurityPreferences,
       SectionAccountNotificationsPreferences,
     },
@@ -147,9 +147,9 @@
           navigation: {
             openedGroup: ['profile'],
             profile: {
-              text: 'Profile',
-              value: 'profile',
-              icon: '$account',
+              text: 'Settings',
+              value: 'settings',
+              icon: '$settings',
             },
             security: {
               text: 'Security',
@@ -163,7 +163,7 @@
             },
           },
           content: {
-            selectedComponent: 'SectionAccountProfilePreferences',
+            selectedComponent: 'SectionAccountSettingsPreferences',
           },
         },
       };

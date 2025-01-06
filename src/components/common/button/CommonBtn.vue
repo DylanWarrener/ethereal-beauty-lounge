@@ -1,5 +1,10 @@
 <template>
-  <v-btn rounded="xl" variant="flat" class="bg-accent-2" @click.stop="clicked">
+  <v-btn
+    rounded="xl"
+    variant="flat"
+    class="px-4 bg-accent-2"
+    @click.stop="clicked"
+  >
     {{ text }}
   </v-btn>
 </template>

@@ -12,7 +12,7 @@
       return {
         security: {
           title: 'Security',
-          subtitle: 'Subtitle',
+          subtitle: '',
         },
       };
     },
