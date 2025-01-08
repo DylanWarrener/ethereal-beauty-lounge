@@ -3,7 +3,8 @@
     v-ripple="{ class: 'text-accent-3' }"
     flat
     :to="logo.route"
-    height="100%"
+    :width="cardWidth ?? ''"
+    :height="cardHeight"
     min-width="150"
   >
     <v-img width="100%" height="100%" :src="src" :alt="logo.alt"></v-img>
@@ -14,7 +15,13 @@
   import Logo from '@/assets/img/logo.png';
 
   export default defineComponent({
-    name: '',
+    name: 'common-card-logo',
+    props: {
+      cardWidth: { type: String, required: false },
+      cardHeight: { type: String, required: false, default: '100%' },
+      imgWidth: { type: String, required: false },
+      imgHeight: { type: String, required: false },
+    },
     data() {
       return {
         logo: {

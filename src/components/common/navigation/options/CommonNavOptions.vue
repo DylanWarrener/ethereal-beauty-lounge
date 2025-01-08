@@ -90,8 +90,8 @@
         get(): boolean {
           return this.authStore.get_user_isLoggedIn;
         },
-        set(newValue: boolean): void {
-          this.authStore.set_user_isLoggedIn({ isLoggedIn: newValue });
+        set(state: boolean): void {
+          this.authStore.set_user_isLoggedIn(state);
         },
       },
       menuDrawer: {
@@ -104,8 +104,8 @@
       },
     },
     watch: {
-      isMobile(newValue: boolean): void {
-        if (newValue) this.menuDrawer = false;
+      isMobile(state: boolean): void {
+        if (state) this.menuDrawer = false;
       },
     },
     methods: {

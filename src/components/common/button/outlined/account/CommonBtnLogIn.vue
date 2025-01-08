@@ -37,7 +37,7 @@
     },
     methods: {
       login_handleClick(): void {
-        this.authStore.set_user_isLoggedIn({ isLoggedIn: true });
+        this.authStore.set_user_isLoggedIn(true);
       },
     },
   });

@@ -143,22 +143,22 @@
         get(): boolean {
           return this.authStore.get_user_isLoggedIn;
         },
-        set(newValue: boolean): void {
-          this.authStore.set_user_isLoggedIn({ isLoggedIn: newValue });
+        set(state: boolean): void {
+          this.authStore.set_user_isLoggedIn(state);
         },
       },
       drawer: {
         get(): boolean {
           return this.rootStore.get_navigation_mobile_drawer;
         },
-        set(newValue: boolean): void {
-          this.rootStore.set_navigation_mobile_drawer(newValue);
+        set(state: boolean): void {
+          this.rootStore.set_navigation_mobile_drawer(state);
         },
       },
     },
     watch: {
-      isMobile(newValue: boolean): void {
-        if (!newValue) this.drawer = false;
+      isMobile(state: boolean): void {
+        if (!state) this.drawer = false;
       },
     },
   });

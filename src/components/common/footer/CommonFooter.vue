@@ -1,9 +1,118 @@
 <template>
-  <h1>This is the footer</h1>
+  <v-container fluid style="border: 2px solid black">
+    <!-- Content -->
+    <v-row style="border: 2px solid red">
+      <!-- Logo + Newsletter -->
+      <v-col
+        cols="12"
+        class="d-flex flex-column justify-center align-center"
+        style="border: 2px solid blue"
+      >
+        <CommonCardLogo card-width="100" card-height="64" />
+        <h4 class="pt-2 pb-4 text-center text-secondary">
+          {{ content.newsletter.text.header }}
+        </h4>
+        <v-text-field
+          variant="outlined"
+          density="comfortable"
+          width="300"
+          :label="content.newsletter.input.textfield.label"
+        ></v-text-field>
+        <CommonBtn :text="content.newsletter.input.btn.text" />
+        <span class="py-4 text-body-2">
+          {{ content.newsletter.text.consent }}
+        </span>
+      </v-col>
+
+      <!-- Pages -->
+      <v-col
+        cols="12"
+        class="d-flex justify-center"
+        style="border: 2px solid blue"
+      >
+        <h4>Pages</h4>
+      </v-col>
+
+      <!-- Sections -->
+      <v-col
+        cols="12"
+        class="d-flex justify-center"
+        style="border: 2px solid blue"
+      >
+        <h4>Sections</h4>
+      </v-col>
+
+      <!-- Socials -->
+      <v-col
+        cols="12"
+        class="d-flex justify-center"
+        style="border: 2px solid blue"
+      >
+        <h4>Socials</h4>
+      </v-col>
+    </v-row>
+
+    <!-- Information & TOS -->
+    <v-row>
+      <!-- Copyright -->
+      <v-col style="border: 2px solid blue"></v-col>
+
+      <!-- Links -->
+      <v-col style="border: 2px solid blue"></v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
-  export default defineComponent({});
+  import type IFooterData from '@/abstractions/interfaces/footer/footer.js';
+
+  export default defineComponent({
+    name: 'common-footer',
+    data(): IFooterData {
+      return {
+        content: {
+          newsletter: {
+            text: {
+              header:
+                'Join our newsletter to stay up to date on features and releases.',
+              consent:
+                'By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company.',
+            },
+            input: {
+              textfield: {
+                label: 'Email address',
+              },
+              btn: {
+                text: 'Subscribe',
+              },
+            },
+          },
+          pages: {
+            home: {},
+            packages: {},
+            services: {},
+            products: {},
+            account: {},
+            basket: {},
+            contact: {},
+            about: {},
+          },
+          sections: {},
+          socials: {
+            facebook: {
+              url: '',
+              icon: '',
+            },
+            instagram: {
+              url: '',
+              icon: '',
+            },
+          },
+        },
+        information: {},
+      };
+    },
+  });
 </script>
 
 <style lang="scss" scoped></style>
