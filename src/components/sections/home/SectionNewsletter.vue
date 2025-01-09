@@ -61,7 +61,7 @@
       };
     },
     computed: {
-      validationRules(): any[] {
+      validationRules(): unknown[] {
         return [this.notEmpty];
       },
     },
