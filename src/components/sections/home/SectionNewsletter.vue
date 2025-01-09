@@ -38,7 +38,7 @@
 <script lang="ts">
   /* Abstractions */
   import type INewsletterData from '@/abstractions/interfaces/components/home/newsletter';
-  import type { INewsletterValidationRules } from '@/abstractions/interfaces/components/home/newsletter';
+  //import type { INewsletterValidationRules } from '@/abstractions/interfaces/components/home/newsletter';
 
   /* Utils */
   import { notEmpty } from '@/utils/functions/validation/validation';
