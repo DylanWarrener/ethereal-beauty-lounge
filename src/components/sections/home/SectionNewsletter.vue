@@ -41,7 +41,7 @@
   import type { INewsletterValidationRules } from '@/abstractions/interfaces/components/home/newsletter';
 
   /* Utils */
-  import { notEmpty } from '@/utils/functions';
+  import { notEmpty } from '@/utils/functions/validation/validation';
 
   export default defineComponent({
     name: 'section-newsletter',
