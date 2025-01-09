@@ -10,3 +10,6 @@ export default interface INewsletterData {
     };
   };
 }
+export interface INewsletterValidationRules {
+  notEmpty: (value: string) => string | boolean;
+}

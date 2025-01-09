@@ -13,6 +13,7 @@
               density="comfortable"
               max-width="400"
               :label="content.input.textfield.label"
+              :rules="[validationRules]"
             >
               <template #append-inner>
                 <CommonBtn
@@ -35,7 +36,12 @@
 </template>
 
 <script lang="ts">
+  /* Abstractions */
   import type INewsletterData from '@/abstractions/interfaces/components/home/newsletter';
+  import type { INewsletterValidationRules } from '@/abstractions/interfaces/components/home/newsletter';
+
+  /* Utils */
+  import { notEmpty } from '@/utils/functions';
 
   export default defineComponent({
     name: 'section-newsletter',
@@ -53,6 +59,17 @@
           },
         },
       };
+    },
+    computed: {
+      validationRules(): any[] {
+        return [this.notEmpty];
+      },
+    },
+    methods: {
+      /* Validation */
+      notEmpty(value: string): boolean | string {
+        return notEmpty(value);
+      },
     },
   });
 </script>
