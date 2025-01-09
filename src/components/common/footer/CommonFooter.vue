@@ -2,28 +2,6 @@
   <v-container fluid style="border: 2px solid black">
     <!-- Content -->
     <v-row style="border: 2px solid red">
-      <!-- Logo + Newsletter -->
-      <v-col
-        cols="12"
-        class="d-flex flex-column justify-center align-center"
-        style="border: 2px solid blue"
-      >
-        <CommonCardLogo card-width="100" card-height="64" />
-        <h4 class="pt-2 pb-4 text-center text-secondary">
-          {{ content.newsletter.text.header }}
-        </h4>
-        <v-text-field
-          variant="outlined"
-          density="comfortable"
-          width="300"
-          :label="content.newsletter.input.textfield.label"
-        ></v-text-field>
-        <CommonBtn :text="content.newsletter.input.btn.text" />
-        <span class="py-4 text-body-2">
-          {{ content.newsletter.text.consent }}
-        </span>
-      </v-col>
-
       <!-- Pages -->
       <v-col
         cols="12"

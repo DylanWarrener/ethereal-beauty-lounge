@@ -1,20 +1,26 @@
 <template>
-  <v-container style="border: 2px solid black">
-    <!-- Section title + subtitle +/ info -->
-    <v-row v-if="title && subtitle" style="border: 2px solid red">
-      <!-- Section title -->
-      <v-col v-if="title" cols="12" style="border: 2px solid blue">
-        <h2 class="text-center">{{ title }}</h2>
+  <v-container fluid :class="[containerClass]" :style="containerStyle">
+    <!-- Section headings -->
+    <v-row dense :class="[headingRowClass]" style="headingRowStyle">
+      <!-- Title -->
+      <v-col cols="12" :class="[titleColClass]" :style="titleColStyle">
+        <h2 class="text-h2 text-center">{{ title }}</h2>
       </v-col>
 
-      <!-- Section subtitle and/or info -->
-      <v-col v-if="subtitle" cols="12" style="border: 2px solid blue">
-        <h3 class="text-center">{{ subtitle }}</h3>
+      <!-- Subtitle and/or info -->
+      <v-col
+        v-if="subtitle"
+        cols="12"
+        :class="[subtitleColClass]"
+        :style="subtitleColStyle"
+      >
+        <h3 class="text-h3 text-center">{{ subtitle }}</h3>
       </v-col>
     </v-row>
 
-    <v-row style="border: 2px solid red">
-      <v-col cols="12" style="border: 2px solid blue">
+    <!-- Section content -->
+    <v-row dense :class="[contentRowClass]" :style="contentRowStyle">
+      <v-col cols="12" :class="[contentColClass]" :style="contentColStyle">
         <slot name="section-content"></slot>
       </v-col>
     </v-row>
@@ -25,8 +31,28 @@
   export default defineComponent({
     name: 'common-section-main',
     props: {
+      /* Text */
       title: { type: String, required: true },
       subtitle: { type: String, required: false },
+
+      /* CSS */
+      // v-container
+      containerClass: { type: String, required: false },
+      containerStyle: { type: String, required: false },
+
+      // v-row
+      headingRowClass: { type: String, required: false },
+      headingRowStyle: { type: String, required: false },
+      contentRowClass: { type: String, required: false },
+      contentRowStyle: { type: String, required: false },
+
+      // v-col
+      titleColClass: { type: String, required: false },
+      titleColStyle: { type: String, required: false },
+      subtitleColClass: { type: String, required: false },
+      subtitleColStyle: { type: String, required: false },
+      contentColClass: { type: String, required: false },
+      contentColStyle: { type: String, required: false },
     },
   });
 </script>

@@ -5,7 +5,7 @@
 
   <SectionHero />
   <ClientOnly>
-    <v-container :fluid="isMobile" style="border: 2px solid black">
+    <v-container :fluid="isMobile" class="pa-0" style="border: 2px solid black">
       <v-row>
         <v-col cols="12">
           <SectionBriefAbout />
@@ -21,6 +21,9 @@
         </v-col>
         <v-col cols="12">
           <SectionBriefContact />
+        </v-col>
+        <v-col cols="12">
+          <SectionNewsletter />
         </v-col>
       </v-row>
     </v-container>
