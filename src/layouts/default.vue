@@ -6,10 +6,10 @@
 
     <CommonHeader />
 
-    <v-main class="d-flex flex-column">
-      <v-container class="pa-0" fluid>
-        <v-row>
-          <v-col>
+    <v-main class="w-100 h-100 d-flex flex-column">
+      <v-container class="pa-4" fluid>
+        <v-row dense>
+          <v-col class="pa-0">
             <NuxtPage />
           </v-col>
         </v-row>

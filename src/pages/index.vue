@@ -4,7 +4,7 @@
   </Head>
 
   <SectionHero />
-  <v-container fluid class="pa-4" style="border: 2px solid black">
+  <v-container fluid class="pa-4">
     <v-row dense class="ga-4">
       <v-col cols="12" class="pa-0">
         <SectionBriefAbout />

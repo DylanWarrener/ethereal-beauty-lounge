@@ -2,21 +2,18 @@
 <template>
   <v-hover>
     <template #default="{ isHovering, props }">
-      <v-btn
+      <CommonBtn
+        v-bind="props"
         variant="outlined"
-        rounded="xl"
-        size="large"
-        :class="[isHovering ? 'text-accent-2' : '']"
+        icon="$arrowRight"
+        btn-text-class="pr-2"
+        :class="[isHovering ? 'text-accent-2' : '', btnClass]"
+        :icon-class="`ml-2 icon-transition ${isHovering ? 'icon-transform' : ''}`"
+        :text="text"
         :to="to"
         :disabled="disabled"
-        v-bind="props"
-      >
-        <span class="pr-2">{{ text }}</span>
-        <v-icon
-          icon="$arrowRight"
-          :class="['icon-transition', { 'icon-transform': isHovering }]"
-        ></v-icon>
-      </v-btn>
+        @clicked="$emit('clicked')"
+      ></CommonBtn>
     </template>
   </v-hover>
 </template>
@@ -25,9 +22,18 @@
   export default defineComponent({
     name: 'common-btn-outlined-cta-external',
     props: {
+      /* Text */
       text: { type: String, required: true },
+
+      /* CSS */
+      btnClass: { type: String, required: false },
+
+      /* Component props */
       to: { type: String, required: false },
       disabled: { type: Boolean, required: false, default: false },
+    },
+    emits: {
+      clicked: null,
     },
   });
 </script>

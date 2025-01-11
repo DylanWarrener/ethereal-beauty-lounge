@@ -1,14 +1,26 @@
 <template>
-  <v-card :class="[cardClass]" :style="cardStyle" :rounded="rounded">
-    <v-container fluid :class="[containerClass]" :style="containerStyle">
-      <slot name="card-img"></slot>
+  <v-card :id="id" :class="[cardClass]" :style="cardStyle" :rounded="rounded">
+    <v-container
+      fluid
+      :class="['h-100 d-flex flex-column', containerClass]"
+      :style="containerStyle"
+    >
+      <v-row
+        v-if="slotIsPopulated(['card-img'])"
+        :class="['flex-shrink-0 flex-grow-1', imgRowClass]"
+        :style="imgRowStyle"
+      >
+        <v-col :class="[imgColClass]" :style="imgColStyle">
+          <slot name="card-img"></slot>
+        </v-col>
+      </v-row>
       <slot name="card-toolbar"></slot>
 
       <!-- Headings -->
       <v-row
         v-if="headingIsPopulated"
         dense
-        :class="[headingRowClass]"
+        :class="['flex-shrink-1 flex-grow-0 d-flex pa-2', headingRowClass]"
         :style="headingRowStyle"
       >
         <v-col cols="12" :class="[headingColClass]" :style="headingColStyle">
@@ -35,7 +47,7 @@
       <v-row
         v-if="slotIsPopulated(['card-content'])"
         dense
-        :class="[contentRowClass]"
+        :class="['flex-shrink-1 flex-grow-1', contentRowClass]"
         :style="contentRowStyle"
       >
         <v-col :class="[contentColClass]" :style="contentColStyle">
@@ -49,7 +61,10 @@
       <v-row
         v-if="slotIsPopulated(['card-actions'])"
         dense
-        :class="[actionRowClass]"
+        :class="[
+          'ga-4 d-flex flex-shrink-1 flex-grow-0 align-center',
+          actionRowClass,
+        ]"
         :style="actionRowStyle"
       >
         <v-col cols="12" :class="[actionColClass]" :style="actionColStyle">
@@ -74,6 +89,7 @@
 
       /* CSS */
       // v-card
+      id: { type: String, required: false },
       rounded: { type: String, required: false, default: 'xl' },
       cardClass: { type: String, required: false },
       cardStyle: { type: String, required: false },
@@ -83,6 +99,8 @@
       containerStyle: { type: String, required: false },
 
       // v-row
+      imgRowClass: { type: String, required: false },
+      imgRowStyle: { type: String, required: false },
       headingRowClass: { type: String, required: false },
       headingRowStyle: { type: String, required: false },
       contentRowClass: { type: String, required: false },
@@ -91,6 +109,8 @@
       actionRowStyle: { type: String, required: false },
 
       // v-col
+      imgColClass: { type: String, required: false },
+      imgColStyle: { type: String, required: false },
       headingColClass: { type: String, required: false },
       headingColStyle: { type: String, required: false },
       titleColClass: { type: String, required: false },

@@ -2,17 +2,19 @@
   <ClientOnly>
     <v-hover v-if="isLoggedIn">
       <template #default="{ isHovering, props }">
-        <v-btn
-          rounded="xl"
-          variant="outlined"
-          size="large"
-          :class="[btnClass, isHovering ? 'text-accent-2' : '']"
+        <CommonBtn
           v-bind="props"
-          @click="logout_handleClick"
-        >
-          <span class="mr-2">Log out</span>
-          <v-icon icon="$logout"></v-icon>
-        </v-btn>
+          variant="flat"
+          text="Log out"
+          icon="$logout"
+          icon-class="ml-2"
+          :class="[
+            'bg-accent-darken-2',
+            isHovering ? 'text-secondary' : 'text-primary',
+            btnClass,
+          ]"
+          @clicked="logout_handleClick"
+        ></CommonBtn>
       </template>
     </v-hover>
   </ClientOnly>

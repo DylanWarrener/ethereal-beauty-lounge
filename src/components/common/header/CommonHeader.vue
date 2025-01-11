@@ -1,6 +1,6 @@
 <template>
   <v-app-bar
-    class="bg-primary text-secondary-3 px-2"
+    class="bg-primary text-secondary-3 pl-2 pr-6"
     elevation="0"
     scroll-behavior="hide"
   >
