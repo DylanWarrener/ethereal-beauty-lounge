@@ -1,24 +1,22 @@
 <template>
-  <v-app>
-    <v-layout class="d-flex flex-column">
-      <ClientOnly>
-        <CommonNavMobile />
-      </ClientOnly>
+  <v-app theme="light">
+    <ClientOnly>
+      <CommonNavMobile />
+    </ClientOnly>
 
-      <CommonHeader />
+    <CommonHeader />
 
-      <v-main>
-        <v-container class="pa-0" fluid>
-          <v-row>
-            <v-col>
-              <NuxtPage />
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-main>
+    <v-main class="d-flex flex-column">
+      <v-container class="pa-0" fluid>
+        <v-row>
+          <v-col>
+            <NuxtPage />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
 
-      <CommonFooter />
-    </v-layout>
+    <CommonFooter />
   </v-app>
 </template>
 

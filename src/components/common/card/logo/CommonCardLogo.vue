@@ -1,9 +1,9 @@
 <template>
   <v-card
-    v-ripple="{ class: 'text-accent-3' }"
     flat
+    class="bg-primary"
     :to="logo.route"
-    :width="cardWidth ?? ''"
+    :width="cardWidth"
     :height="cardHeight"
     min-width="150"
   >
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-  import Logo from '@/assets/img/logo.png';
+  import Logo from '@/assets/img/png/logo.png';
 
   export default defineComponent({
     name: 'common-card-logo',

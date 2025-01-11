@@ -5,7 +5,7 @@
         <template #default="{ isHovering, props }">
           <v-btn
             :key="index"
-            active-color="accent-2"
+            active-color="accent-darken-3"
             :to="item.route"
             rounded="xl"
             :class="[

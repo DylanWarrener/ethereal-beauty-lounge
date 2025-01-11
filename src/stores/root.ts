@@ -5,7 +5,7 @@ import type { IRootState } from '@/abstractions/interfaces/store/root/root';
 import type { IRootMenuBagItemState } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
 import { EStoreNames } from '@/abstractions/enums/store';
 
-import TempBagItemImg from '@/assets/img/hero-section/mobile/background-image-1.webp';
+import TempBagItemImg from '@/assets/img/webp/hero-section/hero-image.webp';
 
 export const useRootStore = defineStore(EStoreNames.ROOT, {
   state: (): IRootState => ({

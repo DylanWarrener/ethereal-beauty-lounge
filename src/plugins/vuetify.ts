@@ -68,9 +68,12 @@ const lightTheme: ThemeDefinition = {
     'secondary-3': commonColours['secondary-tint-3'],
 
     accent: commonColours.accent,
-    'accent-1': commonColours['accent-shade-1'],
-    'accent-2': commonColours['accent-shade-2'],
-    'accent-3': commonColours['accent-shade-3'],
+    'accent-lighten-1': commonColours['accent-tint-1'],
+    'accent-lighten-2': commonColours['accent-tint-2'],
+    'accent-lighten-3': commonColours['accent-tint-3'],
+    'accent-darken-1': commonColours['accent-shade-1'],
+    'accent-darken-2': commonColours['accent-shade-2'],
+    'accent-darken-3': commonColours['accent-shade-3'],
   },
 };
 const darkTheme: ThemeDefinition = {

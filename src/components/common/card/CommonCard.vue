@@ -1,35 +1,32 @@
 <template>
-  <v-card :class="[cardClass]" :style="cardStyle">
+  <v-card :class="[cardClass]" :style="cardStyle" :rounded="rounded">
     <v-container fluid :class="[containerClass]" :style="containerStyle">
       <slot name="card-img"></slot>
       <slot name="card-toolbar"></slot>
 
       <!-- Headings -->
       <v-row
-        v-if="title || subtitle"
+        v-if="headingIsPopulated"
         dense
         :class="[headingRowClass]"
         :style="headingRowStyle"
       >
         <v-col cols="12" :class="[headingColClass]" :style="headingColStyle">
-          <v-card-item
-            :class="['d-flex justify-center flex-wrap', headingClass]"
-            :style="headingStyle"
-          >
+          <v-card-item :class="['pa-0', headingClass]" :style="headingStyle">
             <v-card-title
-              v-if="title"
-              :class="['text-center text-h2', headingTitleClass]"
+              v-if="titleIsPopulated"
+              :class="['mb-4 text-wrap', headingTitleClass]"
               :style="headingTitleStyle"
             >
-              {{ title }}
+              <slot name="card-title">{{ title }}</slot>
             </v-card-title>
-            <p
-              v-if="subtitle"
-              :class="['pb-4 text-subtitle-1', headingSubtitleClass]"
+            <v-card-subtitle
+              v-if="subtitleIsPopulated"
+              :class="['text-wrap', headingSubtitleClass]"
               :style="headingSubtitleStyle"
             >
-              {{ subtitle }}
-            </p>
+              <slot name="card-subtitle">{{ subtitle }}</slot>
+            </v-card-subtitle>
           </v-card-item>
         </v-col>
       </v-row>
@@ -72,11 +69,12 @@
     name: 'common-card',
     props: {
       /* Text */
-      title: { type: String, required: true },
+      title: { type: String, required: false },
       subtitle: { type: String, required: false },
 
       /* CSS */
       // v-card
+      rounded: { type: String, required: false, default: 'xl' },
       cardClass: { type: String, required: false },
       cardStyle: { type: String, required: false },
 
@@ -115,6 +113,23 @@
       contentStyle: { type: String, required: false },
       actionClass: { type: String, required: false },
       actionStyle: { type: String, required: false },
+    },
+    computed: {
+      /* Data */
+      headingIsPopulated(): boolean {
+        return (
+          !!this.title ||
+          !!this.subtitle ||
+          this.slotIsPopulated(['card-title']) ||
+          this.slotIsPopulated(['card-subtitle'])
+        );
+      },
+      titleIsPopulated(): boolean {
+        return !!this.title || this.slotIsPopulated(['card-title']);
+      },
+      subtitleIsPopulated(): boolean {
+        return !!this.subtitle || this.slotIsPopulated(['card-subtitle']);
+      },
     },
     methods: {
       slotIsPopulated(name: string[]): boolean {

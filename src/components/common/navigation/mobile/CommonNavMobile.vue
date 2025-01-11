@@ -120,7 +120,7 @@
 <script lang="ts">
   import { useRootStore } from '@/stores/root';
   import { useAuthStore } from '@/stores/auth';
-  import Logo from '@/assets/img/logo.png';
+  import Logo from '@/assets/img/png/logo.png';
 
   export default defineComponent({
     name: 'common-navigation-mobile',
