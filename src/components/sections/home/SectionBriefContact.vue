@@ -1,5 +1,5 @@
 <template>
-  <h1>This is the contact section</h1>
+  <CommonCard title="Get in Touch" card-class="bg-secondary-2"></CommonCard>
 </template>
 
 <script lang="ts">

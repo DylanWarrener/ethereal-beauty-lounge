@@ -1,8 +1,10 @@
 <template>
   <v-parallax class="pa-4 d-flex align-center" height="100vh" :src="heroImg">
-    <v-card class="pa-4" variant="outlined" color="secondary" height="300">
+    <!-- <v-card class="pa-4" variant="outlined" color="secondary" height="300">
       non-mobile
-    </v-card>
+    </v-card> -->
+
+    <CommonCard title="Popular Services" card-class="bg-primary-1"></CommonCard>
   </v-parallax>
 </template>
 

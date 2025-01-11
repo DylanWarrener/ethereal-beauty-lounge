@@ -12,7 +12,10 @@
         :style="headingRowStyle"
       >
         <v-col cols="12" :class="[headingColClass]" :style="headingColStyle">
-          <v-card-item :class="[headingClass]" :style="headingStyle">
+          <v-card-item
+            :class="['d-flex justify-center flex-wrap', headingClass]"
+            :style="headingStyle"
+          >
             <v-card-title
               v-if="title"
               :class="['text-center text-h2', headingTitleClass]"
@@ -20,13 +23,13 @@
             >
               {{ title }}
             </v-card-title>
-            <v-card-subtitle
+            <p
               v-if="subtitle"
-              :class="['text-center', 'text-subtitle-1', headingSubtitleClass]"
+              :class="['pb-4 text-subtitle-1', headingSubtitleClass]"
               :style="headingSubtitleStyle"
             >
               {{ subtitle }}
-            </v-card-subtitle>
+            </p>
           </v-card-item>
         </v-col>
       </v-row>

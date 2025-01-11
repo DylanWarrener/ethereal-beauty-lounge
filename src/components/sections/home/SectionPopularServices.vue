@@ -1,5 +1,5 @@
 <template>
-  <h1>This is the popular services section</h1>
+  <CommonCard title="Popular Services" card-class="bg-secondary-2"></CommonCard>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <h1>This is the about section</h1>
+  <CommonCard title="Our Story" card-class="bg-secondary-2"></CommonCard>
 </template>
 
 <script lang="ts">

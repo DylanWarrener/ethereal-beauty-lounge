@@ -1,5 +1,5 @@
 <template>
-  <h1>This is the recent portfolio section</h1>
+  <CommonCard title="Recent Portfolio" card-class="bg-secondary-2"></CommonCard>
 </template>
 
 <script lang="ts">

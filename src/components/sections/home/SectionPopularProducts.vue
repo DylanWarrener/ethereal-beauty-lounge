@@ -1,5 +1,5 @@
 <template>
-  <h1>This is the popular products section</h1>
+  <CommonCard title="Popular Products" card-class="bg-secondary-2"></CommonCard>
 </template>
 
 <script lang="ts">
