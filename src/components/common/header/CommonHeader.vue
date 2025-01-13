@@ -1,8 +1,9 @@
 <template>
   <v-app-bar
-    class="bg-primary text-secondary-3 pl-2 pr-6"
+    class="border-b bg-primary text-secondary-3 pl-2 pr-6"
     elevation="0"
     scroll-behavior="hide"
+    :density="appBarDensity"
   >
     <!-- Logo -->
     <CommonCardLogo />
@@ -52,6 +53,8 @@
   import { mergeProps } from 'vue';
   import { useRootStore } from '@/stores/root';
 
+  type TDensity = 'compact' | 'comfortable' | 'default' | 'prominent';
+
   export default defineComponent({
     name: 'common-header',
     setup() {
@@ -59,6 +62,18 @@
       return { rootStore };
     },
     computed: {
+      /* CSS */
+      appBarDensity(): TDensity {
+        let retVal: TDensity = 'compact';
+        if (this.$vuetify.display.mdAndUp) {
+          retVal = 'comfortable';
+        }
+        if (this.$vuetify.display.lgAndUp) {
+          retVal = 'default';
+        }
+        return retVal;
+      },
+
       /* Data */
       isMobile(): boolean {
         return !this.$vuetify.display.smAndUp;

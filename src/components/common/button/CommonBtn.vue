@@ -1,5 +1,5 @@
 <template>
-  <v-btn rounded="xl" :class="['px-4', btnClass]" @click="clicked">
+  <v-btn rounded="xl" :size="size" :class="['px-4', btnClass]" @click="clicked">
     <span v-if="text" :class="btnTextClass">{{ text }}</span>
     <v-icon v-if="icon" :icon="icon" :class="[iconClass]"></v-icon>
   </v-btn>
@@ -22,6 +22,18 @@
     },
     emits: {
       clicked: null,
+    },
+    computed: {
+      size(): string | undefined {
+        let retVal: string | undefined = undefined;
+        if (this.$vuetify.display.lgAndUp) {
+          retVal = 'large';
+        }
+        if (this.$vuetify.display.xlAndUp) {
+          retVal = 'x-large';
+        }
+        return retVal;
+      },
     },
     methods: {
       clicked(): void {

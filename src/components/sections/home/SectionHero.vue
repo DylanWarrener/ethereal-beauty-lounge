@@ -1,29 +1,32 @@
 <template>
   <v-parallax
-    class="ma-3 pa-4"
+    class="ma-3 pa-4 d-flex justify-center align-center"
     rounded="xl"
-    min-height="500"
-    max-height="700"
     :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
   >
     <template #default>
-      <div class="h-100 overflow-hidden" style="border: 4px solid green">
-        <v-container fluid class="h-100 pa-4" style="border: 4px solid black">
-          <v-row dense class="h-100" style="border: 4px solid red">
+      <div
+        class="overflow-hidden"
+        style="border: 4px solid orange"
+        :height="dynamicParallaxHeight"
+      >
+        <v-container fluid class="pa-4" style="border: 4px solid black">
+          <v-row dense class="h-100 d-flex" style="border: 4px solid red">
             <v-col
               cols="12"
-              md="6"
-              class="h-100 d-flex pa-0"
-              style="border: 4px solid blue"
+              lg="6"
+              class="pr-2 d-flex pa-0"
+              style="max-height: 100%"
             >
               <CommonCard
                 width="100%"
                 elevation="0"
                 subtitle="Transform your look with our non-invasive treatments for the face & body."
-                card-style="background-color: rgba(255, 255, 255, 0.8) !important"
-                heading-row-class="d-flex align-center"
+                card-style="background-color: rgba(255, 255, 255, 0.8)"
+                heading-row-class="flex-grow-1 d-flex align-center"
                 heading-subtitle-class="text-h5 text-sm-h4"
-                action-row-class="flex-grow-1 justify-start"
+                action-row-class="flex-grow-1"
+                action-class="flex-wrap"
               >
                 <template #card-title>
                   <h1 class="py-4 text-h3 text-sm-h2">
@@ -50,30 +53,35 @@
               </CommonCard>
             </v-col>
 
-            <v-col
-              cols="12"
-              md="6"
-              class="h-100 pa-0 d-flex"
-              style="border: 4px solid blue"
-            >
-              <CommonCard
-                width="100%"
-                elevation="0"
-                img-col-class="pa-2"
-                heading-row-class="d-flex align-center"
-                heading-subtitle-class="text-h5 text-sm-h4"
+            <ClientOnly>
+              <v-col
+                v-if="!isMobile"
+                cols="12"
+                lg="6"
+                class="pa-0 pl-2 d-flex"
+                style="max-height: 100%"
               >
-                <template #card-img>
-                  <v-img
-                    cover
-                    aspect-ratio="4/3"
-                    class="rounded-xl"
-                    height="100%"
-                    :src="isMobile ? heroImgMobile : heroImgNonMobile"
-                  ></v-img>
-                </template>
-              </CommonCard>
-            </v-col>
+                <CommonCard
+                  width="100%"
+                  elevation="0"
+                  card-class="overflow-hidden"
+                  card-style="background-color: rgba(255, 255, 255, 0.8)"
+                  img-col-class="position-relative pa-2"
+                  heading-row-class="d-flex align-center"
+                  heading-subtitle-class="text-h5 text-sm-h4"
+                >
+                  <template #card-img>
+                    <v-img
+                      cover
+                      aspect-ratio="16/9"
+                      class="rounded-xl"
+                      height="100%"
+                      :src="isMobile ? heroImgMobile : heroImgNonMobile"
+                    ></v-img>
+                  </template>
+                </CommonCard>
+              </v-col>
+            </ClientOnly>
           </v-row>
         </v-container>
       </div>
@@ -104,6 +112,18 @@
       },
       heroImgNonMobile(): string {
         return HeroImgNonMobile;
+      },
+
+      /* CSS */
+      dynamicParallaxHeight(): string {
+        let retVal: string = '';
+        if (this.$vuetify.display.smAndUp) {
+          retVal = '600px';
+        }
+        if (this.$vuetify.display.lgAndUp) {
+          retVal = '700px';
+        }
+        return retVal;
       },
 
       /* Data */
