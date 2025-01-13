@@ -2,16 +2,13 @@
   <v-parallax
     class="ma-3 pa-4 d-flex justify-center align-center"
     rounded="xl"
+    :height="dynamicParallaxHeight"
     :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
   >
     <template #default>
-      <div
-        class="overflow-hidden"
-        style="border: 4px solid orange"
-        :height="dynamicParallaxHeight"
-      >
-        <v-container fluid class="pa-4" style="border: 4px solid black">
-          <v-row dense class="h-100 d-flex" style="border: 4px solid red">
+      <div class="overflow-hidden" :height="dynamicParallaxHeight">
+        <v-container fluid class="pa-4">
+          <v-row dense class="h-100 d-flex">
             <v-col
               cols="12"
               lg="6"
@@ -24,12 +21,12 @@
                 subtitle="Transform your look with our non-invasive treatments for the face & body."
                 card-style="background-color: rgba(255, 255, 255, 0.8)"
                 heading-row-class="flex-grow-1 d-flex align-center"
-                heading-subtitle-class="text-h5 text-sm-h4"
+                heading-subtitle-class="text-h5 text-sm-h4 text-xl-h3"
                 action-row-class="flex-grow-1"
                 action-class="flex-wrap"
               >
                 <template #card-title>
-                  <h1 class="py-4 text-h3 text-sm-h2">
+                  <div tag="" class="py-4 text-h3 text-sm-h2 text-xl-h1">
                     <b>
                       Where
                       <span class="text-accent-darken-2">Beauty</span>
@@ -38,7 +35,7 @@
                       With
                       <i>Delicacy</i>
                     </b>
-                  </h1>
+                  </div>
                 </template>
                 <template #card-actions>
                   <CommonBtnOutlinedInternal
@@ -118,10 +115,10 @@
       dynamicParallaxHeight(): string {
         let retVal: string = '';
         if (this.$vuetify.display.smAndUp) {
-          retVal = '600px';
+          retVal = '600';
         }
-        if (this.$vuetify.display.lgAndUp) {
-          retVal = '700px';
+        if (this.$vuetify.display.mdAndUp) {
+          retVal = '';
         }
         return retVal;
       },

@@ -51,9 +51,12 @@
 
 <script lang="ts">
   import { mergeProps } from 'vue';
+
+  /* Stores */
   import { useRootStore } from '@/stores/root';
 
-  type TDensity = 'compact' | 'comfortable' | 'default' | 'prominent';
+  /* Abstractions */
+  import type { TAppBarDensity } from '@/abstractions/types/elements';
 
   export default defineComponent({
     name: 'common-header',
@@ -63,8 +66,8 @@
     },
     computed: {
       /* CSS */
-      appBarDensity(): TDensity {
-        let retVal: TDensity = 'compact';
+      appBarDensity(): TAppBarDensity {
+        let retVal: TAppBarDensity = 'compact';
         if (this.$vuetify.display.mdAndUp) {
           retVal = 'comfortable';
         }
