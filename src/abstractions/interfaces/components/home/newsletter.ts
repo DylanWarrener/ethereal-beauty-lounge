@@ -1,15 +1,7 @@
-export default interface INewsletterData {
-  content: {
-    input: {
-      textfield: {
-        label: string;
-      };
-    };
-    text: {
-      consent: string;
-    };
-  };
+export interface INewsletterData {
+  rules: INewsletterDataRules;
 }
-export interface INewsletterValidationRules {
+export interface INewsletterDataRules {
   notEmpty: (value: string) => string | boolean;
+  isEmail: (value: string) => string | boolean;
 }

@@ -9,12 +9,12 @@
         <v-row dense>
           <v-col cols="12" class="d-flex justify-center">
             <v-text-field
-              variant="outlined"
-              rounded="xl"
-              density="comfortable"
               max-width="400"
+              rounded="xl"
+              variant="outlined"
+              density="comfortable"
               label="Email address"
-              :rules="validationRules"
+              :rules="[rules.notEmpty, rules.isEmail]"
             >
               <template #append-inner>
                 <CommonBtn
@@ -39,15 +39,25 @@
 </template>
 
 <script lang="ts">
+  /* Abstractions */
+  import type { INewsletterData } from '@/abstractions/interfaces/components/home/newsletter';
+
   /* Utils */
-  import { notEmpty } from '@/utils/functions/validation/validation';
+  import { notEmpty, isEmail } from '@/utils/functions/validation/validation';
 
   export default defineComponent({
     name: 'section-newsletter',
-    computed: {
-      validationRules(): any {
-        return [(value: string): boolean | string => notEmpty(value)];
-      },
+    data(): INewsletterData {
+      return {
+        rules: {
+          notEmpty: (value: string): boolean | string => {
+            return notEmpty(value);
+          },
+          isEmail: (value: string): boolean | string => {
+            return isEmail(value);
+          },
+        },
+      };
     },
     methods: {
       /* Events */
