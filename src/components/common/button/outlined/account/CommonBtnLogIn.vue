@@ -1,6 +1,6 @@
 <template>
-  <ClientOnly>
-    <v-hover v-if="!isLoggedIn">
+  <ClientOnly v-if="!isLoggedIn">
+    <v-hover>
       <template #default="{ isHovering, props }">
         <CommonBtn
           v-bind="props"
@@ -9,8 +9,8 @@
           icon="$login"
           icon-class="ml-2"
           :class="[
-            'bg-accent-darken-2',
-            isHovering ? 'text-secondary' : 'text-primary',
+            'text-white',
+            isHovering ? 'bg-primary-1' : 'bg-accent-darken-2',
             btnClass,
           ]"
           @clicked="login_handleClick"

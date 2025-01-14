@@ -23,7 +23,11 @@
         :class="['flex-shrink-1 flex-grow-0 d-flex pa-2', headingRowClass]"
         :style="headingRowStyle"
       >
-        <v-col cols="12" :class="[headingColClass]" :style="headingColStyle">
+        <v-col
+          :cols="headingCols"
+          :class="[headingColClass]"
+          :style="headingColStyle"
+        >
           <v-card-item :class="['pa-0', headingClass]" :style="headingStyle">
             <v-card-title
               v-if="titleIsPopulated"
@@ -41,6 +45,7 @@
             </v-card-subtitle>
           </v-card-item>
         </v-col>
+        <slot name="card-hero-img"></slot>
       </v-row>
 
       <!-- Content -->
@@ -111,6 +116,7 @@
       // v-col
       imgColClass: { type: String, required: false },
       imgColStyle: { type: String, required: false },
+      headingCols: { type: String, required: false },
       headingColClass: { type: String, required: false },
       headingColStyle: { type: String, required: false },
       titleColClass: { type: String, required: false },

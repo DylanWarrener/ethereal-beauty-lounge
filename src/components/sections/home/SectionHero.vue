@@ -5,86 +5,77 @@
         'd-flex justify-center align-center',
         isMobile ? 'mt-3 mx-3 pa-0' : 'mt-6 mx-6 pa-0',
       ]"
-      rounded="xl"
       :height="dynamicParallaxHeight"
+      rounded="xl"
       :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
     >
       <template #default>
-        <div class="overflow-hidden" :height="dynamicParallaxHeight">
-          <v-container fluid :class="['pa-0', isMobile ? 'pa-3' : 'pa-6']">
-            <v-row dense class="h-100 d-flex">
-              <v-col
-                cols="12"
-                lg="6"
-                :class="['d-flex pa-0', isMobile ? '' : 'pr-2']"
+        <v-container
+          fluid
+          :class="['h-100 pa-0', isMobile ? 'pa-3' : 'pa-6']"
+          style="border: 4px solid black"
+        >
+          <v-row dense class="h-100 d-flex" style="border: 4px solid red">
+            <v-col cols="12" :class="['d-flex pa-0', isMobile ? '' : 'pr-2']">
+              <CommonCard
+                width="100%"
+                elevation="0"
+                card-style="background-color: rgba(231, 245, 232, 0.8)"
+                container-class="d-flex"
+                container-style="border: 4px solid black"
+                :heading-cols="headingCols"
+                heading-row-class="d-flex align-center"
+                heading-row-style="border: 4px solid red"
+                heading-col-style="border: 4px solid orange"
+                action-row-style="border: 4px solid blue"
+                action-class="flex-wrap"
               >
-                <CommonCard
-                  width="100%"
-                  elevation="0"
-                  subtitle="Transform your look with our non-invasive treatments for the face & body."
-                  container-class="d-flex flex-column justify-center"
-                  card-style="background-color: rgba(255, 255, 255, 0.8)"
-                  heading-row-class="flex-grow-0 d-flex align-center"
-                  heading-subtitle-class="text-h5 text-sm-h4 text-xl-h3"
-                  action-row-class="flex-grow-0"
-                  action-class="flex-wrap"
-                >
-                  <template #card-title>
-                    <div tag="" class="py-4 text-h3 text-sm-h2 text-xl-h1">
-                      <b>
-                        Where
-                        <span class="text-accent-darken-2">Beauty</span>
-                        Radiates
-                        <br />
-                        With
-                        <i>Delicacy</i>
-                      </b>
-                    </div>
-                  </template>
-                  <template #card-actions>
-                    <CommonBtnOutlinedInternal
-                      text="Our Story"
-                      @clicked="ourStory_clickHandler"
-                    />
-                    <CommonBtnSolidCtaInternal
-                      text="Book a Treatment"
-                      to="/services"
-                    />
-                  </template>
-                </CommonCard>
-              </v-col>
-
-              <ClientOnly>
-                <v-col
-                  v-if="!isMobile"
-                  cols="12"
-                  lg="6"
-                  class="pa-0 pl-2 d-flex"
-                >
-                  <CommonCard
-                    width="100%"
-                    elevation="0"
-                    card-class="overflow-hidden"
-                    card-style="background-color: rgba(255, 255, 255, 0.8)"
-                    img-col-class="position-relative pa-4"
-                    heading-row-class="d-flex align-center"
-                    heading-subtitle-class="text-h5 text-sm-h4"
+                <template #card-title>
+                  <div class="py-4 text-h4 text-sm-h3 text-xl-h2">
+                    <b class="font-weight-bold text-primary-3">
+                      Where
+                      <span class="text-accent-darken-2">Beauty</span>
+                      <br />
+                      Radiates With Delicacy
+                    </b>
+                  </div>
+                </template>
+                <template #card-subtitle>
+                  <p class="text-black text-h5 text-sm-h4 text-xl-h5">
+                    One of our specialties is building Beauty Therapy websites,
+                    please browse from the live website examples below to see
+                    some recent website designs we have we have completed.
+                  </p>
+                </template>
+                <template #card-hero-img>
+                  <v-col
+                    v-if="isLaptopOrDesktop"
+                    cols="6"
+                    class="pa-4 d-flex align-center"
+                    style="border: 4px solid green"
                   >
-                    <template #card-img>
-                      <v-img
-                        cover
-                        aspect-ratio="16/9"
-                        class="rounded-xl"
-                        height="100%"
-                        :src="isMobile ? heroImgMobile : heroImgNonMobile"
-                      ></v-img>
-                    </template>
-                  </CommonCard>
-                </v-col>
-              </ClientOnly>
-            </v-row>
-          </v-container>
-        </div>
+                    <v-img
+                      cover
+                      class="rounded-xl"
+                      max-height="600"
+                      :src="isMobile ? heroImgMobile : heroImgNonMobile"
+                    ></v-img>
+                  </v-col>
+                </template>
+                <template #card-actions>
+                  <CommonBtnOutlinedInternal
+                    text="Our Story"
+                    @clicked="ourStory_clickHandler"
+                  />
+                  <CommonBtnSolidCtaInternal
+                    text="Book a Treatment"
+                    to="/services"
+                  />
+                </template>
+              </CommonCard>
+            </v-col>
+          </v-row>
+        </v-container>
       </template>
     </v-parallax>
   </ClientOnly>
@@ -123,11 +114,8 @@
       /* CSS */
       dynamicParallaxHeight(): string {
         let retVal: string = '';
-        if (this.$vuetify.display.smAndUp) {
-          retVal = '600';
-        }
-        if (this.$vuetify.display.lgAndUp) {
-          retVal = '';
+        if (this.$vuetify.display.mdAndUp) {
+          retVal = '89dvh';
         }
         return retVal;
       },
@@ -135,6 +123,16 @@
       /* Data */
       isMobile(): boolean {
         return this.$vuetify.display.mobile;
+      },
+      isLaptopOrDesktop(): boolean {
+        return this.$vuetify.display.lgAndUp;
+      },
+      headingCols(): string {
+        let retVal: string = '12';
+        if (this.$vuetify.display.lgAndUp) {
+          retVal = '6';
+        }
+        return retVal;
       },
     },
     methods: {

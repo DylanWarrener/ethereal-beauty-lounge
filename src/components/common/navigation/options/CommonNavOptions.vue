@@ -12,7 +12,7 @@
               >
                 <v-icon
                   icon="$bag"
-                  :class="[isHovering ? 'text-secondary' : '']"
+                  :class="[isHovering ? 'text-black' : 'text-black-tint-3']"
                 ></v-icon>
                 <v-menu
                   v-model="menuDrawer"

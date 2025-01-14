@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <v-app-bar
-      class="border-b bg-primary text-secondary-3 pl-2 pr-6"
+      class="border-b bg-white text-secondary-3 pl-2 pr-6"
       elevation="0"
       scroll-behavior="hide"
       :density="appBarDensity"
@@ -21,7 +21,10 @@
       <v-hover>
         <template #default="{ isHovering, props }">
           <v-app-bar-nav-icon
-            :class="['d-flex d-md-none', isHovering ? 'text-secondary' : '']"
+            :class="[
+              'd-flex d-md-none',
+              isHovering ? 'text-black' : 'text-black-tint-3',
+            ]"
             v-bind="props"
             @click="drawer = !drawer"
           ></v-app-bar-nav-icon>

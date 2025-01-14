@@ -1,7 +1,7 @@
 <template>
   <v-card
     flat
-    class="bg-primary"
+    class="bg-white"
     :to="logo.route"
     :width="cardWidth"
     :height="cardHeight"

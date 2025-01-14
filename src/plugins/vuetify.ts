@@ -25,24 +25,50 @@ import {
   mdiBell,
 } from '@mdi/js';
 
-const commonColours = {
+const whiteColours = {
   white: '#FFFFFF',
+  'white-tone-1': '#F1F1F1',
+  'white-tone-2': '#D5D5D5',
+  'white-tone-3': '#B8B8B8',
+  'white-shade-1': '#E3E3E3',
+  'white-shade-2': '#AAAAAA',
+  'white-shade-3': '#717171',
+};
+const blackColours = {
   black: '#000000',
+  'black-tint-1': '#1C1C1C',
+  'black-tint-2': '#555555',
+  'black-tint-3': '#8E8E8E',
+  'black-tone-1': '#0E0E0E',
+  'black-tone-2': '#2B2B2B',
+  'black-tone-3': '#474747',
+};
+const primaryColours = {
+  primary: '#91B5CC',
+  'primary-tint-1': '#A8C5D7',
+  'primary-tint-2': '#C1D6E2',
+  'primary-tint-3': '#DAE6EE',
+  'primary-tone-1': '#8DA9BB',
+  'primary-tone-2': '#899DAA',
+  'primary-tone-3': '#869299',
+  'primary-shade-1': '#5A91B3',
+  'primary-shade-2': '#3D6984',
+  'primary-shade-3': '#243F4F',
+};
+const secondaryColours = {
+  secondary: '#CCCB91',
+  'secondary-tint-1': '#D7D6A8',
+  'secondary-tint-2': '#E2E2C1',
+  'secondary-tint-3': '#EEEEDA',
+  'secondary-tone-1': '#BBBA8D',
+  'secondary-tone-2': '#AAAA89',
+  'secondary-tone-3': '#999986',
+  'secondary-shade-1': '#B3B25A',
+  'secondary-shade-2': '#84833D',
+  'secondary-shade-3': '#4F4E24',
+};
+const accentColours = {
   accent: '#CC9090',
-  'primary-tone-1': '#F1F1F1',
-  'primary-tone-2': '#D5D5D5',
-  'primary-tone-3': '#B8B8B8',
-  'primary-shade-1': '#E3E3E3',
-  'primary-shade-2': '#AAAAAA',
-  'primary-shade-3': '#717171',
-
-  'secondary-tint-1': '#1C1C1C',
-  'secondary-tint-2': '#555555',
-  'secondary-tint-3': '#8E8E8E',
-  'secondary-tone-1': '#0E0E0E',
-  'secondary-tone-2': '#2B2B2B',
-  'secondary-tone-3': '#474747',
-
   'accent-tint-1': '#D19C9C',
   'accent-tint-2': '#DDB4B4',
   'accent-tint-3': '#E8CDCD',
@@ -57,31 +83,51 @@ const commonColours = {
 const lightTheme: ThemeDefinition = {
   dark: false,
   colors: {
-    primary: commonColours.white,
-    'primary-1': commonColours['primary-tone-1'],
-    'primary-2': commonColours['primary-tone-2'],
-    'primary-3': commonColours['primary-tone-3'],
+    ...whiteColours,
+    ...blackColours,
 
-    secondary: commonColours.black,
-    'secondary-1': commonColours['secondary-tint-1'],
-    'secondary-2': commonColours['secondary-tint-2'],
-    'secondary-3': commonColours['secondary-tint-3'],
+    primary: primaryColours.primary,
+    'primary-1': primaryColours['primary-shade-1'],
+    'primary-2': primaryColours['primary-shade-2'],
+    'primary-3': primaryColours['primary-shade-3'],
 
-    accent: commonColours.accent,
-    'accent-lighten-1': commonColours['accent-tint-1'],
-    'accent-lighten-2': commonColours['accent-tint-2'],
-    'accent-lighten-3': commonColours['accent-tint-3'],
-    'accent-darken-1': commonColours['accent-shade-1'],
-    'accent-darken-2': commonColours['accent-shade-2'],
-    'accent-darken-3': commonColours['accent-shade-3'],
+    secondary: secondaryColours.secondary,
+    'secondary-1': secondaryColours['secondary-tone-1'],
+    'secondary-2': secondaryColours['secondary-tone-2'],
+    'secondary-3': secondaryColours['secondary-tone-3'],
+
+    accent: accentColours.accent,
+    'accent-lighten-1': accentColours['accent-tint-1'],
+    'accent-lighten-2': accentColours['accent-tint-2'],
+    'accent-lighten-3': accentColours['accent-tint-3'],
+    'accent-darken-1': accentColours['accent-shade-1'],
+    'accent-darken-2': accentColours['accent-shade-2'],
+    'accent-darken-3': accentColours['accent-shade-3'],
   },
 };
 const darkTheme: ThemeDefinition = {
   dark: true,
   colors: {
-    primary: commonColours.black,
-    secondary: commonColours.white,
-    accent: commonColours.accent,
+    ...whiteColours,
+    ...blackColours,
+
+    primary: primaryColours.primary,
+    'primary-1': primaryColours['primary-tint-1'],
+    'primary-2': primaryColours['primary-tint-2'],
+    'primary-3': primaryColours['primary-tint-3'],
+
+    secondary: secondaryColours.secondary,
+    'secondary-1': secondaryColours['secondary-tone-1'],
+    'secondary-2': secondaryColours['secondary-tone-2'],
+    'secondary-3': secondaryColours['secondary-tone-3'],
+
+    accent: accentColours.accent,
+    'accent-lighten-1': accentColours['accent-tint-1'],
+    'accent-lighten-2': accentColours['accent-tint-2'],
+    'accent-lighten-3': accentColours['accent-tint-3'],
+    'accent-darken-1': accentColours['accent-shade-1'],
+    'accent-darken-2': accentColours['accent-shade-2'],
+    'accent-darken-3': accentColours['accent-shade-3'],
   },
 };
 

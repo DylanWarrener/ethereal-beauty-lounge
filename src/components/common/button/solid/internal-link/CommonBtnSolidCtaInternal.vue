@@ -1,13 +1,20 @@
 <!-- Navigates the user within the same page, to a CTA section -->
 <template>
-  <CommonBtn
-    variant="flat"
-    btn-class="bg-accent-darken-2"
-    :text="text"
-    :to="to"
-    :disabled="disabled"
-    @clicked="$emit('clicked')"
-  ></CommonBtn>
+  <ClientOnly>
+    <v-hover>
+      <template #default="{ isHovering, props }">
+        <CommonBtn
+          variant="flat"
+          :btn-class="isHovering ? 'bg-primary-1' : 'bg-accent-darken-2'"
+          :text="text"
+          :to="to"
+          :disabled="disabled"
+          v-bind="props"
+          @clicked="$emit('clicked')"
+        ></CommonBtn>
+      </template>
+    </v-hover>
+  </ClientOnly>
 </template>
 
 <script lang="ts">

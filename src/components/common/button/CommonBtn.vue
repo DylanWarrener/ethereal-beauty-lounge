@@ -13,7 +13,7 @@
       text: { type: String, required: true },
 
       /* CSS */
-      btnClass: { type: String, required: false, default: 'bg-accent-2' },
+      btnClass: { type: String, required: false },
       btnTextClass: { type: String, required: false },
       iconClass: { type: String, required: false },
 

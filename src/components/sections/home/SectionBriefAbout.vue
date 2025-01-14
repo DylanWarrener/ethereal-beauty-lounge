@@ -1,18 +1,18 @@
 <template>
   <CommonSectionMain
     id="section-our-story"
-    title="Our Story"
+    title="Our Business"
     subtitle="A subtitle to describe what is part of the about section"
   >
     <template #section-content>
       <v-col cols="12" lg="4" style="border: 4px solid blue">
-        <CommonCard></CommonCard>
+        <CommonCard title="Our Mission" heading-title-class=""></CommonCard>
       </v-col>
       <v-col cols="12" lg="4" style="border: 4px solid blue">
-        <CommonCard></CommonCard>
+        <CommonCard title="Our Services"></CommonCard>
       </v-col>
       <v-col cols="12" lg="4" style="border: 4px solid blue">
-        <CommonCard></CommonCard>
+        <CommonCard title="Our Team"></CommonCard>
       </v-col>
     </template>
   </CommonSectionMain>
