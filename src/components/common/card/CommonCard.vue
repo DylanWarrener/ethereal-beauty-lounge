@@ -50,7 +50,7 @@
         :class="['flex-shrink-1 flex-grow-1', contentRowClass]"
         :style="contentRowStyle"
       >
-        <v-col :class="[contentColClass]" :style="contentColStyle">
+        <v-col :class="['pa-0', contentColClass]" :style="contentColStyle">
           <v-card-text :class="['pa-0', contentClass]" :style="contentStyle">
             <slot name="card-content"></slot>
           </v-card-text>

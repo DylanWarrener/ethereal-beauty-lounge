@@ -1,28 +1,23 @@
 <template>
   <ClientOnly>
-    <CommonCard :id="id" :title="title" :card-class="cardClass"></CommonCard>
+    <CommonCard
+      :id="id"
+      heading-title-class="text-center text-h4 text-sm-h3 text-xl-h2"
+      heading-subtitle-class="text-center text-h5 text-sm-h4 text-xl-h3"
+      :title="title"
+      :subtitle="subtitle"
+      :card-class="cardClass"
+      :container-class="containerClass"
+    >
+      <template #card-content>
+        <v-container fluid class="pa-0">
+          <v-row dense style="border: 4px solid red">
+            <slot name="section-content"></slot>
+          </v-row>
+        </v-container>
+      </template>
+    </CommonCard>
   </ClientOnly>
-  <!-- <v-container fluid :class="[containerClass]" :style="containerStyle">
-    <v-row dense :class="[headingRowClass]" style="headingRowStyle">
-      <v-col cols="12" :class="[titleColClass]" :style="titleColStyle">
-        <h2 class="text-h2 text-center">{{ title }}</h2>
-      </v-col>
-      <v-col
-        v-if="subtitle"
-        cols="12"
-        :class="[subtitleColClass]"
-        :style="subtitleColStyle"
-      >
-        <h3 class="text-h3 text-center">{{ subtitle }}</h3>
-      </v-col>
-    </v-row>
-
-    <v-row dense :class="[contentRowClass]" :style="contentRowStyle">
-      <v-col cols="12" :class="[contentColClass]" :style="contentColStyle">
-        <slot name="section-content"></slot>
-      </v-col>
-    </v-row>
-  </v-container> -->
 </template>
 
 <script lang="ts">
@@ -45,6 +40,15 @@
       /* CSS */
       cardClass(): string {
         let retVal: string = `${this.cardBackgroundColour}`;
+        return retVal;
+      },
+      containerClass(): string {
+        let retVal: string = '';
+        if (this.isMobile) {
+          retVal = 'pa-2';
+        } else {
+          retVal = 'pa-4';
+        }
         return retVal;
       },
 
