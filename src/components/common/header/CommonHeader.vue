@@ -1,52 +1,54 @@
 <template>
-  <v-app-bar
-    class="border-b bg-primary text-secondary-3 pl-2 pr-6"
-    elevation="0"
-    scroll-behavior="hide"
-    :density="appBarDensity"
-  >
-    <!-- Logo -->
-    <CommonCardLogo />
+  <ClientOnly>
+    <v-app-bar
+      class="border-b bg-primary text-secondary-3 pl-2 pr-6"
+      elevation="0"
+      scroll-behavior="hide"
+      :density="appBarDensity"
+    >
+      <!-- Logo -->
+      <CommonCardLogo />
 
-    <v-divider
-      inset
-      vertical
-      class="mx-2 my-auto d-none d-sm-flex"
-      style="height: 30px"
-    ></v-divider>
-    <v-spacer class="d-flex d-sm-none"></v-spacer>
+      <v-divider
+        inset
+        vertical
+        class="mx-2 my-auto d-none d-sm-flex"
+        style="height: 30px"
+      ></v-divider>
+      <v-spacer class="d-flex d-sm-none"></v-spacer>
 
-    <!-- Navigation for mobile -->
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <v-app-bar-nav-icon
-          :class="['d-flex d-md-none', isHovering ? 'text-secondary' : '']"
-          v-bind="props"
-          @click="drawer = !drawer"
-        ></v-app-bar-nav-icon>
-      </template>
-    </v-hover>
+      <!-- Navigation for mobile -->
+      <v-hover>
+        <template #default="{ isHovering, props }">
+          <v-app-bar-nav-icon
+            :class="['d-flex d-md-none', isHovering ? 'text-secondary' : '']"
+            v-bind="props"
+            @click="drawer = !drawer"
+          ></v-app-bar-nav-icon>
+        </template>
+      </v-hover>
 
-    <v-spacer class="d-none d-sm-flex d-md-none"></v-spacer>
+      <v-spacer class="d-none d-sm-flex d-md-none"></v-spacer>
 
-    <!-- Navigation tools -->
-    <CommonNavTools />
-    <v-spacer class="d-none d-md-flex"></v-spacer>
+      <!-- Navigation tools -->
+      <CommonNavTools />
+      <v-spacer class="d-none d-md-flex"></v-spacer>
 
-    <!-- Navigation for non-mobile -->
-    <CommonNav />
-    <v-spacer class="d-none d-md-flex"></v-spacer>
+      <!-- Navigation for non-mobile -->
+      <CommonNav />
+      <v-spacer class="d-none d-md-flex"></v-spacer>
 
-    <v-divider
-      inset
-      vertical
-      class="mx-2 my-auto d-none d-sm-flex"
-      style="height: 30px"
-    ></v-divider>
+      <v-divider
+        inset
+        vertical
+        class="mx-2 my-auto d-none d-sm-flex"
+        style="height: 30px"
+      ></v-divider>
 
-    <!-- Navigation options -->
-    <CommonNavOptions />
-  </v-app-bar>
+      <!-- Navigation options -->
+      <CommonNavOptions />
+    </v-app-bar>
+  </ClientOnly>
 </template>
 
 <script lang="ts">

@@ -1,9 +1,8 @@
 <template>
-  <CommonCard
+  <CommonSectionMain
     id="section-our-story"
     title="Our Story"
-    card-class="bg-secondary-2"
-  ></CommonCard>
+  ></CommonSectionMain>
 </template>
 
 <script lang="ts">

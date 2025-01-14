@@ -6,8 +6,8 @@
 
     <CommonHeader />
 
-    <v-main class="w-100 h-100 d-flex flex-column">
-      <v-container class="pa-4" fluid>
+    <v-main class="d-flex flex-column">
+      <v-container fluid class="pa-0">
         <v-row dense>
           <v-col class="pa-0">
             <NuxtPage />
@@ -23,11 +23,6 @@
 <script lang="ts">
   export default defineComponent({
     name: 'layout-default',
-    computed: {
-      isMobile(): boolean {
-        return this.$vuetify.display.mobile;
-      },
-    },
   });
 </script>
 
