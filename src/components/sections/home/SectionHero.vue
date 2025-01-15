@@ -1,34 +1,24 @@
 <template>
   <ClientOnly>
     <v-parallax
+      rounded="xl"
       :class="[
         'd-flex justify-center align-center',
         isMobile ? 'mt-3 mx-3 pa-0' : 'mt-6 mx-6 pa-0',
       ]"
       :height="dynamicParallaxHeight"
-      rounded="xl"
       :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
     >
       <template #default>
-        <v-container
-          fluid
-          :class="['h-100 pa-0', isMobile ? 'pa-3' : 'pa-6']"
-          style="border: 4px solid black"
-        >
-          <v-row dense class="h-100 d-flex" style="border: 4px solid red">
-            <v-col cols="12" :class="['d-flex pa-0', isMobile ? '' : 'pr-2']">
+        <v-container fluid :class="['h-100 pa-0', isMobile ? 'pa-3' : 'pa-6']">
+          <v-row dense class="h-100 d-flex">
+            <v-col cols="12" lg="6" class="pa-0">
               <CommonCard
-                width="100%"
-                elevation="0"
-                card-style="background-color: rgba(231, 245, 232, 0.8)"
-                container-class="d-flex"
-                container-style="border: 4px solid black"
-                :heading-cols="headingCols"
-                heading-row-class="d-flex align-center"
-                heading-row-style="border: 4px solid red"
-                heading-col-style="border: 4px solid orange"
-                action-row-style="border: 4px solid blue"
-                action-class="flex-wrap"
+                card-class="h-100"
+                card-style="border-radius: 16px 0 0 16px; background-color: rgba(238, 238, 218, 0.95)"
+                action-col-class="pa-0"
+                action-class="pa-0"
+                :heading-row-class="`flex-grow-1 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
               >
                 <template #card-title>
                   <div class="py-4 text-h4 text-sm-h3 text-xl-h2">
@@ -47,30 +37,37 @@
                     some recent website designs we have we have completed.
                   </p>
                 </template>
-                <template #card-hero-img>
-                  <v-col
-                    v-if="isLaptopOrDesktop"
-                    cols="6"
-                    class="pa-4 d-flex align-center"
-                    style="border: 4px solid green"
-                  >
-                    <v-img
-                      cover
-                      class="rounded-xl"
-                      max-height="600"
-                      :src="isMobile ? heroImgMobile : heroImgNonMobile"
-                    ></v-img>
-                  </v-col>
-                </template>
                 <template #card-actions>
                   <CommonBtnOutlinedInternal
-                    text="Our Story"
-                    @clicked="ourStory_clickHandler"
+                    text="Our Packages"
+                    @clicked="ourPackages_clickHandler"
                   />
                   <CommonBtnSolidCtaInternal
                     text="Book a Treatment"
                     to="/services"
                   />
+                </template>
+              </CommonCard>
+            </v-col>
+            <v-col v-if="isLaptopOrDesktop" cols="12" lg="6" class="pa-0">
+              <CommonCard
+                card-class="h-100"
+                card-style="border-radius: 0 16px 16px 0; background-color: rgba(238, 238, 218, 0.95)"
+              >
+                <template #card-img>
+                  <div
+                    id="card-img"
+                    class="rounded-xl pa-4 d-flex justify-end align-end"
+                    style="height: 600px"
+                  >
+                    <CommonCard
+                      title="Rated Excellence"
+                      card-class="rounded-xl"
+                      heading-title-class="text-subtitle-1"
+                    >
+                      <template #card-content>Add rating here</template>
+                    </CommonCard>
+                  </div>
                 </template>
               </CommonCard>
             </v-col>
@@ -113,8 +110,8 @@
 
       /* CSS */
       dynamicParallaxHeight(): string {
-        let retVal: string = '';
-        if (this.$vuetify.display.mdAndUp) {
+        let retVal: string = '93dvh';
+        if (this.$vuetify.display.lgAndUp) {
           retVal = '89dvh';
         }
         return retVal;
@@ -137,9 +134,9 @@
     },
     methods: {
       /* Events */
-      ourStory_clickHandler(): void {
+      ourPackages_clickHandler(): void {
         const targetElementID: HTMLDivElement = document.getElementById(
-          'section-our-story'
+          'section-our-packages'
         ) as HTMLDivElement;
         if (targetElementID) {
           scrollToElement(targetElementID);
@@ -150,3 +147,12 @@
     },
   });
 </script>
+
+<style lang="scss" scoped>
+  #card-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('~/assets/img/webp/hero-section/hero-image.webp');
+    background-position: center top;
+  }
+</style>

@@ -1,8 +1,9 @@
 <template>
   <CommonSectionMain
-    id="section-our-story"
-    title="About Us"
-    subtitle="A subtitle to describe what is part of the about section"
+    id="section-our-packages"
+    title="Our Packages"
+    subtitle="A subtitle to describe what is part of this section"
+    card-background-colour="bg-accent-darken-2"
   >
     <template #section-content>
       <v-col cols="12" lg="4" style="border: 4px solid blue">
@@ -20,6 +21,6 @@
 
 <script lang="ts">
   export default defineComponent({
-    name: 'section-brief-about',
+    name: 'section-our-packages',
   });
 </script>

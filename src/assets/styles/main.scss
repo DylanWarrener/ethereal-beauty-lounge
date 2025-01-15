@@ -7,23 +7,23 @@
   height: 0.75em;
 }
 ::-webkit-scrollbar-track {
-  background: rgb(var(--v-theme-primary-1));
+  background: rgb(var(--v-theme-white-tone-1));
   border-radius: 100vw;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(var(--v-theme-accent-darken-2), 1);
   border-radius: 100vw;
-  border: 0.1em solid rgb(var(--v-theme-primary-1));
+  border: 0.1em solid rgb(var(--v-theme-white-tone-1));
 
   &:hover {
-    background: rgba(var(--v-theme-accent-darken-3), 0.8);
+    background: rgba(var(--v-theme-primary-1), 0.8);
   }
 }
 @supports (
   scrollbar-color: rgb(var(--v-theme-primary)) rgb(var(--v-theme-default))
 ) {
   * {
-    scrollbar-color: rgb(var(--v-theme-primary)) rgb(var(--v-theme-default));
+    scrollbar-color: rgb(var(--v-theme-ccprimary)) rgb(var(--v-theme-default));
   }
 }
 

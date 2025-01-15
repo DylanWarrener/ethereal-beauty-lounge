@@ -1,5 +1,12 @@
 <template>
-  <CommonCard title="Popular Products" card-class="bg-secondary-2"></CommonCard>
+  <CommonSectionMain
+    id="section-popular-products"
+    title="Popular Products"
+    subtitle="A subtitle to describe what is part of this section"
+    card-background-colour="bg-white"
+  >
+    <template #section-content>Content</template>
+  </CommonSectionMain>
 </template>
 
 <script lang="ts">

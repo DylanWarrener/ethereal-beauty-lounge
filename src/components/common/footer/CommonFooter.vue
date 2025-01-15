@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid style="border: 2px solid black">
+  <v-container fluid class="bg-accent-darken-2" style="border: 2px solid black">
     <!-- Content -->
     <v-row style="border: 2px solid red">
       <!-- Pages -->

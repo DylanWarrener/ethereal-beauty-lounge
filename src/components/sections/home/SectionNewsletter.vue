@@ -1,41 +1,46 @@
 <template>
-  <CommonCard
+  <CommonSectionMain
+    id="section-newsletter"
     title="Newsletter"
-    subtitle="Join our newsletter to stay up to date on features and releases."
-    card-class="bg-secondary-2"
+    subtitle="Join our newsletter to stay up to date with new services, products, and discounts."
+    card-background-colour="bg-white"
   >
-    <template #card-content>
-      <v-container class="pa-0">
-        <v-row dense>
-          <v-col cols="12" class="d-flex justify-center">
-            <v-text-field
-              max-width="400"
-              rounded="xl"
-              variant="outlined"
-              density="comfortable"
-              label="Email address"
-              :rules="[rules.notEmpty, rules.isEmail]"
-            >
-              <template #append-inner>
+    <template #section-content>
+      <v-col cols="12" class="d-flex justify-center">
+        <CommonTextField
+          max-width="400"
+          rounded="xl"
+          variant="outlined"
+          density="comfortable"
+          label="Email address"
+          :rules="[rules.notEmpty, rules.isEmail]"
+        >
+          <template #append-inner>
+            <v-hover>
+              <template #default="{ isHovering, props }">
                 <CommonBtn
                   text="Subscribe"
-                  btn-class="bg-primary text-secondary"
+                  :class="[
+                    'text-white',
+                    isHovering ? 'bg-primary-1' : 'bg-accent-darken-2',
+                  ]"
+                  v-bind="props"
                   @clicked="subscribe_clickHandler"
                 />
               </template>
-            </v-text-field>
-          </v-col>
+            </v-hover>
+          </template>
+        </CommonTextField>
+      </v-col>
 
-          <v-col cols="12" class="d-flex justify-center">
-            <span class="text-body-2">
-              By subscribing you agree to with our Privacy Policy and provide
-              consent to receive updates from our company.
-            </span>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-col cols="12" class="d-flex justify-center">
+        <span class="text-body-2">
+          By subscribing you agree to with our Privacy Policy and provide
+          consent to receive updates from our company.
+        </span>
+      </v-col>
     </template>
-  </CommonCard>
+  </CommonSectionMain>
 </template>
 
 <script lang="ts">

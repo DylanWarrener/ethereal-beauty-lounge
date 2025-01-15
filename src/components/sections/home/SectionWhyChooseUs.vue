@@ -1,10 +1,9 @@
 <template>
   <CommonSectionMain
-    id="section-recent-portfolio"
-    title="Recent Portfolio"
+    id="section-why-choose-us"
+    title="Why Choose Us?"
     subtitle="A subtitle to describe what is part of this section"
-    card-background-colour="bg-white"
-    heading-title-class="text-primary-3"
+    card-background-colour="bg-secondary-2"
   >
     <template #section-content>Content</template>
   </CommonSectionMain>
@@ -12,6 +11,6 @@
 
 <script lang="ts">
   export default defineComponent({
-    name: 'section-recent-portfolio',
+    name: 'section-why-choose-us',
   });
 </script>

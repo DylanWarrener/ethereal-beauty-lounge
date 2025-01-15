@@ -2,7 +2,7 @@
   <ClientOnly>
     <CommonCard
       :id="id"
-      heading-title-class="text-center text-h4 text-sm-h3 text-xl-h2"
+      :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
       heading-subtitle-class="text-center text-h5 text-sm-h4 text-xl-h3"
       :title="title"
       :subtitle="subtitle"
@@ -30,11 +30,8 @@
 
       /* CSS */
       id: { type: String, required: true },
-      cardBackgroundColour: {
-        type: String,
-        required: false,
-        default: 'bg-secondary-2',
-      },
+      headingTitleClass: { type: String, required: false },
+      cardBackgroundColour: { type: String, required: false },
     },
     computed: {
       /* CSS */

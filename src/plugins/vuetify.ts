@@ -92,9 +92,9 @@ const lightTheme: ThemeDefinition = {
     'primary-3': primaryColours['primary-shade-3'],
 
     secondary: secondaryColours.secondary,
-    'secondary-1': secondaryColours['secondary-tone-1'],
-    'secondary-2': secondaryColours['secondary-tone-2'],
-    'secondary-3': secondaryColours['secondary-tone-3'],
+    'secondary-1': secondaryColours['secondary-tint-1'],
+    'secondary-2': secondaryColours['secondary-tint-2'],
+    'secondary-3': secondaryColours['secondary-tint-3'],
 
     accent: accentColours.accent,
     'accent-lighten-1': accentColours['accent-tint-1'],

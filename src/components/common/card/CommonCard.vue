@@ -1,5 +1,11 @@
 <template>
-  <v-card :id="id" :class="[cardClass]" :style="cardStyle" :rounded="rounded">
+  <v-card
+    :id="id"
+    :class="[cardClass]"
+    :style="cardStyle"
+    :rounded="rounded"
+    :elevation="elevation"
+  >
     <v-container
       fluid
       :class="['h-100 d-flex flex-column', containerClass]"
@@ -95,7 +101,8 @@
       /* CSS */
       // v-card
       id: { type: String, required: false },
-      rounded: { type: String, required: false, default: 'xl' },
+      rounded: { type: String, required: false },
+      elevation: { type: String, required: false },
       cardClass: { type: String, required: false },
       cardStyle: { type: String, required: false },
 
