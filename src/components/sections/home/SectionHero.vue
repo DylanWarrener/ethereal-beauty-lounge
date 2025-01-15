@@ -16,9 +16,11 @@
               <CommonCard
                 card-class="h-100"
                 card-style="border-radius: 16px 0 0 16px; background-color: rgba(238, 238, 218, 0.95)"
+                container-class="ga-4"
+                action-row-class="flex-grow-0"
                 action-col-class="pa-0"
                 action-class="pa-0"
-                :heading-row-class="`flex-grow-1 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
+                :heading-row-class="`flex-grow-0 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
               >
                 <template #card-title>
                   <div class="py-4 text-h4 text-sm-h3 text-xl-h2">
@@ -39,8 +41,8 @@
                 </template>
                 <template #card-actions>
                   <CommonBtnOutlinedInternal
-                    text="Our Packages"
-                    @clicked="ourPackages_clickHandler"
+                    text="Our Recent Work"
+                    @clicked="ourRecentWork_clickHandler"
                   />
                   <CommonBtnSolidCtaInternal
                     text="Book a Treatment"
@@ -134,9 +136,9 @@
     },
     methods: {
       /* Events */
-      ourPackages_clickHandler(): void {
+      ourRecentWork_clickHandler(): void {
         const targetElementID: HTMLDivElement = document.getElementById(
-          'section-our-packages'
+          'section-recent-portfolio'
         ) as HTMLDivElement;
         if (targetElementID) {
           scrollToElement(targetElementID);

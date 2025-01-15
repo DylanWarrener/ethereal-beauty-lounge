@@ -7,7 +7,7 @@
       :density="appBarDensity"
     >
       <!-- Logo -->
-      <CommonCardLogo />
+      <CommonCardLogo :img-src="logo" to="/" />
 
       <v-divider
         inset
@@ -63,6 +63,9 @@
   /* Abstractions */
   import type { TAppBarDensity } from '@/abstractions/types/elements';
 
+  /* Images */
+  import Logo from '@/assets/img/png/logo.png';
+
   export default defineComponent({
     name: 'common-header',
     setup() {
@@ -80,6 +83,11 @@
           retVal = 'default';
         }
         return retVal;
+      },
+
+      /* Images */
+      logo(): string {
+        return Logo;
       },
 
       /* Data */

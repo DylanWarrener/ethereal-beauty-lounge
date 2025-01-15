@@ -11,7 +11,7 @@
     >
       <template #card-content>
         <v-container fluid class="pa-0">
-          <v-row dense style="border: 4px solid red">
+          <v-row dense>
             <slot name="section-content"></slot>
           </v-row>
         </v-container>

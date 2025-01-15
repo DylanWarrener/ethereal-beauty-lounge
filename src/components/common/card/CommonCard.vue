@@ -6,11 +6,22 @@
     :rounded="rounded"
     :elevation="elevation"
   >
+    <slot name="card-transition"></slot>
     <v-container
       fluid
       :class="['h-100 d-flex flex-column', containerClass]"
       :style="containerStyle"
     >
+      <v-row
+        v-if="slotIsPopulated(['card-toolbar'])"
+        :class="['flex-shrink-1 flex-grow-0', toolbarRowClass]"
+        :style="toolbarRowStyle"
+      >
+        <v-col :class="[toolbarColClass]" :style="toolbarColStyle">
+          <slot name="card-toolbar"></slot>
+        </v-col>
+      </v-row>
+
       <v-row
         v-if="slotIsPopulated(['card-img'])"
         :class="['flex-shrink-0 flex-grow-1', imgRowClass]"
@@ -20,7 +31,6 @@
           <slot name="card-img"></slot>
         </v-col>
       </v-row>
-      <slot name="card-toolbar"></slot>
 
       <!-- Headings -->
       <v-row
@@ -111,6 +121,8 @@
       containerStyle: { type: String, required: false },
 
       // v-row
+      toolbarRowClass: { type: String, required: false },
+      toolbarRowStyle: { type: String, required: false },
       imgRowClass: { type: String, required: false },
       imgRowStyle: { type: String, required: false },
       headingRowClass: { type: String, required: false },
@@ -121,6 +133,8 @@
       actionRowStyle: { type: String, required: false },
 
       // v-col
+      toolbarColClass: { type: String, required: false },
+      toolbarColStyle: { type: String, required: false },
       imgColClass: { type: String, required: false },
       imgColStyle: { type: String, required: false },
       headingCols: { type: String, required: false },
