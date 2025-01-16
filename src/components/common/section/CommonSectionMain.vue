@@ -2,12 +2,13 @@
   <ClientOnly>
     <CommonCard
       :id="id"
-      :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
-      heading-subtitle-class="text-center text-h5 text-sm-h4 text-xl-h3"
       :title="title"
       :subtitle="subtitle"
+      :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
+      :heading-subtitle-class="`text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
       :card-class="cardClass"
       :container-class="containerClass"
+      :elevation="elevation"
     >
       <template #card-content>
         <v-container fluid class="pa-0">
@@ -24,13 +25,17 @@
   export default defineComponent({
     name: 'common-section-main',
     props: {
+      /* Default attributes */
+      id: { type: String, required: false },
+      elevation: { type: String, required: false },
+
       /* Text */
       title: { type: String, required: true },
       subtitle: { type: String, required: false },
 
       /* CSS */
-      id: { type: String, required: true },
       headingTitleClass: { type: String, required: false },
+      headingSubtitleClass: { type: String, required: false },
       cardBackgroundColour: { type: String, required: false },
     },
     computed: {

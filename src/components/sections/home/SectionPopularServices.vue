@@ -1,6 +1,7 @@
 <template>
   <CommonSectionMain
     id="section-popular-services"
+    elevation="0"
     title="Popular Services"
     subtitle="A subtitle to describe what is part of this section"
     card-background-colour="bg-white"

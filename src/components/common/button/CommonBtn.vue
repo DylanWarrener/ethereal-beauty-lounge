@@ -1,5 +1,11 @@
 <template>
-  <v-btn rounded="xl" :size="size" :class="['px-4', btnClass]" @click="clicked">
+  <v-btn
+    rounded="xl"
+    :to="to"
+    :size="size"
+    :class="['px-4', btnClass]"
+    @click="clicked"
+  >
     <span v-if="text" :class="btnTextClass">{{ text }}</span>
     <v-icon v-if="icon" :icon="icon" :class="[iconClass]"></v-icon>
   </v-btn>
@@ -9,6 +15,9 @@
   export default defineComponent({
     name: 'common-btn',
     props: {
+      /* Default attributes */
+      to: { type: String, required: false },
+
       /* Text */
       text: { type: String, required: true },
 

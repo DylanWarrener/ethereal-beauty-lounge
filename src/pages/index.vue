@@ -16,10 +16,13 @@
         <SectionLogoList />
       </v-col> -->
       <v-col cols="12" class="pa-0">
+        <SectionBenefits />
+      </v-col>
+      <v-col cols="12" class="pa-0">
         <SectionRecentPortfolio />
       </v-col>
       <v-col cols="12" class="pa-0">
-        <SectionPackages />
+        <SectionOurPackages />
       </v-col>
       <v-col cols="12" class="pa-0">
         <SectionPopularServices />

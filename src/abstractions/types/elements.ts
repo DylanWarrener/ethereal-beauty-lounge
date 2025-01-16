@@ -3,3 +3,5 @@ export type TAppBarDensity =
   | 'comfortable'
   | 'default'
   | 'prominent';
+export type TRatingDensity = 'compact' | 'default' | 'comfortable';
+export type TRatingSize = 'x-small' | 'small' | 'large' | 'x-large';

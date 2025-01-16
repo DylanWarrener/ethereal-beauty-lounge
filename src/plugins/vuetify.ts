@@ -23,6 +23,7 @@ import {
   mdiMinus,
   mdiSecurity,
   mdiBell,
+  mdiAccountCog,
 } from '@mdi/js';
 
 const whiteColours = {
@@ -157,6 +158,9 @@ export default defineNuxtPlugin((nuxtApp) => {
         login: mdiLogin,
         logout: mdiLogout,
         settings: mdiCog,
+
+        /* Service icons */
+        customisedService: mdiAccountCog,
 
         /* Actions */
         add: mdiPlus,

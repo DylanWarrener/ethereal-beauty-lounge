@@ -23,6 +23,16 @@
       </v-row>
 
       <v-row
+        v-if="slotIsPopulated(['card-icon'])"
+        :class="[iconRowClass]"
+        :style="iconRowStyle"
+      >
+        <v-col :class="[iconColClass]" :style="iconColStyle">
+          <slot name="card-icon"></slot>
+        </v-col>
+      </v-row>
+
+      <v-row
         v-if="slotIsPopulated(['card-img'])"
         :class="['flex-shrink-0 flex-grow-1', imgRowClass]"
         :style="imgRowStyle"
@@ -123,6 +133,8 @@
       // v-row
       toolbarRowClass: { type: String, required: false },
       toolbarRowStyle: { type: String, required: false },
+      iconRowClass: { type: String, required: false },
+      iconRowStyle: { type: String, required: false },
       imgRowClass: { type: String, required: false },
       imgRowStyle: { type: String, required: false },
       headingRowClass: { type: String, required: false },
@@ -135,6 +147,8 @@
       // v-col
       toolbarColClass: { type: String, required: false },
       toolbarColStyle: { type: String, required: false },
+      iconColClass: { type: String, required: false },
+      iconColStyle: { type: String, required: false },
       imgColClass: { type: String, required: false },
       imgColStyle: { type: String, required: false },
       headingCols: { type: String, required: false },
