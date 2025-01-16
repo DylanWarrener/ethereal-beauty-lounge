@@ -23,7 +23,9 @@ import {
   mdiMinus,
   mdiSecurity,
   mdiBell,
-  mdiAccountCog,
+  mdiAccountArrowUp,
+  mdiFaceWomanShimmer,
+  mdiAccountHeart,
 } from '@mdi/js';
 
 const whiteColours = {
@@ -160,7 +162,9 @@ export default defineNuxtPlugin((nuxtApp) => {
         settings: mdiCog,
 
         /* Service icons */
-        customisedService: mdiAccountCog,
+        boostConfidence: mdiAccountHeart,
+        youthfulGlow: mdiFaceWomanShimmer,
+        professionalImage: mdiAccountArrowUp,
 
         /* Actions */
         add: mdiPlus,

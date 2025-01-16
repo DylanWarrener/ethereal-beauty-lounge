@@ -17,7 +17,7 @@
         :class="['flex-shrink-1 flex-grow-0', toolbarRowClass]"
         :style="toolbarRowStyle"
       >
-        <v-col :class="[toolbarColClass]" :style="toolbarColStyle">
+        <v-col :class="['pa-0', toolbarColClass]" :style="toolbarColStyle">
           <slot name="card-toolbar"></slot>
         </v-col>
       </v-row>
@@ -27,7 +27,7 @@
         :class="[iconRowClass]"
         :style="iconRowStyle"
       >
-        <v-col :class="[iconColClass]" :style="iconColStyle">
+        <v-col :class="['pa-0', iconColClass]" :style="iconColStyle">
           <slot name="card-icon"></slot>
         </v-col>
       </v-row>
@@ -45,19 +45,18 @@
       <!-- Headings -->
       <v-row
         v-if="headingIsPopulated"
-        dense
-        :class="['flex-shrink-1 flex-grow-0 d-flex pa-2', headingRowClass]"
+        :class="['flex-shrink-1 flex-grow-0', headingRowClass]"
         :style="headingRowStyle"
       >
         <v-col
           :cols="headingCols"
-          :class="[headingColClass]"
+          :class="['pa-0', headingColClass]"
           :style="headingColStyle"
         >
           <v-card-item :class="['pa-0', headingClass]" :style="headingStyle">
             <v-card-title
               v-if="titleIsPopulated"
-              :class="['mb-4 text-wrap', headingTitleClass]"
+              :class="['text-wrap', headingTitleClass]"
               :style="headingTitleStyle"
             >
               <slot name="card-title">{{ title }}</slot>
@@ -77,7 +76,6 @@
       <!-- Content -->
       <v-row
         v-if="slotIsPopulated(['card-content'])"
-        dense
         :class="['flex-shrink-1 flex-grow-1', contentRowClass]"
         :style="contentRowStyle"
       >
@@ -91,7 +89,6 @@
       <!-- Actions -->
       <v-row
         v-if="slotIsPopulated(['card-actions'])"
-        dense
         :class="[
           'ga-4 d-flex flex-shrink-1 flex-grow-0 align-center',
           actionRowClass,
