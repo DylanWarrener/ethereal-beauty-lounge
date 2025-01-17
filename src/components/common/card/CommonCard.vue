@@ -12,6 +12,7 @@
       :class="['h-100 d-flex flex-column', containerClass]"
       :style="containerStyle"
     >
+      <!-- Toolbar -->
       <v-row
         v-if="slotIsPopulated(['card-toolbar'])"
         :class="['flex-shrink-1 flex-grow-0', toolbarRowClass]"
@@ -22,9 +23,10 @@
         </v-col>
       </v-row>
 
+      <!-- Icon -->
       <v-row
         v-if="slotIsPopulated(['card-icon'])"
-        :class="[iconRowClass]"
+        :class="['flex-shrink-1 flex-grow-0', iconRowClass]"
         :style="iconRowStyle"
       >
         <v-col :class="['pa-0', iconColClass]" :style="iconColStyle">
@@ -32,6 +34,7 @@
         </v-col>
       </v-row>
 
+      <!-- Image -->
       <v-row
         v-if="slotIsPopulated(['card-img'])"
         :class="['flex-shrink-0 flex-grow-1', imgRowClass]"
@@ -53,9 +56,16 @@
           :class="['pa-0', headingColClass]"
           :style="headingColStyle"
         >
-          <v-card-item :class="['pa-0', headingClass]" :style="headingStyle">
+          <v-card-item
+            :class="[
+              'pa-0 text-wrap d-flex flex-column justify-center align-center',
+              headingClass,
+            ]"
+            :style="headingStyle"
+          >
             <v-card-title
               v-if="titleIsPopulated"
+              :tag="headingTitleTag"
               :class="['text-wrap', headingTitleClass]"
               :style="headingTitleStyle"
             >
@@ -63,7 +73,11 @@
             </v-card-title>
             <v-card-subtitle
               v-if="subtitleIsPopulated"
-              :class="['text-wrap', headingSubtitleClass]"
+              :tag="headingSubtitleTag"
+              :class="[
+                'text-wrap text-center d-flex justify-center align-center',
+                headingSubtitleClass,
+              ]"
               :style="headingSubtitleStyle"
             >
               <slot name="card-subtitle">{{ subtitle }}</slot>
@@ -165,8 +179,10 @@
       headingStyle: { type: String, required: false },
       headingTitleClass: { type: String, required: false },
       headingTitleStyle: { type: String, required: false },
+      headingTitleTag: { type: String, required: false },
       headingSubtitleClass: { type: String, required: false },
       headingSubtitleStyle: { type: String, required: false },
+      headingSubtitleTag: { type: String, required: false },
       contentClass: { type: String, required: false },
       contentStyle: { type: String, required: false },
       actionClass: { type: String, required: false },
@@ -174,6 +190,9 @@
     },
     computed: {
       /* Data */
+      isMobile(): boolean {
+        return this.$vuetify.display.mobile;
+      },
       headingIsPopulated(): boolean {
         return (
           !!this.title ||

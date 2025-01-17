@@ -4,16 +4,22 @@
       :id="id"
       :title="title"
       :subtitle="subtitle"
-      :card-class="sectionCardClass"
+      :card-class="`${isMobile ? 'pa-2' : 'pa-4'} ${cardBackgroundColour}`"
       :card-style="cardStyle"
-      :container-class="sectionContainerClass"
+      :container-class="containerClass"
       :container-style="containerStyle"
       :heading-row-class="headingRowClass"
       :heading-row-style="headingRowStyle"
       :heading-col-class="`mb-8 ${headingColClass}`"
       :heading-col-style="headingColStyle"
+      :heading-class="headingClass"
+      :heading-style="headingStyle"
       :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
+      :heading-title-style="headingTitleStyle"
+      :heading-title-tag="headingTitleTag"
       :heading-subtitle-class="`text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
+      :heading-subtitle-style="`${isMobile ? 'width: 100%;' : 'width: 75%; justify-self: center;'} ${headingSubtitleStyle}`"
+      :heading-subtitle-tag="headingSubtitleTag"
       :content-row-class="contentRowClass"
       :content-row-style="contentRowStyle"
       :content-col-class="contentColClass"
@@ -25,10 +31,14 @@
       <template #card-content>
         <v-container
           fluid
-          :class="`pa-0 ${cardContentContainerClass}`"
-          :style="cardContentContainerClass"
+          :class="`pa-0 ${sectionContentContainerClass}`"
+          :style="sectionContentContainerStyle"
         >
-          <v-row :class="cardContentRowClass" :style="cardContentRowStyle">
+          <v-row
+            dense
+            :class="sectionContentRowClass"
+            :style="sectionContentRowStyle"
+          >
             <slot name="section-content"></slot>
           </v-row>
         </v-container>
@@ -59,7 +69,11 @@
       headingColClass: { type: String, required: false },
       headingColStyle: { type: String, required: false },
       headingTitleClass: { type: String, required: false },
+      headingTitleStyle: { type: String, required: false },
       headingSubtitleClass: { type: String, required: false },
+      headingSubtitleStyle: { type: String, required: false },
+      headingClass: { type: String, required: false },
+      headingStyle: { type: String, required: false },
       contentRowClass: { type: String, required: false },
       contentRowStyle: { type: String, required: false },
       contentColClass: { type: String, required: false },
@@ -67,27 +81,34 @@
       contentClass: { type: String, required: false },
       contentStyle: { type: String, required: false },
       cardBackgroundColour: { type: String, required: false },
-      cardContentContainerClass: { type: String, required: false },
-      cardContentRowClass: { type: String, required: false },
-      cardContentRowStyle: { type: String, required: false },
+      sectionContentContainerClass: { type: String, required: false },
+      sectionContentContainerStyle: { type: String, required: false },
+      sectionContentRowClass: { type: String, required: false },
+      sectionContentRowStyle: { type: String, required: false },
     },
     computed: {
       /* CSS */
-      sectionCardClass(): string {
-        let retVal: string = `${this.cardBackgroundColour}`;
-        return retVal;
-      },
-      sectionContainerClass(): string {
-        let retVal: string = '';
-        if (this.containerClass) {
-          retVal = this.containerClass;
-        }
+      headingTitleTag(): string {
+        let retVal: string[] = [];
         if (this.isMobile) {
-          retVal += ' pa-4';
-        } else {
-          retVal += ' pa-8';
+          retVal.push('h4');
+        } else if (this.$vuetify.display.smAndUp) {
+          retVal.push('h3');
+        } else if (this.$vuetify.display.lgAndUp) {
+          retVal.push('h2');
         }
-        return retVal;
+        return retVal.join(' ');
+      },
+      headingSubtitleTag(): string {
+        let retVal: string[] = [];
+        if (this.isMobile) {
+          retVal.push('h5');
+        } else if (this.$vuetify.display.smAndUp) {
+          retVal.push('h4');
+        } else if (this.$vuetify.display.lgAndUp) {
+          retVal.push('h3');
+        }
+        return retVal.join(' ');
       },
 
       /* Data */

@@ -5,91 +5,32 @@
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
     card-background-colour="bg-secondary-2"
     heading-title-class="text-primary-3"
-    content-class="ga-8 d-flex"
-    :card-content-row-class="`d-flex ${isLaptopOrDesktop ? 'ga-2' : 'ga-1'}`"
+    :section-content-row-class="`d-flex ${isMobile ? 'ga-2 flex-wrap' : 'ga-4 flex-nowrap'}`"
   >
     <template #section-content>
-      <v-col cols="12" md="4">
+      <v-col v-for="(card, index) in cards" :key="index">
         <CommonCard
           rounded="xl"
-          title="Boost Your Confidence"
           card-class="h-100"
           container-class="pa-8"
-          icon-col-class="text-center"
+          icon-col-class="d-flex justify-center align-center"
+          icon-col-style="height: 100px"
+          heading-row-style="height: 70px"
           heading-col-class="mb-4"
           heading-title-class="font-weight-bold text-accent-darken-2 text-center text-h6 text-sm-h5 text-xl-h4"
           content-col-class="d-flex justify-center text-center"
-          content-style="max-width: 75%"
+          :title="card.title"
+          :card-style="cardStyle"
         >
           <template #card-icon>
             <v-icon
-              icon="$boostConfidence"
               color="accent-darken-2"
               size="64"
+              :icon="card.icon"
             ></v-icon>
           </template>
           <template #card-content>
-            <p class="text-body-1">
-              Look good, feel great! Our beauty treatments are designed to
-              enhance your natural features and help you feel your best,
-              empowering you with the confidence to take on the world.
-            </p>
-          </template>
-        </CommonCard>
-      </v-col>
-      <v-col cols="12" md="4">
-        <CommonCard
-          rounded="xl"
-          title="Achieve a Youthful Glow"
-          card-class="h-100"
-          container-class="pa-8"
-          icon-col-class="text-center"
-          heading-col-class="mb-4"
-          heading-title-class="font-weight-bold text-accent-darken-2 text-center text-h6 text-sm-h5 text-xl-h4"
-          content-col-class="d-flex justify-center text-center"
-          content-style="max-width: 75%"
-        >
-          <template #card-icon>
-            <v-icon
-              icon="$youthfulGlow"
-              color="accent-darken-2"
-              size="64"
-            ></v-icon>
-          </template>
-          <template #card-content>
-            <p class="text-body-1">
-              Reverse the signs of aging with our advanced treatments that
-              address wrinkles, fine lines, and skin elasticity. Discover the
-              secret to radiant, youthful-looking skin.
-            </p>
-          </template>
-        </CommonCard>
-      </v-col>
-      <v-col cols="12" md="4">
-        <CommonCard
-          rounded="xl"
-          title="Enhance Your Professional Image"
-          card-class="h-100"
-          container-class="pa-8"
-          icon-col-class="text-center"
-          heading-col-class="mb-4"
-          heading-title-class="font-weight-bold text-accent-darken-2 text-center text-h6 text-sm-h5 text-xl-h4"
-          content-col-class="d-flex justify-center text-center"
-          content-style="max-width: 75%"
-        >
-          <template #card-icon>
-            <v-icon
-              icon="$professionalImage"
-              color="accent-darken-2"
-              size="64"
-            ></v-icon>
-          </template>
-          <template #card-content>
-            <p class="text-body-1">
-              From first impressions to lasting impact, your appearance matters.
-              Whether for personal or professional success, our expert care
-              helps you put your best face forward, unlocking new opportunities.
-            </p>
+            <p class="text-body-1">{{ card.text }}</p>
           </template>
         </CommonCard>
       </v-col>
@@ -100,9 +41,61 @@
 <script lang="ts">
   export default defineComponent({
     name: 'section-benefits',
+    data(): any {
+      return {
+        cards: [
+          {
+            icon: '$boostConfidence',
+            title: 'Boost your Confidence',
+            text: `
+              Look good, feel great! Our beauty treatments are designed to
+              enhance your natural features and help you feel your best,
+              empowering you with the confidence to take on the world.
+            `,
+          },
+          {
+            icon: '$youthfulGlow',
+            title: 'Achieve a Youthful Glow',
+            text: `
+              Reverse the signs of aging with our advanced treatments that
+              address wrinkles, fine lines, and skin elasticity. Discover the
+              secret to radiant, youthful-looking skin.
+            `,
+          },
+          {
+            icon: '$professionalImage',
+            title: 'Enhance Professional Image',
+            text: `
+              From first impressions to lasting impact, your appearance matters.
+              Whether for personal or professional success, our expert care
+              helps you put your best face forward, unlocking new opportunities.
+            `,
+          },
+        ],
+      };
+    },
     computed: {
-      isLaptopOrDesktop(): boolean {
-        return this.$vuetify.display.lgAndUp;
+      /* CSS */
+      cardStyle(): string {
+        let retVal: string[] = [];
+        if (this.isMobile) {
+          retVal.push('width: 100%;');
+        }
+        if (this.isSmallToMediumTablet) {
+          retVal.push('width: 75%;');
+        }
+        if (this.$vuetify.display.mdAndUp) {
+          retVal.push('width: 100%;');
+        }
+        return retVal.join('');
+      },
+
+      /* Data */
+      isMobile(): boolean {
+        return this.$vuetify.display.smAndDown;
+      },
+      isSmallToMediumTablet(): boolean {
+        return this.$vuetify.display.smAndUp;
       },
     },
   });
