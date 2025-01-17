@@ -16,18 +16,22 @@
               <CommonCard
                 card-class="h-100"
                 card-style="border-radius: 16px 0 0 16px; background-color: rgba(238, 238, 218, 0.95)"
-                container-class="ga-4"
+                container-style="border: 4px solid black"
+                heading-row-style="border: 4px solid red"
+                heading-col-style="border: 4px solid blue"
+                heading-style="border: 4px solid green"
+                heading-title-style="border: 4px solid orange"
                 action-row-class="flex-grow-0"
                 action-col-class="pa-0"
                 action-class="pa-0"
+                :container-class="`${isMobile ? 'ga-2' : 'ga-4'}`"
                 :heading-row-class="`flex-grow-0 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
               >
                 <template #card-title>
-                  <div class="py-4 text-h4 text-sm-h3 text-xl-h2">
+                  <div class="py-4 text-center text-h4 text-sm-h3 text-xl-h2">
                     <b class="font-weight-bold text-primary-3">
                       Where
                       <span class="text-accent-darken-2">Beauty</span>
-                      <br />
                       Radiates With Delicacy
                     </b>
                   </div>
@@ -51,6 +55,7 @@
                 </template>
               </CommonCard>
             </v-col>
+
             <v-col v-if="isLaptopOrDesktop" cols="12" lg="6" class="pa-0">
               <CommonCard
                 card-class="h-100"
@@ -117,6 +122,16 @@
           retVal = '89dvh';
         }
         return retVal;
+      },
+      cardClass(): string {
+        let retVal: string[] = ['h-100'];
+        if (this.isMobile) {
+          retVal.push('pa-2');
+        }
+        if (this.$vuetify.display.lgAndUp) {
+          retVal.push('pa-4');
+        }
+        return retVal.join(' ');
       },
 
       /* Data */
