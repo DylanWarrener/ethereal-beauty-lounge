@@ -57,10 +57,7 @@
           :style="headingColStyle"
         >
           <v-card-item
-            :class="[
-              'pa-0 text-wrap d-flex flex-column justify-center align-center',
-              headingClass,
-            ]"
+            :class="['pa-0 text-wrap d-flex flex-column', headingClass]"
             :style="headingStyle"
           >
             <v-card-title
@@ -109,8 +106,12 @@
         ]"
         :style="actionRowStyle"
       >
-        <v-col cols="12" :class="[actionColClass]" :style="actionColStyle">
-          <v-card-actions :class="[actionClass]" :style="actionStyle">
+        <v-col
+          cols="12"
+          :class="['pa-0', actionColClass]"
+          :style="actionColStyle"
+        >
+          <v-card-actions :class="['pa-0', actionClass]" :style="actionStyle">
             <slot name="card-actions"></slot>
           </v-card-actions>
         </v-col>

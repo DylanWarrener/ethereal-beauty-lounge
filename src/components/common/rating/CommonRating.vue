@@ -21,24 +21,7 @@
     props: {
       /* Default attributes */
       density: { type: String, required: false },
-      size: {
-        type: [String, Number], // Allow both String and Number at runtime
-        required: false,
-        validator: (value: unknown) => {
-          // Add TypeScript-compatible runtime validation
-          const validSizes: TRatingSize[] = [
-            'x-small',
-            'small',
-            'large',
-            'x-large',
-          ];
-          return (
-            typeof value === 'number' ||
-            (typeof value === 'string' &&
-              validSizes.includes(value as TRatingSize))
-          );
-        },
-      },
+      size: { type: String, required: false },
       rating: { type: Number, required: true },
       color: { type: String, required: true },
       activeColor: { type: String, required: true },
@@ -60,10 +43,10 @@
         }
         return retVal;
       },
-      ratingSize(): string | number {
-        let retVal: string | number = 'default';
+      ratingSize(): TRatingSize | number {
+        let retVal: TRatingSize | number = 'default' as TRatingSize;
         if (typeof this.size === 'string') {
-          retVal = this.size as string;
+          retVal = this.size as TRatingSize;
         }
         if (typeof this.size === 'number') {
           retVal = this.size as number;

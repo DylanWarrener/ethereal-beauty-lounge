@@ -4,7 +4,7 @@
       :id="id"
       :title="title"
       :subtitle="subtitle"
-      :card-class="`${isMobile ? 'pa-2' : 'pa-4'} ${cardBackgroundColour}`"
+      :card-class="`${cardBackgroundColour}`"
       :card-style="cardStyle"
       :container-class="containerClass"
       :container-style="containerStyle"
@@ -12,7 +12,7 @@
       :heading-row-style="headingRowStyle"
       :heading-col-class="`mb-8 ${headingColClass}`"
       :heading-col-style="headingColStyle"
-      :heading-class="headingClass"
+      :heading-class="`justify-center align-center ${headingClass}`"
       :heading-style="headingStyle"
       :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
       :heading-title-style="headingTitleStyle"
@@ -31,7 +31,7 @@
       <template #card-content>
         <v-container
           fluid
-          :class="`pa-0 ${sectionContentContainerClass}`"
+          :class="`${isLaptopOrDesktop ? 'pa-4' : 'pa-2'} ${sectionContentContainerClass}`"
           :style="sectionContentContainerStyle"
         >
           <v-row
@@ -114,6 +114,9 @@
       /* Data */
       isMobile(): boolean {
         return this.$vuetify.display.mobile;
+      },
+      isLaptopOrDesktop(): boolean {
+        return this.$vuetify.display.lgAndUp;
       },
     },
   });

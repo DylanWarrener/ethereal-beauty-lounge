@@ -8,7 +8,7 @@
     fluid
     :class="['pa-0', isMobile ? 'pt-3 px-4 pb-4' : 'pt-7 px-8 pb-8']"
   >
-    <v-row dense :class="[isMobile ? 'ga-2' : 'ga-6']">
+    <v-row dense class="ga-2">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
       </v-col> -->

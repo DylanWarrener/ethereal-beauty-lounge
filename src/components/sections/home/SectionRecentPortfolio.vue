@@ -222,6 +222,12 @@
         },
       };
     },
+    computed: {
+      /* Data */
+      isLaptopOrDesktop(): boolean {
+        return this.$vuetify.display.lgAndUp;
+      },
+    },
     methods: {
       /* Events */
       portfolio_clickHandler(): void {},

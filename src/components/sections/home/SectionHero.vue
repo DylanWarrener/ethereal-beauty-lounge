@@ -1,10 +1,9 @@
 <template>
   <ClientOnly>
     <v-parallax
-      rounded="xl"
       :class="[
-        'd-flex justify-center align-center',
-        isMobile ? 'mt-3 mx-3 pa-0' : 'mt-6 mx-6 pa-0',
+        'rounded pa-0 d-flex justify-center align-center',
+        isLaptopOrDesktop ? 'mt-6 mx-7' : 'mt-3 mx-3',
       ]"
       :height="dynamicParallaxHeight"
       :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
@@ -16,34 +15,40 @@
               <CommonCard
                 card-class="h-100"
                 card-style="border-radius: 16px 0 0 16px; background-color: rgba(238, 238, 218, 0.95)"
-                container-style="border: 4px solid black"
-                heading-row-style="border: 4px solid red"
-                heading-col-style="border: 4px solid blue"
-                heading-style="border: 4px solid green"
-                heading-title-style="border: 4px solid orange"
-                action-row-class="flex-grow-0"
-                action-col-class="pa-0"
-                action-class="pa-0"
-                :container-class="`${isMobile ? 'ga-2' : 'ga-4'}`"
-                :heading-row-class="`flex-grow-0 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
+                heading-class="h-100"
+                :container-class="`${isMobile ? 'ga-2 pa-4' : 'ga-4 pa-8'}`"
+                :heading-row-class="`flex-grow-1 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
+                :action-class="`${isLaptopOrDesktop ? 'ga-4' : 'ga-2'}`"
               >
                 <template #card-title>
-                  <div class="py-4 text-center text-h4 text-sm-h3 text-xl-h2">
-                    <b class="font-weight-bold text-primary-3">
+                  <div
+                    :class="[
+                      'd-flex py-4 text-h4 text-sm-h3 text-xl-h2',
+                      `${isLaptopOrDesktop ? '' : 'justify-center text-center'}`,
+                    ]"
+                  >
+                    <b class="text-primary-3">
                       Where
                       <span class="text-accent-darken-2">Beauty</span>
+                      <br v-if="isLaptopOrDesktop" />
                       Radiates With Delicacy
                     </b>
                   </div>
                 </template>
                 <template #card-subtitle>
-                  <p class="text-black text-h5 text-sm-h4 text-xl-h5">
+                  <p
+                    :class="[
+                      'text-black text-h5 text-sm-h4 text-xl-h5',
+                      `${isLaptopOrDesktop ? 'justify-start text-start' : 'justify-center text-center'}`,
+                    ]"
+                  >
                     One of our specialties is building Beauty Therapy websites,
                     please browse from the live website examples below to see
                     some recent website designs we have we have completed.
                   </p>
                 </template>
                 <template #card-actions>
+                  <v-spacer v-if="!isLaptopOrDesktop"></v-spacer>
                   <CommonBtnOutlinedInternal
                     text="Our Recent Work"
                     @clicked="ourRecentWork_clickHandler"
@@ -52,6 +57,7 @@
                     text="Book a Treatment"
                     to="/services"
                   />
+                  <v-spacer></v-spacer>
                 </template>
               </CommonCard>
             </v-col>
@@ -64,15 +70,24 @@
                 <template #card-img>
                   <div
                     id="card-img"
-                    class="rounded-xl pa-4 d-flex justify-end align-end"
+                    class="rounded pa-4 d-flex justify-end align-end"
                     style="height: 600px"
                   >
                     <CommonCard
                       title="Rated Excellence"
                       card-class="rounded-xl"
-                      heading-title-class="text-subtitle-1"
+                      container-class="pa-8"
+                      heading-title-class="text-h6"
                     >
-                      <template #card-content>Add rating here</template>
+                      <template #card-content>
+                        <CommonRating
+                          class="w-100 d-flex justify-center align-center"
+                          color="black"
+                          active-color="accent-darken-2"
+                          density="compact"
+                          :rating="4.5"
+                        ></CommonRating>
+                      </template>
                     </CommonCard>
                   </div>
                 </template>
@@ -136,7 +151,7 @@
 
       /* Data */
       isMobile(): boolean {
-        return this.$vuetify.display.mobile;
+        return this.$vuetify.display.smAndDown;
       },
       isLaptopOrDesktop(): boolean {
         return this.$vuetify.display.lgAndUp;

@@ -5,13 +5,13 @@
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
     card-background-colour="bg-secondary-2"
     heading-title-class="text-primary-3"
-    :section-content-row-class="`d-flex ${isMobile ? 'ga-2 flex-wrap' : 'ga-4 flex-nowrap'}`"
+    :section-content-row-class="`d-flex ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'} ${isLaptopOrDesktop ? 'ga-4' : 'ga-2'}`"
   >
     <template #section-content>
       <v-col v-for="(card, index) in cards" :key="index">
         <CommonCard
           rounded="xl"
-          card-class="h-100"
+          card-class="w-100 h-100"
           container-class="pa-8"
           icon-col-class="d-flex justify-center align-center"
           icon-col-style="height: 100px"
@@ -96,6 +96,9 @@
       },
       isSmallToMediumTablet(): boolean {
         return this.$vuetify.display.smAndUp;
+      },
+      isLaptopOrDesktop(): boolean {
+        return this.$vuetify.display.lgAndUp;
       },
     },
   });
