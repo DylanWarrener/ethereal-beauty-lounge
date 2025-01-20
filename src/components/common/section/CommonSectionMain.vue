@@ -31,7 +31,7 @@
       <template #card-content>
         <v-container
           fluid
-          :class="`${isLaptopOrDesktop ? 'pa-4' : 'pa-2'} ${sectionContentContainerClass}`"
+          :class="sectionContainerClass"
           :style="sectionContentContainerStyle"
         >
           <v-row
@@ -107,6 +107,15 @@
           retVal.push('h4');
         } else if (this.$vuetify.display.lgAndUp) {
           retVal.push('h3');
+        }
+        return retVal.join(' ');
+      },
+      sectionContainerClass(): string {
+        let retVal: string[] = [];
+        if (this.sectionContentContainerClass) {
+          retVal.push(this.sectionContentContainerClass);
+        } else {
+          this.isLaptopOrDesktop ? retVal.push('pa-4') : retVal.push('pa-1');
         }
         return retVal.join(' ');
       },

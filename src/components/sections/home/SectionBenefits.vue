@@ -1,11 +1,11 @@
 <template>
   <CommonSectionMain
     id="section-benefits"
-    title="The benefits"
+    title="The Benefits"
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
     card-background-colour="bg-secondary-2"
     heading-title-class="text-primary-3"
-    :section-content-row-class="`d-flex ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'} ${isLaptopOrDesktop ? 'ga-4' : 'ga-2'}`"
+    :section-content-row-class="`d-flex ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'} ${isLaptopOrDesktop ? 'ga-3' : 'ga-1'}`"
   >
     <template #section-content>
       <v-col v-for="(card, index) in cards" :key="index">

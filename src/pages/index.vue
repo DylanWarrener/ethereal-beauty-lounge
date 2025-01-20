@@ -8,7 +8,7 @@
     fluid
     :class="['pa-0', isMobile ? 'pt-3 px-4 pb-4' : 'pt-7 px-8 pb-8']"
   >
-    <v-row dense class="ga-2">
+    <v-row dense :class="['ga-4', isLaptopOrDesktop ? '' : '']">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
       </v-col> -->
@@ -65,6 +65,9 @@
       /* Data */
       isMobile(): boolean {
         return this.$vuetify.display.mobile;
+      },
+      isLaptopOrDesktop(): boolean {
+        return this.$vuetify.display.lgAndUp;
       },
     },
     created(): void {
