@@ -21,9 +21,9 @@
       <v-col cols="12" class="pa-0">
         <SectionRecentPortfolio />
       </v-col>
-      <v-col cols="12" class="pa-0">
+      <!-- <v-col cols="12" class="pa-0">
         <SectionOurPackages />
-      </v-col>
+      </v-col> -->
       <v-col cols="12" class="pa-0">
         <SectionPopularServices />
       </v-col>

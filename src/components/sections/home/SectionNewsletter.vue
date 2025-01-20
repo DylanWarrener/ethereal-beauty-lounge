@@ -3,7 +3,7 @@
     id="section-newsletter"
     title="Newsletter"
     subtitle="Join our newsletter to stay up to date with new services, products, and discounts."
-    card-background-colour="bg-white"
+    card-background-colour="bg-secondary-2"
   >
     <template #section-content>
       <v-col cols="12" class="d-flex justify-center">

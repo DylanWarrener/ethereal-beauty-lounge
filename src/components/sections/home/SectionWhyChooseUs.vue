@@ -3,7 +3,7 @@
     id="section-why-choose-us"
     title="Why Choose Us?"
     subtitle="A subtitle to describe what is part of this section"
-    card-background-colour="bg-secondary-2"
+    card-background-colour="bg-accent-darken-2"
   >
     <template #section-content>Content</template>
   </CommonSectionMain>
