@@ -1,24 +1,21 @@
 <template>
   <ClientOnly>
     <v-parallax
-      :class="[
-        'rounded pa-0 d-flex justify-center align-center',
-        isLaptopOrDesktop ? 'mt-6 mx-7' : 'mt-3 mx-3',
-      ]"
+      class="rounded ma-4 d-flex justify-center align-center"
       :height="dynamicParallaxHeight"
       :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
     >
       <template #default>
-        <v-container fluid :class="['h-100 pa-0', isMobile ? 'pa-3' : 'pa-6']">
+        <v-container fluid class="h-100 pa-8">
           <v-row dense class="h-100 d-flex">
             <v-col cols="12" lg="6" class="pa-0">
               <CommonCard
                 card-class="h-100"
-                card-style="border-radius: 16px 0 0 16px; background-color: rgba(238, 238, 218, 0.95)"
+                card-style="border-radius: 16px 0 0 16px; background-color: rgba(206, 219, 210, 0.95)"
                 heading-class="h-100"
-                :container-class="`${isMobile ? 'ga-2 pa-4' : 'ga-4 pa-8'}`"
+                container-class="pa-8 ga-4"
+                action-class="ga-4"
                 :heading-row-class="`flex-grow-1 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
-                :action-class="`${isLaptopOrDesktop ? 'ga-4' : 'ga-2'}`"
               >
                 <template #card-title>
                   <div
@@ -27,9 +24,9 @@
                       `${isLaptopOrDesktop ? '' : 'justify-center text-center'}`,
                     ]"
                   >
-                    <b class="text-primary-3">
+                    <b :class="textTitleColour">
                       Where
-                      <span class="text-accent-darken-2">Beauty</span>
+                      <span class="text-section-1-cta">Beauty</span>
                       <br v-if="isLaptopOrDesktop" />
                       Radiates With Delicacy
                     </b>
@@ -38,7 +35,8 @@
                 <template #card-subtitle>
                   <p
                     :class="[
-                      'text-black text-h5 text-sm-h4 text-xl-h5',
+                      'text-h5 text-sm-h4 text-xl-h5',
+                      `${textSubtitleColour}`,
                       `${isLaptopOrDesktop ? 'justify-start text-start' : 'justify-center text-center'}`,
                     ]"
                   >
@@ -138,15 +136,14 @@
         }
         return retVal;
       },
-      cardClass(): string {
-        let retVal: string[] = ['h-100'];
-        if (this.isMobile) {
-          retVal.push('pa-2');
-        }
-        if (this.$vuetify.display.lgAndUp) {
-          retVal.push('pa-4');
-        }
-        return retVal.join(' ');
+      backgroundColour(): string {
+        return 'bg-section-1';
+      },
+      textTitleColour(): string {
+        return 'text-section-1-title';
+      },
+      textSubtitleColour(): string {
+        return 'text-section-1-subtitle';
       },
 
       /* Data */

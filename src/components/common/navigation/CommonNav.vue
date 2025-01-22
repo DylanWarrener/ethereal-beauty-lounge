@@ -5,9 +5,9 @@
         <template #default="{ isHovering, props }">
           <v-btn
             :key="index"
-            active-color="accent-darken-2"
-            :to="item.route"
             rounded="xl"
+            active-color="cta"
+            :to="item.route"
             :class="[
               'd-none d-md-flex',
               isHovering ? 'text-black' : 'text-black-tint-3',

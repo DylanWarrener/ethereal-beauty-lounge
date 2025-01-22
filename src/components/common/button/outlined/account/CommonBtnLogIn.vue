@@ -9,8 +9,7 @@
           icon="$login"
           icon-class="ml-2"
           :class="[
-            'text-white',
-            isHovering ? 'bg-primary-1' : 'bg-accent-darken-2',
+            isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta',
             btnClass,
           ]"
           @clicked="login_handleClick"

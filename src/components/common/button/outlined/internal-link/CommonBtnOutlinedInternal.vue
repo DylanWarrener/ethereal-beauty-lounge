@@ -6,8 +6,9 @@
         <CommonBtn
           v-bind="props"
           variant="outlined"
-          :btn-class="`${isHovering ? 'bg-accent-darken-2' : ''} ${btnClass}`"
-          :icon-class="`ml-2 icon-transition ${isHovering ? 'icon-transform' : ''}`"
+          :btn-class="`${isHovering ? 'bg-cta-hover text-cta-hover' : 'text-cta'} ${btnClass}`"
+          btn-text-class="text-black"
+          icon-class="ml-2 icon-transition text-black"
           :text="text"
           :to="to"
           :disabled="disabled"

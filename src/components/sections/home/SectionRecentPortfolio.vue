@@ -1,17 +1,21 @@
 <template>
   <CommonSectionMain
     id="section-recent-portfolio"
-    elevation="0"
     title="Recent Portfolio"
     subtitle="A subtitle to describe what is part of this section"
-    card-background-colour="bg-white"
-    container-class="pa-2"
-    heading-title-class="text-primary-3"
-    section-content-container-class="pa-0"
+    container-style="border: 4px solid black"
+    content-row-style="border: 4px solid red"
+    content-col-style="border: 4px solid lightblue"
+    section-content-container-style="border: 4px solid black"
+    section-content-row-class="ga-4 d-flex flex-wrap"
+    section-content-row-style="border: 4px solid red"
+    :card-background-colour="backgroundColour"
+    :heading-title-class="textTitleColour"
+    :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>
       <!-- For mobile -->
-      <v-col
+      <!-- <v-col
         v-if="!isLaptopOrDesktop"
         cols="12"
         :class="[
@@ -84,32 +88,32 @@
             </CommonCard>
           </template>
         </v-hover>
-      </v-col>
+      </v-col> -->
 
       <!-- For PC -->
       <v-col
-        v-for="(col, index) in portfolio"
-        v-else
+        v-for="(card, index) in cards"
         :key="index"
-        cols="12"
-        lg="4"
-        :class="[
-          'd-flex flex-column',
-          `${isLaptopOrDesktop ? 'pa-2 ga-4' : 'pa-2 ga-2'}`,
-        ]"
+        cols="4"
+        class="pa-0 flex-shrink-1 flex-grow-1"
+        style="border: 4px solid blue"
       >
-        <v-hover v-for="card in col" :key="card">
+        Content
+        <!-- <v-hover>
           <template #default="{ isHovering: cardHover, props }">
             <CommonCard
-              :height="card.height"
               card-class="bg-accent-darken-2"
               container-class="pa-4"
-              img-row-class="h-100"
               img-col-class="h-100 pa-0"
               v-bind="props"
             >
               <template #card-img>
-                <v-img cover class="h-100" :src="card.image.src"></v-img>
+                <v-img
+                  cover
+                  width="100%"
+                  height="100%"
+                  :src="card.image.src"
+                ></v-img>
               </template>
               <template #card-transition>
                 <v-expand-transition mode="out-in">
@@ -162,10 +166,10 @@
               </template>
             </CommonCard>
           </template>
-        </v-hover>
+        </v-hover> -->
       </v-col>
 
-      <v-col cols="12" class="pa-2 d-flex justify-center">
+      <!-- <v-col cols="12" class="pa-2 d-flex justify-center">
         <v-hover>
           <template #default="{ isHovering, props }">
             <CommonBtn
@@ -176,7 +180,7 @@
             ></CommonBtn>
           </template>
         </v-hover>
-      </v-col>
+      </v-col> -->
     </template>
   </CommonSectionMain>
 </template>
@@ -411,6 +415,17 @@
       };
     },
     computed: {
+      /* CSS */
+      backgroundColour(): string {
+        return 'bg-section-6';
+      },
+      textTitleColour(): string {
+        return 'text-section-6-title';
+      },
+      textSubtitleColour(): string {
+        return 'text-section-6-subtitle';
+      },
+
       /* Data */
       isLaptopOrDesktop(): boolean {
         return this.$vuetify.display.lgAndUp;

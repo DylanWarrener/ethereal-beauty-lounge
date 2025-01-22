@@ -3,7 +3,9 @@
     id="section-newsletter"
     title="Newsletter"
     subtitle="Join our newsletter to stay up to date with new services, products, and discounts."
-    card-background-colour="bg-secondary-2"
+    :card-background-colour="backgroundColour"
+    :heading-title-class="textTitleColour"
+    :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>
       <v-col cols="12" class="d-flex justify-center">
@@ -63,6 +65,18 @@
           },
         },
       };
+    },
+    computed: {
+      /* CSS */
+      backgroundColour(): string {
+        return 'bg-section-9';
+      },
+      textTitleColour(): string {
+        return 'text-section-9-title';
+      },
+      textSubtitleColour(): string {
+        return 'text-section-9-subtitle';
+      },
     },
     methods: {
       /* Events */

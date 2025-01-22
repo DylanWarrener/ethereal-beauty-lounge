@@ -3,12 +3,23 @@
     id="section-benefits"
     title="The Benefits"
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
-    card-background-colour="bg-secondary-2"
-    heading-title-class="text-primary-3"
-    :section-content-row-class="`d-flex ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'} ${isLaptopOrDesktop ? 'ga-3' : 'ga-1'}`"
+    container-style="border: 4px solid black"
+    content-row-style="border: 4px solid red"
+    content-col-style="border: 4px solid lightblue"
+    section-content-container-style="border: 4px solid black"
+    section-content-row-style="border: 4px solid red"
+    :card-background-colour="backgroundColour"
+    :heading-title-class="textTitleColour"
+    :heading-subtitle-class="textSubtitleColour"
+    :section-content-row-class="`ga-4 d-flex ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'}`"
   >
     <template #section-content>
-      <v-col v-for="(card, index) in cards" :key="index">
+      <v-col
+        v-for="(card, index) in cards"
+        :key="index"
+        class="pa-0"
+        style="border: 4px solid blue"
+      >
         <CommonCard
           rounded="xl"
           card-class="w-100 h-100"
@@ -88,6 +99,15 @@
           retVal.push('width: 100%;');
         }
         return retVal.join('');
+      },
+      backgroundColour(): string {
+        return 'bg-section-3';
+      },
+      textTitleColour(): string {
+        return 'text-section-3-title';
+      },
+      textSubtitleColour(): string {
+        return 'text-section-3-subtitle';
       },
 
       /* Data */

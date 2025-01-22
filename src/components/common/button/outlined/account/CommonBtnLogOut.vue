@@ -9,8 +9,7 @@
           icon="$logout"
           icon-class="ml-2"
           :class="[
-            'bg-accent-darken-2',
-            isHovering ? 'text-secondary' : 'text-primary',
+            isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta',
             btnClass,
           ]"
           @clicked="logout_handleClick"

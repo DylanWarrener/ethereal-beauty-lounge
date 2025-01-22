@@ -4,11 +4,8 @@
   </Head>
 
   <SectionHero />
-  <v-container
-    fluid
-    :class="['pa-0', isMobile ? 'pt-3 px-4 pb-4' : 'pt-7 px-8 pb-8']"
-  >
-    <v-row dense :class="['ga-4', isLaptopOrDesktop ? '' : '']">
+  <v-container fluid>
+    <v-row dense class="ga-4">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
       </v-col> -->
@@ -16,7 +13,16 @@
         <SectionLogoList />
       </v-col> -->
       <v-col cols="12" class="pa-0">
+        <SectionWhyChooseUs />
+      </v-col>
+      <v-col cols="12" class="pa-0">
         <SectionBenefits />
+      </v-col>
+      <v-col cols="12" class="pa-0">
+        <SectionPopularServices />
+      </v-col>
+      <v-col cols="12" class="pa-0">
+        <SectionPopularProducts />
       </v-col>
       <v-col cols="12" class="pa-0">
         <SectionRecentPortfolio />
@@ -25,13 +31,7 @@
         <SectionOurPackages />
       </v-col> -->
       <v-col cols="12" class="pa-0">
-        <SectionPopularServices />
-      </v-col>
-      <v-col cols="12" class="pa-0">
-        <SectionPopularProducts />
-      </v-col>
-      <v-col cols="12" class="pa-0">
-        <SectionWhyChooseUs />
+        <SectionReviews />
       </v-col>
       <v-col cols="12" class="pa-0">
         <SectionBriefContact />

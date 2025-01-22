@@ -5,7 +5,9 @@
       <template #default="{ isHovering, props }">
         <CommonBtn
           variant="flat"
-          :btn-class="isHovering ? 'bg-primary-1' : 'bg-accent-darken-2'"
+          :btn-class="
+            isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta'
+          "
           :text="text"
           :to="to"
           :disabled="disabled"

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="bg-accent-darken-2" style="border: 2px solid black">
+  <v-container fluid :class="backgroundColour" style="border: 2px solid black">
     <!-- Content -->
     <v-row style="border: 2px solid red">
       <!-- Pages -->
@@ -89,6 +89,18 @@
         },
         information: {},
       };
+    },
+    computed: {
+      /* CSS */
+      backgroundColour(): string {
+        return 'bg-section-10';
+      },
+      textTitleColour(): string {
+        return 'text-section-10-title';
+      },
+      textSubtitleColour(): string {
+        return 'text-section-10-subtitle';
+      },
     },
   });
 </script>

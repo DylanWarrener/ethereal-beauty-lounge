@@ -8,7 +8,6 @@
   >
     <slot name="card-transition"></slot>
     <v-container
-      fluid
       :class="['h-100 d-flex flex-column', containerClass]"
       :style="containerStyle"
     >
@@ -87,6 +86,7 @@
       <!-- Content -->
       <v-row
         v-if="slotIsPopulated(['card-content'])"
+        dense
         :class="['flex-shrink-1 flex-grow-1', contentRowClass]"
         :style="contentRowStyle"
       >

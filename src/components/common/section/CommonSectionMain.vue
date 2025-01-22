@@ -4,7 +4,7 @@
       :id="id"
       :title="title"
       :subtitle="subtitle"
-      :card-class="`${cardBackgroundColour}`"
+      :card-class="`${cardClass} ${cardBackgroundColour}`"
       :card-style="cardStyle"
       :container-class="containerClass"
       :container-style="containerStyle"
@@ -36,6 +36,7 @@
         >
           <v-row
             dense
+            gap="16px"
             :class="sectionContentRowClass"
             :style="sectionContentRowStyle"
           >
