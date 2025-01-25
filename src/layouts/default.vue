@@ -5,7 +5,7 @@
     <CommonHeader />
 
     <v-main class="d-flex flex-column">
-      <v-container fluid>
+      <v-container fluid class="pa-0">
         <v-row dense>
           <v-col class="pa-0">
             <NuxtPage />

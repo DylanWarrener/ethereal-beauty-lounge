@@ -5,20 +5,18 @@
     :subtitle="subtitle"
     :card-class="`${cardClass} ${cardBackgroundColour}`"
     :card-style="cardStyle"
-    :container-class="containerClass"
+    :container-class="`pa-3 ${containerClass}`"
     :container-style="containerStyle"
     :heading-row-class="headingRowClass"
     :heading-row-style="headingRowStyle"
-    :heading-col-class="`mb-8 ${headingColClass}`"
+    :heading-col-class="`mb-4 ${headingColClass}`"
     :heading-col-style="headingColStyle"
     :heading-class="`justify-center align-center ${headingClass}`"
     :heading-style="headingStyle"
     :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
     :heading-title-style="headingTitleStyle"
-    :heading-title-tag="headingTitleTag"
-    :heading-subtitle-class="`text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
-    :heading-subtitle-style="`${isMobile ? 'width: 100%;' : 'width: 75%; justify-self: center;'} ${headingSubtitleStyle}`"
-    :heading-subtitle-tag="headingSubtitleTag"
+    :heading-subtitle-class="`w-100 text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
+    :heading-subtitle-style="headingSubtitleStyle"
     :content-row-class="contentRowClass"
     :content-row-style="contentRowStyle"
     :content-col-class="contentColClass"
@@ -30,14 +28,13 @@
     <template #card-content>
       <v-container
         fluid
-        :class="sectionContainerClass"
-        :style="sectionContentContainerStyle"
+        :class="[`${sectionContentContainerClass}`]"
+        :style="`border: 2px solid black; ${sectionContentContainerStyle}`"
       >
         <v-row
           dense
-          gap="16px"
           :class="sectionContentRowClass"
-          :style="sectionContentRowStyle"
+          :style="`border: 2px solid red; ${sectionContentRowStyle}`"
         >
           <slot name="section-content"></slot>
         </v-row>
@@ -52,7 +49,7 @@
     props: {
       /* Default attributes */
       id: { type: String, required: false },
-      elevation: { type: String, required: false },
+      elevation: { type: String, required: false, default: '0' },
 
       /* Text */
       title: { type: String, required: true },
@@ -84,48 +81,6 @@
       sectionContentContainerStyle: { type: String, required: false },
       sectionContentRowClass: { type: String, required: false },
       sectionContentRowStyle: { type: String, required: false },
-    },
-    computed: {
-      /* CSS */
-      headingTitleTag(): string {
-        let retVal: string[] = [];
-        if (this.isMobile) {
-          retVal.push('h4');
-        } else if (this.$vuetify.display.smAndUp) {
-          retVal.push('h3');
-        } else if (this.$vuetify.display.lgAndUp) {
-          retVal.push('h2');
-        }
-        return retVal.join(' ');
-      },
-      headingSubtitleTag(): string {
-        let retVal: string[] = [];
-        if (this.isMobile) {
-          retVal.push('h5');
-        } else if (this.$vuetify.display.smAndUp) {
-          retVal.push('h4');
-        } else if (this.$vuetify.display.lgAndUp) {
-          retVal.push('h3');
-        }
-        return retVal.join(' ');
-      },
-      sectionContainerClass(): string {
-        let retVal: string[] = [];
-        if (this.sectionContentContainerClass) {
-          retVal.push(this.sectionContentContainerClass);
-        } else {
-          this.isLaptopOrDesktop ? retVal.push('pa-4') : retVal.push('pa-1');
-        }
-        return retVal.join(' ');
-      },
-
-      /* Data */
-      isMobile(): boolean {
-        return this.$vuetify.display.mobile;
-      },
-      isLaptopOrDesktop(): boolean {
-        return this.$vuetify.display.lgAndUp;
-      },
     },
   });
 </script>

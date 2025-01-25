@@ -3,15 +3,10 @@
     id="section-benefits"
     title="The Benefits"
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
-    container-style="border: 4px solid black"
-    content-row-style="border: 4px solid red"
-    content-col-style="border: 4px solid lightblue"
-    section-content-container-style="border: 4px solid black"
-    section-content-row-style="border: 4px solid red"
     :card-background-colour="backgroundColour"
     :heading-title-class="textTitleColour"
     :heading-subtitle-class="textSubtitleColour"
-    :section-content-row-class="`ga-4 d-flex ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'}`"
+    :section-content-row-class="`ga-4 d-flex flex-nowrap ${isMobile ? 'flex-column flex-wrap' : 'flex-nowrap'}`"
   >
     <template #section-content>
       <v-col
@@ -104,10 +99,10 @@
         return 'bg-section-3';
       },
       textTitleColour(): string {
-        return 'text-section-3-title';
+        return 'text-section-title';
       },
       textSubtitleColour(): string {
-        return 'text-section-3-subtitle';
+        return 'text-section-subtitle';
       },
 
       /* Data */

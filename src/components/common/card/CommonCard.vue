@@ -9,7 +9,7 @@
     <slot name="card-transition"></slot>
     <v-container
       :class="['h-100 d-flex flex-column', containerClass]"
-      :style="containerStyle"
+      :style="`border: 2px solid black; ${containerStyle}`"
     >
       <!-- Toolbar -->
       <v-row
@@ -26,9 +26,12 @@
       <v-row
         v-if="slotIsPopulated(['card-icon'])"
         :class="['flex-shrink-1 flex-grow-0', iconRowClass]"
-        :style="iconRowStyle"
+        :style="`border: 2px solid red; ${iconRowStyle}`"
       >
-        <v-col :class="['pa-0', iconColClass]" :style="iconColStyle">
+        <v-col
+          :class="['pa-0', iconColClass]"
+          :style="`border: 2px solid blue; ${iconColStyle}`"
+        >
           <slot name="card-icon"></slot>
         </v-col>
       </v-row>
@@ -47,34 +50,32 @@
       <!-- Headings -->
       <v-row
         v-if="headingIsPopulated"
+        dense
         :class="['flex-shrink-1 flex-grow-0', headingRowClass]"
-        :style="headingRowStyle"
+        :style="`border: 2px solid red; ${headingRowStyle}`"
       >
         <v-col
           :cols="headingCols"
           :class="['pa-0', headingColClass]"
-          :style="headingColStyle"
+          :style="`border: 2px solid blue; ${headingColStyle}`"
         >
           <v-card-item
             :class="['pa-0 text-wrap d-flex flex-column', headingClass]"
-            :style="headingStyle"
+            :style="`border: 2px solid orange; ${headingStyle}`"
           >
             <v-card-title
               v-if="titleIsPopulated"
               :tag="headingTitleTag"
               :class="['text-wrap', headingTitleClass]"
-              :style="headingTitleStyle"
+              :style="`border: 2px solid green; ${headingTitleStyle}`"
             >
               <slot name="card-title">{{ title }}</slot>
             </v-card-title>
             <v-card-subtitle
               v-if="subtitleIsPopulated"
               :tag="headingSubtitleTag"
-              :class="[
-                'text-wrap text-center d-flex justify-center align-center',
-                headingSubtitleClass,
-              ]"
-              :style="headingSubtitleStyle"
+              :class="['text-wrap', headingSubtitleClass]"
+              :style="`border: 2px solid purple; ${headingSubtitleStyle}`"
             >
               <slot name="card-subtitle">{{ subtitle }}</slot>
             </v-card-subtitle>
@@ -88,10 +89,16 @@
         v-if="slotIsPopulated(['card-content'])"
         dense
         :class="['flex-shrink-1 flex-grow-1', contentRowClass]"
-        :style="contentRowStyle"
+        :style="`border: 2px solid red; ${contentRowStyle}`"
       >
-        <v-col :class="['pa-0', contentColClass]" :style="contentColStyle">
-          <v-card-text :class="['pa-0', contentClass]" :style="contentStyle">
+        <v-col
+          :class="['pa-0', contentColClass]"
+          :style="`border: 2px solid blue; ${contentColStyle}`"
+        >
+          <v-card-text
+            :class="['pa-0', contentClass]"
+            :style="`border: 2px solid green; ${contentStyle}`"
+          >
             <slot name="card-content"></slot>
           </v-card-text>
         </v-col>
@@ -100,18 +107,22 @@
       <!-- Actions -->
       <v-row
         v-if="slotIsPopulated(['card-actions'])"
+        dense
         :class="[
           'ga-4 d-flex flex-shrink-1 flex-grow-0 align-center',
           actionRowClass,
         ]"
-        :style="actionRowStyle"
+        :style="`border: 2px solid red; ${actionRowStyle}`"
       >
         <v-col
           cols="12"
           :class="['pa-0', actionColClass]"
-          :style="actionColStyle"
+          :style="`border: 2px solid blue; ${actionColStyle}`"
         >
-          <v-card-actions :class="['pa-0', actionClass]" :style="actionStyle">
+          <v-card-actions
+            :class="['pa-0', actionClass]"
+            :style="`border: 2px solid blue; ${actionStyle}`"
+          >
             <slot name="card-actions"></slot>
           </v-card-actions>
         </v-col>

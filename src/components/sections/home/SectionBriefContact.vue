@@ -1,7 +1,6 @@
 <template>
   <CommonSectionMain
     id="section-get-in-touch"
-    elevation="0"
     title="Get In Touch"
     subtitle="Call us or complete the form. We endeavour to answer all enquiries within 24 hours on business days."
     card-class="pa-0"
@@ -95,10 +94,10 @@
         return 'bg-section-8';
       },
       textTitleColour(): string {
-        return 'text-section-8-title';
+        return 'text-section-title';
       },
       textSubtitleColour(): string {
-        return 'text-section-8-subtitle';
+        return 'text-section-subtitle';
       },
 
       /* Images */

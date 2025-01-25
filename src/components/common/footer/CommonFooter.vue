@@ -96,10 +96,10 @@
         return 'bg-section-10';
       },
       textTitleColour(): string {
-        return 'text-section-10-title';
+        return 'text-section-title';
       },
       textSubtitleColour(): string {
-        return 'text-section-10-subtitle';
+        return 'text-section-subtitle';
       },
     },
   });

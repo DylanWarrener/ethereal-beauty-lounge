@@ -1,10 +1,11 @@
 <template>
   <CommonSectionMain
     id="section-why-choose-us"
-    elevation="0"
     title="Why Choose Us?"
     subtitle="A subtitle to describe what is part of this section"
     :card-background-colour="backgroundColour"
+    :heading-title-class="textTitleColour"
+    :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>Content</template>
   </CommonSectionMain>
@@ -19,10 +20,10 @@
         return 'bg-section-2';
       },
       textTitleColour(): string {
-        return 'text-section-2-title';
+        return 'text-section-title';
       },
       textSubtitleColour(): string {
-        return 'text-section-2-subtitle';
+        return 'text-section-subtitle';
       },
     },
   });

@@ -3,12 +3,7 @@
     id="section-recent-portfolio"
     title="Recent Portfolio"
     subtitle="A subtitle to describe what is part of this section"
-    container-style="border: 4px solid black"
-    content-row-style="border: 4px solid red"
-    content-col-style="border: 4px solid lightblue"
-    section-content-container-style="border: 4px solid black"
     section-content-row-class="ga-4 d-flex flex-wrap"
-    section-content-row-style="border: 4px solid red"
     :card-background-colour="backgroundColour"
     :heading-title-class="textTitleColour"
     :heading-subtitle-class="textSubtitleColour"
@@ -420,10 +415,10 @@
         return 'bg-section-6';
       },
       textTitleColour(): string {
-        return 'text-section-6-title';
+        return 'text-section-title';
       },
       textSubtitleColour(): string {
-        return 'text-section-6-subtitle';
+        return 'text-section-subtitle';
       },
 
       /* Data */

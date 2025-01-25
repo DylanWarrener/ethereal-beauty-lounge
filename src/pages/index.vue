@@ -4,15 +4,15 @@
   </Head>
 
   <SectionHero />
-  <v-container fluid style="border: 2px solid black">
-    <v-row dense class="ga-2" style="border: 2px solid red">
+  <v-container fluid class="pa-0 px-5">
+    <v-row dense class="ga-3">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
       </v-col> -->
       <!-- <v-col cols="12" class="pa-0">
         <SectionLogoList />
       </v-col> -->
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionWhyChooseUs />
       </v-col>
       <v-col cols="12" class="pa-0" style="border: 2px solid blue">

@@ -30,10 +30,10 @@
         return 'bg-section-4';
       },
       textTitleColour(): string {
-        return 'text-section-4-title';
+        return 'text-section-title';
       },
       textSubtitleColour(): string {
-        return 'text-section-4-subtitle';
+        return 'text-section-subtitle';
       },
     },
   });
