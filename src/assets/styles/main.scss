@@ -1,7 +1,19 @@
 /* ---------- ROOT ---------- */
 :root {
-  --v-theme-secondary-rgba: 0, 0, 0;
 }
+html {
+  scroll-behavior: smooth;
+}
+/* Firefox-specific scrollbar styling */
+@-moz-document url-prefix() {
+  html {
+    scrollbar-width: auto; /* Makes the scrollbar thinner in Firefox */
+    scrollbar-color: rgb(var(--v-theme-scroll-bar)) /* Thumb color */
+      rgb(var(--v-theme-white-tone-1)); /* Track color */
+    scrollbar-arrow-color: rgb(var(--v-theme-scroll-bar));
+  }
+}
+/* WebKit-based browsers (Chrome, Safari, Edge, Opera) */
 ::-webkit-scrollbar {
   width: 0.75em;
   height: 0.75em;
@@ -19,20 +31,6 @@
     background: rgba(var(--v-theme-scroll-bar), 0.8);
   }
 }
-/*
-@supports (
-  scrollbar-color: rgb(var(--v-theme-scroll-bar))
-    rgb(var(--v-theme-white-tone-1))
-) {
-  * {
-    scrollbar-color: rgba(var(--v-theme-scroll-bar), 1)
-      rgb(var(--v-theme-white-tone-1));
-    scrollbar-width: thin; // Ensures a thinner scrollbar equivalent to the 0.75em width in track-bar
-  }
-
-  // Styling the hover effect is not directly possible with @supports. However, scrollbar color can approximate it
-}
-*/
 
 /* ---------- TRANSITIONS ---------- */
 .icon-transition {

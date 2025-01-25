@@ -6,6 +6,7 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import {
   mdiBackburger,
   mdiArrowRightBold,
+  mdiArrowLeftBold,
   mdiMagnify,
   mdiShopping,
   mdiAccount,
@@ -218,6 +219,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       aliases: {
         ...aliases,
         arrowRight: mdiArrowRightBold,
+        arrowLeft: mdiArrowLeftBold,
 
         /* Navigation icons */
         menuBack: mdiBackburger,

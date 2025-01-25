@@ -1,11 +1,12 @@
 <template>
   <CommonCard
     :id="id"
+    :elevation="elevation"
     :title="title"
     :subtitle="subtitle"
     :card-class="`${cardClass} ${cardBackgroundColour}`"
     :card-style="cardStyle"
-    :container-class="`pa-3 ${containerClass}`"
+    :container-class="containerClass"
     :container-style="containerStyle"
     :heading-row-class="headingRowClass"
     :heading-row-style="headingRowStyle"
@@ -23,12 +24,11 @@
     :content-col-style="contentColStyle"
     :content-class="contentClass"
     :content-style="contentStyle"
-    :elevation="elevation"
   >
     <template #card-content>
       <v-container
         fluid
-        :class="[`${sectionContentContainerClass}`]"
+        :class="[`pa-2 pa-sm-4 ${sectionContentContainerClass}`]"
         :style="`${sectionContentContainerStyle}`"
       >
         <v-row

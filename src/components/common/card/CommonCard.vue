@@ -9,12 +9,13 @@
     <slot name="card-transition"></slot>
     <v-container
       fluid
-      :class="['h-100 d-flex flex-column', containerClass]"
+      :class="['h-100 pa-2 pa-sm-4 d-flex flex-column', containerClass]"
       :style="`${containerStyle}`"
     >
       <!-- Toolbar -->
       <v-row
         v-if="slotIsPopulated(['card-toolbar'])"
+        dense
         :class="['flex-shrink-1 flex-grow-0', toolbarRowClass]"
         :style="toolbarRowStyle"
       >
@@ -28,12 +29,9 @@
         v-if="slotIsPopulated(['card-icon'])"
         dense
         :class="['flex-shrink-1 flex-grow-0', iconRowClass]"
-        :style="`border: 2px solid red; ${iconRowStyle}`"
+        :style="`${iconRowStyle}`"
       >
-        <v-col
-          :class="['pa-0', iconColClass]"
-          :style="`border: 2px solid blue; ${iconColStyle}`"
-        >
+        <v-col :class="['pa-0', iconColClass]" :style="`${iconColStyle}`">
           <slot name="card-icon"></slot>
         </v-col>
       </v-row>
@@ -41,6 +39,7 @@
       <!-- Image -->
       <v-row
         v-if="slotIsPopulated(['card-img'])"
+        dense
         :class="['flex-shrink-0 flex-grow-1', imgRowClass]"
         :style="imgRowStyle"
       >
@@ -91,15 +90,12 @@
         v-if="slotIsPopulated(['card-content'])"
         dense
         :class="['flex-shrink-1 flex-grow-1', contentRowClass]"
-        :style="`border: 2px solid red; ${contentRowStyle}`"
+        :style="`${contentRowStyle}`"
       >
-        <v-col
-          :class="['pa-0', contentColClass]"
-          :style="`border: 2px solid blue; ${contentColStyle}`"
-        >
+        <v-col :class="['pa-0', contentColClass]" :style="`${contentColStyle}`">
           <v-card-text
             :class="['pa-0', contentClass]"
-            :style="`border: 2px solid green; ${contentStyle}`"
+            :style="`${contentStyle}`"
           >
             <slot name="card-content"></slot>
           </v-card-text>

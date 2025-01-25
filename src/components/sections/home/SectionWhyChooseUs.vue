@@ -8,7 +8,9 @@
     :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>
-      <v-col style="border: 2px solid blue">Content</v-col>
+      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+        Content
+      </v-col>
     </template>
   </CommonSectionMain>
 </template>

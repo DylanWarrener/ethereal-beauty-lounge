@@ -1,9 +1,10 @@
 <template>
   <v-btn
     rounded="xl"
+    :icon="isIcon"
     :to="to"
     :size="size"
-    :class="['px-4', btnClass]"
+    :class="[`${isIcon ? '' : 'px-4'}`, btnClass]"
     @click="clicked"
   >
     <span v-if="text" :class="btnTextClass">{{ text }}</span>
@@ -19,7 +20,7 @@
       to: { type: String, required: false },
 
       /* Text */
-      text: { type: String, required: true },
+      text: { type: String, required: false },
 
       /* CSS */
       btnClass: { type: String, required: false },
@@ -28,6 +29,7 @@
 
       /* Icons */
       icon: { type: String, required: false },
+      isIcon: { type: Boolean, required: false },
     },
     emits: {
       clicked: null,
