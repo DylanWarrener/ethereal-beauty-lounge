@@ -7,7 +7,9 @@
     :heading-title-class="textTitleColour"
     :heading-subtitle-class="textSubtitleColour"
   >
-    <template #section-content>Content</template>
+    <template #section-content>
+      <v-col style="border: 2px solid blue">Content</v-col>
+    </template>
   </CommonSectionMain>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid :class="backgroundColour" style="border: 2px solid black">
+  <v-container fluid :class="`pa-4 ${backgroundColour}`">
     <!-- Content -->
-    <v-row style="border: 2px solid red">
+    <v-row dense style="border: 2px solid red">
       <!-- Pages -->
       <v-col
         cols="12"
@@ -31,7 +31,7 @@
     </v-row>
 
     <!-- Information & TOS -->
-    <v-row>
+    <v-row dense style="border: 2px solid red">
       <!-- Copyright -->
       <v-col style="border: 2px solid blue"></v-col>
 

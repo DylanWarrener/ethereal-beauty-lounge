@@ -91,6 +91,7 @@ const lightTheme: ThemeDefinition = {
 
     cta: accentColours['accent-shade-1'],
     'cta-hover': accentColours['accent-tint-3'],
+    'scroll-bar': accentColours['accent-shade-1'],
     'section-title': blackColours['black'],
     'section-subtitle': blackColours['black-tone-2'],
 
@@ -101,7 +102,7 @@ const lightTheme: ThemeDefinition = {
     'section-1-cta': accentColours['accent-shade-1'],
     'section-1-highlights': secondaryColours['secondary-tint-1'],
 
-    'section-2': whiteColours['white-tone-1'],
+    'section-2': whiteColours['white'],
     //'section-2-title': blackColours['black'],
     //'section-2-subtitle': blackColours['black-tone-1'],
     'section-2-body': blackColours['black-tint-2'],
@@ -114,28 +115,28 @@ const lightTheme: ThemeDefinition = {
     'section-3-body': blackColours['black-tone-3'],
     'section-3-highlights': primaryColours['primary-tint-2'],
 
-    'section-4': whiteColours['white'],
+    'section-4': whiteColours['white-tone-1'],
     //'section-4-title': primaryColours['primary-tone-2'],
     //'section-4-subtitle': blackColours['black-tint-2'],
     'section-4-body': blackColours['black-tint-3'],
     'section-4-cta': accentColours['accent-shade-1'],
     'section-4-highlights': secondaryColours['secondary-shade-1'],
 
-    'section-5': primaryColours['primary-tint-3'],
+    'section-5': whiteColours['white'],
     //'section-5-title': secondaryColours['secondary-tint-1'],
     //'section-5-subtitle': blackColours['black-tint-3'],
     'section-5-body': blackColours['black-tint-2'],
     'section-5-cta': accentColours['accent-tint-1'],
     'section-5-highlights': secondaryColours['secondary-shade-1'],
 
-    'section-6': whiteColours['white-tone-2'],
+    'section-6': primaryColours['primary-tint-3'],
     //'section-6-title': primaryColours['primary-shade-1'],
     //'section-6-subtitle': blackColours['black-tint-2'],
     'section-6-body': blackColours['black-tint-1'],
     'section-6-cta': accentColours['accent-tint-3'],
     'section-6-highlights': accentColours['accent-tint-3'],
 
-    'section-7': accentColours['accent-tint-3'],
+    'section-7': secondaryColours['secondary-tint-1'],
     //'section-7-title': primaryColours['primary-tint-2'],
     //'section-7-subtitle': blackColours['black-tint-3'],
     'section-7-body': blackColours['black-tint-2'],
@@ -149,14 +150,14 @@ const lightTheme: ThemeDefinition = {
     'section-8-cta': accentColours['accent'],
     'section-8-highlights': secondaryColours['secondary-tint-2'],
 
-    'section-9': whiteColours['white-tone-1'],
+    'section-9': whiteColours['white'],
     //'section-9-title': primaryColours['primary-tone-2'],
     //'section-9-subtitle': blackColours['black-tint-2'],
     'section-9-body': blackColours['black-tint-3'],
     'section-9-cta': accentColours['accent-tint-2'],
     'section-9-highlights': primaryColours['primary-tint-2'],
 
-    'section-10': accentColours['accent'],
+    'section-10': whiteColours['white-tone-1'],
     //'section-10-title': whiteColours['white'],
     //'section-10-subtitle': whiteColours['white-tone-3'],
     'section-10-body': whiteColours['white-tone-2'],

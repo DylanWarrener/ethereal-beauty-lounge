@@ -29,12 +29,12 @@
       <v-container
         fluid
         :class="[`${sectionContentContainerClass}`]"
-        :style="`border: 2px solid black; ${sectionContentContainerStyle}`"
+        :style="`${sectionContentContainerStyle}`"
       >
         <v-row
           dense
           :class="sectionContentRowClass"
-          :style="`border: 2px solid red; ${sectionContentRowStyle}`"
+          :style="`${sectionContentRowStyle}`"
         >
           <slot name="section-content"></slot>
         </v-row>

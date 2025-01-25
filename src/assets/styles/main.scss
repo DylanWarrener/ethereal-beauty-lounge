@@ -1,4 +1,4 @@
-/* ROOT */
+/* ---------- ROOT ---------- */
 :root {
   --v-theme-secondary-rgba: 0, 0, 0;
 }
@@ -11,23 +11,30 @@
   border-radius: 100vw;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--v-theme-accent-darken-2), 1);
+  background: rgba(var(--v-theme-scroll-bar), 1);
   border-radius: 100vw;
   border: 0.1em solid rgb(var(--v-theme-white-tone-1));
 
   &:hover {
-    background: rgba(var(--v-theme-primary-1), 0.8);
+    background: rgba(var(--v-theme-scroll-bar), 0.8);
   }
 }
+/*
 @supports (
-  scrollbar-color: rgb(var(--v-theme-primary)) rgb(var(--v-theme-default))
+  scrollbar-color: rgb(var(--v-theme-scroll-bar))
+    rgb(var(--v-theme-white-tone-1))
 ) {
   * {
-    scrollbar-color: rgb(var(--v-theme-ccprimary)) rgb(var(--v-theme-default));
+    scrollbar-color: rgba(var(--v-theme-scroll-bar), 1)
+      rgb(var(--v-theme-white-tone-1));
+    scrollbar-width: thin; // Ensures a thinner scrollbar equivalent to the 0.75em width in track-bar
   }
-}
 
-/* TRANSITIONS */
+  // Styling the hover effect is not directly possible with @supports. However, scrollbar color can approximate it
+}
+*/
+
+/* ---------- TRANSITIONS ---------- */
 .icon-transition {
   transition: all 0.2s ease-in-out !important;
 }

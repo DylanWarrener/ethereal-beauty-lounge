@@ -4,7 +4,7 @@
   </Head>
 
   <SectionHero />
-  <v-container fluid class="pa-0 px-5">
+  <v-container class="px-5 py-4">
     <v-row dense class="ga-3">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
@@ -15,28 +15,28 @@
       <v-col cols="12" class="pa-0">
         <SectionWhyChooseUs />
       </v-col>
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionBenefits />
       </v-col>
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionPopularServices />
       </v-col>
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionPopularProducts />
       </v-col>
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionRecentPortfolio />
       </v-col>
       <!-- <v-col cols="12" class="pa-0">
         <SectionOurPackages />
       </v-col> -->
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionReviews />
       </v-col>
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionBriefContact />
       </v-col>
-      <v-col cols="12" class="pa-0" style="border: 2px solid blue">
+      <v-col cols="12" class="pa-0">
         <SectionNewsletter />
       </v-col>
     </v-row>

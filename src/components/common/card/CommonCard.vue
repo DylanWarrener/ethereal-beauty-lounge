@@ -8,8 +8,9 @@
   >
     <slot name="card-transition"></slot>
     <v-container
+      fluid
       :class="['h-100 d-flex flex-column', containerClass]"
-      :style="`border: 2px solid black; ${containerStyle}`"
+      :style="`${containerStyle}`"
     >
       <!-- Toolbar -->
       <v-row
@@ -25,6 +26,7 @@
       <!-- Icon -->
       <v-row
         v-if="slotIsPopulated(['card-icon'])"
+        dense
         :class="['flex-shrink-1 flex-grow-0', iconRowClass]"
         :style="`border: 2px solid red; ${iconRowStyle}`"
       >
@@ -52,22 +54,22 @@
         v-if="headingIsPopulated"
         dense
         :class="['flex-shrink-1 flex-grow-0', headingRowClass]"
-        :style="`border: 2px solid red; ${headingRowStyle}`"
+        :style="`${headingRowStyle}`"
       >
         <v-col
           :cols="headingCols"
           :class="['pa-0', headingColClass]"
-          :style="`border: 2px solid blue; ${headingColStyle}`"
+          :style="`${headingColStyle}`"
         >
           <v-card-item
             :class="['pa-0 text-wrap d-flex flex-column', headingClass]"
-            :style="`border: 2px solid orange; ${headingStyle}`"
+            :style="`${headingStyle}`"
           >
             <v-card-title
               v-if="titleIsPopulated"
               :tag="headingTitleTag"
               :class="['text-wrap', headingTitleClass]"
-              :style="`border: 2px solid green; ${headingTitleStyle}`"
+              :style="`${headingTitleStyle}`"
             >
               <slot name="card-title">{{ title }}</slot>
             </v-card-title>
@@ -75,7 +77,7 @@
               v-if="subtitleIsPopulated"
               :tag="headingSubtitleTag"
               :class="['text-wrap', headingSubtitleClass]"
-              :style="`border: 2px solid purple; ${headingSubtitleStyle}`"
+              :style="`${headingSubtitleStyle}`"
             >
               <slot name="card-subtitle">{{ subtitle }}</slot>
             </v-card-subtitle>
@@ -112,16 +114,16 @@
           'ga-4 d-flex flex-shrink-1 flex-grow-0 align-center',
           actionRowClass,
         ]"
-        :style="`border: 2px solid red; ${actionRowStyle}`"
+        :style="`${actionRowStyle}`"
       >
         <v-col
           cols="12"
           :class="['pa-0', actionColClass]"
-          :style="`border: 2px solid blue; ${actionColStyle}`"
+          :style="`${actionColStyle}`"
         >
           <v-card-actions
             :class="['pa-0', actionClass]"
-            :style="`border: 2px solid blue; ${actionStyle}`"
+            :style="`${actionStyle}`"
           >
             <slot name="card-actions"></slot>
           </v-card-actions>

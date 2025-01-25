@@ -1,21 +1,22 @@
 <template>
   <ClientOnly>
     <v-parallax
-      class="rounded ma-4 d-flex justify-center align-center"
+      class="rounded mx-1 mt-1 mx-sm-4 mt-sm-4 d-flex justify-center align-center"
       :height="dynamicParallaxHeight"
       :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
     >
       <template #default>
-        <v-container fluid class="h-100 pa-3" style="border: 2px solid black">
-          <v-row dense class="h-100 d-flex" style="border: 2px solid red">
-            <v-col cols="12" lg="6" class="pa-0" style="border: 2px solid blue">
+        <v-container class="h-100 pa-4 pa-sm-7">
+          <v-row dense class="h-100 d-flex">
+            <v-col cols="12" lg="6" class="pa-0">
               <CommonCard
-                card-class="h-100"
-                card-style="border-radius: 16px 0 0 16px; background-color: rgba(206, 219, 210, 0.95)"
-                container-class="pa-3"
+                elevation="6"
+                card-class="h-100 rounded-0 rounded-s-lg"
+                card-style="background-color: rgba(206, 219, 210, 0.95)"
+                container-class="pa-4 pa-sm-7"
                 heading-row-class="flex-grow-1 pr-lg-16"
                 heading-class="h-100"
-                action-class="ga-4 d-flex flex-wrap justify-center justify-lg-start"
+                action-class="ga-3 ga-sm-5 d-flex flex-wrap justify-center justify-lg-start"
               >
                 <template #card-title>
                   <div
@@ -51,16 +52,10 @@
               </CommonCard>
             </v-col>
 
-            <v-col
-              v-if="isLaptopOrDesktop"
-              cols="12"
-              lg="6"
-              class="pa-0"
-              style="border: 2px solid blue"
-            >
+            <v-col cols="12" lg="6" class="pa-0 d-none d-lg-block">
               <CommonCard
-                card-class="h-100"
-                card-style="border-radius: 0 16px 16px 0; background-color: rgba(206, 219, 210, 0.95)"
+                card-class="h-100 rounded-0 rounded-e-lg"
+                card-style="background-color: rgba(206, 219, 210, 0.95)"
                 container-class="pa-3"
               >
                 <template #card-img>
@@ -71,7 +66,7 @@
                   >
                     <CommonCard
                       title="Rated Excellence"
-                      card-class="rounded-xl"
+                      card-class="rounded"
                       container-class="pa-3"
                       heading-title-class="text-h6"
                     >
@@ -147,9 +142,6 @@
       /* Data */
       isMobile(): boolean {
         return this.$vuetify.display.smAndDown;
-      },
-      isLaptopOrDesktop(): boolean {
-        return this.$vuetify.display.lgAndUp;
       },
       headingCols(): string {
         let retVal: string = '12';
