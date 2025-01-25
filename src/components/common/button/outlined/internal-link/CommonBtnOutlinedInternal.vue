@@ -1,22 +1,20 @@
 <!-- Used to navigate the user within the same page, to a non-CTA section (no icon) -->
 <template>
-  <ClientOnly>
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <CommonBtn
-          v-bind="props"
-          variant="outlined"
-          :btn-class="`${isHovering ? 'bg-cta-hover text-cta-hover' : 'text-cta'} ${btnClass}`"
-          btn-text-class="text-black"
-          icon-class="ml-2 icon-transition text-black"
-          :text="text"
-          :to="to"
-          :disabled="disabled"
-          @clicked="$emit('clicked')"
-        ></CommonBtn>
-      </template>
-    </v-hover>
-  </ClientOnly>
+  <v-hover>
+    <template #default="{ isHovering, props }">
+      <CommonBtn
+        v-bind="props"
+        variant="outlined"
+        :btn-class="`${isHovering ? 'bg-cta-hover text-cta-hover' : 'text-cta'} ${btnClass}`"
+        btn-text-class="text-black"
+        icon-class="ml-2 icon-transition text-black"
+        :text="text"
+        :to="to"
+        :disabled="disabled"
+        @clicked="$emit('clicked')"
+      ></CommonBtn>
+    </template>
+  </v-hover>
 </template>
 
 <script lang="ts">

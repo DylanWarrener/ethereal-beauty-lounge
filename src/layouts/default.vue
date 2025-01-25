@@ -1,8 +1,6 @@
 <template>
   <v-app theme="light">
-    <ClientOnly>
-      <CommonNavMobile />
-    </ClientOnly>
+    <CommonNavMobile />
 
     <CommonHeader />
 

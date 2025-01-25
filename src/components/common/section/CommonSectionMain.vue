@@ -1,51 +1,49 @@
 <template>
-  <ClientOnly>
-    <CommonCard
-      :id="id"
-      :title="title"
-      :subtitle="subtitle"
-      :card-class="`${cardClass} ${cardBackgroundColour}`"
-      :card-style="cardStyle"
-      :container-class="containerClass"
-      :container-style="containerStyle"
-      :heading-row-class="headingRowClass"
-      :heading-row-style="headingRowStyle"
-      :heading-col-class="`mb-8 ${headingColClass}`"
-      :heading-col-style="headingColStyle"
-      :heading-class="`justify-center align-center ${headingClass}`"
-      :heading-style="headingStyle"
-      :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
-      :heading-title-style="headingTitleStyle"
-      :heading-title-tag="headingTitleTag"
-      :heading-subtitle-class="`text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
-      :heading-subtitle-style="`${isMobile ? 'width: 100%;' : 'width: 75%; justify-self: center;'} ${headingSubtitleStyle}`"
-      :heading-subtitle-tag="headingSubtitleTag"
-      :content-row-class="contentRowClass"
-      :content-row-style="contentRowStyle"
-      :content-col-class="contentColClass"
-      :content-col-style="contentColStyle"
-      :content-class="contentClass"
-      :content-style="contentStyle"
-      :elevation="elevation"
-    >
-      <template #card-content>
-        <v-container
-          fluid
-          :class="sectionContainerClass"
-          :style="sectionContentContainerStyle"
+  <CommonCard
+    :id="id"
+    :title="title"
+    :subtitle="subtitle"
+    :card-class="`${cardClass} ${cardBackgroundColour}`"
+    :card-style="cardStyle"
+    :container-class="containerClass"
+    :container-style="containerStyle"
+    :heading-row-class="headingRowClass"
+    :heading-row-style="headingRowStyle"
+    :heading-col-class="`mb-8 ${headingColClass}`"
+    :heading-col-style="headingColStyle"
+    :heading-class="`justify-center align-center ${headingClass}`"
+    :heading-style="headingStyle"
+    :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
+    :heading-title-style="headingTitleStyle"
+    :heading-title-tag="headingTitleTag"
+    :heading-subtitle-class="`text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
+    :heading-subtitle-style="`${isMobile ? 'width: 100%;' : 'width: 75%; justify-self: center;'} ${headingSubtitleStyle}`"
+    :heading-subtitle-tag="headingSubtitleTag"
+    :content-row-class="contentRowClass"
+    :content-row-style="contentRowStyle"
+    :content-col-class="contentColClass"
+    :content-col-style="contentColStyle"
+    :content-class="contentClass"
+    :content-style="contentStyle"
+    :elevation="elevation"
+  >
+    <template #card-content>
+      <v-container
+        fluid
+        :class="sectionContainerClass"
+        :style="sectionContentContainerStyle"
+      >
+        <v-row
+          dense
+          gap="16px"
+          :class="sectionContentRowClass"
+          :style="sectionContentRowStyle"
         >
-          <v-row
-            dense
-            gap="16px"
-            :class="sectionContentRowClass"
-            :style="sectionContentRowStyle"
-          >
-            <slot name="section-content"></slot>
-          </v-row>
-        </v-container>
-      </template>
-    </CommonCard>
-  </ClientOnly>
+          <slot name="section-content"></slot>
+        </v-row>
+      </v-container>
+    </template>
+  </CommonCard>
 </template>
 
 <script lang="ts">

@@ -4,117 +4,109 @@
       <v-container fluid>
         <v-row>
           <!-- Mobile side navigation -->
-          <ClientOnly v-if="isMobile">
-            <v-col cols="12">
-              <v-sheet class="mx-auto bg-secondary-3" rounded="lg">
-                <v-slide-group mandatory>
-                  <v-slide-group-item v-slot="{ isSelected }">
-                    <v-btn
-                      rounded
-                      class="ma-2"
-                      variant="outlined"
-                      :color="isSelected ? 'accent' : undefined"
-                      @click.stop="
-                        account.content.selectedComponent =
-                          'SectionAccountSettingsPreferences'
-                      "
-                    >
-                      <template v-slot:prepend>
-                        <v-icon
-                          :icon="account.navigation.profile.icon"
-                        ></v-icon>
-                      </template>
-                      <template v-slot:default>
-                        <span v-text="account.navigation.profile.text"></span>
-                      </template>
-                    </v-btn>
-                    <v-btn
-                      rounded
-                      class="ma-2"
-                      variant="outlined"
-                      :text="account.navigation.security.text"
-                      :color="isSelected ? 'accent' : undefined"
-                      @click.stop="
-                        account.content.selectedComponent =
-                          'SectionAccountSecurityPreferences'
-                      "
-                    >
-                      <template v-slot:prepend>
-                        <v-icon
-                          :icon="account.navigation.security.icon"
-                        ></v-icon>
-                      </template>
-                    </v-btn>
-                    <v-btn
-                      rounded
-                      class="ma-2"
-                      variant="outlined"
-                      :text="account.navigation.notifications.text"
-                      :color="isSelected ? 'accent' : undefined"
-                      @click.stop="
-                        account.content.selectedComponent =
-                          'SectionAccountNotificationsPreferences'
-                      "
-                    >
-                      <template v-slot:prepend>
-                        <v-icon
-                          :icon="account.navigation.notifications.icon"
-                        ></v-icon>
-                      </template>
-                    </v-btn>
-                  </v-slide-group-item>
-                </v-slide-group>
-              </v-sheet>
-            </v-col>
-          </ClientOnly>
-
-          <!-- Desktop side navigation -->
-          <ClientOnly v-else>
-            <v-col cols="3">
-              <v-card>
-                <v-list nav class="pl-1 bg-secondary-3">
-                  <v-list-item
-                    :title="account.navigation.profile.text"
-                    :value="account.navigation.profile.value"
+          <v-col v-if="isMobile" cols="12">
+            <v-sheet class="mx-auto bg-secondary-3" rounded="lg">
+              <v-slide-group mandatory>
+                <v-slide-group-item v-slot="{ isSelected }">
+                  <v-btn
+                    rounded
+                    class="ma-2"
+                    variant="outlined"
+                    :color="isSelected ? 'accent' : undefined"
                     @click.stop="
                       account.content.selectedComponent =
                         'SectionAccountSettingsPreferences'
                     "
                   >
-                    <template #prepend>
+                    <template v-slot:prepend>
                       <v-icon :icon="account.navigation.profile.icon"></v-icon>
                     </template>
-                  </v-list-item>
-                  <v-list-item
-                    :title="account.navigation.security.text"
-                    :value="account.navigation.security.value"
+                    <template v-slot:default>
+                      <span v-text="account.navigation.profile.text"></span>
+                    </template>
+                  </v-btn>
+                  <v-btn
+                    rounded
+                    class="ma-2"
+                    variant="outlined"
+                    :text="account.navigation.security.text"
+                    :color="isSelected ? 'accent' : undefined"
                     @click.stop="
                       account.content.selectedComponent =
                         'SectionAccountSecurityPreferences'
                     "
                   >
-                    <template #prepend>
+                    <template v-slot:prepend>
                       <v-icon :icon="account.navigation.security.icon"></v-icon>
                     </template>
-                  </v-list-item>
-                  <v-list-item
-                    :title="account.navigation.notifications.text"
-                    :value="account.navigation.notifications.value"
+                  </v-btn>
+                  <v-btn
+                    rounded
+                    class="ma-2"
+                    variant="outlined"
+                    :text="account.navigation.notifications.text"
+                    :color="isSelected ? 'accent' : undefined"
                     @click.stop="
                       account.content.selectedComponent =
                         'SectionAccountNotificationsPreferences'
                     "
                   >
-                    <template #prepend>
+                    <template v-slot:prepend>
                       <v-icon
                         :icon="account.navigation.notifications.icon"
                       ></v-icon>
                     </template>
-                  </v-list-item>
-                </v-list>
-              </v-card>
-            </v-col>
-          </ClientOnly>
+                  </v-btn>
+                </v-slide-group-item>
+              </v-slide-group>
+            </v-sheet>
+          </v-col>
+
+          <!-- Desktop side navigation -->
+          <v-col v-else cols="3">
+            <v-card>
+              <v-list nav class="pl-1 bg-secondary-3">
+                <v-list-item
+                  :title="account.navigation.profile.text"
+                  :value="account.navigation.profile.value"
+                  @click.stop="
+                    account.content.selectedComponent =
+                      'SectionAccountSettingsPreferences'
+                  "
+                >
+                  <template #prepend>
+                    <v-icon :icon="account.navigation.profile.icon"></v-icon>
+                  </template>
+                </v-list-item>
+                <v-list-item
+                  :title="account.navigation.security.text"
+                  :value="account.navigation.security.value"
+                  @click.stop="
+                    account.content.selectedComponent =
+                      'SectionAccountSecurityPreferences'
+                  "
+                >
+                  <template #prepend>
+                    <v-icon :icon="account.navigation.security.icon"></v-icon>
+                  </template>
+                </v-list-item>
+                <v-list-item
+                  :title="account.navigation.notifications.text"
+                  :value="account.navigation.notifications.value"
+                  @click.stop="
+                    account.content.selectedComponent =
+                      'SectionAccountNotificationsPreferences'
+                  "
+                >
+                  <template #prepend>
+                    <v-icon
+                      :icon="account.navigation.notifications.icon"
+                    ></v-icon>
+                  </template>
+                </v-list-item>
+              </v-list>
+            </v-card>
+          </v-col>
 
           <v-col cols="12" md="9">
             <component :is="account.content.selectedComponent"></component>

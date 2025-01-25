@@ -3,20 +3,18 @@
     <template #preferences-content>
       <!-- Avatar -->
       <v-col cols="12" class="d-flex flex-column justify-center align-center">
-        <ClientOnly>
-          <v-card
-            width="128"
-            height="128"
-            rounded="circle"
-            class="d-flex justify-center align-center"
-          >
-            <template #default>
-              <span v-if="avatarInitials" class="text-h6">
-                {{ avatarInitials }}
-              </span>
-            </template>
-          </v-card>
-        </ClientOnly>
+        <v-card
+          width="128"
+          height="128"
+          rounded="circle"
+          class="d-flex justify-center align-center"
+        >
+          <template #default>
+            <span v-if="avatarInitials" class="text-h6">
+              {{ avatarInitials }}
+            </span>
+          </template>
+        </v-card>
       </v-col>
 
       <!-- Display name -->

@@ -1,22 +1,20 @@
 <template>
-  <ClientOnly v-if="!isLoggedIn">
-    <v-hover>
-      <template #default="{ isHovering, props }">
-        <CommonBtn
-          v-bind="props"
-          variant="flat"
-          text="Log in"
-          icon="$login"
-          icon-class="ml-2"
-          :class="[
-            isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta',
-            btnClass,
-          ]"
-          @clicked="login_handleClick"
-        ></CommonBtn>
-      </template>
-    </v-hover>
-  </ClientOnly>
+  <v-hover v-if="!isLoggedIn">
+    <template #default="{ isHovering, props }">
+      <CommonBtn
+        v-bind="props"
+        variant="flat"
+        text="Log in"
+        icon="$login"
+        icon-class="ml-2"
+        :class="[
+          isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta',
+          btnClass,
+        ]"
+        @clicked="login_handleClick"
+      ></CommonBtn>
+    </template>
+  </v-hover>
 </template>
 
 <script lang="ts">

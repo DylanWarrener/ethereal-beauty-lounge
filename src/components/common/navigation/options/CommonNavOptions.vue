@@ -1,33 +1,31 @@
 <template>
   <div class="d-flex justify-center align-center ga-2">
-    <ClientOnly>
-      <v-hover>
-        <template #default="{ isHovering, props: hoverProps }">
-          <v-tooltip location="bottom" text="Your Bag" class="d-none d-md-flex">
-            <template #activator="{ props: tooltipProps }">
-              <v-btn
+    <v-hover>
+      <template #default="{ isHovering, props: hoverProps }">
+        <v-tooltip location="bottom" text="Your Bag" class="d-none d-md-flex">
+          <template #activator="{ props: tooltipProps }">
+            <v-btn
+              class="d-none d-sm-flex"
+              icon
+              v-bind="mergeProps(hoverProps, tooltipProps)"
+            >
+              <v-icon
+                icon="$bag"
+                :class="[isHovering ? 'text-black' : 'text-black-tint-3']"
+              ></v-icon>
+              <v-menu
+                v-model="menuDrawer"
+                activator="parent"
                 class="d-none d-sm-flex"
-                icon
-                v-bind="mergeProps(hoverProps, tooltipProps)"
+                :close-on-content-click="false"
               >
-                <v-icon
-                  icon="$bag"
-                  :class="[isHovering ? 'text-black' : 'text-black-tint-3']"
-                ></v-icon>
-                <v-menu
-                  v-model="menuDrawer"
-                  activator="parent"
-                  class="d-none d-sm-flex"
-                  :close-on-content-click="false"
-                >
-                  <CommonCardBag />
-                </v-menu>
-              </v-btn>
-            </template>
-          </v-tooltip>
-        </template>
-      </v-hover>
-    </ClientOnly>
+                <CommonCardBag />
+              </v-menu>
+            </v-btn>
+          </template>
+        </v-tooltip>
+      </template>
+    </v-hover>
 
     <CommonBtnLogIn btn-class="d-none d-md-flex" />
 

@@ -1,101 +1,112 @@
 <template>
-  <ClientOnly>
-    <v-parallax
-      class="rounded ma-4 d-flex justify-center align-center"
-      :height="dynamicParallaxHeight"
-      :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
-    >
-      <template #default>
-        <v-container fluid class="h-100 pa-8">
-          <v-row dense class="h-100 d-flex">
-            <v-col cols="12" lg="6" class="pa-0">
-              <CommonCard
-                card-class="h-100"
-                card-style="border-radius: 16px 0 0 16px; background-color: rgba(206, 219, 210, 0.95)"
-                heading-class="h-100"
-                container-class="pa-8 ga-4"
-                action-class="ga-4"
-                :heading-row-class="`flex-grow-1 ${isLaptopOrDesktop ? 'pr-16' : ''}`"
-              >
-                <template #card-title>
-                  <div
-                    :class="[
-                      'd-flex py-4 text-h4 text-sm-h3 text-xl-h2',
-                      `${isLaptopOrDesktop ? '' : 'justify-center text-center'}`,
-                    ]"
-                  >
-                    <b :class="textTitleColour">
-                      Where
-                      <span class="text-section-1-cta">Beauty</span>
-                      <br v-if="isLaptopOrDesktop" />
-                      Radiates With Delicacy
-                    </b>
-                  </div>
-                </template>
-                <template #card-subtitle>
-                  <p
-                    :class="[
-                      'text-h5 text-sm-h4 text-xl-h5',
-                      `${textSubtitleColour}`,
-                      `${isLaptopOrDesktop ? 'justify-start text-start' : 'justify-center text-center'}`,
-                    ]"
-                  >
-                    One of our specialties is building Beauty Therapy websites,
-                    please browse from the live website examples below to see
-                    some recent website designs we have we have completed.
-                  </p>
-                </template>
-                <template #card-actions>
-                  <v-spacer v-if="!isLaptopOrDesktop"></v-spacer>
-                  <CommonBtnOutlinedInternal
-                    text="Our Recent Work"
-                    @clicked="ourRecentWork_clickHandler"
-                  />
-                  <CommonBtnSolidCtaInternal
-                    text="Book a Treatment"
-                    to="/services"
-                  />
-                  <v-spacer></v-spacer>
-                </template>
-              </CommonCard>
-            </v-col>
+  <v-parallax
+    class="rounded d-flex justify-center align-center"
+    :height="dynamicParallaxHeight"
+    :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
+  >
+    <template #default>
+      <v-container fluid class="h-100 pa-4" style="border: 2px solid black">
+        <v-row dense class="h-100 d-flex" style="border: 2px solid red">
+          <v-col cols="12" lg="6" class="pa-0" style="border: 2px solid blue">
+            <CommonCard
+              card-class="h-100"
+              card-style="border-radius: 16px 0 0 16px; background-color: rgba(206, 219, 210, 0.95)"
+              container-class="pa-6 ga-4"
+              container-style="border: 2px solid black"
+              heading-row-class="flex-grow-1 pr-lg-16"
+              heading-row-style="border: 2px solid red"
+              heading-col-style="border: 2px solid blue"
+              heading-class="h-100"
+              heading-style="border: 2px solid orange"
+              heading-title-style="border: 2px solid green"
+              heading-subtitle-style="border: 2px solid purple"
+              action-row-style="border: 2px solid red"
+              action-col-style="border: 2px solid blue"
+              action-class="ga-4 d-flex flex-wrap justify-center justify-lg-start"
+              action-style="border: 2px solid orange"
+            >
+              <template #card-title>
+                <div
+                  :class="[
+                    'd-flex py-4 text-h4 text-sm-h3 text-xl-h2',
+                    `${isLaptopOrDesktop ? '' : 'justify-center text-center'}`,
+                  ]"
+                >
+                  <b :class="textTitleColour">
+                    Where
+                    <span class="text-section-1-cta">Beauty</span>
+                    <br v-if="isLaptopOrDesktop" />
+                    Radiates With Delicacy
+                  </b>
+                </div>
+              </template>
+              <template #card-subtitle>
+                <p
+                  :class="[
+                    'text-h5 text-sm-h4 text-xl-h5',
+                    `${textSubtitleColour}`,
+                    `${isLaptopOrDesktop ? 'justify-start text-start' : 'justify-center text-center'}`,
+                  ]"
+                >
+                  One of our specialties is building Beauty Therapy websites,
+                  please browse from the live website examples below to see some
+                  recent website designs we have we have completed.
+                </p>
+              </template>
+              <template #card-actions>
+                <CommonBtnOutlinedInternal
+                  text="Our Recent Work"
+                  @clicked="ourRecentWork_clickHandler"
+                />
+                <CommonBtnSolidCtaInternal
+                  text="Book a Treatment"
+                  to="/services"
+                />
+              </template>
+            </CommonCard>
+          </v-col>
 
-            <v-col v-if="isLaptopOrDesktop" cols="12" lg="6" class="pa-0">
-              <CommonCard
-                card-class="h-100"
-                card-style="border-radius: 0 16px 16px 0; background-color: rgba(238, 238, 218, 0.95)"
-              >
-                <template #card-img>
-                  <div
-                    id="card-img"
-                    class="rounded pa-4 d-flex justify-end align-end"
-                    style="height: 600px"
+          <v-col
+            v-if="isLaptopOrDesktop"
+            cols="12"
+            lg="6"
+            class="pa-0"
+            style="border: 2px solid blue"
+          >
+            <CommonCard
+              card-class="h-100"
+              card-style="border-radius: 0 16px 16px 0; background-color: rgba(238, 238, 218, 0.95)"
+            >
+              <template #card-img>
+                <div
+                  id="card-img"
+                  class="rounded pa-4 d-flex justify-end align-end"
+                  style="height: 600px"
+                >
+                  <CommonCard
+                    title="Rated Excellence"
+                    card-class="rounded-xl"
+                    container-class="pa-8"
+                    heading-title-class="text-h6"
                   >
-                    <CommonCard
-                      title="Rated Excellence"
-                      card-class="rounded-xl"
-                      container-class="pa-8"
-                      heading-title-class="text-h6"
-                    >
-                      <template #card-content>
-                        <CommonRating
-                          class="w-100 d-flex justify-center align-center"
-                          color="black"
-                          active-color="accent-darken-2"
-                          density="compact"
-                          :rating="4.5"
-                        ></CommonRating>
-                      </template>
-                    </CommonCard>
-                  </div>
-                </template>
-              </CommonCard>
-            </v-col>
-          </v-row>
-        </v-container>
-      </template>
-    </v-parallax>
-  </ClientOnly>
+                    <template #card-content>
+                      <CommonRating
+                        class="w-100 d-flex justify-center align-center"
+                        color="black"
+                        active-color="accent-darken-2"
+                        density="compact"
+                        :rating="4.5"
+                      ></CommonRating>
+                    </template>
+                  </CommonCard>
+                </div>
+              </template>
+            </CommonCard>
+          </v-col>
+        </v-row>
+      </v-container>
+    </template>
+  </v-parallax>
 </template>
 
 <script lang="ts">
