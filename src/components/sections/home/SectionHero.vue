@@ -34,9 +34,8 @@
                   <p
                     :class="`d-flex justify-center justify-lg-start text-center text-lg-start text-h5 text-sm-h4 text-xl-h5 ${textSubtitleColour}`"
                   >
-                    One of our specialties is building Beauty Therapy websites,
-                    please browse from the live website examples below to see
-                    some recent website designs we have we have completed.
+                    Browse our range of services and discover how we can help
+                    you look and feel your best.
                   </p>
                 </template>
                 <template #card-actions>

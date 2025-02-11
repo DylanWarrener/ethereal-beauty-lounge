@@ -28,7 +28,9 @@
     <template #card-content>
       <v-container
         fluid
-        :class="[`pa-2 pa-sm-4 ${sectionContentContainerClass}`]"
+        :class="[
+          `d-flex flex-column pa-2 pa-sm-4 ${sectionContentContainerClass}`,
+        ]"
         :style="`${sectionContentContainerStyle}`"
       >
         <v-row
@@ -37,6 +39,14 @@
           :style="`${sectionContentRowStyle}`"
         >
           <slot name="section-content"></slot>
+        </v-row>
+
+        <v-row
+          dense
+          :class="sectionActionsRowClass"
+          :style="`${sectionActionsRowStyle}`"
+        >
+          <slot name="section-actions"></slot>
         </v-row>
       </v-container>
     </template>
@@ -81,6 +91,8 @@
       sectionContentContainerStyle: { type: String, required: false },
       sectionContentRowClass: { type: String, required: false },
       sectionContentRowStyle: { type: String, required: false },
+      sectionActionsRowClass: { type: String, required: false },
+      sectionActionsRowStyle: { type: String, required: false },
     },
   });
 </script>

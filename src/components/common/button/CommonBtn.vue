@@ -1,6 +1,7 @@
 <template>
   <v-btn
     rounded="xl"
+    variant="flat"
     :icon="isIcon"
     :to="to"
     :size="size"

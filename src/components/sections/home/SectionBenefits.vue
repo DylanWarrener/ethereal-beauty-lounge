@@ -3,30 +3,22 @@
     id="section-benefits"
     title="The Benefits"
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
-    card-style="border: 2px solid green"
-    container-style="border: 2px solid black"
     content-row-style="border: 2px solid red"
     content-col-style="border: 2px solid blue"
+    section-content-container-class="ga-4"
     :card-background-colour="backgroundColour"
     :heading-title-class="textTitleColour"
     :heading-subtitle-class="textSubtitleColour"
     :section-content-row-class="`ga-4 d-flex flex-nowrap`"
-    section-content-row-style="border: 2px solid red"
   >
     <template #section-content>
-      <v-col
-        cols="12"
-        class="pa-0 d-flex d-lg-none"
-        style="border: 2px solid blue"
-      >
+      <v-col cols="12" class="pa-0 d-flex d-lg-none">
         <v-carousel
-          cycle
           hide-delimiters
           progress="cta"
+          class="rounded-0 rounded-b-lg"
           show-arrows="hover"
           :height="carouselHeight"
-          class="rounded-0 rounded-b-lg"
-          style="border: 2px solid green"
         >
           <template #prev="{ props: prevProps }">
             <v-hover>
@@ -35,7 +27,6 @@
               >
                 <CommonBtn
                   is-icon
-                  elevation="0"
                   :icon="prevProps.icon"
                   :class="`${isHoverPrev ? 'bg-cta-hover text-black' : 'bg-cta text-white'} ${prevProps.class}`"
                   :aria-label="prevProps['aria-label']"
@@ -55,7 +46,7 @@
               heading-title-class="font-weight-bold text-cta text-center text-h6 text-sm-h5 text-xl-h4"
               content-col-class="d-flex flex-column align-center"
               content-class="h-100 d-flex justify-center align-center"
-              :content-style="`${isMobile ? 'width: 100%;' : 'width: 75%;'}`"
+              :content-style="`${isSmallToMediumTablet ? 'width: 75%;' : 'width: 100%;'}`"
             >
               <template #card-icon>
                 <v-icon color="cta" size="64" :icon="card.icon"></v-icon>
@@ -104,7 +95,6 @@
           heading-title-class="font-weight-bold text-cta text-center text-h6 text-sm-h5 text-xl-h4"
           content-col-class="d-flex justify-center text-center"
           :title="card.title"
-          :card-style="carouselCardBackground(card)"
         >
           <template #card-icon>
             <v-icon color="cta" size="64" :icon="card.icon"></v-icon>
@@ -115,13 +105,22 @@
         </CommonCard>
       </v-col>
     </template>
+
+    <template #section-actions>
+      <v-col cols="12" class="ga-4 pa-0 d-flex justify-center align-center">
+        <CommonBtn
+          text="Popular services"
+          @clicked="startTransformation_clickHandler"
+        />
+        <CommonBtn text="All services" to="/treatments" />
+      </v-col>
+    </template>
   </CommonSectionMain>
 </template>
 
 <script lang="ts">
-  /* Assets */
-  import BoostConfidenceBackgroundMobile from '@/assets/img/webp/benefits-section/boost-confidence-mobile.webp';
-  import BoostConfidenceBackgroundNonMobile from '@/assets/img/webp/benefits-section/boost-confidence-non-mobile.webp';
+  /* Utils */
+  import { scrollToElement } from '@/utils/functions/functions';
 
   export default defineComponent({
     name: 'section-benefits',
@@ -129,10 +128,6 @@
       return {
         cards: [
           {
-            background: {
-              mobile: '',
-              nonMobile: '',
-            },
             icon: '$boostConfidence',
             title: 'Boost your Confidence',
             text: `
@@ -142,10 +137,6 @@
             `,
           },
           {
-            background: {
-              mobile: '',
-              nonMobile: '',
-            },
             icon: '$youthfulGlow',
             title: 'Achieve a Youthful Glow',
             text: `
@@ -155,10 +146,6 @@
             `,
           },
           {
-            background: {
-              mobile: '',
-              nonMobile: '',
-            },
             icon: '$professionalImage',
             title: 'Enhance Professional Image',
             text: `
@@ -171,14 +158,6 @@
       };
     },
     computed: {
-      /* Images */
-      boostConfidenceBackgroundMobile(): string {
-        return BoostConfidenceBackgroundMobile;
-      },
-      boostConfidenceBackgroundNonMobile(): string {
-        return BoostConfidenceBackgroundNonMobile;
-      },
-
       /* CSS */
       backgroundColour(): string {
         return 'bg-section-3';
@@ -192,12 +171,6 @@
       carouselHeight(): string {
         return this.isMobile ? '400' : '300';
       },
-      carouselCardBackground(card: any): string {
-        let retVal: string = '';
-        if (this.card) {
-        }
-        return retVal;
-      },
 
       /* Data */
       isMobile(): boolean {
@@ -208,6 +181,19 @@
       },
       isLaptopOrDesktop(): boolean {
         return this.$vuetify.display.lgAndUp;
+      },
+    },
+    methods: {
+      /* Events */
+      startTransformation_clickHandler(): void {
+        const targetElementID: HTMLDivElement = document.getElementById(
+          'section-why-choose-us'
+        ) as HTMLDivElement;
+        if (targetElementID) {
+          scrollToElement(targetElementID);
+        } else {
+          //* Error handling missing
+        }
       },
     },
   });
