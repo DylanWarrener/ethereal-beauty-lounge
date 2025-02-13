@@ -17,18 +17,11 @@
   export default defineComponent({
     name: 'common-btn',
     props: {
-      /* Default attributes */
-      to: { type: String, required: false },
-
-      /* Text */
       text: { type: String, required: false },
-
-      /* CSS */
+      to: { type: String, required: false },
       btnClass: { type: String, required: false },
       btnTextClass: { type: String, required: false },
       iconClass: { type: String, required: false },
-
-      /* Icons */
       icon: { type: String, required: false },
       isIcon: { type: Boolean, required: false },
     },

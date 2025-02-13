@@ -5,13 +5,101 @@
     subtitle="Call us or complete the form. We endeavour to answer all enquiries within 24 hours on business days."
     card-class="pa-0"
     container-class="pa-0"
-    section-content-row-class="ga-4 flex-nowrap"
+    section-content-container-style="border: 2px solid black"
+    section-content-row-style="border: 2px solid red"
+    section-content-row-class="ga-8"
     :card-background-colour="backgroundColour"
     :heading-title-class="textTitleColour"
     :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>
-      <v-col cols="12" md="6" class="flex-shrink-1 flex-grow-1">
+      <v-col cols="12">
+        <v-row dense>
+          <!-- Email -->
+          <v-col cols="12" xl="4">
+            <v-row dense class="d-flex">
+              <v-col
+                cols="12"
+                sm="2"
+                lg="1"
+                xl="2"
+                class="flex-shrink-1 flex-grow-1 d-flex justify-center align-center"
+              >
+                <CommonIcon icon="$email" color="inverted" />
+              </v-col>
+              <v-col
+                cols="fill"
+                class="flex-shrink-1 flex-grow-1 d-flex justify-center justify-sm-start align-center"
+              >
+                <CommonParagraph text="contact@etherealbeautylounge.co.uk" />
+              </v-col>
+            </v-row>
+          </v-col>
+
+          <!-- Phone -->
+          <v-col cols="12" xl="4">
+            <v-row dense class="d-flex">
+              <v-col
+                cols="12"
+                sm="2"
+                lg="1"
+                xl="2"
+                class="flex-shrink-1 flex-grow-1 d-flex justify-center align-center"
+              >
+                <CommonIcon icon="$phone" color="inverted" />
+              </v-col>
+              <v-col
+                cols="fill"
+                class="flex-shrink-1 flex-grow-1 d-flex justify-center justify-sm-start align-center"
+              >
+                <CommonParagraph text="+44 (0)7778 564553" />
+              </v-col>
+            </v-row>
+          </v-col>
+
+          <!-- Office -->
+          <v-col cols="12" xl="4">
+            <v-row dense class="d-flex">
+              <v-col
+                cols="12"
+                sm="2"
+                lg="1"
+                xl="2"
+                class="flex-shrink-1 flex-grow-1 d-flex justify-center align-center"
+              >
+                <CommonIcon icon="$office" color="inverted" />
+              </v-col>
+              <v-col
+                cols="fill"
+                class="flex-shrink-1 flex-grow-1 d-flex justify-center justify-sm-start align-center"
+              >
+                <CommonParagraph text="PE4 5BH" />
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-col>
+
+      <v-row
+        dense
+        cols="12"
+        class="pa-0 ma-0 d-flex"
+        style="border: 2px solid red"
+      >
+        <!-- Form -->
+        <v-col cols="12" class="" style="border: 2px solid blue">Form</v-col>
+
+        <!-- Picture -->
+        <v-col
+          cols="12"
+          class="d-none d-lg-flex"
+          style="border: 2px solid blue"
+        >
+          Picture
+        </v-col>
+      </v-row>
+
+      <!-- <v-col cols="12" md="6" class="flex-shrink-1 flex-grow-1">
         <CommonCard elevation="0" card-class="h-100" content-class="h-100">
           <template #card-content>
             <v-container fluid class="pa-0 h-100 d-flex">
@@ -74,7 +162,7 @@
           width="100%"
           height="600"
         ></CommonCard>
-      </v-col>
+      </v-col> -->
     </template>
   </CommonSectionMain>
 </template>
@@ -88,6 +176,9 @@
 
   export default defineComponent({
     name: 'section-get-in-touch',
+    data(): any {
+      return {};
+    },
     computed: {
       /* CSS */
       backgroundColour(): string {

@@ -27,6 +27,9 @@ import {
   mdiAccountArrowUp,
   mdiFaceWomanShimmer,
   mdiAccountHeart,
+  mdiPhone,
+  mdiMapMarker,
+  mdiEmail,
 } from '@mdi/js';
 
 const whiteColours = {
@@ -87,7 +90,10 @@ const accentColours = {
 const lightTheme: ThemeDefinition = {
   dark: false,
   colors: {
+    default: whiteColours['white'],
     ...whiteColours,
+
+    inverted: blackColours['black'],
     ...blackColours,
 
     cta: accentColours['accent-shade-1'],
@@ -96,6 +102,7 @@ const lightTheme: ThemeDefinition = {
     'section-title': blackColours['black'],
     'section-subtitle': blackColours['black-tone-2'],
 
+    /* Hero section */
     'section-1': primaryColours['primary-shade-2'],
     //'section-1-title': blackColours['black-tint-1'],
     //'section-1-subtitle': blackColours['black-tone-2'],
@@ -103,6 +110,7 @@ const lightTheme: ThemeDefinition = {
     'section-1-cta': accentColours['accent-shade-1'],
     'section-1-highlights': secondaryColours['secondary-tint-1'],
 
+    /* Why Choose Us section */
     'section-2': whiteColours['white'],
     //'section-2-title': blackColours['black'],
     //'section-2-subtitle': blackColours['black-tone-1'],
@@ -110,12 +118,14 @@ const lightTheme: ThemeDefinition = {
     'section-2-cta': accentColours['accent-tint-2'],
     'section-2-highlights': accentColours['accent-tint-2'],
 
+    /* Benefits section */
     'section-3': primaryColours['primary-tint-3'],
     //'section-3-title': blackColours['black'],
     //'section-3-subtitle': blackColours['black-tone-2'],
     'section-3-body': blackColours['black-tone-3'],
     'section-3-highlights': primaryColours['primary-tint-2'],
 
+    /* Popular Services section */
     'section-4': whiteColours['white-tone-1'],
     //'section-4-title': primaryColours['primary-tone-2'],
     //'section-4-subtitle': blackColours['black-tint-2'],
@@ -123,6 +133,7 @@ const lightTheme: ThemeDefinition = {
     'section-4-cta': accentColours['accent-shade-1'],
     'section-4-highlights': secondaryColours['secondary-shade-1'],
 
+    /* Popular Products section */
     'section-5': whiteColours['white'],
     //'section-5-title': secondaryColours['secondary-tint-1'],
     //'section-5-subtitle': blackColours['black-tint-3'],
@@ -130,6 +141,7 @@ const lightTheme: ThemeDefinition = {
     'section-5-cta': accentColours['accent-tint-1'],
     'section-5-highlights': secondaryColours['secondary-shade-1'],
 
+    /* Recent Portfolio section */
     'section-6': primaryColours['primary-tint-3'],
     //'section-6-title': primaryColours['primary-shade-1'],
     //'section-6-subtitle': blackColours['black-tint-2'],
@@ -137,20 +149,23 @@ const lightTheme: ThemeDefinition = {
     'section-6-cta': accentColours['accent-tint-3'],
     'section-6-highlights': accentColours['accent-tint-3'],
 
-    'section-7': secondaryColours['secondary-tint-1'],
+    /* Recent Reviews section */
+    'section-7': whiteColours['white-tone-1'],
     //'section-7-title': primaryColours['primary-tint-2'],
     //'section-7-subtitle': blackColours['black-tint-3'],
     'section-7-body': blackColours['black-tint-2'],
     'section-7-cta': accentColours['accent-shade-1'],
     'section-7-highlights': secondaryColours['secondary-shade-1'],
 
-    'section-8': primaryColours['primary-tone-3'],
+    /* Get in Touch section */
+    'section-8': primaryColours['primary-tint-3'],
     //'section-8-title': accentColours['accent'],
     //'section-8-subtitle': blackColours['black-tint-3'],
-    'section-8-body': whiteColours['white'],
+    'section-8-body': blackColours['black-tone-3'],
     'section-8-cta': accentColours['accent'],
     'section-8-highlights': secondaryColours['secondary-tint-2'],
 
+    /* Newsletter section */
     'section-9': whiteColours['white'],
     //'section-9-title': primaryColours['primary-tone-2'],
     //'section-9-subtitle': blackColours['black-tint-2'],
@@ -158,6 +173,7 @@ const lightTheme: ThemeDefinition = {
     'section-9-cta': accentColours['accent-tint-2'],
     'section-9-highlights': primaryColours['primary-tint-2'],
 
+    /* Footer section */
     'section-10': whiteColours['white-tone-1'],
     //'section-10-title': whiteColours['white'],
     //'section-10-subtitle': whiteColours['white-tone-3'],
@@ -187,8 +203,11 @@ const lightTheme: ThemeDefinition = {
 const darkTheme: ThemeDefinition = {
   dark: true,
   colors: {
-    ...whiteColours,
+    default: blackColours['black'],
     ...blackColours,
+
+    inverted: whiteColours['white'],
+    ...whiteColours,
 
     primary: primaryColours.primary,
     'primary-1': primaryColours['primary-tint-1'],
@@ -221,27 +240,34 @@ export default defineNuxtPlugin((nuxtApp) => {
         arrowRight: mdiArrowRightBold,
         arrowLeft: mdiArrowLeftBold,
 
-        /* Navigation icons */
+        /* General */
         menuBack: mdiBackburger,
         search: mdiMagnify,
+
+        /* Navigation */
         home: mdiHome,
         packages: mdiPackage,
         services: mdiHandsPray,
         products: mdiLotionPlus,
         contact: mdiEmailFast,
         about: mdiInformation,
-        bag: mdiShopping,
         account: mdiAccount,
+        bag: mdiShopping,
         security: mdiSecurity,
         notifications: mdiBell,
         login: mdiLogin,
         logout: mdiLogout,
         settings: mdiCog,
 
-        /* Service icons */
+        /* Services */
         boostConfidence: mdiAccountHeart,
         youthfulGlow: mdiFaceWomanShimmer,
         professionalImage: mdiAccountArrowUp,
+
+        /* Information */
+        email: mdiEmail,
+        phone: mdiPhone,
+        office: mdiMapMarker,
 
         /* Actions */
         add: mdiPlus,

@@ -31,7 +31,7 @@
         <SectionOurPackages />
       </v-col> -->
       <v-col cols="12" class="pa-0">
-        <SectionReviews />
+        <SectionRecentReviews />
       </v-col>
       <v-col cols="12" class="pa-0">
         <SectionBriefContact />

@@ -11,12 +11,6 @@
       <v-col cols="12" lg="4" style="border: 4px solid blue">
         <CommonCard title="Our Mission" heading-title-class=""></CommonCard>
       </v-col>
-      <v-col cols="12" lg="4" style="border: 4px solid blue">
-        <CommonCard title="Our Services"></CommonCard>
-      </v-col>
-      <v-col cols="12" lg="4" style="border: 4px solid blue">
-        <CommonCard title="Our Team"></CommonCard>
-      </v-col>
     </template>
   </CommonSectionMain>
 </template>

@@ -3,8 +3,6 @@
     id="section-benefits"
     title="The Benefits"
     subtitle="Transform your beauty routine and discover services that enhance your health, confidence, and well-being."
-    content-row-style="border: 2px solid red"
-    content-col-style="border: 2px solid blue"
     section-content-container-class="ga-4"
     :card-background-colour="backgroundColour"
     :heading-title-class="textTitleColour"
@@ -108,11 +106,11 @@
 
     <template #section-actions>
       <v-col cols="12" class="ga-4 pa-0 d-flex justify-center align-center">
-        <CommonBtn
+        <CommonBtnOutlinedInternal
           text="Popular services"
           @clicked="startTransformation_clickHandler"
         />
-        <CommonBtn text="All services" to="/treatments" />
+        <CommonBtnSolidCtaExternal text="All services" to="/services" />
       </v-col>
     </template>
   </CommonSectionMain>
@@ -187,7 +185,7 @@
       /* Events */
       startTransformation_clickHandler(): void {
         const targetElementID: HTMLDivElement = document.getElementById(
-          'section-why-choose-us'
+          'section-popular-services'
         ) as HTMLDivElement;
         if (targetElementID) {
           scrollToElement(targetElementID);

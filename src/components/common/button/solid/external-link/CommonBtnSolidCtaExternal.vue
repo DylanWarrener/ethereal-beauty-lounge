@@ -2,22 +2,16 @@
 <template>
   <v-hover>
     <template #default="{ isHovering, props }">
-      <v-btn
-        class="bg-accent-2"
+      <CommonBtn
         variant="flat"
-        rounded="xl"
-        size="large"
+        :btn-class="`${isHovering ? 'bg-cta-hover text-inverted' : 'bg-cta text-default'}`"
+        :icon-class="`ml-2 icon-transition ${isHovering ? 'icon-transform' : ''}`"
+        :text="text"
+        :icon="icon"
         :to="to"
         :disabled="disabled"
         v-bind="props"
-      >
-        <span class="pr-1">{{ text }}</span>
-        <v-icon
-          icon="$arrowRight"
-          :class="['icon-transition', { 'icon-transform': isHovering }]"
-          style="transform: translateX(100deg)"
-        ></v-icon>
-      </v-btn>
+      ></CommonBtn>
     </template>
   </v-hover>
 </template>
@@ -27,10 +21,9 @@
     name: 'common-btn-solid-cta-external',
     props: {
       text: { type: String, required: true },
+      icon: { type: String, required: false, default: '$arrowRight' },
       to: { type: String, required: false },
       disabled: { type: Boolean, required: false, default: false },
     },
   });
 </script>
-
-<style lang="scss" scoped></style>
