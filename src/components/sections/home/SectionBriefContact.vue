@@ -5,8 +5,7 @@
     subtitle="Call us or complete the form. We endeavour to answer all enquiries within 24 hours on business days."
     card-class="pa-0"
     container-class="pa-0"
-    section-content-container-style="border: 2px solid black"
-    section-content-row-style="border: 2px solid red"
+    section-content-container-style="border: 4px solid black"
     section-content-row-class="ga-8"
     :card-background-colour="backgroundColour"
     :heading-title-class="textTitleColour"
@@ -80,94 +79,65 @@
         </v-row>
       </v-col>
 
-      <v-row
-        dense
-        cols="12"
-        class="pa-0 ma-0 d-flex"
-        style="border: 2px solid red"
-      >
+      <v-row dense cols="12" class="pa-0 ma-0 d-flex">
         <!-- Form -->
-        <v-col cols="12" class="" style="border: 2px solid blue">Form</v-col>
+        <v-col cols="12" xl="6" class="">
+          <CommonCard card-class="bg-transparent" elevation="0">
+            <template #card-content>
+              <CommonForm @model="">
+                <template #form-content>
+                  <v-row dense class="flex-shrink-1 flex-grow-1">
+                    <v-col
+                      v-for="(item, index) in form.inputs"
+                      :key="index"
+                      :cols="item.cols.default"
+                      :sm="item.cols.sm"
+                      :lg="item.cols.lg"
+                    >
+                      <CommonTextFieldInput
+                        v-if="item.type === 'textFieldInput'"
+                        variant="outlined"
+                        :class="item.class"
+                        :label="item.label"
+                        :rules="item.rules"
+                      />
+                      <CommonSelectInput
+                        v-if="item.type === 'selectInput'"
+                        variant="outlined"
+                        :class="item.class"
+                        :label="item.label"
+                        :items="item.items"
+                        :rules="item.rules"
+                      />
+                      <CommonTextAreaInput
+                        v-if="item.type === 'textAreaInput'"
+                        variant="outlined"
+                        :class="item.class"
+                        :label="item.label"
+                        :rules="item.rules"
+                      />
+                    </v-col>
+                    <v-col cols="12" class="pa-0 d-flex">
+                      <v-spacer></v-spacer>
+                      <CommonBtn text="submit" type="submit" />
+                    </v-col>
+                  </v-row>
+                </template>
+              </CommonForm>
+            </template>
+          </CommonCard>
+        </v-col>
 
         <!-- Picture -->
-        <v-col
-          cols="12"
-          class="d-none d-lg-flex"
-          style="border: 2px solid blue"
-        >
-          Picture
-        </v-col>
+        <v-col cols="12" xl="6" class="d-none d-xl-flex">Picture</v-col>
       </v-row>
-
-      <!-- <v-col cols="12" md="6" class="flex-shrink-1 flex-grow-1">
-        <CommonCard elevation="0" card-class="h-100" content-class="h-100">
-          <template #card-content>
-            <v-container fluid class="pa-0 h-100 d-flex">
-              <v-row dense>
-                <v-col class="pa-0" cols="12">
-                  <v-text-field
-                    rounded="xl"
-                    variant="outlined"
-                    label="Name"
-                  ></v-text-field>
-                </v-col>
-
-                <v-col cols="12" sm="6" md="12" lg="6" class="pa-0">
-                  <v-text-field
-                    rounded="xl"
-                    variant="outlined"
-                    label="Email"
-                  ></v-text-field>
-                </v-col>
-
-                <v-col cols="12" sm="6" md="12" lg="6" class="pa-0">
-                  <v-text-field
-                    rounded="xl"
-                    variant="outlined"
-                    label="Phone"
-                  ></v-text-field>
-                </v-col>
-
-                <v-col cols="12" class="pa-0">
-                  <v-textarea
-                    rounded="xl"
-                    variant="outlined"
-                    label="Message"
-                  ></v-textarea>
-                </v-col>
-              </v-row>
-            </v-container>
-          </template>
-
-          <template #card-actions>
-            <v-hover>
-              <template #default="{ isHovering, props }">
-                <CommonBtn
-                  variant="flat"
-                  text="Submit"
-                  :class="isHovering ? 'bg-primary-1' : 'bg-accent-darken-2'"
-                  v-bind="props"
-                ></CommonBtn>
-              </template>
-            </v-hover>
-          </template>
-        </CommonCard>
-      </v-col>
-
-      <v-col cols="6" class="d-none d-md-flex flex-shrink-1 flex-grow-1">
-        <CommonCard
-          id="get-in-touch-image"
-          rounded="xl"
-          elevation="0"
-          width="100%"
-          height="600"
-        ></CommonCard>
-      </v-col> -->
     </template>
   </CommonSectionMain>
 </template>
 
 <script lang="ts">
+  import { EInputRuleTypes } from '@/abstractions/enums/input';
+
   /* Assets */
   import HeroBackgroundMobile from '@/assets/img/webp/hero-section/hero-background-mobile.webp';
   import HeroBackgroundNonMobile from '@/assets/img/webp/hero-section/hero-background-non-mobile.webp';
@@ -177,10 +147,94 @@
   export default defineComponent({
     name: 'section-get-in-touch',
     data(): any {
-      return {};
+      return {
+        form: {
+          inputs: [
+            {
+              // Full name
+              type: 'textFieldInput',
+              cols: {
+                default: '12',
+                sm: '12',
+                lg: '4',
+              },
+              class: '',
+              label: 'Full name',
+              rules: this.validationRules('full_name'),
+            },
+            {
+              // Email address
+              type: 'textFieldInput',
+              cols: {
+                default: '12',
+                sm: '12',
+                lg: '4',
+              },
+              class: '',
+              label: 'Email address',
+              rules: this.validationRules('email_address'),
+            },
+            {
+              // Phone number
+              type: 'textFieldInput',
+              cols: {
+                default: '12',
+                sm: '12',
+                lg: '4',
+              },
+              class: '',
+              label: 'Phone number',
+              rules: this.validationRules('phone_number'),
+            },
+            {
+              // Preferred contact method
+              type: 'selectInput',
+              cols: {
+                default: '12',
+                sm: '6',
+                lg: '6',
+              },
+              class: '',
+              label: 'Preferred contact method',
+              items: ['Email', 'Phone', 'No preference'],
+              rules: this.validationRules('preferred_contact_method'),
+            },
+            {
+              // Service of interest
+              type: 'selectInput',
+              cols: {
+                default: '12',
+                sm: '6',
+                lg: '6',
+              },
+              class: '',
+              label: 'Service of interest',
+              items: ['Facial treatments', 'Body treatments'],
+              rules: this.validationRules('service_of_interest'),
+            },
+            {
+              // Message
+              type: 'textAreaInput',
+              cols: {
+                default: '12',
+                sm: '12',
+                lg: '12',
+              },
+              class: '',
+              label: 'Message',
+              rules: this.validationRules('message'),
+            },
+          ],
+          actions: {
+            submit: {
+              value: null,
+            },
+          },
+        },
+      };
     },
     computed: {
-      /* CSS */
+      /* Css */
       backgroundColour(): string {
         return 'bg-section-8';
       },
@@ -211,6 +265,42 @@
       },
       isLaptopOrDesktop(): boolean {
         return this.$vuetify.display.lgAndUp;
+      },
+    },
+    methods: {
+      /* Events */
+      submitForm_clickHandler(): void {
+        debugger;
+        console.log('Submitting form');
+      },
+
+      /* Validation */
+      notEmpty(value: string | undefined | null): boolean | string {
+        return value ? true : 'The value must not be empty!';
+      },
+      emailIsValid(value: string): boolean | string {
+        return (
+          /^([^\s@]+@[^\s@]+\.[^\s@]+)$/g.test(value) || 'Email must be valid.'
+        );
+      },
+      validationRules(inputType: string): any {
+        let retVal: any = [this.notEmpty];
+        switch (inputType) {
+          case EInputRuleTypes.FULL_NAME:
+            break;
+          case EInputRuleTypes.EMAIL_ADDRESS:
+            retVal.push(this.emailIsValid);
+            break;
+          case EInputRuleTypes.PHONE_NUMBER:
+            break;
+          case EInputRuleTypes.PREFERRED_CONTACT_METHOD:
+            break;
+          case EInputRuleTypes.SERVICE_OF_INTEREST:
+            break;
+          case EInputRuleTypes.MESSAGE:
+            break;
+        }
+        return retVal;
       },
     },
   });

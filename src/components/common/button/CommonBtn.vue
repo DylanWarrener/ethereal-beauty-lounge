@@ -5,7 +5,7 @@
     :icon="isIcon"
     :to="to"
     :size="size"
-    :class="[`${isIcon ? '' : 'px-4'}`, btnClass]"
+    :class="[`bg-cta text-default ${isIcon ? '' : 'px-4'}`, btnClass]"
     @click="clicked"
   >
     <span v-if="text" :class="btnTextClass">{{ text }}</span>
