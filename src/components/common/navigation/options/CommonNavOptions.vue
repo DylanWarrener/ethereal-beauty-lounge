@@ -27,7 +27,7 @@
       </template>
     </v-hover>
 
-    <CommonBtnLogIn btn-class="d-none d-md-flex" />
+    <CommonBtnLogIn v-if="!isLoggedIn" btn-class="d-none d-md-flex" />
 
     <v-hover v-if="isLoggedIn">
       <template #default="{ isHovering, props: profileHoverProps }">

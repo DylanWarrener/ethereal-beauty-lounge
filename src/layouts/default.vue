@@ -23,5 +23,3 @@
     name: 'layout-default',
   });
 </script>
-
-<style scoped></style>

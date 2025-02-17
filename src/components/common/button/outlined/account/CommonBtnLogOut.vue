@@ -3,14 +3,12 @@
     <template #default="{ isHovering, props }">
       <CommonBtn
         v-bind="props"
-        variant="flat"
+        :variant="`${isHovering ? 'outlined' : 'flat'}`"
+        :btn-class="`${isHovering ? 'bg-cta-hover text-cta' : 'bg-cta'} ${btnClass}`"
+        :btn-text-class="`${isHovering ? 'text-cta' : 'text-default'}`"
         text="Log out"
         icon="$logout"
         icon-class="ml-2"
-        :class="[
-          isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta',
-          btnClass,
-        ]"
         @clicked="logout_handleClick"
       ></CommonBtn>
     </template>

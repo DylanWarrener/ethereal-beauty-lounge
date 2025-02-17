@@ -5,8 +5,8 @@
       <CommonBtn
         v-bind="props"
         variant="outlined"
-        :btn-class="`${isHovering ? 'bg-cta-hover text-cta-hover' : 'text-cta'} ${btnClass}`"
-        :btn-text-class="`${isHovering ? 'text-default' : 'text-inverted'}`"
+        :btn-class="`text-cta ${isHovering ? 'bg-cta-hover' : ''} ${btnClass}`"
+        :btn-text-class="`${isHovering ? 'text-cta' : 'text-inverted'}`"
         :icon-class="`ml-2 icon-transition ${isHovering ? 'text-default' : 'text-inverted'}`"
         :text="text"
         :to="to"

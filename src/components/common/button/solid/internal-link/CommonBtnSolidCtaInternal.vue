@@ -3,10 +3,9 @@
   <v-hover>
     <template #default="{ isHovering, props }">
       <CommonBtn
-        variant="flat"
-        :btn-class="
-          isHovering ? 'text-black bg-cta-hover' : 'text-white bg-cta'
-        "
+        :variant="`${isHovering ? 'outlined' : 'flat'}`"
+        :btn-class="`${isHovering ? 'bg-cta-hover text-cta' : ''}`"
+        :btn-text-class="`${isHovering ? 'text-cta' : ''}`"
         :text="text"
         :to="to"
         :disabled="disabled"

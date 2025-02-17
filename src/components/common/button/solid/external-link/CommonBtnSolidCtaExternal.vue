@@ -3,8 +3,9 @@
   <v-hover>
     <template #default="{ isHovering, props }">
       <CommonBtn
-        variant="flat"
-        :btn-class="`${isHovering ? 'bg-cta-hover text-inverted' : 'bg-cta text-default'}`"
+        :variant="`${isHovering ? 'outlined' : 'flat'}`"
+        :btn-class="`${isHovering ? 'bg-cta-hover text-cta' : ''}`"
+        :btn-text-class="`${isHovering ? 'text-cta' : ''}`"
         :icon-class="`ml-2 icon-transition ${isHovering ? 'icon-transform' : ''}`"
         :text="text"
         :icon="icon"
