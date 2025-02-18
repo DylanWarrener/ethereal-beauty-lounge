@@ -4,7 +4,7 @@
   </Head>
 
   <SectionHero />
-  <v-container class="px-5 py-4">
+  <v-container fluid class="px-2 py-4">
     <v-row dense class="ga-3">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
@@ -13,7 +13,7 @@
         <SectionLogoList />
       </v-col> -->
       <v-col cols="12" class="pa-0">
-        <SectionWhyChooseUs />
+        <SectionHowItWorks />
       </v-col>
       <v-col cols="12" class="pa-0">
         <SectionBenefits />

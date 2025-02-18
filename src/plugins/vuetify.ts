@@ -5,7 +5,9 @@ import * as directives from 'vuetify/directives';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import {
   mdiBackburger,
+  mdiArrowUpBold,
   mdiArrowRightBold,
+  mdiArrowDownBold,
   mdiArrowLeftBold,
   mdiMagnify,
   mdiShopping,
@@ -110,7 +112,7 @@ const lightTheme: ThemeDefinition = {
     'section-1-cta': accentColours['accent-shade-1'],
     'section-1-highlights': secondaryColours['secondary-tint-1'],
 
-    /* Why Choose Us section */
+    /* How it Works section */
     'section-2': whiteColours['white'],
     //'section-2-title': blackColours['black'],
     //'section-2-subtitle': blackColours['black-tone-1'],
@@ -185,6 +187,7 @@ const lightTheme: ThemeDefinition = {
     'primary-1': primaryColours['primary-shade-1'],
     'primary-2': primaryColours['primary-shade-2'],
     'primary-3': primaryColours['primary-shade-3'],
+    'primary-tint-2': primaryColours['primary-tint-2'],
 
     secondary: secondaryColours.secondary,
     'secondary-1': secondaryColours['secondary-tint-1'],
@@ -237,7 +240,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       defaultSet: 'mdi',
       aliases: {
         ...aliases,
+        arrowUp: mdiArrowUpBold,
         arrowRight: mdiArrowRightBold,
+        arrowDown: mdiArrowDownBold,
         arrowLeft: mdiArrowLeftBold,
 
         /* General */

@@ -1,7 +1,7 @@
 <template>
   <v-card
     :id="id"
-    :class="[cardClass]"
+    :class="cardClass"
     :style="cardStyle"
     :rounded="rounded"
     :elevation="elevation"
@@ -9,7 +9,7 @@
     <slot name="card-transition"></slot>
     <v-container
       fluid
-      :class="['h-100 pa-2 pa-sm-4 d-flex flex-column', containerClass]"
+      :class="['h-100 d-flex flex-column', containerClass]"
       :style="`${containerStyle}`"
     >
       <!-- Toolbar -->

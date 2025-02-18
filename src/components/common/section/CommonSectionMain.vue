@@ -5,19 +5,19 @@
     :title="title"
     :subtitle="subtitle"
     :card-class="`${cardClass} ${cardBackgroundColour}`"
-    :card-style="cardStyle"
-    :container-class="containerClass"
-    :container-style="containerStyle"
+    :card-style="`border: 4px solid green; ${cardStyle}`"
+    :container-class="`pa-0 ${containerClass}`"
+    :container-style="`border: 4px solid black; ${containerStyle}`"
     :heading-row-class="headingRowClass"
-    :heading-row-style="headingRowStyle"
+    :heading-row-style="`border: 4px solid red; ${headingRowStyle}`"
     :heading-col-class="`mb-4 ${headingColClass}`"
-    :heading-col-style="headingColStyle"
+    :heading-col-style="`border: 4px solid blue; ${headingColStyle}`"
     :heading-class="`justify-center align-center ${headingClass}`"
-    :heading-style="headingStyle"
+    :heading-style="`border: 4px solid purple; ${headingStyle}`"
     :heading-title-class="`text-center text-h4 text-sm-h3 text-xl-h2 ${headingTitleClass}`"
-    :heading-title-style="headingTitleStyle"
+    :heading-title-style="`border: 4px solid orange; ${headingTitleStyle}`"
     :heading-subtitle-class="`w-100 text-center text-h5 text-sm-h4 text-xl-h3 ${headingSubtitleClass}`"
-    :heading-subtitle-style="headingSubtitleStyle"
+    :heading-subtitle-style="`border: 4px solid orange; ${headingSubtitleStyle}`"
     :content-row-class="contentRowClass"
     :content-row-style="contentRowStyle"
     :content-col-class="contentColClass"
@@ -28,15 +28,13 @@
     <template #card-content>
       <v-container
         fluid
-        :class="[
-          `d-flex flex-column pa-2 pa-sm-4 ${sectionContentContainerClass}`,
-        ]"
-        :style="`${sectionContentContainerStyle}`"
+        :class="[`pa-0 d-flex flex-column  ${sectionContentContainerClass}`]"
+        :style="`border: 4px solid black; ${sectionContentContainerStyle}`"
       >
         <v-row
           dense
           :class="sectionContentRowClass"
-          :style="`${sectionContentRowStyle}`"
+          :style="`border: 4px solid red; ${sectionContentRowStyle}`"
         >
           <slot name="section-content"></slot>
         </v-row>
@@ -44,7 +42,7 @@
         <v-row
           dense
           :class="sectionActionsRowClass"
-          :style="`${sectionActionsRowStyle}`"
+          :style="`border: 4px solid red; ${sectionActionsRowStyle}`"
         >
           <slot name="section-actions"></slot>
         </v-row>

@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <v-parallax
-      class="rounded mx-1 mt-1 mx-sm-4 mt-sm-4 d-flex justify-center align-center"
+      class="rounded mx-1 mt-1 d-flex justify-center align-center"
       :height="dynamicParallaxHeight"
       :src="isMobile ? heroBackgroundMobile : heroBackgroundNonMobile"
     >
@@ -154,7 +154,7 @@
       /* Events */
       learnMore_clickHandler(): void {
         const targetElementID: HTMLDivElement = document.getElementById(
-          'section-why-choose-us'
+          'section-how-it-works'
         ) as HTMLDivElement;
         if (targetElementID) {
           scrollToElement(targetElementID);
