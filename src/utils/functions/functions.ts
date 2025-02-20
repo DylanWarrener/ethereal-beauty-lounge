@@ -6,7 +6,7 @@
 export function scrollToElement(targetId: HTMLDivElement): void {
   window.scrollTo({
     // Minus the v-app-bar heights (64)
-    top: targetId.offsetTop - 64,
+    top: targetId.offsetTop,
     behavior: 'smooth',
   });
 }

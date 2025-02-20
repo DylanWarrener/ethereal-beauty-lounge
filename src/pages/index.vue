@@ -4,8 +4,8 @@
   </Head>
 
   <SectionHero />
-  <v-container fluid class="px-2 py-4">
-    <v-row dense class="ga-3">
+  <v-container fluid class="px-5 py-5">
+    <v-row dense class="ga-4">
       <!-- <v-col cols="12" class="pa-0">
         <SectionBriefAbout />
       </v-col> -->

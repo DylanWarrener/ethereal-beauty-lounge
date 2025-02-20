@@ -1,19 +1,15 @@
 <template>
-  <v-toolbar
-    class="px-2 px-sm-4"
-    :color="`${cardColor ? cardColor : 'transparent'}`"
-  >
+  <v-toolbar :class="[toolbarClass]" :color="cardColor">
     <slot name="toolbar-logo"></slot>
+    <slot name="toolbar-prepend-items"></slot>
 
-    <slot name="toolbar-title">
-      <div class="text-body-1">
-        {{ title }}
-      </div>
-    </slot>
+    <v-spacer></v-spacer>
 
     <slot name="toolbar-items"></slot>
 
-    <slot name="toolbar-options"></slot>
+    <v-spacer></v-spacer>
+
+    <slot name="toolbar-append-items"></slot>
   </v-toolbar>
 </template>
 
@@ -23,8 +19,9 @@
   export default defineComponent({
     name: 'common-toolbar',
     props: {
+      toolbarClass: { type: String, required: false },
       title: { props: String, required: false },
-      cardColor: { props: String, required: false },
+      cardColor: { props: String, required: false, default: 'transparent' },
     },
   });
 </script>

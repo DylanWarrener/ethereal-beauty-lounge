@@ -20,14 +20,6 @@
             return '64';
         }
       },
-
-      /* Display */
-      isDisplayMobile(): boolean {
-        return this.$vuetify.display.mobile;
-      },
-      isDisplaySmToMdTablet_Up(): boolean {
-        return this.$vuetify.display.smAndUp;
-      },
     },
   });
 </script>

@@ -32,6 +32,12 @@ import {
   mdiPhone,
   mdiMapMarker,
   mdiEmail,
+  mdiNumeric1,
+  mdiNumeric2,
+  mdiNumeric3,
+  mdiNumeric4,
+  mdiSleep,
+  mdiCreation,
 } from '@mdi/js';
 
 const whiteColours = {
@@ -92,11 +98,15 @@ const accentColours = {
 const lightTheme: ThemeDefinition = {
   dark: false,
   colors: {
-    default: whiteColours['white'],
     ...whiteColours,
+    default: whiteColours['white'],
 
-    inverted: blackColours['black'],
     ...blackColours,
+    inverted: blackColours['black'],
+
+    ...primaryColours,
+    ...secondaryColours,
+    ...accentColours,
 
     cta: accentColours['accent-shade-1'],
     'cta-hover': accentColours['accent-tint-3'],
@@ -113,7 +123,7 @@ const lightTheme: ThemeDefinition = {
     'section-1-highlights': secondaryColours['secondary-tint-1'],
 
     /* How it Works section */
-    'section-2': whiteColours['white'],
+    'section-2': whiteColours['white-tone-1'],
     //'section-2-title': blackColours['black'],
     //'section-2-subtitle': blackColours['black-tone-1'],
     'section-2-body': blackColours['black-tint-2'],
@@ -248,6 +258,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         /* General */
         menuBack: mdiBackburger,
         search: mdiMagnify,
+        relax: mdiSleep,
+        maintain: mdiCreation,
 
         /* Navigation */
         home: mdiHome,
@@ -263,6 +275,12 @@ export default defineNuxtPlugin((nuxtApp) => {
         login: mdiLogin,
         logout: mdiLogout,
         settings: mdiCog,
+
+        /* Steps */
+        stepOne: mdiNumeric1,
+        stepTwo: mdiNumeric2,
+        stepThree: mdiNumeric3,
+        stepFour: mdiNumeric4,
 
         /* Services */
         boostConfidence: mdiAccountHeart,

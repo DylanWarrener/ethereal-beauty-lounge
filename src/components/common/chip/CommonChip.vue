@@ -1,9 +1,5 @@
 <template>
-  <v-select :density="selectDensity" :label="label">
-    <template #chip>
-      <CommonChip />
-    </template>
-  </v-select>
+  <v-chip></v-chip>
 </template>
 
 <script lang="ts">
