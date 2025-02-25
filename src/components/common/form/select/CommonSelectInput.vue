@@ -1,7 +1,7 @@
 <template>
-  <v-select :density="selectDensity" :label="label">
+  <v-select :density="selectDensity" :label="selectLabel">
     <template #chip>
-      <CommonChip />
+      <CommonChip :label="chipLabel" />
     </template>
   </v-select>
 </template>
@@ -14,7 +14,8 @@
   export default defineComponent({
     name: 'common-select-input',
     props: {
-      label: { type: String, required: true },
+      selectLabel: { type: String, required: true },
+      chipLabel: { type: String, required: true },
       density: {
         type: String as PropType<Density>,
         required: false,

@@ -4,7 +4,7 @@
     :elevation="elevation"
     :title="title"
     :subtitle="subtitle"
-    :card-class="`py-2 ${cardClass} ${cardBackgroundColour}`"
+    :card-class="`py-4 ${cardClass} ${cardBackgroundColour}`"
     :card-style="`${cardStyle}`"
     :container-class="`${containerClass}`"
     :container-style="`${containerStyle}`"
@@ -41,7 +41,7 @@
 
         <v-row
           dense
-          :class="sectionActionsRowClass"
+          :class="`${sectionActionsRowClass}`"
           :style="`${sectionActionsRowStyle}`"
         >
           <slot name="section-actions"></slot>
