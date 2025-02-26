@@ -313,6 +313,7 @@
                 };
 
             return {
+              type,
               col: colObj,
               card: cardObj,
               icon: iconObj,
