@@ -47,7 +47,7 @@
 
 <script lang="ts">
   /* Abstractions */
-  import type { INewsletterData } from '@/abstractions/interfaces/components/home/newsletter';
+  import type { INewsletterData } from '~/abstractions/interfaces/components/home/sections/newsletter';
 
   /* Utils */
   import { notEmpty, isEmail } from '@/utils/functions/validation/validation';
