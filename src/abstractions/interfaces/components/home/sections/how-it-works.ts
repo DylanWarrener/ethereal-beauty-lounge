@@ -2,7 +2,7 @@ export interface IHowItWorksComponentData {
   steps: IHowItWorksComponentStepsData[];
 }
 export interface IHowItWorksComponentStepsData {
-  type?: string;
+  type: string;
   col: {
     class: string;
     default: string;

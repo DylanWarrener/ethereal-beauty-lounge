@@ -11,7 +11,7 @@
     <template #section-content>
       <template v-for="(item, index) in computedSteps" :key="index">
         <v-col
-          v-if="item.type !== 'spacer'"
+          v-if="item.type === 'content'"
           :cols="item.col.default"
           :md="item.col.md ?? item.col.default"
           :class="`pa-0 ${item.col.class}`"
@@ -99,6 +99,7 @@
       return {
         steps: [
           {
+            type: 'content',
             col: {
               class: '',
               default: '12',
@@ -118,6 +119,7 @@
             },
           },
           {
+            type: 'content',
             col: {
               class: 'd-flex justify-center align-center',
               default: '12',
@@ -129,6 +131,7 @@
             },
           },
           {
+            type: 'content',
             col: {
               class: '',
               default: '12',
@@ -168,6 +171,7 @@
             },
           },
           {
+            type: 'content',
             col: {
               class: 'd-flex justify-center align-center',
               default: '12',
@@ -179,6 +183,7 @@
             },
           },
           {
+            type: 'content',
             col: {
               class: '',
               default: '12',
@@ -194,6 +199,7 @@
             },
           },
           {
+            type: 'content',
             col: {
               class: 'd-flex justify-center align-center',
               default: '12',
@@ -205,6 +211,7 @@
             },
           },
           {
+            type: 'content',
             col: {
               class: '',
               default: '12',
