@@ -38,7 +38,7 @@ export interface IHowItWorksStepCard {
 }
 export interface IHowItWorksStepInputSelect {
   items: IRootServiceCategory[];
-  value: string | null;
+  value: string;
 }
 
 /* ---------- ICON ---------- */

@@ -9,7 +9,18 @@
     :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>
-      <template v-for="(item, index) in computedSteps" :key="index">
+      <CommonSelectInput
+        v-model="computedSteps[0].card!.input.select!.value"
+        :items="computedSteps[0].card!.input.select!.items"
+        :chip-label="computedSteps[0].card!.input.select!.value"
+        item-title="category"
+        item-value="category"
+        select-label="Service Type"
+        variant="underlined"
+        base-color="inverted"
+      />
+
+      <!-- <template v-for="(item, index) in computedSteps" :key="index">
         <v-col
           v-if="item.type === 'content'"
           :cols="item.col.default"
@@ -63,25 +74,7 @@
 
                   <v-col cols="12" class="pa-0">
                     <v-row dense>
-                      <v-col cols="12">
-                        <!-- <CommonCarousel
-                          v-if="cardContentContainsCarousel(item)"
-                        >
-                          <template #carousel-items>
-                            <v-carousel-item
-                              v-for="(service, index) in item.card.content
-                                .carousel!.items"
-                              :key="index"
-                              :src="
-                                getCarouselCategoryImage(
-                                  service.treatmentCategory
-                                )
-                              "
-                              cover
-                            ></v-carousel-item>
-                          </template>
-                        </CommonCarousel> -->
-                      </v-col>
+                      <v-col cols="12"></v-col>
                     </v-row>
                   </v-col>
                 </v-row>
@@ -102,7 +95,7 @@
           :cols="item.col.default"
           :lg="item.col.lg"
         ></v-col>
-      </template>
+      </template> -->
     </template>
 
     <template #section-actions>
@@ -165,7 +158,7 @@
                 type: 'select',
                 select: {
                   items: [],
-                  value: null,
+                  value: '',
                 },
               },
               content: {
