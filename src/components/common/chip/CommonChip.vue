@@ -1,5 +1,5 @@
 <template>
-  <v-chip></v-chip>
+  <v-chip :color="color" :density="density"></v-chip>
 </template>
 
 <script lang="ts">
@@ -11,25 +11,16 @@
     name: 'common-select-input',
     props: {
       label: { type: String, required: true },
+      color: { type: String, required: false, default: 'cta' },
       density: {
         type: String as PropType<Density>,
         required: false,
       },
     },
     computed: {
-      /* Properties */
-      selectDensity(): Density {
-        if (this.density) return this.density;
-
-        switch (this.$vuetify.display.name) {
-          case 'xs':
-            return 'compact';
-          case 'sm':
-          case 'md':
-            return 'comfortable';
-          case 'xl':
-            return 'default';
-        }
+      /* Css */
+      display(): string {
+        return this.$vuetify.display.name;
       },
     },
   });

@@ -21,6 +21,7 @@
             <v-hover>
               <template #default="{ isHovering, props }">
                 <CommonBtn
+                  :is-icon="false"
                   text="Subscribe"
                   :class="[
                     'text-white',

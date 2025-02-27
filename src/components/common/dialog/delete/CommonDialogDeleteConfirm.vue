@@ -13,9 +13,9 @@
           <v-divider class="py-2"></v-divider>
         </template>
         <template #actions>
-          <CommonBtn text="no" @clicked="doNotDelete" />
+          <CommonBtn :is-icon="false" text="no" @clicked="doNotDelete" />
           <v-spacer></v-spacer>
-          <CommonBtn text="yes" @clicked="doDelete" />
+          <CommonBtn :is-icon="false" text="yes" @clicked="doDelete" />
         </template>
       </v-card>
     </template>

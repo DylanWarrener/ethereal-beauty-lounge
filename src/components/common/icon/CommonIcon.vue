@@ -13,12 +13,19 @@
       /* Properties */
       iconSize(): string {
         if (this.size) return this.size;
-        switch (this.$vuetify.display.name) {
-          case 'xs':
-            return '32';
-          default:
-            return '64';
+
+        let retVal: string = '';
+        if (this.isMobile) {
+          retVal = '32';
+        } else {
+          retVal = '64';
         }
+        return retVal;
+      },
+
+      /* Data */
+      isMobile(): boolean {
+        return this.$vuetify.display.smAndDown;
       },
     },
   });

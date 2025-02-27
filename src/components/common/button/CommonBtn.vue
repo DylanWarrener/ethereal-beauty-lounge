@@ -10,7 +10,7 @@
       `${btnClass ? btnClass : 'bg-cta text-default'}`,
     ]"
     :style="btnStyle"
-    @click="clicked"
+    @click="(e: any) => $emit('clicked', e)"
   >
     <span
       v-if="text"
@@ -43,26 +43,31 @@
       btnTextClass: { type: String, required: false },
       iconClass: { type: String, required: false },
       icon: { type: String, required: false },
-      isIcon: { type: Boolean, required: false },
+      isIcon: { type: Boolean, required: true, default: false },
     },
-    emits: {
-      clicked: null,
-    },
+    emits: ['clicked'],
     computed: {
-      size(): string | undefined {
-        let retVal: string | undefined = undefined;
-        if (this.$vuetify.display.lgAndUp) {
-          retVal = 'large';
-        }
-        if (this.$vuetify.display.xlAndUp) {
-          retVal = 'x-large';
-        }
+      /* Properties */
+      size(): string {
+        let retVal: string = 'default';
+        if (this.isMobile) retVal = 'small';
+        if (this.isTablet) retVal = 'default';
+        if (this.isDisplayLargeAndUp) retVal = 'large';
         return retVal;
       },
-    },
-    methods: {
-      clicked(): void {
-        this.$emit('clicked');
+
+      /* Data */
+      isMobile(): boolean {
+        return this.$vuetify.display.mobile;
+      },
+      isTablet(): boolean {
+        return this.$vuetify.display.md;
+      },
+      isDisplayLargeAndUp(): boolean {
+        return this.$vuetify.display.lgAndUp;
+      },
+      isDisplayExLargeAndUp(): boolean {
+        return this.$vuetify.display.lgAndUp;
       },
     },
   });

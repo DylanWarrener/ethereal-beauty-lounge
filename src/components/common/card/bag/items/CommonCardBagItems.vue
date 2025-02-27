@@ -14,11 +14,13 @@
 
       <div class="ga-4 d-flex flex-nowrap">
         <CommonBtn
+          :is-icon="false"
           class="d-flex flex-shrink-1 flex-grow-1"
           text="Delete all"
           @clicked="delete_allBagItems"
         />
         <CommonBtn
+          :is-icon="false"
           class="d-flex flex-shrink-1 flex-grow-1"
           text="Delete not in-stock"
           @clicked="delete_allBagItems_notInStock"

@@ -1,27 +1,48 @@
-export interface IHowItWorksComponentData {
-  steps: IHowItWorksComponentStepsData[];
+import type {
+  IRootServiceCategory,
+  IRootServiceTreatments,
+} from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
+
+export interface IHowItWorksData {
+  steps: IHowItWorksStepsData[];
 }
-export interface IHowItWorksComponentStepsData {
+export interface IHowItWorksStepsData {
   type: string;
-  col: {
-    class: string;
-    default: string;
-    md?: string;
+  col: IHowItWorksStepCol;
+  card?: IHowItWorksStepCard;
+  icon?: IHowItWorksStepIcon;
+}
+
+/* ---------- COLUMN ---------- */
+export interface IHowItWorksStepCol {
+  class: string;
+  default: string;
+  lg?: string;
+}
+
+/* ---------- CARD ---------- */
+export interface IHowItWorksStepCard {
+  numberIcon: string;
+  title: string;
+  icon: string;
+  input: {
+    type: string;
+    select?: IHowItWorksStepInputSelect;
   };
-  card?: {
-    numberIcon: string;
-    title: string;
-    icon: string;
-    input: {
-      type: string;
-      select?: {
-        items: string[];
-        value: string;
-      };
+  content: {
+    type: string;
+    carousel?: {
+      items: IRootServiceTreatments[];
     };
   };
-  icon?: {
-    class: string;
-    pointer: string;
-  };
+}
+export interface IHowItWorksStepInputSelect {
+  items: IRootServiceCategory[];
+  value: string | null;
+}
+
+/* ---------- ICON ---------- */
+export interface IHowItWorksStepIcon {
+  class: string;
+  pointer: string;
 }

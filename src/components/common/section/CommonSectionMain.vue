@@ -4,7 +4,7 @@
     :elevation="elevation"
     :title="title"
     :subtitle="subtitle"
-    :card-class="`py-4 ${cardClass} ${cardBackgroundColour}`"
+    :card-class="`${cardClass} ${cardBackgroundColour}`"
     :card-style="`${cardStyle}`"
     :container-class="`${containerClass}`"
     :container-style="`${containerStyle}`"

@@ -8,6 +8,7 @@
         icon="$arrowRight"
         btn-text-class="pr-2"
         :class="[isHovering ? 'text-accent-2' : '', btnClass]"
+        :is-icon="false"
         :icon-class="`ml-2 icon-transition ${isHovering ? 'icon-transform' : ''}`"
         :text="text"
         :to="to"

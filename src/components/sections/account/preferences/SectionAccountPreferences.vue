@@ -18,10 +18,15 @@
     <template #actions>
       <v-spacer></v-spacer>
       <CommonBtn
+        :is-icon="false"
         text="Update avatar"
         @clicked.stop="updateAvatar_clickHandler"
       />
-      <CommonBtn text="Save" @clicked.stop="saveSettings_clickHandler" />
+      <CommonBtn
+        :is-icon="false"
+        text="Save"
+        @clicked.stop="saveSettings_clickHandler"
+      />
     </template>
   </v-card>
 </template>

@@ -13,7 +13,7 @@
         <v-col
           v-if="item.type === 'content'"
           :cols="item.col.default"
-          :md="item.col.md ?? item.col.default"
+          :lg="item.col.lg"
           :class="`pa-0 ${item.col.class}`"
         >
           <CommonCard
@@ -47,31 +47,68 @@
             <template #card-content>
               <v-container class="pa-4">
                 <v-row dense>
-                  <v-col>
+                  <v-col cols="12" class="pa-0">
                     <CommonSelectInput
                       v-if="item.card.input.type === 'select'"
                       v-model="item.card.input.select!.value"
                       :items="item.card.input.select!.items"
-                      :chip-label="item.card.input.select!.value"
+                      :chip-label="item.card.input.select!.value!"
+                      item-title="category"
+                      item-value="category"
                       select-label="Service Type"
                       variant="underlined"
                       base-color="inverted"
                     />
+                  </v-col>
+
+                  <v-col cols="12" class="pa-0">
+                    <v-row dense>
+                      <v-col cols="12">
+                        <!-- <CommonCarousel
+                          v-if="cardContentContainsCarousel(item)"
+                        >
+                          <template #carousel-items>
+                            <v-carousel-item
+                              v-for="(service, index) in item.card.content
+                                .carousel!.items"
+                              :key="index"
+                              :src="
+                                getCarouselCategoryImage(
+                                  service.treatmentCategory
+                                )
+                              "
+                              cover
+                            ></v-carousel-item>
+                          </template>
+                        </CommonCarousel> -->
+                      </v-col>
+                    </v-row>
                   </v-col>
                 </v-row>
               </v-container>
             </template>
           </CommonCard>
 
-          <CommonIcon v-if="item.icon" :icon="item.icon.pointer" />
+          <CommonIcon
+            v-if="item.icon"
+            :key="item.icon.pointer"
+            :icon="item.icon.pointer"
+            color="cta"
+          />
         </v-col>
+
+        <v-col
+          v-if="item.type === 'spacer' && $vuetify.display.mdAndUp"
+          :cols="item.col.default"
+          :lg="item.col.lg"
+        ></v-col>
       </template>
     </template>
 
     <template #section-actions>
       <v-col
         cols="12"
-        class="pa-0 pt-4 ga-4 d-flex justify-center align-center"
+        class="pa-0 py-8 ga-4 d-flex justify-center align-center"
       >
         <CommonBtnOutlinedInternal
           text="The benefits"
@@ -84,10 +121,21 @@
 </template>
 
 <script lang="ts">
+  /* STORES */
+  import { useRootStore } from '@/stores/root';
+
   /* ABSTRACTIONS */
   import type {
-    IHowItWorksComponentData,
-    IHowItWorksComponentStepsData,
+    IRootServiceCategory,
+    IRootServiceTreatments,
+  } from '@/abstractions/interfaces/store/root/page/InterfacePageCommon';
+  import type {
+    IHowItWorksData,
+    IHowItWorksStepsData,
+    IHowItWorksStepCol,
+    IHowItWorksStepCard,
+    IHowItWorksStepInputSelect,
+    IHowItWorksStepIcon,
   } from '@/abstractions/interfaces/components/home/sections/how-it-works';
 
   /* UTILS */
@@ -95,7 +143,11 @@
 
   export default defineComponent({
     name: 'section-how-it-works',
-    data(): IHowItWorksComponentData {
+    setup() {
+      const rootStore = useRootStore();
+      return { rootStore };
+    },
+    data(): IHowItWorksData {
       return {
         steps: [
           {
@@ -103,7 +155,7 @@
             col: {
               class: '',
               default: '12',
-              md: '5',
+              lg: '5',
             },
             card: {
               numberIcon: '$stepOne',
@@ -112,8 +164,14 @@
               input: {
                 type: 'select',
                 select: {
-                  items: ['Face', 'Body'],
-                  value: 'Face',
+                  items: [],
+                  value: null,
+                },
+              },
+              content: {
+                type: 'carousel',
+                carousel: {
+                  items: [],
                 },
               },
             },
@@ -123,7 +181,7 @@
             col: {
               class: 'd-flex justify-center align-center',
               default: '12',
-              md: '2',
+              lg: '2',
             },
             icon: {
               class: '',
@@ -135,7 +193,7 @@
             col: {
               class: '',
               default: '12',
-              md: '5',
+              lg: '5',
             },
             card: {
               numberIcon: '$stepTwo',
@@ -144,6 +202,9 @@
               input: {
                 type: '',
               },
+              content: {
+                type: '',
+              },
             },
           },
           {
@@ -151,11 +212,7 @@
             col: {
               class: '',
               default: '',
-              md: '5',
-            },
-            icon: {
-              class: '',
-              pointer: '',
+              lg: '5',
             },
           },
           {
@@ -163,11 +220,7 @@
             col: {
               class: '',
               default: '',
-              md: '2',
-            },
-            icon: {
-              class: '',
-              pointer: '',
+              lg: '2',
             },
           },
           {
@@ -175,7 +228,7 @@
             col: {
               class: 'd-flex justify-center align-center',
               default: '12',
-              md: '5',
+              lg: '5',
             },
             icon: {
               class: '',
@@ -187,13 +240,16 @@
             col: {
               class: '',
               default: '12',
-              md: '5',
+              lg: '5',
             },
             card: {
               numberIcon: '$stepThree',
               title: 'Relax & Enjoy',
               icon: '$relax',
               input: {
+                type: '',
+              },
+              content: {
                 type: '',
               },
             },
@@ -203,7 +259,7 @@
             col: {
               class: 'd-flex justify-center align-center',
               default: '12',
-              md: '2',
+              lg: '2',
             },
             icon: {
               class: '',
@@ -215,13 +271,16 @@
             col: {
               class: '',
               default: '12',
-              md: '5',
+              lg: '5',
             },
             card: {
               numberIcon: '$stepFour',
               title: 'Maintain',
               icon: '$maintain',
               input: {
+                type: '',
+              },
+              content: {
                 type: '',
               },
             },
@@ -242,88 +301,49 @@
       },
 
       /* Data */
-      computedSteps(): IHowItWorksComponentStepsData[] {
-        const newSteps = this.steps.map(
-          (step: IHowItWorksComponentStepsData) => {
-            const isMobile: boolean = this.$vuetify.display.mdAndDown;
+      isMobile(): boolean {
+        return this.$vuetify.display.smAndDown;
+      },
+      serviceCategories(): IRootServiceCategory[] {
+        return this.rootStore.get_service_categories;
+      },
+      serviceTreatments(): IRootServiceTreatments[] {
+        return this.rootStore.get_service_treatments;
+      },
+      computedSteps: {
+        get(): IHowItWorksStepsData[] {
+          const isMobile: boolean = this.isMobile;
+
+          return this.steps.map((step: IHowItWorksStepsData) => {
             const stepIsCard: boolean = !!step.card;
             const stepIsIcon: boolean = !!step.icon;
 
-            /* COLUMNS */
-            let colClass: string = '';
-            let colDefault: string = '';
-            let colMd: string | undefined = undefined;
-            if (stepIsCard) {
-              const cardColClass: string = '';
-              colClass = step.col!.class += ` ${cardColClass}`;
-              colDefault = step.col!.default;
-              colMd = step.col!.md;
-            }
-            if (stepIsIcon) {
-              const iconColClass: string = isMobile ? 'py-2' : '';
-              colClass = step.col!.class += ` ${iconColClass}`;
-              colDefault = step.col!.default;
-              colMd = step.col!.md;
-            }
-            const colObj = {
-              class: colClass,
-              default: colDefault,
-              md: colMd ?? undefined,
-            };
+            let colObj: IHowItWorksStepCol;
+            let cardObj: IHowItWorksStepCard | undefined;
+            let iconObj: IHowItWorksStepIcon | undefined;
 
-            /* CARD */
-            const cardInputType: string | undefined = step.card?.input.type;
-            const cardSelectInput =
-              cardInputType === 'select'
-                ? {
-                    items: step.card!.input!.select!.items,
-                    value: step.card!.input!.select!.value,
-                  }
-                : undefined;
-            const cardObj = stepIsCard
-              ? {
-                  numberIcon: stepIsCard ? step.card!.numberIcon : '',
-                  title: stepIsCard ? step.card!.title : '',
-                  icon: stepIsCard ? step.card!.icon : '',
-                  input: {
-                    type: stepIsCard ? step.card!.input.type : '',
-                    select: cardSelectInput,
-                  },
-                }
-              : undefined;
+            colObj = this.stepColumn(step, stepIsCard, stepIsIcon);
 
-            /* ICON */
-            let iconClass: string = '';
-            let iconPointer: string = '';
-            if (stepIsIcon) {
-              const isSpacer: boolean = step.type
-                ? step.type === 'spacer'
-                : false;
-              const iconClassDynamic: string = isMobile ? 'py-2' : '';
-              iconClass = step.icon!.class += ` ${iconClassDynamic}`;
-              iconPointer = isSpacer
-                ? ''
-                : `${isMobile ? '$arrowDown' : '$arrowRight'}`;
+            if (step.type === 'content') {
+              if (stepIsCard) cardObj = this.stepCard(step);
+              if (stepIsIcon) iconObj = this.stepIcon(step, isMobile);
             }
-            const iconObj = stepIsCard
-              ? undefined
-              : {
-                  class: iconClass,
-                  pointer: iconPointer,
-                };
 
             return {
-              type,
+              type: step.type,
               col: colObj,
               card: cardObj,
               icon: iconObj,
             };
-          }
-        );
-        return newSteps;
+          });
+        },
+        set(newSteps: IHowItWorksStepsData[]): void {
+          this.steps = newSteps;
+        },
       },
     },
     methods: {
+      /* Events */
       theBenefits_clickHandler(): void {
         const targetElementID: HTMLDivElement = document.getElementById(
           'section-benefits'
@@ -333,6 +353,109 @@
         } else {
           //* Error handling missing
         }
+      },
+
+      /* Utils */
+      stepColumn(
+        step: IHowItWorksStepsData,
+        isCard: boolean,
+        isIcon: boolean
+      ): IHowItWorksStepCol {
+        let colClass: string[] = [step.col!.class];
+        let colDefault: string = step.col!.default;
+        let colMd: string | undefined = step.col!.lg;
+
+        if (isIcon) {
+          colClass.push(`${this.isMobile ? 'py-8' : 'py-4'}`);
+        }
+
+        return {
+          class: colClass.join(' '),
+          default: colDefault,
+          lg: colMd ?? undefined,
+        };
+      },
+      stepCard(step: IHowItWorksStepsData): IHowItWorksStepCard {
+        const cardInputType: string = step.card!.input.type;
+        const cardContentType: string = step.card!.content.type;
+
+        let cardInputSelect: IHowItWorksStepInputSelect | undefined = undefined;
+        let cardInputSelectDefaultValue: string = '';
+        if (cardInputType === 'select') {
+          cardInputSelectDefaultValue =
+            step.card!.input.select!.value ??
+            this.serviceCategories[0].category;
+
+          cardInputSelect = {
+            items: this.serviceCategories,
+            value: cardInputSelectDefaultValue,
+          };
+        }
+
+        let cardInputCarousel: any | undefined = undefined;
+        if (cardContentType === 'carousel') {
+          const serviceDropdownValueIndex: number =
+            this.serviceCategories.findIndex((serviceCategory) => {
+              return cardInputSelectDefaultValue === serviceCategory.category;
+            });
+
+          cardInputCarousel = this.serviceTreatments.filter(
+            (treatment: IRootServiceTreatments) => {
+              return treatment.treatmentCategory === serviceDropdownValueIndex;
+            }
+          );
+        }
+
+        const result = {
+          numberIcon: step.card!.numberIcon,
+          title: step.card!.title,
+          icon: step.card!.icon,
+          input: {
+            type: step.card!.input.type,
+            select: cardInputSelect,
+          },
+          content: {
+            type: step.card!.content.type,
+            carousel: cardInputCarousel,
+          },
+        };
+
+        return result;
+      },
+      stepIcon(
+        step: IHowItWorksStepsData,
+        isMobile: boolean
+      ): IHowItWorksStepIcon {
+        let iconPointer: string = '';
+
+        if (isMobile) {
+          iconPointer = '$arrowDown';
+        } else {
+          const iconSteps = this.steps.filter((s) => s.icon);
+          const relativeIndex = iconSteps.findIndex((s) => s === step);
+          const totalIcons = iconSteps.length;
+
+          if (relativeIndex === 0) {
+            iconPointer = '$arrowRight'; // First icon
+          } else if (relativeIndex === totalIcons - 1) {
+            iconPointer = '$arrowLeft'; // Last icon
+          } else {
+            iconPointer = '$arrowDown'; // All others
+          }
+        }
+
+        return {
+          class: step.icon!.class,
+          pointer: iconPointer,
+        };
+      },
+      getCarouselCategoryImage(index: number): string {
+        return this.serviceCategories[index].image;
+      },
+      cardContentContainsCarousel(item: IHowItWorksStepsData): boolean {
+        return (
+          !!item.card?.content.carousel && item.card.content.type === 'carousel'
+        );
       },
     },
   });

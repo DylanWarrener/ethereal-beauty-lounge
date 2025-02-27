@@ -3,6 +3,7 @@
   <v-hover>
     <template #default="{ isHovering, props }">
       <CommonBtn
+        :is-icon="false"
         :variant="`${isHovering ? 'outlined' : 'flat'}`"
         :btn-class="`${isHovering ? 'bg-cta-hover text-cta' : ''}`"
         :btn-text-class="`${isHovering ? 'text-cta' : ''}`"

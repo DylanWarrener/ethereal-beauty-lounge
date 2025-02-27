@@ -3,19 +3,23 @@ export interface IRootPageCommonState {
   navigation: IRootNavigationState;
   menu: IRootMenuState;
   dialog: IRootDialogState;
+  service: IRootServiceState;
 }
-/* Meta */
+
+/* ---------- META ---------- */
 interface IRootMetaState {
   prefix: string;
   title: string;
 }
-/* Navigation */
+
+/* ---------- NAVIGATION ---------- */
 interface IRootNavigationState {
   mobile: {
     drawer: boolean;
   };
 }
-/* Menu */
+
+/* ---------- MENU ---------- */
 interface IRootMenuState {
   bag: {
     drawer: boolean;
@@ -35,9 +39,33 @@ export interface IRootMenuBagItemState {
   inStock: boolean;
   deleting: boolean;
 }
+
+/* ---------- DIALOG ---------- */
 interface IRootDialogState {
   deleteConfirm: IRootDialogDeleteConfirmState;
 }
 interface IRootDialogDeleteConfirmState {
   drawer: boolean;
+}
+
+/* ---------- SERVICES ---------- */
+export interface IRootServiceState {
+  categories: IRootServiceCategory[];
+  treatments: IRootServiceTreatments[];
+}
+export interface IRootServiceCategory {
+  image: string;
+  category: string;
+  note: string;
+}
+export interface IRootServiceTreatments {
+  title: string;
+  includes?: string;
+  price: {
+    consultation: number;
+    treatment: string[];
+    selected: number;
+  };
+  time: number;
+  treatmentCategory: number;
 }
