@@ -9,16 +9,23 @@
     :heading-subtitle-class="textSubtitleColour"
   >
     <template #section-content>
-      <CommonSelectInput
-        v-model="computedSteps[0].card!.input.select!.value"
-        :items="computedSteps[0].card!.input.select!.items"
-        :chip-label="computedSteps[0].card!.input.select!.value"
-        item-title="category"
-        item-value="category"
-        select-label="Service Type"
-        variant="underlined"
-        base-color="inverted"
-      />
+      <v-col cols="12">
+        <CommonSelectInput
+          v-if="computedSteps[0].card!.input.select"
+          v-model="computedSteps[0].card!.input.select!.value"
+          :items="computedSteps[0].card!.input.select!.items"
+          :chip-label="computedSteps[0].card!.input.select!.value"
+          item-title="category"
+          item-value="category"
+          select-label="Service Type"
+          variant="underlined"
+          base-color="inverted"
+        />
+      </v-col>
+
+      <v-col cols="12" style="margin-top: 300px">
+        The carousel items: {{ computedSteps[0].card?.content.carousel?.items }}
+      </v-col>
 
       <!-- <template v-for="(item, index) in computedSteps" :key="index">
         <v-col
@@ -318,7 +325,23 @@
             colObj = this.stepColumn(step, stepIsCard, stepIsIcon);
 
             if (step.type === 'content') {
-              if (stepIsCard) cardObj = this.stepCard(step);
+              if (stepIsCard) {
+                const isCarousel: boolean = !!step.card?.content.carousel;
+
+                if (isCarousel) {
+                  console.log(
+                    'Carousel items are: ',
+                    step.card!.content.carousel!.items
+                  );
+                }
+
+                //const carouselItems = step.card!.content.carousel!.items;
+                cardObj = this.stepCard(
+                  step,
+                  step.card!.content.carousel!.items
+                );
+              }
+
               if (stepIsIcon) iconObj = this.stepIcon(step, isMobile);
             }
 
@@ -368,7 +391,10 @@
           lg: colMd ?? undefined,
         };
       },
-      stepCard(step: IHowItWorksStepsData): IHowItWorksStepCard {
+      stepCard(
+        step: IHowItWorksStepsData,
+        carouselItems: IRootServiceTreatments[]
+      ): IHowItWorksStepCard {
         const cardInputType: string = step.card!.input.type;
         const cardContentType: string = step.card!.content.type;
 
@@ -376,7 +402,7 @@
         let cardInputSelectDefaultValue: string = '';
         if (cardInputType === 'select') {
           cardInputSelectDefaultValue =
-            step.card!.input.select!.value ??
+            step.card!.input.select!.value ||
             this.serviceCategories[0].category;
 
           cardInputSelect = {
@@ -385,18 +411,23 @@
           };
         }
 
-        let cardInputCarousel: any | undefined = undefined;
+        let carouselObj: any | undefined = undefined;
         if (cardContentType === 'carousel') {
           const serviceDropdownValueIndex: number =
             this.serviceCategories.findIndex((serviceCategory) => {
               return cardInputSelectDefaultValue === serviceCategory.category;
             });
 
-          cardInputCarousel = this.serviceTreatments.filter(
+          carouselItems = this.serviceTreatments.filter(
             (treatment: IRootServiceTreatments) => {
               return treatment.treatmentCategory === serviceDropdownValueIndex;
             }
           );
+          console.log('Carousel items is now: ', carouselItems);
+
+          carouselObj = {
+            items: carouselItems,
+          };
         }
 
         const result = {
@@ -409,7 +440,7 @@
           },
           content: {
             type: step.card!.content.type,
-            carousel: cardInputCarousel,
+            carousel: carouselObj,
           },
         };
 
